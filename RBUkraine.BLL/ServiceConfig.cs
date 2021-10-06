@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RBUkraine.BLL.Contracts;
+using RBUkraine.BLL.Services;
 using RBUkraine.DAL;
 
 namespace RBUkraine.BLL
@@ -8,6 +10,8 @@ namespace RBUkraine.BLL
         public static void AddBusinessLogicLayer(this IServiceCollection services, string connectionString)
         {
             services.AddDataAccessLayer(connectionString);
+            services.AddAutoMapper(typeof(Mapper));
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

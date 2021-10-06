@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RBUkraine</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body>
+<nav>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Authentication" asp-action="Login">Login</a>
+    }
+    else
+    {
+        <div>
+            <form method="post" asp-controller="Authentication" asp-action="Logout">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    }
+</nav>
+
+@RenderBody()
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
