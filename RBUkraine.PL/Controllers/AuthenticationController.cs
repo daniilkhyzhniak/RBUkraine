@@ -26,6 +26,30 @@ namespace RBUkraine.PL.Controllers
             _mapper = mapper;
         }
         
+        [HttpGet("~/registration")]
+        public IActionResult Registration()
+        {
+            return View();
+        }
+        
+        [HttpPost("~/registration"), ValidateAntiForgeryToken]
+        public async Task<IActionResult> Registration(
+            [FromForm] RegisterViewModel model)
+        {
+            await _userService.CreateUserAsync(_mapper.Map<UserCreationModel>(model));
+            var claims = await _userService.AuthenticateAsync(_mapper.Map<AuthModel>(model));
+            
+            if (!claims.Any())
+            {
+                ModelState.AddModelError("", "Invalid credentials.");
+                return View(model);
+            }
+
+            await SignInAsync(claims);
+            
+            return Redirect("login");
+        }
+        
         // TODO: Delete default route
         [Route("")]
         [HttpGet("~/login")]

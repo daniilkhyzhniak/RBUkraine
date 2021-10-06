@@ -9,6 +9,8 @@ namespace RBUkraine.BLL
         public Mapper()
         {
             CreateMap<User, UserModel>();
+            CreateMap<UserCreationModel, User>()
+                .ForMember(x => x.Password, opt => opt.Ignore());
         }
     }
 }
