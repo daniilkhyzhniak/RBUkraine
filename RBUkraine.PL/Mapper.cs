@@ -9,6 +9,9 @@ namespace RBUkraine.PL
         public Mapper()
         {
             CreateMap<LoginViewModel, AuthModel>();
+            CreateMap<RegisterViewModel, AuthModel>();
+            CreateMap<RegisterViewModel, UserCreationModel>();
+            
             CreateMap<UserModel, UserViewModel>();
         }
     }

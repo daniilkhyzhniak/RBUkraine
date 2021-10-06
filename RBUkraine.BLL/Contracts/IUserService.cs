@@ -7,6 +7,8 @@ namespace RBUkraine.BLL.Contracts
 {
     public interface IUserService
     {
+        Task CreateUserAsync(UserCreationModel model);
+        
         Task<UserModel> GetUserByEmailAsync(string email);
         
         Task<ICollection<Claim>> AuthenticateAsync(AuthModel authModel);
