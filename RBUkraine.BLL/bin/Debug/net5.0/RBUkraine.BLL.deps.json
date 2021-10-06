@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "RBUkraine.BLL/1.0.0": {
+        "dependencies": {
+          "RBUkraine.DAL": "1.0.0"
+        },
+        "runtime": {
+          "RBUkraine.BLL.dll": {}
+        }
+      },
+      "RBUkraine.DAL/1.0.0": {
+        "runtime": {
+          "RBUkraine.DAL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RBUkraine.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RBUkraine.DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

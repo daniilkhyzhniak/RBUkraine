@@ -1,0 +1,15 @@
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\RBUkraine.BLL.deps.json
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\RBUkraine.BLL.dll
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\ref\RBUkraine.BLL.dll
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\RBUkraine.BLL.pdb
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\RBUkraine.DAL.dll
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\bin\Debug\net5.0\RBUkraine.DAL.pdb
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.csproj.AssemblyReference.cache
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.AssemblyInfoInputs.cache
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.AssemblyInfo.cs
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.csproj.CoreCompileInputs.cache
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.csproj.CopyComplete
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.dll
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\ref\RBUkraine.BLL.dll
+C:\Users\dania\RiderProjects\RBUkraine\RBUkraine.BLL\obj\Debug\net5.0\RBUkraine.BLL.pdb
