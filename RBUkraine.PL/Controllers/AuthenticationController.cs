@@ -47,11 +47,9 @@ namespace RBUkraine.PL.Controllers
 
             await SignInAsync(claims);
             
-            return Redirect("login");
+            return RedirectToAction("GetAll", "Animals");
         }
         
-        // TODO: Delete default route
-        [Route("")]
         [HttpGet("~/login")]
         public IActionResult Login()
         {
@@ -71,15 +69,15 @@ namespace RBUkraine.PL.Controllers
             }
 
             await SignInAsync(claims);
-            
-            return Redirect("login");
+
+            return RedirectToAction("GetAll", "Animals");
         }
         
         [HttpPost("~/logout"), Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return Redirect("login");
+            return RedirectToAction("GetAll", "Animals");
         }
         
         private async Task SignInAsync(IEnumerable<Claim> claims)

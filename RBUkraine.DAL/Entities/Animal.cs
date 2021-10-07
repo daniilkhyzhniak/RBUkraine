@@ -7,7 +7,7 @@ namespace RBUkraine.DAL.Entities
     {
         public string Name { get; set; }
 
-        public AnimalDetails AnimalDetails { get; set; }
+        public string Description { get; set; }
 
         public ICollection<AnimalImage> AnimalImages { get; set; }
     }

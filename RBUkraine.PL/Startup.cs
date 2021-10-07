@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RBUkraine.BLL;
 using RBUkraine.PL.Filters;
+using RBUkraine.PL.Middleware;
 
 namespace RBUkraine.PL
 {
@@ -52,13 +54,14 @@ namespace RBUkraine.PL
             }
             
             app.UseHttpsRedirection();
+            app.UseDefaultRouteRedirect("/animals");
 
             app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "");

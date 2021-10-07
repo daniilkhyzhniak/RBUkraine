@@ -6,7 +6,7 @@ namespace RBUkraine.DAL.Entities
     {
         public string Title { get; set; }
 
-        public string Data { get; set; }
+        public byte[] Data { get; set; }
 
         public int AnimalId { get; set; }
     }
