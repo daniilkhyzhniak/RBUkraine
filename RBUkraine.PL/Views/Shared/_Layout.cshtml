@@ -5,20 +5,35 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
 </head>
 <body>
-<nav>
-    @if (!User.Identity.IsAuthenticated)
-    {
-        <a asp-controller="Authentication" asp-action="Login">Login</a>
-    }
-    else
-    {
+    <nav>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Authentication" asp-action="Login">@localizer["Login"]</a>
+        }
+        else
+        {
+            <div>
+                <form method="post" asp-controller="Authentication" asp-action="Logout">
+                    <input type="submit" value="Logout">
+                </form>
+            </div>
+        }
+        @{
+            var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+        }
         <div>
-            <form method="post" asp-controller="Authentication" asp-action="Logout">
-                <input type="submit" value="Logout">
+            <form asp-controller="Culture"
+                  asp-action="SetCulture"
+                  method="post">
+                <select name="culture"
+                        onchange="this.form.submit();"
+                        for="culture"
+                        asp-for="@requestCulture.RequestCulture.UICulture.Name" 
+                        asp-items="Culture.SelectList">
+                </select>
             </form>
         </div>
-    }
-</nav>
+    </nav>
 
 @RenderBody()
 

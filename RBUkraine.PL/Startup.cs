@@ -1,12 +1,17 @@
+using System.Globalization;
+using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Rewrite;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
+using RBUkraine.PL.Enums;
 using RBUkraine.PL.Filters;
 using RBUkraine.PL.Middleware;
 
@@ -35,10 +40,28 @@ namespace RBUkraine.PL
                 });
             services.AddAuthorization();
             
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            
             services.AddMvc(options =>
             {
                 options.Filters.Add<ValidationFilter>();
+            })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create(typeof(SharedResource));
+                })
+                .AddViewLocalization();
+            
+            services.Configure<RequestLocalizationOptions>(options=>
+            {
+                var cultures = Culture.All.Select(c => new CultureInfo(c)).ToList();
+                options.DefaultRequestCulture = new RequestCulture(Culture.Ukrainian);
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
             });
+            
             services.AddControllersWithViews();
         }
         
@@ -56,6 +79,8 @@ namespace RBUkraine.PL
             app.UseHttpsRedirection();
             app.UseDefaultRouteRedirect("/animals");
 
+            app.UseRequestLocalization(
+                app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
             app.UseStaticFiles();
             app.UseRouting();
 
