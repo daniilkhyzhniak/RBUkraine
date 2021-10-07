@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RBUkraine.DAL.Migrations
 {
@@ -7,25 +8,13 @@ namespace RBUkraine.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AnimalDetails",
-                columns: table => new
-                {
-                    AnimalId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AnimalDetails", x => x.AnimalId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Animals",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -92,6 +81,28 @@ namespace RBUkraine.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AnimalImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    AnimalId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnimalImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AnimalImages_Animals_AnimalId",
+                        column: x => x.AnimalId,
+                        principalTable: "Animals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserRoles",
                 columns: table => new
                 {
@@ -132,8 +143,8 @@ namespace RBUkraine.DAL.Migrations
                 columns: new[] { "Id", "Email", "IsDeleted", "Password" },
                 values: new object[,]
                 {
-                    { 1, "admin1@email.com", false, "$2a$11$uemooDCKVF2WOsc3R5U5VOK.q3dystoYVDHbVB2Joy0jDcH4c28Ey" },
-                    { 2, "user1@email.com", false, "$2a$11$DCp3pXzoURevRfOpK/93SOytesMpDUyloA3u4Rjsdq3x88GyllGKS" }
+                    { 1, "admin1@email.com", false, "$2a$11$TTxhNeQ2eNlr5jquyM2XVu7FHQzUL5V4h9aHDNpzuj3N7D2R8llhm" },
+                    { 2, "user1@email.com", false, "$2a$11$E/bYh/gL2E08PEneAm3KD.kkbKZ0giM/Fp9CmmKqHW.tLHPcAOkWq" }
                 });
 
             migrationBuilder.InsertData(
@@ -150,6 +161,11 @@ namespace RBUkraine.DAL.Migrations
                 table: "UserRoles",
                 columns: new[] { "Id", "IsDeleted", "RoleId", "UserId" },
                 values: new object[] { 3, false, 1, 2 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AnimalImages_AnimalId",
+                table: "AnimalImages",
+                column: "AnimalId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_Name",
@@ -179,10 +195,7 @@ namespace RBUkraine.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AnimalDetails");
-
-            migrationBuilder.DropTable(
-                name: "Animals");
+                name: "AnimalImages");
 
             migrationBuilder.DropTable(
                 name: "CharitableOrganizations");
@@ -192,6 +205,9 @@ namespace RBUkraine.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "Animals");
 
             migrationBuilder.DropTable(
                 name: "Roles");

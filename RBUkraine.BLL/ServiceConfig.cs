@@ -12,6 +12,7 @@ namespace RBUkraine.BLL
             services.AddDataAccessLayer(connectionString);
             services.AddAutoMapper(typeof(Mapper));
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAnimalService, AnimalService>();
         }
     }
 }

@@ -26,8 +26,8 @@ namespace RBUkraine.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AnimalDetailsAnimalId")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -37,24 +37,7 @@ namespace RBUkraine.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalDetailsAnimalId");
-
                     b.ToTable("Animals");
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.AnimalDetails", b =>
-                {
-                    b.Property<int>("AnimalId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AnimalId");
-
-                    b.ToTable("AnimalDetails");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.AnimalImage", b =>
@@ -67,8 +50,8 @@ namespace RBUkraine.DAL.Migrations
                     b.Property<int>("AnimalId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Data")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -188,14 +171,14 @@ namespace RBUkraine.DAL.Migrations
                             Id = 1,
                             Email = "admin1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$viPjhbP5SlO/InmtJlWxcO.51uU/MYUe8BTg9ov8/Ol4v911mznB2"
+                            Password = "$2a$11$TTxhNeQ2eNlr5jquyM2XVu7FHQzUL5V4h9aHDNpzuj3N7D2R8llhm"
                         },
                         new
                         {
                             Id = 2,
                             Email = "user1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$TjDdkK9fX4i4Yi0tXCLQX..YcDZ3.GX29c4OuZ9rHnETn0dakuBe2"
+                            Password = "$2a$11$E/bYh/gL2E08PEneAm3KD.kkbKZ0giM/Fp9CmmKqHW.tLHPcAOkWq"
                         });
                 });
 
@@ -245,15 +228,6 @@ namespace RBUkraine.DAL.Migrations
                             RoleId = 1,
                             UserId = 2
                         });
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.Animal", b =>
-                {
-                    b.HasOne("RBUkraine.DAL.Entities.AnimalDetails", "AnimalDetails")
-                        .WithMany()
-                        .HasForeignKey("AnimalDetailsAnimalId");
-
-                    b.Navigation("AnimalDetails");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.AnimalImage", b =>
