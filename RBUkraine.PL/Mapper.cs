@@ -28,6 +28,8 @@ namespace RBUkraine.PL
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalDetailsModel, AnimalDetailsViewModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.Images.Select(MapImage)));
+            CreateMap<AnimalDetailsModel, AnimalTranslateEditorViewModel>();
+            CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)

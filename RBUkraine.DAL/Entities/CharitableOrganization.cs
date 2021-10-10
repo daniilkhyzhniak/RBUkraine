@@ -1,4 +1,5 @@
-﻿using RBUkraine.DAL.Entities.Base;
+﻿using System.Collections.Generic;
+using RBUkraine.DAL.Entities.Base;
 
 namespace RBUkraine.DAL.Entities
 {
@@ -11,5 +12,7 @@ namespace RBUkraine.DAL.Entities
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
+        public ICollection<CharitableOrganizationTranslate> CharitableOrganizationTranslates { get; set; }
     }
 }

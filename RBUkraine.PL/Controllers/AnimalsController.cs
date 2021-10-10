@@ -6,6 +6,7 @@ using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.Animal;
 using RBUkraine.PL.ViewModels.Animals;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace RBUkraine.PL.Controllers
@@ -27,7 +28,7 @@ namespace RBUkraine.PL.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var animals = await _animalService.GetAllAsync();
+            var animals = await _animalService.GetAllAsync(CultureInfo.CurrentCulture.Name);
             return View(_mapper.Map<IEnumerable<AnimalViewModel>>(animals));
         }
 
@@ -35,7 +36,7 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> GetById(
             [FromRoute] int id)
         {
-            var animal = await _animalService.GetByIdAsync(id);
+            var animal = await _animalService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
             return View(_mapper.Map<AnimalDetailsViewModel>(animal));
         }
 
@@ -85,6 +86,35 @@ namespace RBUkraine.PL.Controllers
         {
             await _animalService.DeleteAnimalAsync(id);
             return RedirectToAction("GetAll");
+        }
+
+        [HttpGet("{animalId:int}/translate/{culture}"), Authorize(Roles = Roles.Admin)]
+        public async Task<IActionResult> Translate(
+            [FromRoute] int animalId, 
+            [FromRoute] string culture)
+        {
+            if (!Culture.Exist(culture))
+            {
+                return BadRequest();
+            }
+
+            var animal = await _animalService.GetByIdAsync(animalId, culture);
+
+            return View(_mapper.Map<AnimalTranslateEditorViewModel>(animal));
+        }
+
+        [HttpPost("{animalId:int}/translate/{culture}"), Authorize(Roles = Roles.Admin)]
+        public async Task<IActionResult> Translate(
+            [FromRoute] int animalId,
+            [FromRoute] string culture,
+            [FromForm] AnimalTranslateEditorViewModel model)
+        {
+            var translate = _mapper.Map<AnimalTranslateEditorModel>(model);
+            translate.Culture = culture;
+
+            await _animalService.AddOrUpdateAnimalTranslateAsync(animalId, translate);
+
+            return RedirectToAction("GetById", new { id = animalId });
         }
     }
 }

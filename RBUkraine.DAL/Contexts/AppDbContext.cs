@@ -35,6 +35,8 @@ namespace RBUkraine.DAL.Contexts
 
         public DbSet<AnimalImage> AnimalImages { get; set; }
 
+        public DbSet<AnimalTranslate> AnimalTranslates { get; set; }
+
         public DbSet<CharitableOrganization> CharitableOrganizations { get; set; }
         
         public DbSet<CharityEvent> CharityEvents { get; set; }

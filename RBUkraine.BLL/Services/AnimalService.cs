@@ -9,6 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RBUkraine.BLL.Enums;
+using RBUkraine.BLL.Extensions;
+using RBUkraine.DAL.Entities.Enums;
 
 namespace RBUkraine.BLL.Services
 {
@@ -52,25 +55,65 @@ namespace RBUkraine.BLL.Services
             _context.Animals.SoftDelete(animal);
             await _context.SaveChangesAsync();
         }
+        
+        public async Task AddOrUpdateAnimalTranslateAsync(int animalId, AnimalTranslateEditorModel model)
+        {
+            var animal = await _context.Animals
+                .Include(animal => animal.AnimalTranslates)
+                .Where(animal => !animal.IsDeleted)
+                .FirstOrDefaultAsync(animal => animal.Id == animalId);
 
-        public async Task<IEnumerable<AnimalModel>> GetAllAsync()
+            if (animal is null)
+            {
+                throw new ArgumentException("Animal does not exist");
+            }
+
+            var language = Culture.ConvertToLanguage(model.Culture);
+            var translate = animal.AnimalTranslates
+                .FirstOrDefault(t => t.Language == language);
+
+            if (translate is not null)
+            {
+                translate.Name = model.Name;
+                translate.Description = model.Name;
+            }
+            else
+            {
+                animal.AnimalTranslates.Add(new AnimalTranslate
+                {
+                    Name = model.Name,
+                    Description = model.Name,
+                    Language = language
+                });
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<AnimalModel>> GetAllAsync(string culture = Culture.Ukrainian)
         {
             var animals = await _context.Animals
                 .Include(animal => animal.AnimalImages)
+                .Include(animal => animal.AnimalTranslates)
                 .Where(animal => !animal.IsDeleted)
+                .AsSplitQuery()
                 .ToListAsync();
-            return _mapper.Map<IEnumerable<AnimalModel>>(animals);
+
+
+            return _mapper.MapToAnimalModel(animals, culture);
         }
 
-        public async Task<AnimalDetailsModel> GetByIdAsync(int id)
+        public async Task<AnimalDetailsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
         {
             var animal = await _context.Animals
                 .AsNoTracking()
                 .Include(animal => animal.AnimalImages)
+                .Include(animal => animal.AnimalTranslates)
                 .Where(animal => !animal.IsDeleted)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(animal => animal.Id == id);
 
-            return _mapper.Map<AnimalDetailsModel>(animal);
+            return _mapper.MapToAnimalDetailsModel(animal, culture);
         }
 
         public async Task UpdateAnimalAsync(int id, AnimalEditorModel model)

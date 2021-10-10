@@ -20,6 +20,11 @@
         }
         @{
             var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+            var cultureSelectList = new SelectList(new List<SelectListItem>
+            {
+                new("Укр", Culture.Ukrainian),
+                new("Eng", Culture.English),
+            }, "Value", "Text");
         }
         <div>
             <form asp-controller="Culture"
@@ -29,7 +34,7 @@
                         onchange="this.form.submit();"
                         for="culture"
                         asp-for="@requestCulture.RequestCulture.UICulture.Name" 
-                        asp-items="Culture.SelectList">
+                        asp-items="cultureSelectList">
                 </select>
             </form>
         </div>

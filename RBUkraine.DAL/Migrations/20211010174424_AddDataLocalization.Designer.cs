@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RBUkraine.DAL.Contexts;
 
 namespace RBUkraine.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211010174424_AddDataLocalization")]
+    partial class AddDataLocalization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,35 +152,6 @@ namespace RBUkraine.DAL.Migrations
                     b.ToTable("CharitableOrganizations");
                 });
 
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharitableOrganizationTranslate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CharitableOrganizationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Language")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharitableOrganizationId");
-
-                    b.ToTable("CharitableOrganizationTranslate");
-                });
-
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEvent", b =>
                 {
                     b.Property<int>("Id")
@@ -207,38 +180,6 @@ namespace RBUkraine.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CharityEvents");
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventTranslate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CharityEventId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Language")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Organizer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharityEventId");
-
-                    b.ToTable("CharityEventTranslate");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.Role", b =>
@@ -307,14 +248,14 @@ namespace RBUkraine.DAL.Migrations
                             Id = 1,
                             Email = "admin1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$F6Rt5KlWi3W1Z63mXnF8xer5GjeEcDpf0pIyxMcRlbQ5l/fDsukxu"
+                            Password = "$2a$11$D/xQsLyq4CAMaTvl7EjGsO9IPBvXaSOIZaEJI9wcsDhI5AsLAl8Nu"
                         },
                         new
                         {
                             Id = 2,
                             Email = "user1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$/HZ3v9.r5yPBKuXYJuVv7.yDGrhwXQLEHERkAQP14qjjmGjshtjxy"
+                            Password = "$2a$11$cuZi1N5QNCSScfNPrjGqG.r2qoh1nmnWKt7mJ0zr0UJ8SRcAIUKWK"
                         });
                 });
 
@@ -386,28 +327,6 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("Animal");
                 });
 
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharitableOrganizationTranslate", b =>
-                {
-                    b.HasOne("RBUkraine.DAL.Entities.CharitableOrganization", "CharitableOrganization")
-                        .WithMany("CharitableOrganizationTranslates")
-                        .HasForeignKey("CharitableOrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CharitableOrganization");
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventTranslate", b =>
-                {
-                    b.HasOne("RBUkraine.DAL.Entities.CharityEvent", "CharityEvent")
-                        .WithMany("CharityEventTranslates")
-                        .HasForeignKey("CharityEventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CharityEvent");
-                });
-
             modelBuilder.Entity("RBUkraine.DAL.Entities.UserRole", b =>
                 {
                     b.HasOne("RBUkraine.DAL.Entities.Role", "Role")
@@ -432,16 +351,6 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("AnimalImages");
 
                     b.Navigation("AnimalTranslates");
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharitableOrganization", b =>
-                {
-                    b.Navigation("CharitableOrganizationTranslates");
-                });
-
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEvent", b =>
-                {
-                    b.Navigation("CharityEventTranslates");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.User", b =>

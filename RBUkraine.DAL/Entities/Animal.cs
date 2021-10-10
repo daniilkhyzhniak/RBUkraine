@@ -10,9 +10,11 @@ namespace RBUkraine.DAL.Entities
         public string LatinName { get; set; }
 
         public string Description { get; set; }
-
+        
         public int Population { get; set; }
 
         public ICollection<AnimalImage> AnimalImages { get; set; }
+
+        public ICollection<AnimalTranslate> AnimalTranslates { get; set; }
     }
 }

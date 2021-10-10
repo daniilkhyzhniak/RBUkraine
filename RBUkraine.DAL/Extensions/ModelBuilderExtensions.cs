@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using RBUkraine.DAL.Entities;
+using RBUkraine.DAL.Entities.Enums;
 
 namespace RBUkraine.DAL.Extensions
 {
@@ -52,6 +53,28 @@ namespace RBUkraine.DAL.Extensions
             };
 
             modelBuilder.Entity<UserRole>().HasData(userRoles);
+
+            var animal1 = new Animal
+            {
+                Id = 1000,
+                Name = "Зубр",
+                LatinName = "Bison bonasus",
+                Description = "Природоохранный статус вида: Пропавший в природе.",
+                Population = 200
+            };
+
+            modelBuilder.Entity<Animal>().HasData(animal1);
+
+            var animal1Translate = new AnimalTranslate
+            {
+                Id = 1,
+                AnimalId = animal1.Id,
+                Name = "Bison",
+                Description = "Conservation status of the species: Extinct in nature.",
+                Language = Language.English
+            };
+
+            modelBuilder.Entity<AnimalTranslate>().HasData(animal1Translate);
         }
     }
 }
