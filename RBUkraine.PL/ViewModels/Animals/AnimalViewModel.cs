@@ -9,6 +9,12 @@ namespace RBUkraine.PL.ViewModels.Animals
         [Display(Name = "Name")]
         public string Name { get; set; }
 
+        public string LatinName { get; set; }
+
+        public string Description { get; set; }
+
+        public int Population { get; set; }
+
         [Display(Name = "Image")]
         public ImageViewModel Image { get; set; }
     }

@@ -16,25 +16,10 @@ namespace RBUkraine.PL.Enums
 
         public static string[] All => new[] {Ukrainian, English};
 
-        public static SelectList SelectList => new SelectList(new List<CultureDisplay> 
+        public static SelectList SelectList => new SelectList(new List<SelectListItem> 
         {
-            new CultureDisplay
-            {
-                Text = "Укр",
-                Value = Ukrainian
-            },
-            new CultureDisplay
-            {
-                Text = "Eng",
-                Value = English
-            },
+            new ("Укр", Ukrainian),
+            new ("Eng", English),
         }, "Value", "Text");
-
-        private class CultureDisplay
-        {
-            public string Text { get; set; }
-
-            public string Value { get; set; }
-        }
     }
 }
