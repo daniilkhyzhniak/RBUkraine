@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models;
+using RBUkraine.BLL.Models.User;
 using RBUkraine.DAL.Contexts;
 using RBUkraine.DAL.Entities;
 

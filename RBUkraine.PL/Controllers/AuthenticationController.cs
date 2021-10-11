@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Models;
+using RBUkraine.BLL.Models.User;
 using RBUkraine.PL.ViewModels.Authentication;
 
 namespace RBUkraine.PL.Controllers

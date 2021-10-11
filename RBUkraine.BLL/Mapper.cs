@@ -3,6 +3,7 @@ using RBUkraine.BLL.Models;
 using RBUkraine.BLL.Models.Animal;
 using RBUkraine.DAL.Entities;
 using System.Linq;
+using RBUkraine.BLL.Models.User;
 
 namespace RBUkraine.BLL
 {

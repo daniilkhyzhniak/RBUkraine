@@ -1,4 +1,4 @@
-﻿namespace RBUkraine.BLL.Models
+﻿namespace RBUkraine.BLL.Models.User
 {
     public class UserModel
     {

@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using RBUkraine.BLL.Models;
+using RBUkraine.BLL.Models.User;
 
 namespace RBUkraine.BLL.Contracts
 {
