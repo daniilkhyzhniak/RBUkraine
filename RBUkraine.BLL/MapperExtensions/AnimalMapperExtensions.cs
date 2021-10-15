@@ -15,6 +15,11 @@ namespace RBUkraine.BLL.MapperExtensions
             Animal animal,
             string culture)
         {
+            if (animal is null)
+            {
+                return null;
+            }
+
             var mapped = mapper.Map<AnimalModel>(animal);
 
             if (culture == Culture.Ukrainian)
@@ -45,6 +50,11 @@ namespace RBUkraine.BLL.MapperExtensions
             Animal animal,
             string culture)
         {
+            if (animal is null)
+            {
+                return null;
+            }
+
             var mapped = mapper.Map<AnimalDetailsModel>(animal);
 
             if (culture == Culture.Ukrainian)

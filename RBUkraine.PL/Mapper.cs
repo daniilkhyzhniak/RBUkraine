@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.PL.ViewModels.CharitableOrganizations;
 using RBUkraine.PL.ViewModels.CharityEvents;
 
 namespace RBUkraine.PL
@@ -35,6 +37,8 @@ namespace RBUkraine.PL
             CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
 
             CreateMap<CharityEventModel, CharityEventViewModel>();
+
+            CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>();
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)

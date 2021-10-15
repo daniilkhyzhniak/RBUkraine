@@ -15,6 +15,11 @@ namespace RBUkraine.BLL.MapperExtensions
             CharityEvent charityEvent,
             string culture)
         {
+            if (charityEvent is null)
+            {
+                return null;
+            }
+
             var mapped = mapper.Map<CharityEventModel>(charityEvent);
 
             if (culture == Culture.Ukrainian)
