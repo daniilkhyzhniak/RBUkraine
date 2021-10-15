@@ -35,7 +35,7 @@ namespace RBUkraine.PL
                 .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("/login");
-                    options.AccessDeniedPath = new PathString("/error/accessDenied");
+                    options.AccessDeniedPath = new PathString("/access-denied");
                     options.ReturnUrlParameter = "returnUrl";
                 });
             services.AddAuthorization();
