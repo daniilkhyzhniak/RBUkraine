@@ -14,6 +14,7 @@ using RBUkraine.BLL;
 using RBUkraine.PL.Enums;
 using RBUkraine.PL.Filters;
 using RBUkraine.PL.Middleware;
+using Stripe;
 
 namespace RBUkraine.PL
 {
@@ -87,6 +88,9 @@ namespace RBUkraine.PL
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            var apiKey = string.Join("", _configuration["Stripe:ApiKey"].Split("///"));
+            StripeConfiguration.ApiKey = apiKey;
 
             app.UseEndpoints(endpoints =>
             {
