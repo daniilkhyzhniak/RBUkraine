@@ -13,6 +13,7 @@ namespace RBUkraine.BLL
             services.AddAutoMapper(typeof(Mapper));
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IAnimalService, AnimalService>();
+            services.AddTransient<ICharityEventService, CharityEventService>();
         }
     }
 }

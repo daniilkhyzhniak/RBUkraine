@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using RBUkraine.PL.Enums;
+using RBUkraine.BLL.Enums;
 
 namespace RBUkraine.PL.Controllers
 {
-    public class CultureController : Controller
+    public class ConfigurationController : Controller
     {
         [HttpPost("~/culture")]
         public IActionResult SetCulture(string culture)

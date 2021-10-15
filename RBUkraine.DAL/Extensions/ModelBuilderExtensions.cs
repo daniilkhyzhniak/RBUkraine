@@ -1,12 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using RBUkraine.DAL.Entities;
+using RBUkraine.DAL.Entities.Base;
 using RBUkraine.DAL.Entities.Enums;
 
 namespace RBUkraine.DAL.Extensions
 {
     public static class ModelBuilderExtensions
     {
+        public static void AddSoftDeletedFilter(this ModelBuilder modelBuilder)
+        {
+            Expression<Func<BaseEntity, bool>> softDeleteFilter = entity => !entity.IsDeleted;
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                if (entityType.ClrType.IsAssignableTo(typeof(BaseEntity)))
+                {
+                    var parameter = Expression.Parameter(entityType.ClrType);
+                    var body = ReplacingExpressionVisitor.Replace(
+                        softDeleteFilter.Parameters.First(),
+                        parameter, 
+                        softDeleteFilter.Body);
+
+                    entityType.SetQueryFilter(Expression.Lambda(body, parameter));
+                }
+            }
+        }
+
         public static void AddSeedData(this ModelBuilder modelBuilder)
         {
             var userRole = new Role { Id = 1, Name = "User" };

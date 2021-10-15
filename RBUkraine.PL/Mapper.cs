@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.PL.ViewModels.CharityEvents;
 
 namespace RBUkraine.PL
 {
@@ -31,6 +33,8 @@ namespace RBUkraine.PL
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.Images.Select(MapImage)));
             CreateMap<AnimalDetailsModel, AnimalTranslateEditorViewModel>();
             CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
+
+            CreateMap<CharityEventModel, CharityEventViewModel>();
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)

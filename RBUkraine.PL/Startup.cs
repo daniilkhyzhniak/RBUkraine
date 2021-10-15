@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
-using RBUkraine.PL.Enums;
+using RBUkraine.BLL.Enums;
 using RBUkraine.PL.Filters;
 using RBUkraine.PL.Middleware;
 

@@ -6,12 +6,10 @@ using RBUkraine.BLL.Models.Animal;
 using RBUkraine.DAL.Entities;
 using RBUkraine.DAL.Entities.Enums;
 
-namespace RBUkraine.BLL.Extensions
+namespace RBUkraine.BLL.MapperExtensions
 {
-    public static class MapperExtensions
+    public static class AnimalMapperExtensions
     {
-        #region Animals
-
         public static AnimalModel MapToAnimalModel(
             this IMapper mapper,
             Animal animal,
@@ -64,7 +62,5 @@ namespace RBUkraine.BLL.Extensions
 
             return mapped;
         }
-
-        #endregion
     }
 }

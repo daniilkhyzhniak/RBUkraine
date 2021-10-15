@@ -23,6 +23,7 @@ namespace RBUkraine.DAL.Contexts
                 .IsUnique();
 
             modelBuilder.AddSeedData();
+            // modelBuilder.AddSoftDeletedFilter();
         }
 
         public DbSet<User> Users { get; set; }
