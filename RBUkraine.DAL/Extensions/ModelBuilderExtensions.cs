@@ -78,11 +78,24 @@ namespace RBUkraine.DAL.Extensions
 
             modelBuilder.Entity<UserRole>().HasData(userRoles);
 
+            var charitableOrganization1 = new CharitableOrganization
+            {
+                Id = 1,
+                Name = "Happy Paw",
+                Description = "Happy Paw",
+                Email = "happypaw@email.com",
+                PhoneNumber = "12345"
+            };
+
+            modelBuilder.Entity<CharitableOrganization>().HasData(charitableOrganization1);
+
             var animal1 = new Animal
             {
                 Id = 1000,
                 Name = "Зубр",
                 LatinName = "Bison bonasus",
+                CharitableOrganizationId = charitableOrganization1.Id,
+                Species = "Зубр",
                 Description = "Природоохранный статус вида: Пропавший в природе.",
                 Population = 200
             };
@@ -99,6 +112,16 @@ namespace RBUkraine.DAL.Extensions
             };
 
             modelBuilder.Entity<AnimalTranslate>().HasData(animal1Translate);
+
+            var animalImage1 = new AnimalImage
+            {
+                Id = 1,
+                AnimalId = animal1.Id,
+                Title = "Зубр",
+                Data = Convert.FromBase64String(Images.Animal1)
+            };
+
+            modelBuilder.Entity<AnimalImage>().HasData(animalImage1);
         }
     }
 }

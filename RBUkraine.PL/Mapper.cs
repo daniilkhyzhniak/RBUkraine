@@ -62,6 +62,7 @@ namespace RBUkraine.PL
                 file.CopyTo(memoryStream);
                 img.Data = memoryStream.ToArray();
                 images.Add(img);
+                var r = Convert.ToBase64String(img.Data);
             }
 
             memoryStream.Close();

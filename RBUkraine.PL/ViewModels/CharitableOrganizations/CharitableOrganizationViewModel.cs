@@ -1,4 +1,7 @@
-﻿namespace RBUkraine.PL.ViewModels.CharitableOrganizations
+﻿using System.Collections.Generic;
+using RBUkraine.PL.ViewModels.Animals;
+
+namespace RBUkraine.PL.ViewModels.CharitableOrganizations
 {
     public class CharitableOrganizationViewModel
     {
@@ -11,5 +14,7 @@
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
+        public IEnumerable<AnimalViewModel> Animals { get; set; }
     }
 }

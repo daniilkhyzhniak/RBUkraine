@@ -3,6 +3,7 @@ using RBUkraine.BLL.Models;
 using RBUkraine.BLL.Models.Animal;
 using RBUkraine.DAL.Entities;
 using System.Linq;
+using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.User;
 
@@ -27,6 +28,9 @@ namespace RBUkraine.BLL
 
             CreateMap<CharityEvent, CharityEventModel>();
             CreateMap<CharityEventEditorModel, CharityEvent>();
+
+            CreateMap<CharitableOrganization, CharitableOrganizationModel>()
+                .ForMember(x => x.Animals, opt => opt.Ignore());
         }
     }
 }

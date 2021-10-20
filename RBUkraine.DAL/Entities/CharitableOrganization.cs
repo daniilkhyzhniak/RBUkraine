@@ -14,5 +14,7 @@ namespace RBUkraine.DAL.Entities
         public string Email { get; set; }
 
         public ICollection<CharitableOrganizationTranslate> CharitableOrganizationTranslates { get; set; }
+
+        public ICollection<Animal> Animals { get; set; }
     }
 }
