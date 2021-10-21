@@ -75,19 +75,126 @@
     color: #FFFFFF;
 }
 
+.button_menu_active{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    width: 230px;
+    height: 40px;
+    color: #333;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    background: linear-gradient(180deg,rgba(102, 102, 102, 0) 70%,  rgba(102, 102, 102, 0.205208) , rgba(102, 102, 102, 0.345466),rgba(102, 102, 102, 0.602604) , #666666 );
+    mix-blend-mode: luminosity;
+
+
+}
+
+.button_menu{
+    width: 230px;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.cf_block{
+
+    width: 1200px;
+    height: 290px;
+    margin-left: 10%;
+    margin-top: 20px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF6E2 100%);
+    border-radius: 20px;
+}
+
+
+.hr_style_title{
+    margin-top: -20px;
+    margin-left: -1px;
+    width: 730px
+}
+.hr_style{
+    margin-left: -1px;
+    margin-top: -5px;
+    width: 730px
+}
+
+.input_style{
+    margin-top: -7px;
+    width: 150px;
+    border-color: transparent;
+    background-color: transparent;
+    font-family: Literata;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+
+.rect_cf{
+    width: 290px;
+    height: 290px;
+
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: rgba(161, 158, 80, 0.3);
+    border-radius: 20px;
+}
 .bold-text-Literata{
     font-family: "Literata";
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height */
-
-
-
     color: #000000;
 }
 
+.text-Literata{
+    font-family: "Literata";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.center_content{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.gradient-text_button {
+    border-color: transparent;
+    font-size: 60px;
+    text-transform: uppercase;
+    background: linear-gradient(95deg, rgba(255, 27, 2, 0.12) 33%, rgba(166, 11, 2, 0.51) , rgba(34, 10, 2, 0.97));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0B2349;
+    display: table;
+
+}
+.red_Literata{
+
+
+    margin-top: 5px;
+    font-family: "Literata";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 37px;
+
+    color: #7C0A02;
+}
 .text-Montserrat-light{
     font-family: Montserrat;
     font-style: normal;
@@ -115,10 +222,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    /* identical to box height */
-
     color: #565656;
-
     margin-top: 6px;
     margin-left: 5px;
 }
@@ -129,10 +233,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    /* identical to box height */
-
     color: #000000;
-
     margin-top: 6px;
     margin-left: 5px;
 }
