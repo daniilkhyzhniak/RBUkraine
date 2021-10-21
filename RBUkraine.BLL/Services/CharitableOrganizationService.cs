@@ -13,6 +13,8 @@ namespace RBUkraine.BLL.Services
 {
     public class CharitableOrganizationService : ICharitableOrganizationService
     {
+        private const int DefaultAnimalsCount = 5;
+
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
@@ -28,7 +30,13 @@ namespace RBUkraine.BLL.Services
         {
             var charitableOrganizations = await _context.CharitableOrganizations
                 .Include(c => c.CharitableOrganizationTranslates)
+                .Include(c => c.Image)
+                .Include(c => c.Animals.Take(DefaultAnimalsCount))
+                    .ThenInclude(a => a.AnimalTranslates)
+                .Include(c => c.Animals.Take(DefaultAnimalsCount))
+                    .ThenInclude(a => a.AnimalImages)
                 .Where(c => !c.IsDeleted)
+                .AsSplitQuery()
                 .ToListAsync();
 
             return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
@@ -38,7 +46,13 @@ namespace RBUkraine.BLL.Services
         {
             var charitableOrganization = await _context.CharitableOrganizations
                 .Include(c => c.CharitableOrganizationTranslates)
+                .Include(c => c.Image)
+                .Include(c => c.Animals.Take(DefaultAnimalsCount))
+                    .ThenInclude(a => a.AnimalTranslates)
+                .Include(c => c.Animals.Take(DefaultAnimalsCount))
+                    .ThenInclude(a => a.AnimalImages)
                 .Where(c => !c.IsDeleted)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             return _mapper.MapToCharitableOrganizationModel(charitableOrganization, culture);
