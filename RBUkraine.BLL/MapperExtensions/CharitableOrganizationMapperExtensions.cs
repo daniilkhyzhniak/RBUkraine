@@ -34,6 +34,9 @@ namespace RBUkraine.BLL.MapperExtensions
             if (translate is not null)
             {
                 mapped.Name = translate.Name;
+                mapped.Description = translate.Description;
+                mapped.Founders = translate.Founders;
+                mapped.Stockholders = translate.Stockholders;
             }
 
             return mapped;

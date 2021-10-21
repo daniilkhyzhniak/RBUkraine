@@ -73,15 +73,27 @@ namespace RBUkraine.BLL.Services
 
             if (translate is not null)
             {
-                translate.Name = model.Name;
-                translate.Description = model.Name;
+                translate.Species = model.Species;
+                translate.ConservationStatus = model.ConservationStatus;
+                translate.Kingdom = model.Kingdom;
+                translate.Phylum = model.Phylum;
+                translate.Class = model.Class;
+                translate.Order = model.Order;
+                translate.Family = model.Family;
+                translate.Genus = model.Genus;
             }
             else
             {
                 animal.AnimalTranslates.Add(new AnimalTranslate
                 {
-                    Name = model.Name,
-                    Description = model.Name,
+                    Species = model.Species,
+                    ConservationStatus = model.ConservationStatus,
+                    Kingdom = model.Kingdom,
+                    Phylum = model.Phylum,
+                    Class = model.Class,
+                    Order = model.Order,
+                    Family = model.Family,
+                    Genus = model.Genus,
                     Language = language
                 });
             }

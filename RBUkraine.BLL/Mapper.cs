@@ -29,6 +29,8 @@ namespace RBUkraine.BLL
             CreateMap<CharityEvent, CharityEventModel>();
             CreateMap<CharityEventEditorModel, CharityEvent>();
 
+            CreateMap<CharitableOrganizationImage, Image>()
+                .ReverseMap();
             CreateMap<CharitableOrganization, CharitableOrganizationModel>()
                 .ForMember(x => x.Animals, opt => opt.Ignore());
         }

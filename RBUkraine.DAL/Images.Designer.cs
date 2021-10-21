@@ -68,5 +68,14 @@ namespace RBUkraine.DAL {
                 return ResourceManager.GetString("Animal1", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAR7jSURBVHja7J13nF5Vtfd/a+19znnKtPRGEggJIRA6ofemoghiF7ve13vlKjYUrnjFix0Ue8WGiqIISO+99zTSQ3ovU59yztlrvX+cZyYzSYCElJkk+8tnEUKSyTOn7N9ea69CqgqPx+PxeDy7Nuwvgcfj8Xg8XtA9Ho/H4/F4Qfd4PB6Px+MF3ePxeDwejxd0j8fj8Xi8oHs8Ho/H4/GC7vF4PB6Pxwu6x+PxeDweL+gej8fj8XhB93g8Ho/H4wXd4/F4PB6PF3SPx+PxeDxe0D0ej8fj8YLu8Xg8Ho/HC7rH4/F4PB4v6B6Px+PxeF4F21yt7PbfJAEohjmkqsilQOoUalNYCuEMwK [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CharitableOrganization1 {
+            get {
+                return ResourceManager.GetString("CharitableOrganization1", resourceCulture);
+            }
+        }
     }
 }

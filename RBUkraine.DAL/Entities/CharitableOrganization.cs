@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RBUkraine.DAL.Entities.Base;
 
 namespace RBUkraine.DAL.Entities
@@ -13,8 +14,16 @@ namespace RBUkraine.DAL.Entities
 
         public string Email { get; set; }
 
+        public string Founders { get; set; }
+
+        public string Stockholders { get; set; }
+        
+        public DateTimeOffset FoundationDate { get; set; }
+
         public ICollection<CharitableOrganizationTranslate> CharitableOrganizationTranslates { get; set; }
 
         public ICollection<Animal> Animals { get; set; }
+
+        public CharitableOrganizationImage Image { get; set; }
     }
 }

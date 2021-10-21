@@ -31,7 +31,14 @@ namespace RBUkraine.BLL.MapperExtensions
 
             if (translate is not null)
             {
-                mapped.Name = translate.Name;
+                mapped.Species = translate.Species;
+                mapped.ConservationStatus = translate.ConservationStatus;
+                mapped.Kingdom = translate.Kingdom;
+                mapped.Phylum = translate.Phylum;
+                mapped.Class = translate.Class;
+                mapped.Order = translate.Order;
+                mapped.Family = translate.Family;
+                mapped.Genus = translate.Genus;
             }
 
             return mapped;
@@ -66,8 +73,14 @@ namespace RBUkraine.BLL.MapperExtensions
 
             if (translate is not null)
             {
-                mapped.Name = translate.Name;
-                mapped.Description = translate.Description;
+                mapped.Species = translate.Species;
+                mapped.ConservationStatus = translate.ConservationStatus;
+                mapped.Kingdom = translate.Kingdom;
+                mapped.Phylum = translate.Phylum;
+                mapped.Class = translate.Class;
+                mapped.Order = translate.Order;
+                mapped.Family = translate.Family;
+                mapped.Genus = translate.Genus;
             }
 
             return mapped;

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using RBUkraine.BLL.Models.Animal;
 using RBUkraine.PL.ViewModels.Animals;
 
 namespace RBUkraine.PL.ViewModels.CharitableOrganizations
@@ -15,6 +17,14 @@ namespace RBUkraine.PL.ViewModels.CharitableOrganizations
 
         public string Email { get; set; }
 
-        public IEnumerable<AnimalViewModel> Animals { get; set; }
+        public string Founders { get; set; }
+
+        public string Stockholders { get; set; }
+
+        public DateTimeOffset FoundationDate { get; set; }
+
+        public IEnumerable<AnimalModel> Animals { get; set; }
+
+        public ImageViewModel Image { get; set; }
     }
 }

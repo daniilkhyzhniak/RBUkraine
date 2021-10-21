@@ -38,7 +38,8 @@ namespace RBUkraine.PL
 
             CreateMap<CharityEventModel, CharityEventViewModel>();
 
-            CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>();
+            CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)
@@ -62,20 +63,16 @@ namespace RBUkraine.PL
                 file.CopyTo(memoryStream);
                 img.Data = memoryStream.ToArray();
                 images.Add(img);
-                var r = Convert.ToBase64String(img.Data);
             }
 
             memoryStream.Close();
 
             return images;
         }
-
-        
-
         private static ImageViewModel MapImage(Image image)
         {
-            string imageBase64Data = Convert.ToBase64String(image.Data);
-            string imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
+            var imageBase64Data = Convert.ToBase64String(image.Data);
+            var imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
 
             return new ImageViewModel
             {
