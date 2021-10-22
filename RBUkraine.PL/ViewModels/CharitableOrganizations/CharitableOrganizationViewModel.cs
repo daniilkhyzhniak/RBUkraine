@@ -23,7 +23,7 @@ namespace RBUkraine.PL.ViewModels.CharitableOrganizations
 
         public DateTimeOffset FoundationDate { get; set; }
 
-        public IEnumerable<AnimalModel> Animals { get; set; }
+        public IEnumerable<AnimalViewModel> Animals { get; set; }
 
         public ImageViewModel Image { get; set; }
     }
