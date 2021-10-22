@@ -101,6 +101,8 @@
     border: 1px solid transparent;
 }
 
+
+
 .cf_block{
 
     width: 1200px;
@@ -241,14 +243,14 @@
 @font-face {
 
 font-family: "Literata";
-src: url("fonts/literata/Literatamedium.ttf") format("truetype");
+src: url("../fonts/literata/Literatamedium.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
 @font-face {
 
     font-family: "Montserrat";
-    src: url("fonts/montserrat/Montserrat-Medium.ttf") format("truetype");
+    src: url("../fonts/montserrat/Montserrat-Medium.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
