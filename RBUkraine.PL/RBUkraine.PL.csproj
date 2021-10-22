@@ -16,4 +16,8 @@
       <ProjectReference Include="..\RBUkraine.BLL\RBUkraine.BLL.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\icons\" />
+    </ItemGroup>
+
 </Project>

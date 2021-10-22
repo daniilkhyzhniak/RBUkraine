@@ -1,34 +1,94 @@
 ﻿@model RBUkraine.PL.ViewModels.Animals.AnimalDetailsViewModel
 
 @{
-    ViewData["Title"] = "GetById";
+    ViewData["Title"] = Model.Species;
 }
 
-<h1>GetById</h1>
+<div style="margin-top: 20px; margin-left:7%; width: 1100px; margin-right: auto; ">
 
-<div>
-    <h4>AnimalDetailsViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Species)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Species)
-        </dd>
-    </dl>
-    @foreach (var image in Model.Images)
-    {
-        <img src="@image.Url" alt="@image.Title" width="500" />
-    }
-</div>
-<div>
-    @Html.ActionLink("Edit", "Update", new { id = Model.Id }) |
-    <a asp-action="GetAll">Back to List</a>
+    <div class="row" style="font-size: small">
+        <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
+        <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">Назва благодійного фонду</a>
+        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;Вид</p>
+    </div>
+    <div class="animal-block">
+        <div class="row" style="width: 97%; margin-right: auto; margin-left: auto;">
+            <div style="width: 30%; margin-top: 20px">
+                <p><img src="@Model.Images.First().Url" style="width: 90%;border-radius: 10px;" alt="@Model.Images.First().Title"></p>
+            </div>
+            <div style="margin-top: 20px; margin-left: 5px; width: 60%;">
+                <div class="row">
+                    <h6 class="bold-text-Literata">Id:</h6>
+                    <p class="text-Montserrat">234567</p>
+                </div>
+                <div class="row">
+                    <h6 class="bold-text-Literata">Вид:</h6>
+                    <p class="text-Montserrat">@Model.Species</p>
+                </div>
+                <h6 class="bold-text-Literata" style="margin-left: -15px">Опис:</h6>
+                <p class="text-Montserrat" style="margin-left: -15px">
+                    Ведмеді належать до підряду Caniformia ряду Хижих, представники якого,
+                    за
+                    припущеннями палеонтологів,
+                    походять від загального собакоподібного попередника. Походження ведмедів простежується до
+                    Cephalogale, тварини розміром з єнота,
+                    що жила в середині Олігоцену — на початку Міоцену (20—30 мільйонів років тому) у Європі.
+                    Від нього пішов рід Ursavus, хижаків розміром із собаку, чиї викопні рештки відомі з
+                    середньоміоценових відкладень Євразії.
+                    Один з ранніх видів, Ursavus elmensis, приблизно 20 млн років тому дав початок родам Protursus
+                    та
+                    Pilonarctus, від яких, відповідно,
+                    походять справжні ведмеді та представники підродини Tremarctinae. До останньої, окрім сучасного
+                    очкового ведмедя,
+                    належать вимерлі флоридський печерний ведмідь (Tremarctos floridanus) та північноамериканські
+                    короткоморді ведмеді (рід Arctodus).
+                    Види Arctodus simus та Arctodus pristinus вважаються найбільшими представниками серед ведмедів,
+                    які
+                    коли-небудь існували
+                    (з-поміж них більшим був Arctodus simus).
+                    Найбільша кількість родів та видів ведмедів була в Пліоцені в Євразії та Північній Америці.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row"
+         style="margin-top: 20px;  margin-right: auto; margin-left: -40px; font-family: 'Times New Roman';">
+        <button type="submit"
+                class="button" style="width: 55%">
+            Пожертвувати
+            на утримання даного виду
+        </button>
+        <button type="submit"
+                class="button" style="width: 35%">
+            Пожертвувати
+            у БФ
+        </button>
+    </div>
+    <div class="news-block">
+        <p class="bold-text-Literata" style=" margin-left: 30px;">Новини</p>
+        <div class="new-block">
+
+            <div style="margin-left: 10px">
+                <p class="title2">
+                    Заголовок
+                </p>
+                <div style="float: right; margin-top: -45px">
+                    <p style=" margin-right: 20px; font-size: small; color: dimgrey">01.01.21</p>
+                </div>
+                <p class="text-Montserrat-light" style="margin-top: -20px">
+                    sssssssssssss s sss ss sss ssss ssss s sssssss s s s ss sss sssssssssssss s ss.
+                </p>
+            </div>
+        </div>
+
+
+        <button style="margin-left: 48%; height: 50px; width: 30px; border-color: transparent; background-color: transparent; font-size: xx-large; font-weight: bold">
+            &#8595;
+        </button>
+
+
+    </div>
 </div>
