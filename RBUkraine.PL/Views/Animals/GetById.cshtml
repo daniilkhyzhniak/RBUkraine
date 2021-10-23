@@ -1,36 +1,45 @@
-﻿@model RBUkraine.PL.ViewModels.Animals.AnimalDetailsViewModel
+﻿@model RBUkraine.PL.ViewModels.Animals.AnimalViewModel
 
 @{
     ViewData["Title"] = Model.Species;
 }
 
 <div class="row" style="margin-top: 60px">
-<div>
-    <button class="left-button" >
-        <br><br>Зробити благодійний<br> внесок
-    </button>
-</div>
 
-<div style="margin-top: 20px; margin-left:7%; width: 1100px; margin-right: auto; ">
+    @if (User.IsInRole(Roles.User))
+    {
+        <div>
+            <button class="left-button" >
+                <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+            </button>
+        </div>
+    }
+
+    <div style="margin-top: 20px; margin-left:7%; width: 1100px; margin-right: auto; ">
 
     <div class="row" style="font-size: small">
-        <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+        <a asp-controller="CharitableOrganizations" asp-action="GetAll" class="black-text-Montserrat" style="text-decoration: underline;">
+            @localizer["Animals"]
+        </a>
         <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
-        <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">Назва благодійного фонду</a>
-        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;Вид</p>
+        <a asp-controller="CharitableOrganizations" asp-action="GetById" asp-route-id="@Model.CharitableOrganization.Id"
+           class="black-text-Montserrat" style="text-decoration: underline;">
+            @Model.CharitableOrganization.Name
+        </a>
+        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Species</p>
     </div>
     <div class="animal-block">
         <div class="row" style="width: 97%; margin-right: auto; margin-left: auto;">
             <div style="width: 30%; margin-top: 20px">
-                <p><img src="@Model.Images.First().Url" style="width: 90%;border-radius: 10px;" alt="@Model.Images.First().Title"></p>
+                <p><img src="@Model.Image.Url" style="width: 90%;border-radius: 10px;" alt="@Model.Image.Title"></p>
             </div>
             <div style="margin-top: 20px; margin-left: 5px; width: 60%;">
                 <div class="row">
                     <h6 class="bold-text-Literata">Id:</h6>
-                    <p class="text-Montserrat">234567</p>
+                    <p class="text-Montserrat">@Model.Id</p>
                 </div>
                 <div class="row">
-                    <h6 class="bold-text-Literata">Вид:</h6>
+                    <h6 class="bold-text-Literata">@localizer["Species"]:</h6>
                     <p class="text-Montserrat">@Model.Species</p>
                 </div>
                 <h6 class="bold-text-Literata" style="margin-left: -15px">Опис:</h6>
@@ -65,17 +74,15 @@
          style="margin-top: 20px;  margin-right: auto; margin-left: -40px; font-family: 'Times New Roman';">
         <button type="submit"
                 class="button" style="width: 55%">
-            Пожертвувати
-            на утримання даного виду
+            @localizer["Donate for the maintenance of this species"]
         </button>
         <button type="submit"
                 class="button" style="width: 35%">
-            Пожертвувати
-            у БФ
+            @localizer["Donate to the BF"]
         </button>
     </div>
     <div class="news-block">
-        <p class="bold-text-Literata" style=" margin-left: 30px;">Новини</p>
+        <p class="bold-text-Literata" style=" margin-left: 30px;">@localizer["News"]</p>
         <div class="new-block">
 
             <div style="margin-left: 10px">

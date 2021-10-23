@@ -137,17 +137,21 @@ namespace RBUkraine.BLL.Services
             return _mapper.MapToAnimalModel(animals, culture);
         }
 
-        public async Task<AnimalDetailsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
+        public async Task<AnimalModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
         {
             var animal = await _context.Animals
                 .AsNoTracking()
                 .Include(animal => animal.AnimalImages)
                 .Include(animal => animal.AnimalTranslates)
+                .Include(x => x.CharitableOrganization)
+                    .ThenInclude(x => x.CharitableOrganizationTranslates)
+                .Include(x => x.CharitableOrganization)
+                    .ThenInclude(x => x.Image)
                 .Where(animal => !animal.IsDeleted)
                 .AsSplitQuery()
                 .FirstOrDefaultAsync(animal => animal.Id == id);
 
-            return _mapper.MapToAnimalDetailsModel(animal, culture);
+            return _mapper.MapToAnimalModel(animal, culture);
         }
 
         public async Task UpdateAnimalAsync(int id, AnimalEditorModel model)

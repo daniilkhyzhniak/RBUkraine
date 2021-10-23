@@ -43,7 +43,7 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] int id)
         {
             var animal = await _animalService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<AnimalDetailsViewModel>(animal));
+            return View(_mapper.Map<AnimalViewModel>(animal));
         }
 
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]

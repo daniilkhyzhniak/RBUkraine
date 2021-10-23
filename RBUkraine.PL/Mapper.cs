@@ -28,7 +28,8 @@ namespace RBUkraine.PL
 
             CreateMap<AnimalEditorViewModel, AnimalEditorModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => MapFilesToImages(x.Files)));
-            CreateMap<AnimalDetailsModel, AnimalEditorViewModel>();
+            CreateMap<AnimalModel, AnimalEditorViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalModel, AnimalViewModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalDetailsModel, AnimalDetailsViewModel>()

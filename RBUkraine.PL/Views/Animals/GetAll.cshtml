@@ -19,10 +19,10 @@
                             <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>Сортувати</p>
                             <p>
                                 <select class="select_option">
-                                    <option disabled>Сортувати</option>
-                                    <option selected value="name">За назвою виду</option>
-                                    <option value="lat">За латинською назвою виду</option>
-                                    <option value="cf">За БФ</option>
+                                    <option disabled>@localizer["Sort"]</option>
+                                    <option selected value="name">@localizer["By the name of the species"]</option>
+                                    <option value="lat">@localizer["By the Latin name of the species"]</option>
+                                    <option value="cf">@localizer["By the BF"]</option>
                                 </select>
                             </p>
                             <p>
@@ -32,9 +32,9 @@
                                 </select>
                             </p>
                             <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
-                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;"><br>Фільтрувати</p>
+                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;"><br>@localizer["Filter"]</p>
                             <hr>
-                            <p>Благодійні фонди:</p>
+                            <p>@localizer["Charitable foundations"]:</p>
                             <div class="label_checkbox">
                                 <div style="margin: 5px">
                                     <label class="text-Montserrat">
@@ -46,8 +46,8 @@
                         </div>
 
                         <div style="text-align: center">
-                            <button class="text-Montserrat-light" style="color: #944747; background-color: transparent; border-color: transparent">Скасувати все X </button>
-                            <button type="submit" class="button_table" style="margin-left: auto; margin-right: auto">Застосувати</button>
+                            <button class="text-Montserrat-light" style="color: #944747; background-color: transparent; border-color: transparent">@localizer["Cancel everything"] X</button>
+                            <button type="submit" class="button_table" style="margin-left: auto; margin-right: auto">@localizer["Apply"]</button>
                         </div>
 
                     </form>
@@ -57,19 +57,19 @@
                 <div class="row">
                     <form method="get">
                         @*add rest params as hidden inputs*@
-                        <span class="text-Montserrat" style="margin-left: 30px;font-size: 20px ; margin-top: 15px">Шукати за:</span>
+                        <span class="text-Montserrat" style="margin-left: 30px;font-size: 20px ; margin-top: 15px">@localizer["Search for"]:</span>
                         <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.BySpecious)"
                                     value="@((int) AnimalsSearchOptions.BySpecious)">
-                                By Specious
+                                @localizer["By Specious"]
                             </option>
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByLatinSpecious)"
                                     value="@((int) AnimalsSearchOptions.ByLatinSpecious)">
-                                By Latin Specious
+                                @localizer["By Latin Specious"]
                             </option>
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByCharitableOrganization)"
                                     value="@((int) AnimalsSearchOptions.ByCharitableOrganization)">
-                                By Charitable Organization
+                                @localizer["By Charitable Organization"]
                             </option>
                         </select>
                         <input type="text" name="search" value="@Model.Filter.Search" />
@@ -81,18 +81,18 @@
                 <table class="animal_table" style="margin-left: 15px;background-color: #F8FCF2">
                     <thead style="font-weight: bold">
                         <tr>
-                            <td>Вид</td>
-                            <td>Вид лат.</td>
-                            <td>Чисельність</td>
-                            <td>Статус вимирання</td>
-                            <td>Царство</td>
-                            <td>Тип</td>
-                            <td>Клас</td>
-                            <td>Порядок</td>
-                            <td>Сім'я</td>
-                            <td>Рід</td>
-                            <td>Благодійний фонд</td>
-                            <td>Редагування</td>
+                            <td>@localizer["Species"]</td>
+                            <td>@localizer["Latin Species"]</td>
+                            <td>@localizer["Population"]</td>
+                            <td>@localizer["Conservation Status"]</td>
+                            <td>@localizer["Kingdom"]</td>
+                            <td>@localizer["Phylum"]</td>
+                            <td>@localizer["Class"]</td>
+                            <td>@localizer["Order"]</td>
+                            <td>@localizer["Family"]</td>
+                            <td>@localizer["Genus"]</td>
+                            <td>@localizer["Charitable Organization"]</td>
+                            <td>@localizer["Editing"]</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,12 +111,13 @@
                                 <td>@animal.Genus</td>
                                 <td>@animal.CharitableOrganization.Name</td>
                                 <td>
-                                    <button type="submit" style="border-color: transparent; background-color: transparent">
+                                    <a asp-action="Update" asp-route-id="@animal.Id" style="border-color: transparent; background-color: transparent">
                                         <img src="~/images/edit.png" width="27px" height="25px" alt="1">
-                                    </button>
-                                    <button type="submit" style="border-color: transparent; background-color: transparent">
+                                    </a>
+                                    <a onclick="confirmDeletionAnimal(@animal.Id, '@localizer["Are you sure you want to delete this record?"]')" 
+                                       style="border-color: transparent; background-color: transparent">
                                         <img src="~/images/delete.png" width="27px" height="25px" alt="1">
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                         }
@@ -142,3 +143,8 @@
     </div>
 
 </div>
+
+@section Scripts 
+{
+    <script src="scripts/delete-animal.js"></script>
+}

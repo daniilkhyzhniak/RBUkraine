@@ -9,7 +9,7 @@ namespace RBUkraine.BLL.Contracts
     {
         Task<IEnumerable<AnimalModel>> GetAllAsync(AnimalFilterModel filter, string culture = Culture.Ukrainian);
 
-        Task<AnimalDetailsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);
+        Task<AnimalModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);
 
         Task<int> CreateAnimalAsync(AnimalEditorModel model);
 

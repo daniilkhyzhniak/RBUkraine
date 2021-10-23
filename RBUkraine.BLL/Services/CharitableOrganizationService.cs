@@ -31,13 +31,18 @@ namespace RBUkraine.BLL.Services
             var charitableOrganizations = await _context.CharitableOrganizations
                 .Include(c => c.CharitableOrganizationTranslates)
                 .Include(c => c.Image)
-                .Include(c => c.Animals.Take(DefaultAnimalsCount))
-                    .ThenInclude(a => a.AnimalTranslates)
-                .Include(c => c.Animals.Take(DefaultAnimalsCount))
-                    .ThenInclude(a => a.AnimalImages)
-                .Where(c => !c.IsDeleted)
                 .AsSplitQuery()
                 .ToListAsync();
+
+            foreach (var charitableOrganization in charitableOrganizations)
+            {
+                charitableOrganization.Animals = await _context.Animals
+                    .Include(a => a.AnimalTranslates)
+                    .Include(a => a.AnimalImages)
+                    .OrderBy(a => a.Species)
+                    .Take(DefaultAnimalsCount)
+                    .ToListAsync();
+            }
 
             return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
         }
