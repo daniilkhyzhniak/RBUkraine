@@ -120,6 +120,9 @@
   <data name="Animals" xml:space="preserve">
     <value>Тварини</value>
   </data>
+  <data name="contribution" xml:space="preserve">
+    <value>внесок</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>Фото</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Вийти</value>
+  </data>
+  <data name="Make a charitable" xml:space="preserve">
+    <value>Зробити благодійний</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>

@@ -23,6 +23,7 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet]
+        [Route("~/")]
         public async Task<IActionResult> GetAll()
         {
             var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);

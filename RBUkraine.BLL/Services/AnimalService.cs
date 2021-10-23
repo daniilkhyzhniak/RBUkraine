@@ -115,7 +115,7 @@ namespace RBUkraine.BLL.Services
             if (!string.IsNullOrWhiteSpace(filter.Search))
             {
                 var search = filter.Search.Trim().ToUpper();
-                query = filter.AnimalsSearchOptions switch
+                query = filter.SearchOptions switch
                 {
                     AnimalsSearchOptions.BySpecious => query
                         .Where(x => x.Species.Trim().ToUpper().Contains(search) 

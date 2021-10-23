@@ -78,7 +78,7 @@ namespace RBUkraine.PL
             }
             
             app.UseHttpsRedirection();
-            app.UseDefaultRouteRedirect("/animals");
+            //app.UseDefaultRouteRedirect("/organizations");
 
             app.UseRequestLocalization(
                 app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);

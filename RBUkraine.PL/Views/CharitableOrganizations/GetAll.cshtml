@@ -4,7 +4,15 @@
     ViewData["Title"] = "GetAll";
 }
 
-@foreach (var item in Model) {
+<div class="row" style="margin-top: 60px">
+    <div>
+        <button class="left-button">
+            <br><br>Зробити благодійний<br> внесок
+        </button>
+    </div>
+
+    @foreach (var item in Model)
+    {
         <section class="h">
             <div class="container4">
 
@@ -20,8 +28,9 @@
                             </a>
                         </li>
                     }
-                    </ul>
+                </ul>
             </div>
         </section>
-}
+    }
 
+</div>

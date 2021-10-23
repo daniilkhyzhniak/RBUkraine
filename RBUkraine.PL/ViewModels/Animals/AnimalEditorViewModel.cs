@@ -4,7 +4,6 @@ namespace RBUkraine.PL.ViewModels.Animals
 {
     public class AnimalEditorViewModel
     {
-
         public string Species { get; set; }
 
         public string LatinSpecies { get; set; }
@@ -24,6 +23,8 @@ namespace RBUkraine.PL.ViewModels.Animals
         public string Genus { get; set; }
 
         public int Population { get; set; }
+        
+        public ImageViewModel Image { get; set; }
 
         public IFormFileCollection Files { get; set; }
     }

@@ -25,7 +25,7 @@ namespace RBUkraine.PL.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> GetAll(
             [FromQuery] AnimalFilterModel filter)
         {
