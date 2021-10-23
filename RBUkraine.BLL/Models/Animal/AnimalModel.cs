@@ -1,4 +1,6 @@
-﻿namespace RBUkraine.BLL.Models.Animal
+﻿using RBUkraine.BLL.Models.CharitableOrganization;
+
+namespace RBUkraine.BLL.Models.Animal
 {
     public class AnimalModel
     {
@@ -7,6 +9,8 @@
         public string Species { get; set; }
 
         public string LatinSpecies { get; set; }
+
+        public int Population { get; set; }
 
         public string ConservationStatus { get; set; }
 
@@ -21,6 +25,8 @@
         public string Family { get; set; }
 
         public string Genus { get; set; }
+
+        public CharitableOrganizationModel CharitableOrganization { get; set; }
 
         public Image Image { get; set; }
     }

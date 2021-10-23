@@ -4,30 +4,141 @@
     ViewData["Title"] = "GetAll";
 }
 
-<h1>GetAll</h1>
+<div style="height: 800px;background-image: url(images/3.jpg);">
+    <br><br>
+    <div class="admin_animal_block">
+        <div class="row">
+            <div style="width: 300px; margin-left: 15px">
+                <div style="height: 70px">
+                    <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>Види тварин</p>
+                </div>
+                <div style="background-color: #F0F0F0; height: 630px; border-bottom-left-radius: 10px">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+                    <form>
+                        <div style="height: 550px;width: 270px; margin-left: auto; margin-right: auto">
+                            <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>Сортувати</p>
+                            <p>
+                                <select class="select_option">
+                                    <option disabled>Сортувати</option>
+                                    <option selected value="name">За назвою виду</option>
+                                    <option value="lat">За латинською назвою виду</option>
+                                    <option value="cf">За БФ</option>
+                                </select>
+                            </p>
+                            <p>
+                                <select class="select_option">
+                                    <option selected value="az">A-Z</option>
+                                    <option value="za">Z-A</option>
+                                </select>
+                            </p>
+                            <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
+                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;"><br>Фільтрувати</p>
+                            <hr>
+                            <p>Благодійні фонди:</p>
+                            <div class="label_checkbox">
+                                <div style="margin: 5px">
+                                    <label class="text-Montserrat">
+                                        <input type="checkbox" value="cf1">&nbsp;Маленькі серця
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
 
-<div>
-    <form method="get">
-        @*add rest params as hidden inputs*@
-        <select name="AnimalsSearchOptions">
-            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.BySpecious)"
-                    value="@((int) AnimalsSearchOptions.BySpecious)">
-                By Specious
-            </option>
-            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.ByLatinSpecious)"
-                    value="@((int) AnimalsSearchOptions.ByLatinSpecious)">
-                By Latin Specious
-            </option>
-            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.ByCharitableOrganization)"
-                    value="@((int) AnimalsSearchOptions.ByCharitableOrganization)">
-                By Charitable Organization
-            </option>
-        </select>
-        <input type="text" name="search" value="@Model.Filter.Search" />
-        <input type="submit" value="Search" />
-    </form>
+                        <div style="text-align: center">
+                            <button class="text-Montserrat-light" style="color: #944747; background-color: transparent; border-color: transparent">Скасувати все X </button>
+                            <button type="submit" class="button_table" style="margin-left: auto; margin-right: auto">Застосувати</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div style=" margin-top: 60px">
+                <div class="row">
+                    <form method="get">
+                        @*add rest params as hidden inputs*@
+                        <span class="text-Montserrat" style="margin-left: 30px;font-size: 20px ; margin-top: 15px">Шукати за:</span>
+                        <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
+                            <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.BySpecious)"
+                                    value="@((int) AnimalsSearchOptions.BySpecious)">
+                                By Specious
+                            </option>
+                            <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByLatinSpecious)"
+                                    value="@((int) AnimalsSearchOptions.ByLatinSpecious)">
+                                By Latin Specious
+                            </option>
+                            <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByCharitableOrganization)"
+                                    value="@((int) AnimalsSearchOptions.ByCharitableOrganization)">
+                                By Charitable Organization
+                            </option>
+                        </select>
+                        <input type="text" name="search" value="@Model.Filter.Search" />
+                        <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
+                            <img src="~/images/search.png" width="35px" height="35px" alt="1">
+                        </button>
+                    </form>
+                </div>
+                <table class="animal_table" style="margin-left: 15px;background-color: #F8FCF2">
+                    <thead style="font-weight: bold">
+                        <tr>
+                            <td>Вид</td>
+                            <td>Вид лат.</td>
+                            <td>Чисельність</td>
+                            <td>Статус вимирання</td>
+                            <td>Царство</td>
+                            <td>Тип</td>
+                            <td>Клас</td>
+                            <td>Порядок</td>
+                            <td>Сім'я</td>
+                            <td>Рід</td>
+                            <td>Благодійний фонд</td>
+                            <td>Редагування</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var animal in Model.Animals)
+                        {
+                            <tr>
+                                <td>@animal.Species</td>
+                                <td>@animal.LatinSpecies</td>
+                                <td>@animal.Population</td>
+                                <td>@animal.ConservationStatus</td>
+                                <td>@animal.Kingdom</td>
+                                <td>@animal.Phylum</td>
+                                <td>@animal.Class</td>
+                                <td>@animal.Order</td>
+                                <td>@animal.Family</td>
+                                <td>@animal.Genus</td>
+                                <td>@animal.CharitableOrganization.Name</td>
+                                <td>
+                                    <button type="submit" style="border-color: transparent; background-color: transparent">
+                                        <img src="~/images/edit.png" width="27px" height="25px" alt="1">
+                                    </button>
+                                    <button type="submit" style="border-color: transparent; background-color: transparent">
+                                        <img src="~/images/delete.png" width="27px" height="25px" alt="1">
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="row" style="margin-left: 40px; margin-top:40px; width: 1000px">
+                    <p><img src="~/images/6.png" width="290px" alt="1"></p>
+                    <div style="margin-left: auto; margin-right: auto">
+                        <div class="row">
+                            <button type="submit" style="border-color: transparent; background-color: transparent;color: blue">1</button>
+                            <button type="submit" style="border-color: transparent; background-color: transparent;color: grey">2</button>
+                            <button type="submit" style="border-color: transparent; background-color: transparent;color: grey">3</button>
+                            <button type="submit" style="border-color: transparent; background-color: transparent;color: grey">4</button>
+                        </div>
+                    </div>
+                    <button type="submit" style="border-color: transparent; background-color: transparent">
+                        <img src="~/images/plus.png" width="100px" height="50px" alt="1">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

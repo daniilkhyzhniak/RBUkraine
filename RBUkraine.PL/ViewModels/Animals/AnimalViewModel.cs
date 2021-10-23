@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using RBUkraine.PL.ViewModels.CharitableOrganizations;
 
 namespace RBUkraine.PL.ViewModels.Animals
 {
@@ -25,6 +26,8 @@ namespace RBUkraine.PL.ViewModels.Animals
         public string Genus { get; set; }
 
         public int Population { get; set; }
+
+        public CharitableOrganizationViewModel CharitableOrganization { get; set; }
 
         [Display(Name = "Image")]
         public ImageViewModel Image { get; set; }

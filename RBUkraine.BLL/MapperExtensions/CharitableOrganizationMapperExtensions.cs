@@ -21,7 +21,11 @@ namespace RBUkraine.BLL.MapperExtensions
             }
 
             var mapped = mapper.Map<CharitableOrganizationModel>(charitableOrganization);
-            mapped.Animals = mapper.MapToAnimalModel(charitableOrganization.Animals, culture);
+
+            if (mapped.Animals?.Any() ?? false)
+            {
+                mapped.Animals = mapper.MapToAnimalModel(charitableOrganization.Animals, culture);
+            }
 
             if (culture == Culture.Ukrainian)
             {

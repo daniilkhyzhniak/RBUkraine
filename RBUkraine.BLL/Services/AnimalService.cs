@@ -107,6 +107,9 @@ namespace RBUkraine.BLL.Services
                 .Include(animal => animal.AnimalImages)
                 .Include(animal => animal.AnimalTranslates)
                 .Include(x => x.CharitableOrganization)
+                    .ThenInclude(x => x.CharitableOrganizationTranslates)
+                .Include(x => x.CharitableOrganization)
+                    .ThenInclude(x => x.Image)
                 .Where(animal => !animal.IsDeleted);
 
             if (!string.IsNullOrWhiteSpace(filter.Search))

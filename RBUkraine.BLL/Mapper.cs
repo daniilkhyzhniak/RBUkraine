@@ -20,6 +20,7 @@ namespace RBUkraine.BLL
             CreateMap<AnimalImage, Image>()
                 .ReverseMap();
             CreateMap<Animal, AnimalModel>()
+                .ForMember(x => x.CharitableOrganization, opt => opt.Ignore())
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => x.AnimalImages.FirstOrDefault()));
             CreateMap<Animal, AnimalDetailsModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.AnimalImages));

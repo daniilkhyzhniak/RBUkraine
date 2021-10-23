@@ -11,24 +11,7 @@
 </head>
 <body>
 <div style="height: 60px; width: 1300px">
-    @{
-        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-        var cultureSelectList = new SelectList(new List<SelectListItem>
-        {
-            new("Укр", Culture.Ukrainian),
-            new("Eng", Culture.English),
-        }, "Value", "Text");
-    }
-    <form asp-controller="Configuration"
-          asp-action="SetCulture"
-          method="post">
-        <select name="culture"
-                onchange="this.form.submit();"
-                for="culture"
-                asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                asp-items="cultureSelectList">
-        </select>
-    </form>
+    
     <div class="center_content" style="width: 1300px">
         <div class="row" style="width: 1300px">
 
@@ -72,14 +55,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top: 60px">
-        <div>
-            <button class="left-button">
-                <br><br>Зробити благодійний<br> внесок
-            </button>
-        </div>
-        @RenderBody()
-    </div>
+@RenderBody()
 
 <footer style="background: #454F48; ">
         <div class="row" style="width: 80%; margin-left: auto; margin-right: auto; margin-top: 20px">
