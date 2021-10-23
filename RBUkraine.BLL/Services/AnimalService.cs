@@ -112,29 +112,54 @@ namespace RBUkraine.BLL.Services
                     .ThenInclude(x => x.Image)
                 .Where(animal => !animal.IsDeleted);
 
-            if (!string.IsNullOrWhiteSpace(filter.Search))
-            {
-                var search = filter.Search.Trim().ToUpper();
-                query = filter.SearchOptions switch
-                {
-                    AnimalsSearchOptions.BySpecious => query
-                        .Where(x => x.Species.Trim().ToUpper().Contains(search) 
-                                    || x.AnimalTranslates.Any(a => a.Species.Trim().ToUpper().Contains(search))),
-                    AnimalsSearchOptions.ByLatinSpecious => query
-                        .Where(x => x.LatinSpecies.Trim().ToUpper().Contains(search)),
-                    AnimalsSearchOptions.ByCharitableOrganization => query
-                        .Where(x => x.CharitableOrganization.Name.Trim().ToUpper().Contains(search) 
-                                    || x.CharitableOrganization.CharitableOrganizationTranslates
-                                        .Any(a => a.Name.Trim().ToUpper().Contains(search))),
-                    _ => query
-                };
-            }
+            query = AddSearchFilter(query, filter);
+            query = AddSorting(query, filter);
 
             var animals = await query
                 .AsSplitQuery()
                 .ToListAsync();
 
             return _mapper.MapToAnimalModel(animals, culture);
+        }
+
+        private static IQueryable<Animal> AddSearchFilter(IQueryable<Animal> query, AnimalFilterModel filter)
+        {
+            if (string.IsNullOrWhiteSpace(filter.Search))
+            {
+                return query;
+            }
+
+            var search = filter.Search.Trim().ToUpper();
+
+            return filter.SearchOptions switch
+            {
+                AnimalsSearchOptions.BySpecious => query
+                    .Where(x => x.Species.Trim().ToUpper().Contains(search)
+                                || x.AnimalTranslates.Any(a => a.Species.Trim().ToUpper().Contains(search))),
+                AnimalsSearchOptions.ByLatinSpecious => query
+                    .Where(x => x.LatinSpecies.Trim().ToUpper().Contains(search)),
+                AnimalsSearchOptions.ByCharitableOrganization => query
+                    .Where(x => x.CharitableOrganization.Name.Trim().ToUpper().Contains(search)
+                                || x.CharitableOrganization.CharitableOrganizationTranslates
+                                    .Any(a => a.Name.Trim().ToUpper().Contains(search))),
+                _ => query
+            };
+        }
+
+        private static IQueryable<Animal> AddSorting(IQueryable<Animal> query, AnimalFilterModel filter)
+        {
+            return filter.SortOptions switch
+            {
+                AnimalsSortOptions.ByLatinSpecies => filter.SortDirection == SortDirection.Asc
+                    ? query.OrderBy(x => x.Species)
+                    : query.OrderByDescending(x => x.Species),
+                AnimalsSortOptions.ByCharitableOrganization => filter.SortDirection == SortDirection.Asc
+                    ? query.OrderBy(x => x.Species)
+                    : query.OrderByDescending(x => x.Species),
+                _ => filter.SortDirection == SortDirection.Asc
+                    ? query.OrderBy(x => x.Species)
+                    : query.OrderByDescending(x => x.Species),
+            };
         }
 
         public async Task<AnimalModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
