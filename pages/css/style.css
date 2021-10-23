@@ -106,8 +106,8 @@
 .cf_block{
 
     width: 1200px;
-    height: 290px;
-    margin-left: 10%;
+
+    margin-left: 4%;
     margin-top: 20px;
     background: linear-gradient(180deg, #FFFFFF 0%, #FAF6E2 100%);
     border-radius: 20px;
@@ -170,6 +170,16 @@
     margin-left: -1px;
     margin-top: -5px;
     width: 730px
+}
+.hr_style_title1{
+    margin-top: -20px;
+    margin-left: -1px;
+    width: 830px
+}
+.hr_style1{
+    margin-left: -1px;
+    margin-top: -5px;
+    width: 830px
 }
 
 .input_style{
@@ -309,6 +319,13 @@ src: url("../fonts/literata/Literatamedium.ttf") format("truetype");
 
     font-family: "Montserrat";
     src: url("../fonts/montserrat/Montserrat-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
