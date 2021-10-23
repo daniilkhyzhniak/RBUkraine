@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RBUkraine.PL.ViewModels.Animals.AnimalViewModel>
+﻿@model RBUkraine.PL.ViewModels.Animals.AnimalsListViewModel
 
 @{
     ViewData["Title"] = "GetAll";
@@ -9,38 +9,25 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Species)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Species)
-            </td>
-            <td>
-                <img src="@item.Image.Url" alt="@item.Image.Title" width="300" />
-            </td>
-            <td>
-                <a asp-action="Update" asp-route-id="@item.Id">Edit</a>
-                <a asp-action="GetById" asp-route-id="@item.Id">Details</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div>
+    <form method="get">
+        @*add rest params as hidden inputs*@
+        <select name="AnimalsSearchOptions">
+            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.BySpecious)"
+                    value="@((int) AnimalsSearchOptions.BySpecious)">
+                By Specious
+            </option>
+            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.ByLatinSpecious)"
+                    value="@((int) AnimalsSearchOptions.ByLatinSpecious)">
+                By Latin Specious
+            </option>
+            <option selected="@(Model.Filter.AnimalsSearchOptions == AnimalsSearchOptions.ByCharitableOrganization)"
+                    value="@((int) AnimalsSearchOptions.ByCharitableOrganization)">
+                By Charitable Organization
+            </option>
+        </select>
+        <input type="text" name="search" value="@Model.Filter.Search" />
+        <input type="submit" value="Search" />
+    </form>
+</div>

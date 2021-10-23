@@ -26,10 +26,16 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(
+            [FromQuery] AnimalFilterModel filter)
         {
-            var animals = await _animalService.GetAllAsync(CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<IEnumerable<AnimalViewModel>>(animals));
+            var animals = await _animalService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
+            var model = new AnimalsListViewModel
+            {
+                Animals = _mapper.Map<IList<AnimalViewModel>>(animals),
+                Filter = filter
+            };
+            return View(model);
         }
 
         [HttpGet("{id:int}")]

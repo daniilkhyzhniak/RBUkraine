@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using RBUkraine.BLL.Models.Animal;
 using RBUkraine.PL.ViewModels.Animals;
 
 namespace RBUkraine.PL.ViewModels.CharitableOrganizations

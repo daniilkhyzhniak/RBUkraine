@@ -100,16 +100,36 @@ namespace RBUkraine.BLL.Services
 
             await _context.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<AnimalModel>> GetAllAsync(string culture = Culture.Ukrainian)
+        
+        public async Task<IEnumerable<AnimalModel>> GetAllAsync(AnimalFilterModel filter, string culture = Culture.Ukrainian)
         {
-            var animals = await _context.Animals
+            var query = _context.Animals
                 .Include(animal => animal.AnimalImages)
                 .Include(animal => animal.AnimalTranslates)
-                .Where(animal => !animal.IsDeleted)
+                .Include(x => x.CharitableOrganization)
+                .Where(animal => !animal.IsDeleted);
+
+            if (!string.IsNullOrWhiteSpace(filter.Search))
+            {
+                var search = filter.Search.Trim().ToUpper();
+                query = filter.AnimalsSearchOptions switch
+                {
+                    AnimalsSearchOptions.BySpecious => query
+                        .Where(x => x.Species.Trim().ToUpper().Contains(search) 
+                                    || x.AnimalTranslates.Any(a => a.Species.Trim().ToUpper().Contains(search))),
+                    AnimalsSearchOptions.ByLatinSpecious => query
+                        .Where(x => x.LatinSpecies.Trim().ToUpper().Contains(search)),
+                    AnimalsSearchOptions.ByCharitableOrganization => query
+                        .Where(x => x.CharitableOrganization.Name.Trim().ToUpper().Contains(search) 
+                                    || x.CharitableOrganization.CharitableOrganizationTranslates
+                                        .Any(a => a.Name.Trim().ToUpper().Contains(search))),
+                    _ => query
+                };
+            }
+
+            var animals = await query
                 .AsSplitQuery()
                 .ToListAsync();
-
 
             return _mapper.MapToAnimalModel(animals, culture);
         }

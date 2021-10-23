@@ -1,0 +1,12 @@
+﻿using System.Collections.Generic;
+using RBUkraine.BLL.Models.Animal;
+
+namespace RBUkraine.PL.ViewModels.Animals
+{
+    public class AnimalsListViewModel
+    {
+        public IList<AnimalViewModel> Animals { get; set; }
+
+        public AnimalFilterModel Filter { get; set; }
+    }
+}
