@@ -15,24 +15,41 @@
                 <div style="background-color: #F0F0F0; height: 630px; border-bottom-left-radius: 10px">
 
                     <form>
-                        <div style="height: 550px;width: 270px; margin-left: auto; margin-right: auto">
+                        <div style="height: 550px; width: 270px; margin-left: auto; margin-right: auto">
+                            <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+                            <input hidden name="Search" value="@Model.Filter.Search"/>
                             <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>Сортувати</p>
                             <p>
-                                <select class="select_option">
+                                <select name="SortOptions" class="select_option">
                                     <option disabled>@localizer["Sort"]</option>
-                                    <option selected value="name">@localizer["By the name of the species"]</option>
-                                    <option value="lat">@localizer["By the Latin name of the species"]</option>
-                                    <option value="cf">@localizer["By the BF"]</option>
+                                    <option selected="@(Model.Filter.SortOptions == AnimalsSortOptions.BySpecies)"
+                                            value="@((int) AnimalsSortOptions.BySpecies)">
+                                        @localizer["By the name of the species"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == AnimalsSortOptions.ByLatinSpecies)"
+                                            value="@((int) AnimalsSortOptions.ByLatinSpecies)">
+                                        @localizer["By the Latin name of the species"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == AnimalsSortOptions.ByCharitableOrganization)"
+                                            value="@((int) AnimalsSortOptions.ByCharitableOrganization)">
+                                        @localizer["By the BF"]
+                                    </option>
                                 </select>
                             </p>
                             <p>
-                                <select class="select_option">
-                                    <option selected value="az">A-Z</option>
-                                    <option value="za">Z-A</option>
+                                <select name="SortDirection" class="select_option">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        A-Z
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        Z-A
+                                    </option>
                                 </select>
                             </p>
                             <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
-                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;"><br>@localizer["Filter"]</p>
+                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top: -10px; font-weight: lighter; color: #484848;"><br>@localizer["Filter"]</p>
                             <hr>
                             <p>@localizer["Charitable foundations"]:</p>
                             <div class="label_checkbox">
@@ -56,23 +73,24 @@
             <div style=" margin-top: 60px">
                 <div class="row">
                     <form method="get">
-                        @*add rest params as hidden inputs*@
-                        <span class="text-Montserrat" style="margin-left: 30px;font-size: 20px ; margin-top: 15px">@localizer["Search for"]:</span>
+                        <input hidden name="SortDirection" value="@((int)Model.Filter.SortDirection)" />
+                        <input hidden name="SortOptions" value="@((int)Model.Filter.SortOptions)"/>
+                        <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search for"]:</span>
                         <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.BySpecious)"
-                                    value="@((int) AnimalsSearchOptions.BySpecious)">
+                                    value="@((int)AnimalsSearchOptions.BySpecious)">
                                 @localizer["By Specious"]
                             </option>
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByLatinSpecious)"
-                                    value="@((int) AnimalsSearchOptions.ByLatinSpecious)">
+                                    value="@((int)AnimalsSearchOptions.ByLatinSpecious)">
                                 @localizer["By Latin Specious"]
                             </option>
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.ByCharitableOrganization)"
-                                    value="@((int) AnimalsSearchOptions.ByCharitableOrganization)">
+                                    value="@((int)AnimalsSearchOptions.ByCharitableOrganization)">
                                 @localizer["By Charitable Organization"]
                             </option>
                         </select>
-                        <input type="text" name="search" value="@Model.Filter.Search" />
+                        <input type="text" name="search" value="@Model.Filter.Search"/>
                         <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
                             <img src="~/images/search.png" width="35px" height="35px" alt="1">
                         </button>
