@@ -184,7 +184,18 @@
     line-height: 27px;
     color: rgba(0, 0, 0, 0.7);
 }
-
+.input_style2{
+    margin-top: -7px;
+    width: 200px;
+    border-color: transparent;
+    background-color: transparent;
+    font-family: Literata;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+    color: rgba(0, 0, 0, 0.7);
+}
 
 .rect_cf{
     width: 290px;
