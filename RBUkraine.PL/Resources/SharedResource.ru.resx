@@ -180,6 +180,9 @@
   <data name="contribution" xml:space="preserve">
     <value>вклад</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="Donate for the maintenance of this species" xml:space="preserve">
     <value>Пожертвовать на содержание данного вида</value>
   </data>
