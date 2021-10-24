@@ -115,6 +115,11 @@ namespace RBUkraine.BLL.Services
             query = AddSearchFilter(query, filter);
             query = AddSorting(query, filter);
 
+            if (filter.Founds.Any())
+            {
+                query = query.Where(a => filter.Founds.Contains(a.CharitableOrganizationId));
+            }
+
             var animals = await query
                 .AsSplitQuery()
                 .ToListAsync();

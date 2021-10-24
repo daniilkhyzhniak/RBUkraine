@@ -1,4 +1,5 @@
-﻿using RBUkraine.BLL.Enums;
+﻿using System.Collections.Generic;
+using RBUkraine.BLL.Enums;
 
 namespace RBUkraine.BLL.Models.Animal
 {
@@ -8,8 +9,10 @@ namespace RBUkraine.BLL.Models.Animal
         
         public string Search { get; set; }
 
-        public AnimalsSortOptions SortOptions { get; set; }
+        public AnimalsSortOptions SortOptions { get; set; } = AnimalsSortOptions.BySpecies;
 
-        public SortDirection SortDirection { get; set; }
+        public SortDirection SortDirection { get; set; } = SortDirection.Asc;
+
+        public IList<int> Founds { get; set; } = new List<int>();
     }
 }

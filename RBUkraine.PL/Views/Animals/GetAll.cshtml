@@ -52,13 +52,18 @@
                             <p class="text-Montserrat-light" style="font-size: 20px; margin-top: -10px; font-weight: lighter; color: #484848;"><br>@localizer["Filter"]</p>
                             <hr>
                             <p>@localizer["Charitable foundations"]:</p>
-                            <div class="label_checkbox">
-                                <div style="margin: 5px">
-                                    <label class="text-Montserrat" style="font-size: 15px;">
-                                        <input  type="checkbox"  value="cf1">&nbsp;Маленькі серця
-                                    </label>
+                            @foreach (var found in Model.FoundSelectList)
+                            {
+                                <div class="label_checkbox">
+                                    <div style="margin: 5px">
+                                        
+                                        <label class="text-Montserrat" style="font-size: 15px;">
+                                            <input name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">&nbsp;@found.Text
+                                        </label>
+                                        
+                                    </div>
                                 </div>
-                            </div>
+                            }
                             <hr>
                         </div>
 
@@ -77,8 +82,13 @@
             <div style=" margin-top: 60px">
                 <div class="row">
                     <form method="get">
-                        <input hidden name="SortDirection" value="@((int)Model.Filter.SortDirection)" />
-                        <input hidden name="SortOptions" value="@((int)Model.Filter.SortOptions)" />
+                        <input hidden name="SortDirection" value="@((int) Model.Filter.SortDirection)"/>
+                        <input hidden name="SortOptions" value="@((int) Model.Filter.SortOptions)"/>
+                        @foreach (var found in Model.FoundSelectList)
+                        {
+                            <input hidden name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">
+                        }
+
                         <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search for"]:</span>
                         <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
                             <option selected="@(Model.Filter.SearchOptions == AnimalsSearchOptions.BySpecious)"
@@ -94,7 +104,7 @@
                                 @localizer["By Charitable Organization"]
                             </option>
                         </select>
-                        <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 600px; margin-left: 20px" />
+                        <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 600px; margin-left: 20px"/>
                         <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
                             <img src="~/images/search.png" width="35px" height="35px" alt="1">
                         </button>

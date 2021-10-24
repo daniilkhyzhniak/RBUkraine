@@ -7,7 +7,9 @@ using RBUkraine.BLL.Models.Animal;
 using RBUkraine.PL.ViewModels.Animals;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RBUkraine.PL.Controllers
 {
@@ -15,13 +17,16 @@ namespace RBUkraine.PL.Controllers
     public class AnimalsController : Controller
     {
         private readonly IAnimalService _animalService;
+        private readonly ICharitableOrganizationService _charitableOrganizationService;
         private readonly IMapper _mapper;
 
         public AnimalsController(
             IAnimalService animalService,
+            ICharitableOrganizationService charitableOrganizationService,
             IMapper mapper)
         {
             _animalService = animalService;
+            _charitableOrganizationService = charitableOrganizationService;
             _mapper = mapper;
         }
 
@@ -30,11 +35,17 @@ namespace RBUkraine.PL.Controllers
             [FromQuery] AnimalFilterModel filter)
         {
             var animals = await _animalService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
+            var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
             var model = new AnimalsListViewModel
             {
                 Animals = _mapper.Map<IList<AnimalViewModel>>(animals),
-                Filter = filter
+                Filter = filter,
+                FoundSelectList = charitableOrganizations.Select(
+                    c => new SelectListItem(c.Name, c.Id.ToString(), filter.Founds.Contains(c.Id)))
             };
+
+
+
             return View(model);
         }
 

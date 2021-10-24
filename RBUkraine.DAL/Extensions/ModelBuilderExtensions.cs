@@ -87,7 +87,17 @@ namespace RBUkraine.DAL.Extensions
                 PhoneNumber = "12345"
             };
 
-            modelBuilder.Entity<CharitableOrganization>().HasData(charitableOrganization1);
+            var charitableOrganization2 = new CharitableOrganization
+            {
+                Id = 2,
+                Name = "Direct Relief",
+                Description = "Direct Relief",
+                Email = "directrelief@email.com",
+                PhoneNumber = "12345"
+            };
+
+            modelBuilder.Entity<CharitableOrganization>().HasData(
+                charitableOrganization1, charitableOrganization2);
 
             var charitableOrganizationImage1 = new CharitableOrganizationImage
             {
@@ -97,7 +107,16 @@ namespace RBUkraine.DAL.Extensions
                 CharitableOrganizationId = charitableOrganization1.Id
             };
 
-            modelBuilder.Entity<CharitableOrganizationImage>().HasData(charitableOrganizationImage1);
+            var charitableOrganizationImage2 = new CharitableOrganizationImage
+            {
+                Id = 2,
+                Title = "Direct Relief",
+                Data = Convert.FromBase64String(Images.CharitableOrganization2),
+                CharitableOrganizationId = charitableOrganization2.Id
+            };
+
+            modelBuilder.Entity<CharitableOrganizationImage>().HasData(
+                charitableOrganizationImage1, charitableOrganizationImage2);
 
             var animal1 = new Animal
             {
@@ -108,7 +127,16 @@ namespace RBUkraine.DAL.Extensions
                 Population = 200
             };
 
-            modelBuilder.Entity<Animal>().HasData(animal1);
+            var animal2 = new Animal
+            {
+                Id = 1001,
+                Species = "Бурий ведмідь",
+                LatinSpecies = "Бурий ведмідь",
+                CharitableOrganizationId = charitableOrganization2.Id,
+                Population = 300
+            };
+
+            modelBuilder.Entity<Animal>().HasData(animal1, animal2);
 
             var animal1Translate = new AnimalTranslate
             {
@@ -118,7 +146,16 @@ namespace RBUkraine.DAL.Extensions
                 Language = Language.English
             };
 
-            modelBuilder.Entity<AnimalTranslate>().HasData(animal1Translate);
+            var animal2Translate = new AnimalTranslate
+            {
+                Id = 2,
+                AnimalId = animal2.Id,
+                Species = "Brown bear",
+                Language = Language.English
+            };
+
+            modelBuilder.Entity<AnimalTranslate>().HasData(
+                animal1Translate, animal2Translate);
 
             var animalImage1 = new AnimalImage
             {
@@ -128,7 +165,16 @@ namespace RBUkraine.DAL.Extensions
                 Data = Convert.FromBase64String(Images.Animal1)
             };
 
-            modelBuilder.Entity<AnimalImage>().HasData(animalImage1);
+            var animalImage2 = new AnimalImage
+            {
+                Id = 2,
+                AnimalId = animal2.Id,
+                Title = "Бурий ведмідь",
+                Data = Convert.FromBase64String(Images.Animal2)
+            };
+
+            modelBuilder.Entity<AnimalImage>().HasData(
+                animalImage1, animalImage2);
         }
     }
 }
