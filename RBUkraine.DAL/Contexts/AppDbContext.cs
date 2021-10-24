@@ -8,8 +8,11 @@ namespace RBUkraine.DAL.Contexts
     {
         public AppDbContext(DbContextOptions options)
             : base(options)
-        { }
-        
+        {
+            this.ChangeTracker.LazyLoadingEnabled = false;
+        }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

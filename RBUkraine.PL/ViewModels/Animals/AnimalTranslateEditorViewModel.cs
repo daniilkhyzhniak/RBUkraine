@@ -17,5 +17,7 @@
         public string Family { get; set; }
 
         public string Genus { get; set; }
+
+        public string Description { get; set; }
     }
 }

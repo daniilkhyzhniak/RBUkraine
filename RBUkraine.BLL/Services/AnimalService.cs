@@ -204,7 +204,16 @@ namespace RBUkraine.BLL.Services
             _context.AnimalImages.RemoveRange(animal.AnimalImages);
 
             animal = _mapper.Map<Animal>(model);
-            animal.Id = id;
+            animal.Species = model.Species;
+            animal.ConservationStatus = model.ConservationStatus;
+            animal.Kingdom = model.Kingdom;
+            animal.Phylum = model.Phylum;
+            animal.Class = model.Class;
+            animal.Order = model.Order;
+            animal.Family = model.Family;
+            animal.Genus = model.Genus;
+            animal.Description = model.Description;
+            animal.Population = animal.Population;
             _context.Animals.Update(animal);
 
             await _context.SaveChangesAsync();

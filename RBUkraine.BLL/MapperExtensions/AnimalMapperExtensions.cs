@@ -44,6 +44,7 @@ namespace RBUkraine.BLL.MapperExtensions
                 mapped.Order = translate.Order;
                 mapped.Family = translate.Family;
                 mapped.Genus = translate.Genus;
+                mapped.Description = translate.Description;
             }
 
             return mapped;
@@ -86,6 +87,7 @@ namespace RBUkraine.BLL.MapperExtensions
                 mapped.Order = translate.Order;
                 mapped.Family = translate.Family;
                 mapped.Genus = translate.Genus;
+                mapped.Description = translate.Description;
             }
 
             return mapped;

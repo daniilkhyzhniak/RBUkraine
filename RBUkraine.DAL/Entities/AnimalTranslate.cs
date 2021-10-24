@@ -22,6 +22,8 @@ namespace RBUkraine.DAL.Entities
 
         public string Genus { get; set; }
 
+        public string Description { get; set; }
+
         public Animal Animal { get; set; }
     }
 }

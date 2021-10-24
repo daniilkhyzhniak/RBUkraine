@@ -26,6 +26,8 @@ namespace RBUkraine.PL.ViewModels.Animals
 
         public int Population { get; set; }
 
+        public string Description { get; set; }
+
         public ICollection<ImageViewModel> Images { get; set; }
     }
 }
