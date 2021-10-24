@@ -120,6 +120,9 @@
   <data name="14, prospect Nauki, Kharkiv" xml:space="preserve">
     <value>м. Харків, проспект Науки, 14</value>
   </data>
+  <data name="A-Z" xml:space="preserve">
+    <value>А-Я</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Тварини</value>
   </data>
@@ -189,11 +192,17 @@
   <data name="Donate for the maintenance of this species" xml:space="preserve">
     <value>Пожертвувати на утримання даного виду</value>
   </data>
+  <data name="Donate to a charity" xml:space="preserve">
+    <value>Пожертвувати благодійному фонду</value>
+  </data>
   <data name="Donate to the BF" xml:space="preserve">
     <value>Пожертвувати у БФ</value>
   </data>
   <data name="Editing" xml:space="preserve">
     <value>Редагування</value>
+  </data>
+  <data name="Evants of this fund" xml:space="preserve">
+    <value>Заходи даного фонду</value>
   </data>
   <data name="Events" xml:space="preserve">
     <value>Заходи</value>
@@ -204,14 +213,26 @@
   <data name="Filter" xml:space="preserve">
     <value>Фільтрувати</value>
   </data>
+  <data name="Foundation date" xml:space="preserve">
+    <value>Дата заснування</value>
+  </data>
+  <data name="Founders" xml:space="preserve">
+    <value>Учредители</value>
+  </data>
   <data name="Genus" xml:space="preserve">
     <value>Рід</value>
+  </data>
+  <data name="Go to the news of the charity fund" xml:space="preserve">
+    <value>Перейти до новин благодійного фонду</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Головна</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>Фото</value>
+  </data>
+  <data name="Image format" xml:space="preserve">
+    <value>Зображення формату</value>
   </data>
   <data name="Kingdom" xml:space="preserve">
     <value>Царство</value>
@@ -252,6 +273,9 @@
   <data name="Personal office" xml:space="preserve">
     <value>Особистий кабінет</value>
   </data>
+  <data name="Phone number" xml:space="preserve">
+    <value>Телефонний номер</value>
+  </data>
   <data name="Phylum" xml:space="preserve">
     <value>Тип</value>
   </data>
@@ -270,7 +294,13 @@
   <data name="Species" xml:space="preserve">
     <value>Вид</value>
   </data>
+  <data name="Species assisted by this foundation" xml:space="preserve">
+    <value>Види, яким надається допомога цим фондом</value>
+  </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="Z-A" xml:space="preserve">
+    <value>Я-А</value>
   </data>
 </root>

@@ -41,13 +41,13 @@
                 <form style="margin-left:1%; margin-top: 1%;">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input1" placeholder=@Model.Species style="width: 550px;">
+                            <input asp-for="Species" type="text" class="form-control" id="input1" placeholder=@Model.Species style="width: 550px;">
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input2" placeholder="@Model.LatinSpecies">
+                            <input asp-for="LatinSpecies" type="text" class="form-control" id="input2" placeholder="@Model.LatinSpecies">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -69,37 +69,37 @@
                     </div>
                     <div class="form-group row" style="margin-top:-2%;">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.ConservationStatus>
+                            <input asp-for="ConservationStatus" type="text" class="form-control" id="input4" placeholder=@Model.ConservationStatus>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.Kingdom>
+                            <input asp-for="Kingdom" type="text" class="form-control" id="input4" placeholder=@Model.Kingdom>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.Phylum>
+                            <input asp-for="Phylum" type="text" class="form-control" id="input4" placeholder=@Model.Phylum>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12" style="margin-top:1%;">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.Class>
+                            <input asp-for="Class" type="text" class="form-control" id="input4" placeholder=@Model.Class>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.Family>
+                            <input asp-for="Family" type="text" class="form-control" id="input4" placeholder=@Model.Family>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12" style="margin-top: 1%;">
-                            <input type="text" class="form-control" id="input4" placeholder=@Model.Genus>
+                            <input asp-for="Genus" type="text" class="form-control" id="input4" placeholder=@Model.Genus>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12" style="margin-top:1%;">
-                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                            <input asp-for="Description" type="text" class="form-control" id="input4" placeholder=@Model.Description>
                         </div>
                     </div>
                 </form>
@@ -107,7 +107,7 @@
                     <img src=@Model.Image.Url style="width:300px; height: 300px; border-radius: 10px" />
                     <br />
                     <center>
-                        Изображение формата 200х200 px
+                        @localizer["Image format"] 200х200 px
                         <br />
                         <img src="~/images/edit.png" width="27px" height="25px" alt="1">
                         <img src="~/images/delete.png" width="27px" height="25px" alt="1">
