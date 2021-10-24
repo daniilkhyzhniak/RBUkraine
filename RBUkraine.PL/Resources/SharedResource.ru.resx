@@ -120,4 +120,115 @@
   <data name="Animals" xml:space="preserve">
     <value>Животные</value>
   </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="Are you sure you want to delete this record?" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить запись?</value>
+  </data>
+  <data name="Buy a ticket" xml:space="preserve">
+    <value>Купить билет</value>
+  </data>
+  <data name="By Charitable Organization" xml:space="preserve">
+    <value>По БФ</value>
+  </data>
+  <data name="By Latin Specious" xml:space="preserve">
+    <value>По латинскому названию</value>
+  </data>
+  <data name="By Specious" xml:space="preserve">
+    <value>По виду</value>
+  </data>
+  <data name="By the BF" xml:space="preserve">
+    <value>По БФ</value>
+  </data>
+  <data name="By the Latin name of the species" xml:space="preserve">
+    <value>По латинскому названию вида</value>
+  </data>
+  <data name="By the name of the species" xml:space="preserve">
+    <value>По названию вида</value>
+  </data>
+  <data name="Cancel everything" xml:space="preserve">
+    <value>Отменить все</value>
+  </data>
+  <data name="Charitable foundations" xml:space="preserve">
+    <value>Благотворительные фонды</value>
+  </data>
+  <data name="Charitable Organization" xml:space="preserve">
+    <value>Благотворительный фонд</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Класс</value>
+  </data>
+  <data name="Conservation Status" xml:space="preserve">
+    <value>Статус вымирания</value>
+  </data>
+  <data name="contribution" xml:space="preserve">
+    <value>вклад</value>
+  </data>
+  <data name="Donate for the maintenance of this species" xml:space="preserve">
+    <value>Пожертвовать на содержание данного вида</value>
+  </data>
+  <data name="Donate to the BF" xml:space="preserve">
+    <value>Пожертвовать в БФ</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Редактирование</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>Семья</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фильтровать</value>
+  </data>
+  <data name="Genus" xml:space="preserve">
+    <value>Род</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="Kingdom" xml:space="preserve">
+    <value>Царство</value>
+  </data>
+  <data name="Latin Species" xml:space="preserve">
+    <value>Вид лат.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="Make a charitable" xml:space="preserve">
+    <value>Сделать благотворительный</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Name of the charity fund" xml:space="preserve">
+    <value>Название благотворительного фонда</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Порядок</value>
+  </data>
+  <data name="Phylum" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Population" xml:space="preserve">
+    <value>Численность</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Search for" xml:space="preserve">
+    <value>Искать по</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Сортировать</value>
+  </data>
+  <data name="Species" xml:space="preserve">
+    <value>Вид</value>
+  </data>
 </root>
