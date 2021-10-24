@@ -3,60 +3,64 @@
 @{
     ViewData["Title"] = "GetAll";
 }
+<div class="row">
+    <div>
+        <button class="left-button">
+            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+        </button>
+    </div>
 
-<h1>GetAll</h1>
+    <div>
+        @foreach (var item in Model)
+        {
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Organizer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Organizer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) | *@
-                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
-                @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <div>
+                <div class="cf_block">
+                    <div class="row">
+                        <div style="width: 850px; margin-left: 35px; margin-top: 5px; margin-bottom: 5px">
+                            <p class="red_Literata">@item.Name</p>
+                            <hr class="hr_style_title1">
+                            <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                                <input class="input_style" value="Організатор:" readonly>
+                                <div style="width: 550px;">
+                                    <p class="black-text-Montserrat" style="margin-top: 9px;">
+                                        @item.Organizer
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="hr_style1">
+                            <div class="row" style="height: 40px; margin-left: -2px; margin-top: -10px">
+                                <input class="input_style" value="Дата й час:" readonly>
+                                <div style="width: 550px;">
+                                    <p class="black-text-Montserrat" style="margin-top: 9px;">
+                                        @item.DateTime.ToString("g")
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="hr_style1">
+                            <div class="row" style="margin-left: -2px; margin-top: -10px">
+                                <input class="input_style" style="margin-top: -10px" value="Опис:" readonly>
+                                <div style="width: 650px;">
+                                    <p class="black-text-Montserrat" style="margin-top: 9px;">
+                                        @item.Description
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="width: 300px;  text-align: center; margin-top: 40px">
+                            <p style="font-family: 'Literata';">@localizer["Price"]:</p>
+                            <h1 style="font-family: 'Literata';">@item.Price.ToString("F2") &#8372;</h1>
+                            <br>
+                            <button type="submit"
+                                    class="button" style="width: 250px; font-family: Montserrat-Regular; height: 50px; margin-bottom: 20px; ">
+                                @localizer["Buy a ticket"]
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
