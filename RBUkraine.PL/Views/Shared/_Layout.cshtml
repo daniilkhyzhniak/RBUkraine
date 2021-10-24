@@ -17,39 +17,39 @@
                 @{
                     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
                 }
-                <p style="margin-left: 25%"><img src="images/logo.png" style="height: 60px; margin-top: 15%" alt="animal"></p>
+                <p style="margin-left: 25%"><img src="~/images/logo.png" style="height: 60px; margin-top: 15%" alt="animal"></p>
                 <p class="text-Literata" style="margin-left: 5%; margin-top: 2%">Мережа благодійних фондів України</p>
                 <form asp-controller="Configuration" asp-action="SetCulture" method="post">
                     <input hidden name="culture" value="@Culture.English" />
                     <button type="submit" style="background-color: transparent; border-color: transparent; margin-left: 200px; height: 40px;">
-                        <img src="images/en.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.English)">
+                        <img src="~/images/en.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.English)">
                     </button>
                 </form>
                 <form asp-controller="Configuration" asp-action="SetCulture" method="post">
                     <input hidden name="culture" value="@Culture.Ukrainian" />
                     <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent;">
-                        <img src="images/ukr.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
+                        <img src="~/images/ukr.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
                     </button>
                 </form>
                 <form asp-controller="Configuration" asp-action="SetCulture" method="post">
                     <input hidden name="culture" value="@Culture.Russian" />
                     <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent">
-                        <img src="images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Russian)">
+                        <img src="~/images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Russian)">
                     </button>
                 </form>
                 <div style="width: 40px"></div>
                 <div style="text-align: right; margin-right: -300px">
                     <button style="background-color: transparent; border-color: transparent">
-                        <img src="images/instagram_logo.png" width="20px" height="20px" alt="1" style="margin-left: -6px; margin-right: -6px;">
+                        <img src="~/images/instagram_logo.png" width="20px" height="20px" alt="1" style="margin-left: -6px; margin-right: -6px;">
                     </button>
                     <button style="background-color: transparent; border-color: transparent">
-                        <img src="images/facebook_logo.png" width="20px" height="20px" alt="2" style="margin-left: -6px; margin-right: -6px;">
+                        <img src="~/images/facebook_logo.png" width="20px" height="20px" alt="2" style="margin-left: -6px; margin-right: -6px;">
                     </button>
                     <button style="background-color: transparent; border-color: transparent">
-                        <img src="images/messenger_logo.png" width="20px" height="20px" alt="3" style="margin-left: -6px; margin-right: -6px;">
+                        <img src="~/images/messenger_logo.png" width="20px" height="20px" alt="3" style="margin-left: -6px; margin-right: -6px;">
                     </button>
                     <button style="background-color: transparent; border-color: transparent">
-                        <img src="images/app_logo.png"
+                        <img src="~/images/app_logo.png"
                              width="20px" height="20px"
                              alt="4" style="margin-left: -6px; margin-right: -6px;">
                     </button>
@@ -81,9 +81,9 @@
                 <p class="text-Literata" style="color: white">Мій кабінет</p>
                 <div style="margin-top: -15px">
                     <a href="#"><img src="icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
                 </div>
             </div>
 
