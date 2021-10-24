@@ -104,7 +104,7 @@ namespace RBUkraine.BLL.Services
         public async Task<IEnumerable<AnimalModel>> GetAllAsync(AnimalFilterModel filter, string culture = Culture.Ukrainian)
         {
             var query = _context.Animals
-                .Include(animal => animal.AnimalImages)
+                .Include(x => x.AnimalImages)
                 .Include(animal => animal.AnimalTranslates)
                 .Include(x => x.CharitableOrganization)
                     .ThenInclude(x => x.CharitableOrganizationTranslates)
@@ -121,8 +121,12 @@ namespace RBUkraine.BLL.Services
             }
 
             var animals = await query
-                .AsSplitQuery()
                 .ToListAsync();
+
+            foreach (var animal in animals)
+            {
+                animal.CharitableOrganization.Animals = null;
+            }
 
             return _mapper.MapToAnimalModel(animals, culture);
         }
@@ -180,6 +184,8 @@ namespace RBUkraine.BLL.Services
                 .Where(animal => !animal.IsDeleted)
                 .AsSplitQuery()
                 .FirstOrDefaultAsync(animal => animal.Id == id);
+
+            animal.CharitableOrganization.Animals = null;
 
             return _mapper.MapToAnimalModel(animal, culture);
         }

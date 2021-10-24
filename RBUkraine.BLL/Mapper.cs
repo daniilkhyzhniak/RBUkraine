@@ -25,6 +25,7 @@ namespace RBUkraine.BLL
             CreateMap<Animal, AnimalDetailsModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.AnimalImages));
             CreateMap<AnimalEditorModel, Animal>()
+                .ForMember(x => x.CharitableOrganization, opt => opt.Ignore())
                 .ForMember(x => x.AnimalImages, opt => opt.MapFrom(x => x.Images));
 
             CreateMap<CharityEvent, CharityEventModel>();
