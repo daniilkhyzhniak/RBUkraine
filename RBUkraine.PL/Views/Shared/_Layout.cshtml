@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using RBUkraine.PL.Extensions
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,44 +11,79 @@
     <title>RBUkraine</title>
 </head>
 <body>
-<div style="height: 60px; width: 1300px">
-    
-    <div class="center_content" style="width: 1300px">
-        <div class="row" style="width: 1300px">
+    <div style=" height: 60px; width: 1300px">
+        <div class="center_content" style="width: 1300px">
+            <div class="row" style="width: 1300px">
+                @{
+                    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                }
+                <p style="margin-left: 25%"><img src="images/logo.png" style="height: 60px; margin-top: 15%" alt="animal"></p>
+                <p class="text-Literata" style="margin-left: 5%; margin-top: 2%">Мережа благодійних фондів України</p>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="@Culture.English" />
+                    <button type="submit" style="background-color: transparent; border-color: transparent; margin-left: 200px; height: 40px;">
+                        <img src="images/en.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.English)">
+                    </button>
+                </form>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="@Culture.Ukrainian" />
+                    <button type="submit" style="height: 40px; @Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
+                        <img src="images/ukr.png" width="25px" height="17px" alt="1">
+                    </button>
+                </form>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="" />
+                    <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent">
+                        <img src="images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, "")">
+                    </button>
+                </form>
+                <div style="width: 40px"></div>
+                <div style="text-align: right; margin-right: -300px">
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="images/instagram_logo.png" width="20px" height="20px" alt="1" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="images/facebook_logo.png" width="20px" height="20px" alt="2" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="images/messenger_logo.png" width="20px" height="20px" alt="3" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="images/app_logo.png"
+                             width="20px" height="20px"
+                             alt="4" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
 
-            <p style="margin-left: 25%"><img src="~/images/logo.png" style="height: 60px" alt="animal"></p>
-            <p class="text-Literata" style="margin-left: 5%; margin-top: 20px">Мережа благодійних фондів України</p>
-            <div style="margin-left: 25%">
-                <div>
-                    <img src="~/images/instagram_logo.png" width="25px" height="25px" alt="1">
-                    <img src="~/images/facebook_logo.png" width="25px" height="25px" alt="2">
-                    <img src="~/images/messenger_logo.png" width="25px" height="25px" alt="3">
-                    <img src="~/images/app_logo.png" width="25px" height="25px" alt="4">
-                </div>
-                <div style="text-align: right">
-                    <p class="date-Montserrat" style="font-size: xx-small;">м. Харків, проспект Науки, 14</p>
-                    <p class="date-Montserrat" style="font-size: xx-small; margin-top: -20px">rbukraine@gmail.com</p>
-                    <p class="black-text-Montserrat" style="font-size: xx-small; margin-top: -20px; margin-right: 11px">+380666666666</p>
+                    <p class="date-Montserrat" style="font-size: xx-small; margin-right: 1px">м. Харків, проспект Науки, 14</p>
+                    <p class="date-Montserrat" style="font-size: xx-small; margin-top: -20px;margin-right: 1px ">rbukraine@gmail.com</p>
+                    <p class="black-text-Montserrat" style="font-size: xx-small; margin-top: -20px; margin-right: 1px ">
+                        +380666666666
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
         <div class="row">
-            <a class="button_menu_active" style="width:180px; margin-left: 18%; height: 60px">Тварини</a>
-            <a class="button_menu" style="width:180px; margin-top: 9px">Благодійність</a>
-            <a class="button_menu" style="width:180px; margin-top: 9px">Заходи</a>
-            <a class="button_menu" style="width:180px; margin-top: 9px">Магазин</a>
-            <a class="button_menu" style="width:180px; margin-top: 9px">Новини</a>
-            <h1>&#124;</h1>
+            <a asp-controller="CharitableOrganizations" asp-action="GetAll" class="@Html.IsNavTabActive("/organizations", "/")"
+               style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                Тварини
+            </a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Благодійність</a>
+            <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                Заходи
+            </a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Магазин</a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Новини</a>
+            <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
+
             <div style="margin-left: 10px">
                 <p class="text-Literata" style="color: white">Мій кабінет</p>
                 <div style="margin-top: -15px">
-                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    <a href="#"><img src="icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="icons/settings.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="icons/67346.png" width="15px" height="15px" alt="1"></a>
                 </div>
             </div>
 
@@ -55,9 +91,9 @@
         </div>
     </div>
 
-@RenderBody()
+    @RenderBody()
 
-<footer style="background: #454F48; ">
+    <footer style="background: #454F48; ">
         <div class="row" style="width: 80%; margin-left: auto; margin-right: auto; margin-top: 20px">
             <div style="margin-top: 20px; width:20%; margin-bottom: 40px">
 
