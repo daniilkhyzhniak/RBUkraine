@@ -26,6 +26,8 @@ namespace RBUkraine.BLL.Models.Animal
 
         public string Genus { get; set; }
 
+        public string Description { get; set; }
+
         public CharitableOrganizationModel CharitableOrganization { get; set; }
 
         public Image Image { get; set; }

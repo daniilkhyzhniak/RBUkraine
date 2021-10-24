@@ -26,6 +26,8 @@ namespace RBUkraine.BLL.Models.Animal
 
         public int Population { get; set; }
 
+        public string Description { get; set; }
+
         public ICollection<Image> Images { get; set; }
     }
 }

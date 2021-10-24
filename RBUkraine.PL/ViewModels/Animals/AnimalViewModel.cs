@@ -25,6 +25,8 @@ namespace RBUkraine.PL.ViewModels.Animals
 
         public string Genus { get; set; }
 
+        public string Description { get; set; }
+
         public int Population { get; set; }
 
         public CharitableOrganizationViewModel CharitableOrganization { get; set; }

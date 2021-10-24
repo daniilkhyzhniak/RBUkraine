@@ -22,6 +22,8 @@ namespace RBUkraine.BLL.Models.Animal
 
         public string Genus { get; set; }
 
+        public string Description { get; set; }
+
         public ICollection<Image> Images { get; set; }
     }
 }

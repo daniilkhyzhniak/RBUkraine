@@ -22,7 +22,7 @@ namespace RBUkraine.BLL.MapperExtensions
 
             var mapped = mapper.Map<CharitableOrganizationModel>(charitableOrganization);
 
-            if (mapped.Animals?.Any() ?? false)
+            if (charitableOrganization.Animals?.Any() ?? false)
             {
                 mapped.Animals = mapper.MapToAnimalModel(charitableOrganization.Animals, culture);
             }

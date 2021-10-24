@@ -25,6 +25,8 @@ namespace RBUkraine.DAL.Entities
 
         public int Population { get; set; }
 
+        public string Description { get; set; }
+
         public int CharitableOrganizationId { get; set; }
 
         public CharitableOrganization CharitableOrganization { get; set; }
