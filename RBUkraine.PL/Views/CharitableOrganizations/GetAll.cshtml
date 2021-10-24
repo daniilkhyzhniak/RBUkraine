@@ -10,40 +10,37 @@
             <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
         </button>
     </div>
-
+    <div style="margin-left: 4%;">
     @foreach (var item in Model)
     {
-        <section class="h">
-            <div class="container4">
+        <div class="container4">
+            <div class="row">
+                <div style="width: 1000px">
+                    <p class="protect">
+                        @item.Name
+                    </p>
+                    <ul class="menu_3">
 
-                <p class="protect">
-                    @item.Name
-                </p>
-                <ul class="menu3">
-                    
                     @foreach (var animal in item.Animals)
                     {
                         <li>
-                                <a href="1.html">
-                                    <img src="@animal.Image.Url" width="200px" height="200px" alt="1">
-                                </a>
-                            </li>
-                            
-                        
-                        
+                            <a href="1.html">
+                                <img src="@animal.Image.Url" width="200px" height="200px" alt="1" style="margin-left: 20px; margin-bottom: 20px; border-radius: 5px;">
+                            </a>
+                        </li>
                     }
-                    <li>
-                        <a asp-action="GetById" asp-route-id="@item.Id">
-                            <div class="center_content" style="margin-left: 100px; color: #7C0A02">
-                                <button class="gradient-text_button">
-                                    &#10230;
-                                </button>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                    </ul>
+                    </div>
+                <div class="center_content" style="width: 150px; color: #7C0A02; margin-left: 50px">
+                    <a asp-action="GetById" asp-route-id="@item.Id">
+                        <button class="gradient-text_button">
+                            &#10230;
+                        </button>
+                    </a>
+                </div>
+                </div>
             </div>
-        </section>
-    }
+        }
+        </div>
 
 </div>

@@ -387,18 +387,13 @@ color: #1A1A1A;
 }
 
 .container4{
-    position: absolute;
-left: 0.1%;
-right: 13.5%;
-top: 30.33%;
-bottom: 60.45%;
-    width: 1300px;
+margin-left: 4%;
+margin-top: 20px;
+margin-bottom: 20px;
+    width: 1200px;
     height: 280px;
-    margin: 0 auto;
     background: linear-gradient(180deg, #FFFFFF 0%, #FAF6E2 100%);
     border-radius: 20px;
-   
-    margin-left: 190px;
 }
 
 .charity-fonds-block {
