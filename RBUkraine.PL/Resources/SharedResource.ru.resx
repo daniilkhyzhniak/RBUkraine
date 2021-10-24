@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="14, prospect Nauki, Kharkiv" xml:space="preserve">
+    <value>г. Харьков, проспект Науки, 14</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Животные</value>
   </data>
@@ -147,8 +150,14 @@
   <data name="By the name of the species" xml:space="preserve">
     <value>По названию вида</value>
   </data>
+  <data name="by the web-application “RBUkraine”" xml:space="preserve">
+    <value>через web-приложение "RBUkraine"</value>
+  </data>
   <data name="Cancel everything" xml:space="preserve">
     <value>Отменить все</value>
+  </data>
+  <data name="Charitable Foundation “Protection of Animals of the Red Book of Ukraine”" xml:space="preserve">
+    <value>БФ “Защита животных Красную книгу Украины”</value>
   </data>
   <data name="Charitable foundations" xml:space="preserve">
     <value>Благотворительные фонды</value>
@@ -156,11 +165,17 @@
   <data name="Charitable Organization" xml:space="preserve">
     <value>Благотворительный фонд</value>
   </data>
+  <data name="Charity" xml:space="preserve">
+    <value>Благотворительность</value>
+  </data>
   <data name="Class" xml:space="preserve">
     <value>Класс</value>
   </data>
   <data name="Conservation Status" xml:space="preserve">
     <value>Статус вымирания</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
   </data>
   <data name="contribution" xml:space="preserve">
     <value>вклад</value>
@@ -174,6 +189,9 @@
   <data name="Editing" xml:space="preserve">
     <value>Редактирование</value>
   </data>
+  <data name="Events" xml:space="preserve">
+    <value>Мероприятия</value>
+  </data>
   <data name="Family" xml:space="preserve">
     <value>Семья</value>
   </data>
@@ -182,6 +200,9 @@
   </data>
   <data name="Genus" xml:space="preserve">
     <value>Род</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>Фото</value>
@@ -207,11 +228,23 @@
   <data name="Name of the charity fund" xml:space="preserve">
     <value>Название благотворительного фонда</value>
   </data>
+  <data name="Network of charitable foundations of Ukraine" xml:space="preserve">
+    <value>Сеть благотворительных фондов Украины</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
   </data>
+  <data name="Number of charitable contributions" xml:space="preserve">
+    <value>Количество благотворительных взносов </value>
+  </data>
   <data name="Order" xml:space="preserve">
     <value>Порядок</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Cтраницы</value>
+  </data>
+  <data name="Personal office" xml:space="preserve">
+    <value>Личный кабинет</value>
   </data>
   <data name="Phylum" xml:space="preserve">
     <value>Тип</value>
@@ -230,5 +263,8 @@
   </data>
   <data name="Species" xml:space="preserve">
     <value>Вид</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>Магазин</value>
   </data>
 </root>
