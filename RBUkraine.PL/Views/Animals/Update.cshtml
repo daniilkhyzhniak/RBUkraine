@@ -4,42 +4,143 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
+<div style="height: 1000px; background-image: url(images/3.jpg);">
+    <br><br>
+    <div class="admin_animal_block" style="height:935px; border-radius: 25px">
+        <div style="height: 70px">
+            <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>&ensp;&#10094;&ensp;@localizer["Animals"]</p>
+        </div>
+        <hr />
 
-<h4>AnimalEditorViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Species" class="control-label"></label>
-                <input asp-for="Species" class="form-control" />
-                <span asp-validation-for="Species" class="text-danger"></span>
-            </div>
-            @if (Model.Image is not null)
-            {
-                <div>
-                    <img src="@Model.Image.Url" alt="@Model.Image.Title" />
+
+        <div style="margin-left: 5%; margin-right: 5%;">
+            <div class="row" style="background-color:#F6F6E9; border-radius: 25px">
+                <div style="background-color: #CEDBC9; border-radius: 25px 0px 0px 25px" class="col-sm-3">
+                    <label for="input1" class="col-form-label" style="margin-bottom:-5%; margin-top: 5%; margin-left: 8%;">@localizer["Species"]</label>
+                    <hr />
+                    <label for="input2" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Latin Species"]</label>
+                    <hr />
+                    <label for="input3" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Population"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Conservation Status"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Kingdom"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Phylum"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Class"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Detachment"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Family"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Genus"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Charitable Organization"]</label>
+                    <hr />
+                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Description"]</label>
+                    <hr />
+
                 </div>
-            }
-            else
-            {
-                <div>
-                    <label asp-for="Files"></label>
-                    <input type="file" asp-for="Files" multiple="multiple" />
-                    <span asp-validation-for="Files" class="text-danger"></span>
+                <form style="margin-left:1%; margin-top: 1%;">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input1" placeholder=@Model.Species style="width: 550px;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input2" placeholder=@Model.LatinSpecies">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-5" style="margin-top:3%;">
+                            <select name="cars" id="input3" class="col-sm-10">
+                                <option value="ex">EX</option>
+                                <option value="ew">EW</option>
+                                <option value="cr">CR</option>
+                                <option value="en">EN</option>
+                                <option value="vu">VU</option>
+                                <option value="nt">NT</option>
+                                <option value="lc">LC</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5" style="margin-top:-4%;">
+                            <img src="images/6.png" alt="1" width="290px" />
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-top:-2%;">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.ConservationStatus>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.Kingdom>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.Phylum>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12" style="margin-top:1%;">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.Class>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12" style="margin-top:1%;">
+                            <input type="text" class="form-control" id="input4" placeholder="Отряд">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12" style="margin-top: 1%;">
+                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12" style="margin-top:2%;">
+                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12" style="margin-top:1%;">
+                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                        </div>
+                    </div>
+                </form>
+                <div style="margin-left: 5%; margin-top:2%;">
+                    <img src="images/3.jpg" style="width:300px; height: 300px; border-radius: 10px" />
+                    <br />
+                    <center>
+                        Изображение формата 200х200 px
+                        <br />
+                        <img src="images/edit.png" style="width:30px; height: 30px;" />
+                        <img src="images/delete.png" style="width:30px; height: 30px;" />
+                    </center>
                 </div>
-            }
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-        </form>
+            <div class="row" style="margin-top:3%;">
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4" style="text-align: center;">&ensp;&#10094;&ensp; 1, 2, 3 ... 8 &ensp;&#10095;&ensp;</div>
+                <div class="col-md-4" style="text-align: center;">
+                    <img src="icons/add.png" style="width:33.33; height: 33.33px;" />
+                    <img src="icons/save.png" style="width:33.33px; height: 33.33px;" />
+                    <img src="images/delete.png" style="width:33.33px; height: 33.33px;" />
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="GetAll">Back to List</a>
 </div>
 
 @section Scripts {
