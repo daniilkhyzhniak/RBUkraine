@@ -401,6 +401,20 @@ bottom: 60.45%;
     margin-left: 190px;
 }
 
+.charity-fonds-block {
+    left: 0.1%;
+    right: 13.5%;
+    top: 30.33%;
+    bottom: 60.45%;
+    width: 1300px;
+    height: 280px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF6E2 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    margin-left: 90px;
+}
+
 .container5{
 
     width: 1300px;
