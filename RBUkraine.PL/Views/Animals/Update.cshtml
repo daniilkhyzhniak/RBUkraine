@@ -4,7 +4,7 @@
     ViewData["Title"] = "Update";
 }
 
-<div style="height: 1000px; background-image: url(images/3.jpg);">
+<div style="height: 1000px; background-image: url(@Model.Image.Url);">
     <br><br>
     <div class="admin_animal_block" style="height:935px; border-radius: 25px">
         <div style="height: 70px">
@@ -30,13 +30,9 @@
                     <hr />
                     <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Class"]</label>
                     <hr />
-                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Detachment"]</label>
-                    <hr />
                     <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Family"]</label>
                     <hr />
                     <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Genus"]</label>
-                    <hr />
-                    <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Charitable Organization"]</label>
                     <hr />
                     <label for="input4" class="col-form-label" style="margin-bottom:-5%; margin-top:-5%; margin-left: 8%;">@localizer["Description"]</label>
                     <hr />
@@ -68,7 +64,7 @@
                             </select>
                         </div>
                         <div class="col-sm-5" style="margin-top:-4%;">
-                            <img src="images/6.png" alt="1" width="290px" />
+                            <img src="~/images/6.png" alt="1" width="290px" />
                         </div>
                     </div>
                     <div class="form-group row" style="margin-top:-2%;">
@@ -92,23 +88,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-12" style="margin-top:1%;">
-                            <input type="text" class="form-control" id="input4" placeholder="Отряд">
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.Family>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12" style="margin-top: 1%;">
-                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12" style="margin-top:2%;">
-                            <input type="text" class="form-control" id="input4" placeholder="opisanie">
+                            <input type="text" class="form-control" id="input4" placeholder=@Model.Genus>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -118,13 +104,13 @@
                     </div>
                 </form>
                 <div style="margin-left: 5%; margin-top:2%;">
-                    <img src="images/3.jpg" style="width:300px; height: 300px; border-radius: 10px" />
+                    <img src=@Model.Image.Url style="width:300px; height: 300px; border-radius: 10px" />
                     <br />
                     <center>
                         Изображение формата 200х200 px
                         <br />
-                        <img src="images/edit.png" style="width:30px; height: 30px;" />
-                        <img src="images/delete.png" style="width:30px; height: 30px;" />
+                        <img src="~/images/edit.png" width="27px" height="25px" alt="1">
+                        <img src="~/images/delete.png" width="27px" height="25px" alt="1">
                     </center>
                 </div>
             </div>
@@ -133,9 +119,9 @@
 
                 <div class="col-md-4" style="text-align: center;">&ensp;&#10094;&ensp; 1, 2, 3 ... 8 &ensp;&#10095;&ensp;</div>
                 <div class="col-md-4" style="text-align: center;">
-                    <img src="icons/add.png" style="width:33.33; height: 33.33px;" />
-                    <img src="icons/save.png" style="width:33.33px; height: 33.33px;" />
-                    <img src="images/delete.png" style="width:33.33px; height: 33.33px;" />
+                    <img src="~/icons/add.png" style="width:33.33; height: 33.33px;" />
+                    <img src="~/icons/save.png" style="width:33.33px; height: 33.33px;" />
+                    <img src="~/images/delete.png" style="width:33.33px; height: 33.33px;" />
                 </div>
             </div>
         </div>
