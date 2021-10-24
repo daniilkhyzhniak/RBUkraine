@@ -27,14 +27,14 @@
                 </form>
                 <form asp-controller="Configuration" asp-action="SetCulture" method="post">
                     <input hidden name="culture" value="@Culture.Ukrainian" />
-                    <button type="submit" style="height: 40px; @Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
-                        <img src="images/ukr.png" width="25px" height="17px" alt="1">
+                    <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent;">
+                        <img src="images/ukr.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
                     </button>
                 </form>
                 <form asp-controller="Configuration" asp-action="SetCulture" method="post">
-                    <input hidden name="culture" value="" />
+                    <input hidden name="culture" value="@Culture.Russian" />
                     <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent">
-                        <img src="images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, "")">
+                        <img src="images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Russian)">
                     </button>
                 </form>
                 <div style="width: 40px"></div>
@@ -67,7 +67,7 @@
         <div class="row">
             <a asp-controller="CharitableOrganizations" asp-action="GetAll" class="@Html.IsNavTabActive("/organizations", "/")"
                style="width: 180px; margin-left: 18%; height: 60px; color: white">
-                Тварини
+                @localizer["Animals"]
             </a>
             <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Благодійність</a>
             <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
