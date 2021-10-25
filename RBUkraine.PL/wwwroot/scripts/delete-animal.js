@@ -3,7 +3,7 @@
 
     if (confirmed) {
         await deleteAnimal(id);
-        window.refresh();
+        location.reload();
     }
 };
 

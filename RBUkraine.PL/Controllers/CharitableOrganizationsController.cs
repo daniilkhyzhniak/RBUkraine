@@ -24,14 +24,21 @@ namespace RBUkraine.PL.Controllers
 
         [HttpGet]
         [Route("~/")]
-        [Route("")]
-        public async Task<IActionResult> GetAll()
+        [Route("~/animals")]
+        public async Task<IActionResult> GetAnimals()
         {
             var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<IEnumerable<CharitableOrganizationViewModel>>(charitableOrganizations));
+            return View("GetAllAnimals", _mapper.Map<IEnumerable<CharitableOrganizationViewModel>>(charitableOrganizations));
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet]
+        public async Task<IActionResult> GetOrganizations()
+        {
+            var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
+            return View("GetAll", _mapper.Map<IEnumerable<CharitableOrganizationViewModel>>(charitableOrganizations));
+        }
+
+        [HttpGet("{id:int}/animals")]
         public async Task<IActionResult> GetById(int id)
         {
             var charitableOrganization = await _charitableOrganizationService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
@@ -41,7 +48,7 @@ namespace RBUkraine.PL.Controllers
                 return NotFound();
             }
 
-            return View(_mapper.Map<CharitableOrganizationViewModel>(charitableOrganization));
+            return View("GetById", _mapper.Map<CharitableOrganizationViewModel>(charitableOrganization));
         }
     }
 }

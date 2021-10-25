@@ -185,7 +185,10 @@ namespace RBUkraine.BLL.Services
                 .AsSplitQuery()
                 .FirstOrDefaultAsync(animal => animal.Id == id);
 
-            animal.CharitableOrganization.Animals = null;
+            if (animal is not null)
+            {
+                animal.CharitableOrganization.Animals = null;
+            }
 
             return _mapper.MapToAnimalModel(animal, culture);
         }

@@ -60,9 +60,12 @@ namespace RBUkraine.BLL.Services
                 .AsSplitQuery()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
-            foreach (var animal in charitableOrganization.Animals)
+            if (charitableOrganization?.Animals != null)
             {
-                animal.CharitableOrganization = null;
+                foreach (var animal in charitableOrganization.Animals)
+                {
+                    animal.CharitableOrganization = null;
+                }
             }
 
             return _mapper.MapToCharitableOrganizationModel(charitableOrganization, culture);

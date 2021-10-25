@@ -30,7 +30,7 @@
                     @foreach (var item in Model.Animals)
                     {
                         <li>
-                            <a href="1.html">
+                            <a asp-controller="Animals" asp-action="GetById" asp-route-id="@item.Id">
                                 <img src= @item.Image.Url style="border-radius: 5px;" width="200px" height="200px" alt="1">
                             </a>
                         </li>

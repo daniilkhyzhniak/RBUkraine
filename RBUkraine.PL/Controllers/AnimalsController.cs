@@ -30,7 +30,7 @@ namespace RBUkraine.PL.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet, Authorize(Roles = Roles.Admin)]
+        [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> GetAll(
             [FromQuery] AnimalFilterModel filter)
         {
@@ -46,7 +46,7 @@ namespace RBUkraine.PL.Controllers
 
 
 
-            return View(model);
+            return View("GetAllAdmin", model);
         }
 
         [HttpGet("{id:int}")]
