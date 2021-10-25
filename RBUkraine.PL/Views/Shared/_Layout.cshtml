@@ -65,11 +65,13 @@
     </div>
     <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
         <div class="row">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAll" class="@Html.IsNavTabActive("/organizations", "/")"
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/")"
                style="width: 180px; margin-left: 18%; height: 60px; color: white">
                 @localizer["Animals"]
             </a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Благодійність</a>
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                Благодійність
+            </a>
             <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
                 @localizer["Events"]
             </a>
