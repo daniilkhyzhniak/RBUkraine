@@ -38,7 +38,7 @@
                     <hr />
 
                 </div>
-                <form style="margin-left:1%; margin-top: 1%;">
+                <form asp-action="Update" asp-route-returnUrl="@ViewBag.ReturnUrl" style="margin-left:1%; margin-top: 1%;">
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <input asp-for="Species" type="text" class="form-control" id="input1" placeholder=@Model.Species style="width: 550px;">

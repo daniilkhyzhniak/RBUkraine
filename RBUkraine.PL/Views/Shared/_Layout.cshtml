@@ -70,13 +70,13 @@
                 @localizer["Animals"]
             </a>
             <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
-                Благодійність
+                @localizer["Charity"]
             </a>
             <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
                 @localizer["Events"]
             </a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Магазин</a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">Новини</a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
             <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
 
             <div style="margin-left: 10px">
