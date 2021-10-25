@@ -78,52 +78,78 @@ namespace RBUkraine.DAL.Extensions
 
             modelBuilder.Entity<UserRole>().HasData(userRoles);
 
-            var charitableOrganization1 = new CharitableOrganization
+            var hearts = new CharitableOrganization
             {
-                Id = 1,
-                Name = "Happy Paw",
-                Description = "Happy Paw",
-                Email = "happypaw@email.com",
-                PhoneNumber = "12345"
+                Id = 123,
+                Name = "Маленькі серця",
+                Description = "кекнгшйфцукенгшпроіжуешкойьсу7шркедшфутцкфьгфпуцкешгдшугнкрешмт7дірнпшгрукегфужкщесгфу89кенгф8ьу0гке8ф09укгне98",
+                Email = "bf_zah_tv_RBU@gmail.com",
+                PhoneNumber = "+380 (66)-232-47-12",
+                Founders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                Stockholders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                FoundationDate = new DateTimeOffset(2009, 1, 1, 0, 0, 0, TimeSpan.Zero)
             };
 
-            var charitableOrganization2 = new CharitableOrganization
+            var happyPaw = new CharitableOrganization
             {
-                Id = 2,
-                Name = "Direct Relief",
-                Description = "Direct Relief",
-                Email = "directrelief@email.com",
-                PhoneNumber = "12345"
+                Id = 12312,
+                Name = "Happy Paw",
+                Description = "кекнгшйфцукенгшпроіжуешкойьсу7шркедшфутцкфьгфпуцкешгдшугнкрешмт7дірнпшгрукегфужкщесгфу89кенгф8ьу0гке8ф09укгне98",
+                Email = "bf_zah_tv_RBU@gmail.com",
+                PhoneNumber = "+380 (66)-232-47-12",
+                Founders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                Stockholders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                FoundationDate = new DateTimeOffset(2009, 1, 1, 0, 0, 0, TimeSpan.Zero)
+            };
+
+            var cf = new CharitableOrganization
+            {
+                Id = 2344,
+                Name = "БФ “Захист тварин Червоної книги України”",
+                Description = "кекнгшйфцукенгшпроіжуешкойьсу7шркедшфутцкфьгфпуцкешгдшугнкрешмт7дірнпшгрукегфужкщесгфу89кенгф8ьу0гке8ф09укгне98",
+                Email = "bf_zah_tv_RBU@gmail.com",
+                PhoneNumber = "+380 (66)-232-47-12",
+                Founders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                Stockholders = "Зінченко Владислав Олегович, Кузнець Марина Геннадіївна",
+                FoundationDate = new DateTimeOffset(2009, 1, 1, 0, 0, 0, TimeSpan.Zero)
             };
 
             modelBuilder.Entity<CharitableOrganization>().HasData(
-                charitableOrganization1, charitableOrganization2);
+                hearts, happyPaw, cf);
 
             var charitableOrganizationImage1 = new CharitableOrganizationImage
             {
-                Id = 1,
+                Id = 124,
                 Title = "Happy Paw",
-                Data = Convert.FromBase64String(Images.CharitableOrganization1),
-                CharitableOrganizationId = charitableOrganization1.Id
+                Data = Convert.FromBase64String(Images.HappyPaw),
+                CharitableOrganizationId = happyPaw.Id
             };
 
             var charitableOrganizationImage2 = new CharitableOrganizationImage
             {
-                Id = 2,
-                Title = "Direct Relief",
+                Id = 12412,
+                Title = "БФ “Захист тварин Червоної книги України",
                 Data = Convert.FromBase64String(Images.CharitableOrganization2),
-                CharitableOrganizationId = charitableOrganization2.Id
+                CharitableOrganizationId = cf.Id
+            };
+
+            var charitableOrganizationImage3 = new CharitableOrganizationImage
+            {
+                Id = 4444,
+                Title = "Маленькі серця",
+                Data = Convert.FromBase64String(Images.CharitableOrganization1),
+                CharitableOrganizationId = hearts.Id
             };
 
             modelBuilder.Entity<CharitableOrganizationImage>().HasData(
-                charitableOrganizationImage1, charitableOrganizationImage2);
+                charitableOrganizationImage1, charitableOrganizationImage2, charitableOrganizationImage3);
 
             var animal1 = new Animal
             {
                 Id = 1000,
                 Species = "Зубр",
                 LatinSpecies = "Bison bonasus",
-                CharitableOrganizationId = charitableOrganization1.Id,
+                CharitableOrganizationId = happyPaw.Id,
                 Population = 200
             };
 
@@ -131,12 +157,21 @@ namespace RBUkraine.DAL.Extensions
             {
                 Id = 1001,
                 Species = "Бурий ведмідь",
-                LatinSpecies = "Бурий ведмідь",
-                CharitableOrganizationId = charitableOrganization2.Id,
+                LatinSpecies = "Ursus arctos",
+                CharitableOrganizationId = hearts.Id,
                 Population = 300
             };
 
-            modelBuilder.Entity<Animal>().HasData(animal1, animal2);
+            var animal3 = new Animal
+            {
+                Id = 1002,
+                Species = "Рись",
+                LatinSpecies = "Lynx",
+                CharitableOrganizationId = cf.Id,
+                Population = 400
+            };
+
+            modelBuilder.Entity<Animal>().HasData(animal1, animal2, animal3);
 
             var animal1Translate = new AnimalTranslate
             {
@@ -173,8 +208,41 @@ namespace RBUkraine.DAL.Extensions
                 Data = Convert.FromBase64String(Images.Animal2)
             };
 
+            var animalImage3 = new AnimalImage
+            {
+                Id = 3,
+                AnimalId = animal3.Id,
+                Title = "Рись",
+                Data = Convert.FromBase64String(Images.Lynx)
+            };
+
             modelBuilder.Entity<AnimalImage>().HasData(
-                animalImage1, animalImage2);
+                animalImage1, animalImage2, animalImage3);
+
+            var charityEvent1 = new CharityEvent
+            {
+                Id = 1,
+                Name = "Благодійний захід присвячений 30 річниці фонду \"Маленькі серця\"",
+                DateTime = new DateTimeOffset(2021, 11, 14, 13, 0, 0, TimeSpan.Zero),
+                Description =
+                    "Захід присвячено підтримці виду Бурого медведя від Благодійних фондів “Маленькі серця” та “Happy Paw”.",
+                Organizer = "Зінченко Владислав Олегович",
+                Price = 113
+            };
+
+            var charityEvent2 = new CharityEvent
+            {
+                Id = 2,
+                Name = "Благодійний захід присвячений підтримці виду Бурий ведмідь",
+                DateTime = new DateTimeOffset(2021, 12, 24, 17, 0, 0, TimeSpan.Zero),
+                Description =
+                    "Захід присвячено підтримці виду Бурого медведя від Благодійних фондів.",
+                Organizer = "Зінченко Владислав Олегович",
+                Price = 0
+            };
+
+            modelBuilder.Entity<CharityEvent>().HasData(
+                charityEvent1, charityEvent2);
         }
     }
 }
