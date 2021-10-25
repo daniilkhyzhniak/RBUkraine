@@ -82,10 +82,10 @@
             <div style="margin-left: 10px">
                 <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
                 <div style="margin-top: -15px">
-                    <a href="#"><img src="icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
                 </div>
             </div>
 
@@ -120,10 +120,10 @@
             <a href="#" class="text-Montserrat-light" style="color: white;font-size: 15px">
                 @localizer["Pages"]
             </a>
-            <a href="index.html" class="text-Montserrat-light" style="font-size: 10px; margin-top: 10px">
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="text-Montserrat-light" style="font-size: 10px; margin-top: 10px">
                 <br>@localizer["Home"]
             </a>
-            <a href="charitable_foundations.html" class="text-Montserrat-light" style="font-size: 10px">
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="text-Montserrat-light" style="font-size: 10px">
                 <br>"@localizer["Charity"]
             </a>
             <a href="#" class="text-Montserrat-light" style="font-size: 10px">
