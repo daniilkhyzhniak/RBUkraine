@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		function form_submit(action) {
+			  $('#add_animal_form').append(`<input type="hidden" name="action" value="${action}" />`);
+			  $("#add_animal_form").submit(); 
+		}
+	</script>
 
     <title>RBUkraine</title>
 </head>
@@ -189,18 +196,18 @@
 					</center>
 					</div>
 					</div>
+
 				<div class="row" style="margin-top:3%;">
 				<div class="col-md-4"></div>
 
-<div class="col-md-4" style="text-align: center;">&ensp;&#10094;&ensp; 1, 2, 3 ... 8 &ensp;&#10095;&ensp;</div>
-<div class="col-md-4" style="text-align: center;">
-	<button type="submit" name="add" form="add_animal_form"><img src="icons/add.png" style="width:33.33; height: 33.33px;"/></button>
-	<button type="submit" name="save" form="add_animal_form"><img src="icons/save.png" style="width:33.33px; height: 33.33px;"/></button>
-	<button type="submit" name="delete" form="add_animal_form"><img src="images/delete.png" style="width:33.33px; height: 33.33px;"/></button>
-</div>
-</div>	
+				<div class="col-md-4" style="text-align: center;">&ensp;&#10094;&ensp; 1, 2, 3 ... 8 &ensp;&#10095;&ensp;</div>
+				<div class="col-md-4" style="text-align: center;">
+					<button onclick="form_submit('add')" name="add" ><img src="icons/add.png" style="width:33.33; height: 33.33px;"/></button>
+					<button onclick="form_submit('save')" name="save" ><img src="icons/save.png" style="width:33.33px; height: 33.33px;"/></button>
+					<button onclick="form_submit('delete')" name="delete"><img src="images/delete.png" style="width:33.33px; height: 33.33px;"/></button>
 				</div>
-				
+				</div>	
+				</div>
 				<!--
         <div class="row">
             <div style="width: 300px; margin-left: 15px">
