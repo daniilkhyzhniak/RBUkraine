@@ -6,6 +6,8 @@ namespace RBUkraine.PL.ViewModels.Animals
 {
     public class AnimalEditorViewModel
     {
+        public int Id { get; set; }
+
         public string Species { get; set; }
 
         public string LatinSpecies { get; set; }

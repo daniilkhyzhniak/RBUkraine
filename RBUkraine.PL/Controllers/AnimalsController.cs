@@ -54,6 +54,12 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] int id)
         {
             var animal = await _animalService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
+
+            if (animal is null)
+            {
+                return NotFound();
+            }
+
             return View(_mapper.Map<AnimalViewModel>(animal));
         }
 
@@ -91,6 +97,7 @@ namespace RBUkraine.PL.Controllers
             }
 
             var model = _mapper.Map<AnimalEditorViewModel>(animal);
+            model.Id = id;
             var charitableOrganizations = await _charitableOrganizationService
                 .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
             model.CharitableOrganizations = charitableOrganizations
