@@ -44,7 +44,6 @@ namespace RBUkraine.PL
             
             services.AddMvc(options =>
             {
-                options.Filters.Add<ValidationFilter>();
                 options.Filters.Add<DefaultCultureFilter>();
             })
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)

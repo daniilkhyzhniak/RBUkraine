@@ -114,12 +114,14 @@
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <input asp-for="Species" type="text" class="form-control" id="species" placeholder="" style="width: 550px;">
+                            <span asp-validation-for="Species" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-sm-12">
                             <input asp-for="LatinSpecies" type="text" class="form-control" id="latinSpecies" placeholder="">
+                            <span asp-validation-for="LatinSpecies" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -134,6 +136,7 @@
                                 <option value="nt">NT</option>
                                 <option value="lc">LC</option>
                             </select>
+                            <span asp-validation-for="ConservationStatus" class="text-danger"></span>
                         </div>
                         <div class="col-sm-5" style="margin-top:-4%;">
                             <img src="~/images/6.png" alt="1" width="290px" />
@@ -142,6 +145,7 @@
                     <div class="form-group row" style="margin-top:-2%;">
                         <div class="col-sm-12">
                             <input asp-for="Population" type="number" class="form-control" id="input4" placeholder="">
+                            <span asp-validation-for="Population" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -182,6 +186,7 @@
                     <div class="form-group row">
                         <div class="col-sm-12" style="margin-top:1%;">
                             <input asp-for="Description" type="text" class="form-control" id="input4" placeholder="">
+                            <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row">

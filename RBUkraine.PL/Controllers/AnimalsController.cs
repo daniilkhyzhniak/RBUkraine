@@ -89,7 +89,10 @@ namespace RBUkraine.PL.Controllers
             if (sameSpeciesAnimal is not null)
             {
                 ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
 
+            if (!ModelState.IsValid)
+            {
                 var charitableOrganizations = await _charitableOrganizationService
                     .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
                 model.CharitableOrganizations = charitableOrganizations
@@ -133,7 +136,10 @@ namespace RBUkraine.PL.Controllers
             if (sameSpeciesAnimal is not null && sameSpeciesAnimal.Id != id)
             {
                 ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
 
+            if (!ModelState.IsValid)
+            {
                 var charitableOrganizations = await _charitableOrganizationService
                     .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
                 model.CharitableOrganizations = charitableOrganizations
@@ -177,6 +183,18 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] string culture,
             [FromForm] AnimalTranslateEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null && sameSpeciesAnimal.Id != animalId)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var translate = _mapper.Map<AnimalTranslateEditorModel>(model);
             translate.Culture = culture;
 
