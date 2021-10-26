@@ -32,7 +32,7 @@ namespace RBUkraine.BLL.MapperExtensions
                 return mapped;
             }
 
-            var translate = animal.AnimalTranslates.FirstOrDefault(t => t.Language == Language.English);
+            var translate = animal.AnimalTranslates.FirstOrDefault(t => t.Language == Culture.ConvertToLanguage(culture));
 
             if (translate is not null)
             {
@@ -75,7 +75,7 @@ namespace RBUkraine.BLL.MapperExtensions
                 return mapped;
             }
 
-            var translate = animal.AnimalTranslates.FirstOrDefault(t => t.Language == Language.English);
+            var translate = animal.AnimalTranslates.FirstOrDefault(t => t.Language == Culture.ConvertToLanguage(culture));
 
             if (translate is not null)
             {

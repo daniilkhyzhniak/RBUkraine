@@ -33,7 +33,7 @@ namespace RBUkraine.BLL.MapperExtensions
             }
 
             var translate = charitableOrganization.CharitableOrganizationTranslates
-                .FirstOrDefault(t => t.Language == Language.English);
+                .FirstOrDefault(t => t.Language == Culture.ConvertToLanguage(culture));
 
             if (translate is not null)
             {
