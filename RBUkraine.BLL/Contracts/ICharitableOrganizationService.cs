@@ -7,6 +7,8 @@ namespace RBUkraine.BLL.Contracts
 {
     public interface ICharitableOrganizationService
     {
+        Task<IEnumerable<CharitableOrganizationModel>> GetAllWithoutAnimalsAsync(string culture = Culture.Ukrainian);
+
         Task<IEnumerable<CharitableOrganizationModel>> GetAllAsync(string culture = Culture.Ukrainian);
 
         Task<CharitableOrganizationModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);

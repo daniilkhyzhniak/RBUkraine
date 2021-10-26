@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.MapperExtensions;
+using RBUkraine.BLL.Models;
 
 namespace RBUkraine.BLL.Services
 {
@@ -31,7 +32,14 @@ namespace RBUkraine.BLL.Services
         {
             if (!model.Images.Any())
             {
-                throw new ArgumentException("Animal should have at least one picture");
+                model.Images = new List<Image>
+                {
+                    new()
+                    {
+                        Title = "Default",
+                        Data = Convert.FromBase64String(Images.DefaultAnimal)
+                    }
+                };
             }
 
             var animal = _mapper.Map<Animal>(model);
@@ -195,13 +203,7 @@ namespace RBUkraine.BLL.Services
 
         public async Task UpdateAnimalAsync(int id, AnimalEditorModel model)
         {
-            if (!model.Images.Any())
-            {
-                return;
-            }
-
             var animal = await _context.Animals
-                .AsNoTracking()
                 .Include(animal => animal.AnimalImages)
                 .FirstOrDefaultAsync(animal => animal.Id == id);
 
@@ -210,9 +212,6 @@ namespace RBUkraine.BLL.Services
                 return;
             }
 
-            _context.AnimalImages.RemoveRange(animal.AnimalImages);
-
-            animal = _mapper.Map<Animal>(model);
             animal.Species = model.Species;
             animal.ConservationStatus = model.ConservationStatus;
             animal.Kingdom = model.Kingdom;
@@ -222,8 +221,19 @@ namespace RBUkraine.BLL.Services
             animal.Family = model.Family;
             animal.Genus = model.Genus;
             animal.Description = model.Description;
-            animal.Population = animal.Population;
+            animal.Population = model.Population;
             _context.Animals.Update(animal);
+
+            if (model.Images.Any())
+            {
+                _context.AnimalImages.RemoveRange(animal.AnimalImages);
+                _context.AnimalImages.Add(new AnimalImage
+                {
+                    AnimalId = id,
+                    Data = model.Images.First().Data,
+                    Title = model.Images.First().Title
+                });
+            }
 
             await _context.SaveChangesAsync();
         }

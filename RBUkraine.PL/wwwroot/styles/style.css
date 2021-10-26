@@ -751,6 +751,10 @@ color: rgba(0, 0, 0, 0.6);
     color: #7C0A02;
 }
 
+.animal-form-block {
+    height: 1000px;
+    background-image: url('../images/3.jpg');
+}
 
 @font-face {
 

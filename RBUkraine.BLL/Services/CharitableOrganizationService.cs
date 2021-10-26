@@ -26,6 +26,17 @@ namespace RBUkraine.BLL.Services
             _mapper = mapper;
         }
 
+        public async Task<IEnumerable<CharitableOrganizationModel>> GetAllWithoutAnimalsAsync(string culture = Culture.Ukrainian)
+        {
+            var charitableOrganizations = await _context.CharitableOrganizations
+                .Include(c => c.CharitableOrganizationTranslates)
+                .Include(c => c.Image)
+                .AsSplitQuery()
+                .ToListAsync();
+
+            return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
+        }
+
         public async Task<IEnumerable<CharitableOrganizationModel>> GetAllAsync(string culture = Culture.Ukrainian)
         {
             var charitableOrganizations = await _context.CharitableOrganizations

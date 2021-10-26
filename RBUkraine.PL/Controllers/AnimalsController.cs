@@ -35,7 +35,7 @@ namespace RBUkraine.PL.Controllers
             [FromQuery] AnimalFilterModel filter)
         {
             var animals = await _animalService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
-            var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
+            var charitableOrganizations = await _charitableOrganizationService.GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
             var model = new AnimalsListViewModel
             {
                 Animals = _mapper.Map<IList<AnimalViewModel>>(animals),
@@ -58,9 +58,16 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var charitableOrganizations = await _charitableOrganizationService
+                .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+            var animalEditorViewModel = new AnimalEditorViewModel
+            {
+                CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString())).ToList()
+            }; 
+            return View(animalEditorViewModel);
         }
 
         [HttpPost("create"), Authorize(Roles = Roles.Admin)]
@@ -83,7 +90,12 @@ namespace RBUkraine.PL.Controllers
                 return NotFound();
             }
 
-            return View(_mapper.Map<AnimalEditorViewModel>(animal));
+            var model = _mapper.Map<AnimalEditorViewModel>(animal);
+            var charitableOrganizations = await _charitableOrganizationService
+                .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+            model.CharitableOrganizations = charitableOrganizations
+                .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+            return View(model);
         }
 
         [HttpPost("{id:int}/edit")]
