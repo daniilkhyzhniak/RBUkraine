@@ -1,7 +1,10 @@
-﻿namespace RBUkraine.PL.ViewModels.Animals
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RBUkraine.PL.ViewModels.Animals
 {
     public class AnimalTranslateEditorViewModel
     {
+        [Required]
         public string Species { get; set; }
 
         public string ConservationStatus { get; set; }
@@ -18,6 +21,7 @@
 
         public string Genus { get; set; }
 
+        [Required]
         public string Description { get; set; }
     }
 }
