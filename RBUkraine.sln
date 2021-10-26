@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBUkraine.PL", "RBUkraine.PL\RBUkraine.PL.csproj", "{009942C5-061C-4E55-9478-8C66ABB2A01B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RBUkraine.PL", "RBUkraine.PL\RBUkraine.PL.csproj", "{009942C5-061C-4E55-9478-8C66ABB2A01B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBUkraine.BLL", "RBUkraine.BLL\RBUkraine.BLL.csproj", "{7A51330B-B662-4775-B1E7-AC0B52DD7151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RBUkraine.BLL", "RBUkraine.BLL\RBUkraine.BLL.csproj", "{7A51330B-B662-4775-B1E7-AC0B52DD7151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBUkraine.DAL", "RBUkraine.DAL\RBUkraine.DAL.csproj", "{036B5441-47A0-43CB-88CE-1556A6548CE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RBUkraine.DAL", "RBUkraine.DAL\RBUkraine.DAL.csproj", "{036B5441-47A0-43CB-88CE-1556A6548CE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +18,19 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|x64.Build.0 = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|x86.Build.0 = Debug|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|x64.ActiveCfg = Release|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|x64.Build.0 = Release|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|x86.ActiveCfg = Release|Any CPU
+		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Release|x86.Build.0 = Release|Any CPU
 		{7A51330B-B662-4775-B1E7-AC0B52DD7151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A51330B-B662-4775-B1E7-AC0B52DD7151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A51330B-B662-4775-B1E7-AC0B52DD7151}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -46,7 +55,11 @@ Global
 		{036B5441-47A0-43CB-88CE-1556A6548CE6}.Release|x64.Build.0 = Release|Any CPU
 		{036B5441-47A0-43CB-88CE-1556A6548CE6}.Release|x86.ActiveCfg = Release|Any CPU
 		{036B5441-47A0-43CB-88CE-1556A6548CE6}.Release|x86.Build.0 = Release|Any CPU
-		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{009942C5-061C-4E55-9478-8C66ABB2A01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B00861D-BA9D-4E4B-AFA5-05E30F0A9A6F}
 	EndGlobalSection
 EndGlobal
