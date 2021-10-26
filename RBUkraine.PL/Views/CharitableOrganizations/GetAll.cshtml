@@ -68,9 +68,11 @@
                     <img src=@item.Image.Url style="width: 230px;  ">
                 </div>
                 <div class="center_content" style="margin-left: 20px; color: #7C0A02">
-                    <button class="gradient-text_button">
-                        &#10230;
-                    </button>
+                    <a asp-action="GetById" asp-route-id="@item.Id">
+                        <button class="gradient-text_button">
+                            &#10230;
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
