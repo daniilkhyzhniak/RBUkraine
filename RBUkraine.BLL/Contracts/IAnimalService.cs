@@ -11,6 +11,8 @@ namespace RBUkraine.BLL.Contracts
 
         Task<AnimalModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);
 
+        Task<AnimalModel> GetBySpecies(string species, string culture = Culture.Ukrainian);
+
         Task<int> CreateAnimalAsync(AnimalEditorModel model);
 
         Task UpdateAnimalAsync(int id, AnimalEditorModel model);

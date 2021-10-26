@@ -123,6 +123,9 @@
   <data name="A-Z" xml:space="preserve">
     <value>А-Я</value>
   </data>
+  <data name="An animal of this species already exists" xml:space="preserve">
+    <value>Животное этого вида уже существует</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Животные</value>
   </data>
