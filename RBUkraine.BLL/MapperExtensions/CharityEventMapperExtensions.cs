@@ -27,7 +27,7 @@ namespace RBUkraine.BLL.MapperExtensions
                 return mapped;
             }
 
-            var translate = charityEvent.CharityEventTranslates.FirstOrDefault(t => t.Language == Language.English);
+            var translate = charityEvent.CharityEventTranslates.FirstOrDefault(t => t.Language == Culture.ConvertToLanguage(culture));
 
             if (translate is not null)
             {
