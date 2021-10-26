@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="~/styles/style.css" type="text/css">
-
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
     <title>RBUkraine</title>
 </head>
 <body>
@@ -65,11 +65,13 @@
     </div>
     <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
         <div class="row">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAll" class="@Html.IsNavTabActive("/organizations", "/")"
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/")"
                style="width: 180px; margin-left: 18%; height: 60px; color: white">
                 @localizer["Animals"]
             </a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Charity"]</a>
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                @localizer["Charity"]
+            </a>
             <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
                 @localizer["Events"]
             </a>
@@ -80,10 +82,10 @@
             <div style="margin-left: 10px">
                 <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
                 <div style="margin-top: -15px">
-                    <a href="#"><img src="icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
                 </div>
             </div>
 
@@ -118,10 +120,10 @@
             <a href="#" class="text-Montserrat-light" style="color: white;font-size: 15px">
                 @localizer["Pages"]
             </a>
-            <a href="index.html" class="text-Montserrat-light" style="font-size: 10px; margin-top: 10px">
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="text-Montserrat-light" style="font-size: 10px; margin-top: 10px">
                 <br>@localizer["Home"]
             </a>
-            <a href="charitable_foundations.html" class="text-Montserrat-light" style="font-size: 10px">
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="text-Montserrat-light" style="font-size: 10px">
                 <br>"@localizer["Charity"]
             </a>
             <a href="#" class="text-Montserrat-light" style="font-size: 10px">

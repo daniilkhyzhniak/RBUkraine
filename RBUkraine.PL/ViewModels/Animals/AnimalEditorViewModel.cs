@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RBUkraine.PL.ViewModels.Animals
 {
@@ -29,5 +31,9 @@ namespace RBUkraine.PL.ViewModels.Animals
         public ImageViewModel Image { get; set; }
 
         public IFormFileCollection Files { get; set; }
+
+        public int CharitableOrganizationId { get; set; }
+
+        public IList<SelectListItem> CharitableOrganizations { get; set; }
     }
 }

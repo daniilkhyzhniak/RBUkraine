@@ -24,6 +24,10 @@ namespace RBUkraine.BLL.Models.Animal
 
         public string Description { get; set; }
 
+        public int Population { get; set; }
+
+        public int CharitableOrganizationId { get; set; }
+
         public ICollection<Image> Images { get; set; }
     }
 }

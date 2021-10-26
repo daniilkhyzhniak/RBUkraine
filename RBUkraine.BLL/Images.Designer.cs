@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RBUkraine.DAL {
+namespace RBUkraine.BLL {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace RBUkraine.DAL {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RBUkraine.DAL.Images", typeof(Images).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RBUkraine.BLL.Images", typeof(Images).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -97,7 +97,7 @@ namespace RBUkraine.DAL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQEBAICAgECAgEEBQkHBQMEBgQDAxQUBgsJBhQUFAUIBRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAQQFBAECAgYIBxQUFAcEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAgICAgEBARQEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCASdBJ0DABEAAREBAhEC/8QAGwABAAIDAQEAAAAAAAAAAAAAAAUGAQMEAgf/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQMCBP/aAAwDAAABEAIQAAAB+mevyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQEBAICAgECAgEEBQkHBQMEBgQDAxQUBgsJBhQUFAUIBRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAQQFBAECAgYIBxQUFAcEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAgICAgEBARQEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCASdBJ0DABEAAREBAhEC/8QAGwABAAIDAQEAAAAAAAAAAAAAAAUGAQMEAgf/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQMCBP/aAAwDAAABEAIQAAAB+mevyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABKFgAAAAAAAAAAA [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DefaultAnimal {
             get {

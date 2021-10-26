@@ -171,6 +171,9 @@
   <data name="Charity" xml:space="preserve">
     <value>Благодійність</value>
   </data>
+  <data name="Choose file" xml:space="preserve">
+    <value>Виберіть файл</value>
+  </data>
   <data name="Class" xml:space="preserve">
     <value>Клас</value>
   </data>
