@@ -34,7 +34,7 @@ namespace RBUkraine.PL
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalDetailsModel, AnimalDetailsViewModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.Images.Select(MapImage)));
-            CreateMap<AnimalDetailsModel, AnimalTranslateEditorViewModel>();
+            CreateMap<AnimalModel, AnimalTranslateEditorViewModel>();
             CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
 
             CreateMap<CharityEventModel, CharityEventViewModel>();
