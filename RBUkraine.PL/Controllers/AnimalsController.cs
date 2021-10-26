@@ -99,8 +99,8 @@ namespace RBUkraine.PL.Controllers
             }
 
             var animal = _mapper.Map<AnimalEditorModel>(model);
-            var id = await _animalService.CreateAnimalAsync(animal);
-            return RedirectToAction("GetById", new { id });
+            await _animalService.CreateAnimalAsync(animal);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet("{id:int}/edit"), Authorize(Roles = Roles.Admin)]
@@ -144,7 +144,7 @@ namespace RBUkraine.PL.Controllers
 
             var animal = _mapper.Map<AnimalEditorModel>(model);
             await _animalService.UpdateAnimalAsync(id, animal);
-            return RedirectToAction("GetById", new { id });
+            return RedirectToAction("GetAll");
         }
 
 
