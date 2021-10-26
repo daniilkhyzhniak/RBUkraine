@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RBUkraine.BLL.Models.Animal
 {
     public class AnimalEditorModel
     {
+        [Required]
         public string Species { get; set; }
 
+        [Required]
         public string LatinSpecies { get; set; }
 
+        [Required]
         public string ConservationStatus { get; set; }
 
+        [Required]
         public string Kingdom { get; set; }
 
         public string Phylum { get; set; }

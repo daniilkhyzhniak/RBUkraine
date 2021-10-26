@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace RBUkraine.PL.Controllers
 {
@@ -19,15 +20,18 @@ namespace RBUkraine.PL.Controllers
         private readonly IAnimalService _animalService;
         private readonly ICharitableOrganizationService _charitableOrganizationService;
         private readonly IMapper _mapper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public AnimalsController(
             IAnimalService animalService,
             ICharitableOrganizationService charitableOrganizationService,
-            IMapper mapper)
+            IMapper mapper,
+            IStringLocalizer<SharedResource> localizer)
         {
             _animalService = animalService;
             _charitableOrganizationService = charitableOrganizationService;
             _mapper = mapper;
+            _localizer = localizer;
         }
 
         [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
@@ -80,6 +84,20 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> Create(
             [FromForm] AnimalEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+
+                var charitableOrganizations = await _charitableOrganizationService
+                    .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+                model.CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+
+                return View(model);
+            }
+
             var animal = _mapper.Map<AnimalEditorModel>(model);
             var id = await _animalService.CreateAnimalAsync(animal);
             return RedirectToAction("GetById", new { id });
@@ -110,6 +128,20 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] int id,
             [FromForm] AnimalEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null && sameSpeciesAnimal.Id != id)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+
+                var charitableOrganizations = await _charitableOrganizationService
+                    .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+                model.CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+
+                return View(model);
+            }
+
             var animal = _mapper.Map<AnimalEditorModel>(model);
             await _animalService.UpdateAnimalAsync(id, animal);
             return RedirectToAction("GetById", new { id });
