@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RBUkraine.DAL.Contexts;
 
 namespace RBUkraine.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211027192301_updateDbSprint2")]
+    partial class updateDbSprint2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -438,34 +440,6 @@ namespace RBUkraine.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventPurchase", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CharityEventId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("money");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharityEventId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CharityEventPurchase");
-                });
-
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventTranslate", b =>
                 {
                     b.Property<int>("Id")
@@ -636,14 +610,14 @@ namespace RBUkraine.DAL.Migrations
                             Id = 1,
                             Email = "admin1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$afWqS9Of.WBeDZHceKROzuaEJWVhSuqf245F82MH1FxWFvoq3ssiC"
+                            Password = "$2a$11$ordgxBqNOCCK6P76K.Xd8.oCruv10y6N/dR3ebczFzg8sOaWkAln."
                         },
                         new
                         {
                             Id = 2,
                             Email = "user1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$kCgz/pFE095aO1P7ohyD5uwa4AAjUcYlGEfbRis/8/3DDQWR6M./S"
+                            Password = "$2a$11$d9KZvSHFHg/pt9X6Jt.VluOmo63MuJtPGMm0ysb4HDebbYQfCHNJS"
                         });
                 });
 
@@ -746,25 +720,6 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("CharitableOrganization");
                 });
 
-            modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventPurchase", b =>
-                {
-                    b.HasOne("RBUkraine.DAL.Entities.CharityEvent", "CharityEvent")
-                        .WithMany("CharityEventPurchase")
-                        .HasForeignKey("CharityEventId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("RBUkraine.DAL.Entities.User", "User")
-                        .WithMany("CharityEventPurchase")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CharityEvent");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventTranslate", b =>
                 {
                     b.HasOne("RBUkraine.DAL.Entities.CharityEvent", "CharityEvent")
@@ -847,8 +802,6 @@ namespace RBUkraine.DAL.Migrations
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEvent", b =>
                 {
-                    b.Navigation("CharityEventPurchase");
-
                     b.Navigation("CharityEventTranslates");
                 });
 
@@ -859,8 +812,6 @@ namespace RBUkraine.DAL.Migrations
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.User", b =>
                 {
-                    b.Navigation("CharityEventPurchase");
-
                     b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618

@@ -19,5 +19,7 @@ namespace RBUkraine.DAL.Entities
         public decimal Price { get; set; }
 
         public ICollection<CharityEventTranslate> CharityEventTranslates { get; set; }
+
+        public ICollection<CharityEventPurchase> CharityEventPurchase { get; set; }
     }
 }

@@ -5,10 +5,14 @@ namespace RBUkraine.DAL.Entities
 {
     public class User : BaseEntity
     {
+        public string Nickname { get; set; }
+
         public string Email { get; set; }
 
         public string Password { get; set; }
-        
+
+        public ICollection<CharityEventPurchase> CharityEventPurchase { get; set; }
+
         public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
     }
 }

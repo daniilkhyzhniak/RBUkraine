@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RBUkraine.DAL.Contexts;
 
 namespace RBUkraine.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211027193041_updateDb3")]
+    partial class updateDb3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -445,6 +447,9 @@ namespace RBUkraine.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AnimalId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CharityEventId")
                         .HasColumnType("int");
 
@@ -458,6 +463,8 @@ namespace RBUkraine.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
 
                     b.HasIndex("CharityEventId");
 
@@ -636,14 +643,14 @@ namespace RBUkraine.DAL.Migrations
                             Id = 1,
                             Email = "admin1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$afWqS9Of.WBeDZHceKROzuaEJWVhSuqf245F82MH1FxWFvoq3ssiC"
+                            Password = "$2a$11$tHZ.zwTG0hrEKOrfopENq.zLy1XBwTwmGU8PJ7a.WIPglGYV03kCK"
                         },
                         new
                         {
                             Id = 2,
                             Email = "user1@email.com",
                             IsDeleted = false,
-                            Password = "$2a$11$kCgz/pFE095aO1P7ohyD5uwa4AAjUcYlGEfbRis/8/3DDQWR6M./S"
+                            Password = "$2a$11$3opHitnb9HIN2Ik7spm7y.tE3FjAPrCu48aRb8YBzlfdzbK1MOSAi"
                         });
                 });
 
@@ -748,21 +755,26 @@ namespace RBUkraine.DAL.Migrations
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventPurchase", b =>
                 {
+                    b.HasOne("RBUkraine.DAL.Entities.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("RBUkraine.DAL.Entities.CharityEvent", "CharityEvent")
                         .WithMany("CharityEventPurchase")
                         .HasForeignKey("CharityEventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("RBUkraine.DAL.Entities.User", "User")
+                    b.HasOne("RBUkraine.DAL.Entities.User", null)
                         .WithMany("CharityEventPurchase")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("CharityEvent");
+                    b.Navigation("Animal");
 
-                    b.Navigation("User");
+                    b.Navigation("CharityEvent");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.CharityEventTranslate", b =>
