@@ -135,7 +135,13 @@
     margin-right: auto;
     border-radius: 10px;
 }
-
+.admin_ce_block{
+    width: 1450px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
 .select_option{
     color:#606266;
     height: 40px;
@@ -164,6 +170,16 @@
     justify-content: center;
     height: 40px;
     width: 93px;
+    align-items: center;
+    font-size: 12px;
+    border: 1px solid black;
+
+}
+
+.ce_table td{
+    text-align: center;
+    justify-content: center;
+    height: 40px;
     align-items: center;
     font-size: 12px;
     border: 1px solid black;
