@@ -52,10 +52,12 @@
                             <p style="font-family: 'Literata';">@localizer["Price"]:</p>
                             <h1 style="font-family: 'Literata';">@item.Price.ToString("F2") &#8372;</h1>
                             <br>
-                            <button type="submit"
-                                    class="button" style="width: 250px; font-family: Montserrat-Regular; height: 50px; margin-bottom: 20px; ">
-                                @localizer["Buy a ticket"]
-                            </button>
+                            <form asp-action="Checkout" asp-route-id="@item.Id" method="post">
+                                <button type="submit"
+                                        class="button" style="width: 250px; font-family: Montserrat-Regular; height: 50px; margin-bottom: 20px; ">
+                                    @localizer["Buy a ticket"]
+                                </button>
+                            </form>
                         </div>
 
                     </div>
