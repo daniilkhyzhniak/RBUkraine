@@ -7,7 +7,10 @@ using RBUkraine.BLL.Models.Animal;
 using RBUkraine.PL.ViewModels.Animals;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace RBUkraine.PL.Controllers
 {
@@ -15,21 +18,39 @@ namespace RBUkraine.PL.Controllers
     public class AnimalsController : Controller
     {
         private readonly IAnimalService _animalService;
+        private readonly ICharitableOrganizationService _charitableOrganizationService;
         private readonly IMapper _mapper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public AnimalsController(
             IAnimalService animalService,
-            IMapper mapper)
+            ICharitableOrganizationService charitableOrganizationService,
+            IMapper mapper,
+            IStringLocalizer<SharedResource> localizer)
         {
             _animalService = animalService;
+            _charitableOrganizationService = charitableOrganizationService;
             _mapper = mapper;
+            _localizer = localizer;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
+        public async Task<IActionResult> GetAll(
+            [FromQuery] AnimalFilterModel filter)
         {
-            var animals = await _animalService.GetAllAsync(CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<IEnumerable<AnimalViewModel>>(animals));
+            var animals = await _animalService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
+            var charitableOrganizations = await _charitableOrganizationService.GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+            var model = new AnimalsListViewModel
+            {
+                Animals = _mapper.Map<IList<AnimalViewModel>>(animals),
+                Filter = filter,
+                FoundSelectList = charitableOrganizations.Select(
+                    c => new SelectListItem(c.Name, c.Id.ToString(), filter.Founds.Contains(c.Id)))
+            };
+
+
+
+            return View("GetAllAdmin", model);
         }
 
         [HttpGet("{id:int}")]
@@ -37,22 +58,52 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] int id)
         {
             var animal = await _animalService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<AnimalDetailsViewModel>(animal));
+
+            if (animal is null)
+            {
+                return NotFound();
+            }
+
+            return View(_mapper.Map<AnimalViewModel>(animal));
         }
 
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var charitableOrganizations = await _charitableOrganizationService
+                .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+            var animalEditorViewModel = new AnimalEditorViewModel
+            {
+                CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString())).ToList()
+            }; 
+            return View(animalEditorViewModel);
         }
 
         [HttpPost("create"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Create(
             [FromForm] AnimalEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var charitableOrganizations = await _charitableOrganizationService
+                    .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+                model.CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+
+                return View(model);
+            }
+
             var animal = _mapper.Map<AnimalEditorModel>(model);
-            var id = await _animalService.CreateAnimalAsync(animal);
-            return RedirectToAction("GetById", new { id });
+            await _animalService.CreateAnimalAsync(animal);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet("{id:int}/edit"), Authorize(Roles = Roles.Admin)]
@@ -66,7 +117,13 @@ namespace RBUkraine.PL.Controllers
                 return NotFound();
             }
 
-            return View(_mapper.Map<AnimalEditorViewModel>(animal));
+            var model = _mapper.Map<AnimalEditorViewModel>(animal);
+            model.Id = id;
+            var charitableOrganizations = await _charitableOrganizationService
+                .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+            model.CharitableOrganizations = charitableOrganizations
+                .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+            return View(model);
         }
 
         [HttpPost("{id:int}/edit")]
@@ -74,9 +131,26 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] int id,
             [FromForm] AnimalEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null && sameSpeciesAnimal.Id != id)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var charitableOrganizations = await _charitableOrganizationService
+                    .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
+                model.CharitableOrganizations = charitableOrganizations
+                    .Select(c => new SelectListItem(c.Name, c.Id.ToString(), c.Id == model.CharitableOrganizationId)).ToList();
+
+                return View(model);
+            }
+
             var animal = _mapper.Map<AnimalEditorModel>(model);
             await _animalService.UpdateAnimalAsync(id, animal);
-            return RedirectToAction("GetById", new { id });
+            return RedirectToAction("GetAll");
         }
 
 
@@ -109,6 +183,18 @@ namespace RBUkraine.PL.Controllers
             [FromRoute] string culture,
             [FromForm] AnimalTranslateEditorViewModel model)
         {
+            var sameSpeciesAnimal = await _animalService.GetBySpecies(model.Species);
+
+            if (sameSpeciesAnimal is not null && sameSpeciesAnimal.Id != animalId)
+            {
+                ModelState.AddModelError("Species", _localizer["An animal of this species already exists"]);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var translate = _mapper.Map<AnimalTranslateEditorModel>(model);
             translate.Culture = culture;
 

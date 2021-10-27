@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata SemiBold'), local('Literata-SemiBold'), url('Literatasemibold.woff2') format('woff2'), url('Literatasemibold.woff') format('woff'), url('Literatasemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Medium'), local('Literata-Medium'), url('Literatamedium.woff2') format('woff2'), url('Literatamedium.woff') format('woff'), url('Literatamedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Medium Italic'), local('Literata-MediumItalic'), url('Literatamediumitalic.woff2') format('woff2'), url('Literatamediumitalic.woff') format('woff'), url('Literatamediumitalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Italic'), local('Literata-Italic'), url('Literataitalic.woff2') format('woff2'), url('Literataitalic.woff') format('woff'), url('Literataitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Regular'), local('Literata-Regular'), url('Literataregular.woff2') format('woff2'), url('Literataregular.woff') format('woff'), url('Literataregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata SemiBold Italic'), local('Literata-SemiBoldItalic'), url('Literatasemibolditalic.woff2') format('woff2'), url('Literatasemibolditalic.woff') format('woff'), url('Literatasemibolditalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Bold Italic'), local('Literata-BoldItalic'), url('Literatabolditalic.woff2') format('woff2'), url('Literatabolditalic.woff') format('woff'), url('Literatabolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Literata';
+    src: local('Literata Bold'), local('Literata-Bold'), url('Literatabold.woff2') format('woff2'), url('Literatabold.woff') format('woff'), url('Literatabold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}

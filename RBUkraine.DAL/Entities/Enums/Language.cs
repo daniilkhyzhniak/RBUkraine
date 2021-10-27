@@ -3,6 +3,7 @@
     public enum Language
     {
         Ukrainian,
-        English
+        English,
+        Russian
     }
 }

@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
-using RBUkraine.BLL.Models;
 using RBUkraine.BLL.Models.User;
 using RBUkraine.PL.ViewModels.Authentication;
 
@@ -52,14 +51,17 @@ namespace RBUkraine.PL.Controllers
         }
         
         [HttpGet("~/login")]
-        public IActionResult Login()
+        public IActionResult Login(
+            [FromQuery] string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-        
+
         [HttpPost("~/login"), ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(
-            [FromForm] LoginViewModel model)
+            [FromForm] LoginViewModel model,
+            [FromQuery] string returnUrl)
         {
             var claims = await _userService.AuthenticateAsync(_mapper.Map<AuthModel>(model));
 
@@ -71,7 +73,9 @@ namespace RBUkraine.PL.Controllers
 
             await SignInAsync(claims);
 
-            return RedirectToAction("GetAll", "Animals");
+            return string.IsNullOrWhiteSpace(returnUrl)
+                ? RedirectToAction("GetAll", "Animals")
+                : Redirect(returnUrl);
         }
         
         [HttpPost("~/logout"), Authorize]

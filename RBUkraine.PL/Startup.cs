@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
-using RBUkraine.PL.Enums;
+using RBUkraine.BLL.Enums;
 using RBUkraine.PL.Filters;
 using RBUkraine.PL.Middleware;
 using Stripe;
@@ -36,7 +36,7 @@ namespace RBUkraine.PL
                 .AddCookie(options =>
                 {
                     options.LoginPath = new PathString("/login");
-                    options.AccessDeniedPath = new PathString("/error/accessDenied");
+                    options.AccessDeniedPath = new PathString("/access-denied");
                     options.ReturnUrlParameter = "returnUrl";
                 });
             services.AddAuthorization();
@@ -45,7 +45,6 @@ namespace RBUkraine.PL
             
             services.AddMvc(options =>
             {
-                options.Filters.Add<ValidationFilter>();
                 options.Filters.Add<DefaultCultureFilter>();
             })
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
@@ -79,7 +78,7 @@ namespace RBUkraine.PL
             }
             
             app.UseHttpsRedirection();
-            app.UseDefaultRouteRedirect("/animals");
+            //app.UseDefaultRouteRedirect("/organizations");
 
             app.UseRequestLocalization(
                 app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);

@@ -1,46 +1,159 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using RBUkraine.PL.Extensions
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/styles/style.css" type="text/css">
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
     <title>RBUkraine</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
 </head>
 <body>
-    <nav>
-        @if (!User.Identity.IsAuthenticated)
-        {
-            <a asp-controller="Authentication" asp-action="Login">@localizer["Login"]</a>
-        }
-        else
-        {
-            <div>
-                <form method="post" asp-controller="Authentication" asp-action="Logout">
-                    <input type="submit" value="@localizer["Logout"]">
+    <div style=" height: 60px; width: 1300px">
+        <div class="center_content" style="width: 1300px">
+            <div class="row" style="width: 1300px">
+                @{
+                    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                }
+                <p style="margin-left: 25%"><img src="~/images/logo.png" style="height: 60px; margin-top: 15%" alt="animal"></p>
+                <p class="text-Literata" style="margin-left: 5%; margin-top: 2%">@localizer["Network of charitable foundations of Ukraine"]</p>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="@Culture.English" />
+                    <button type="submit" style="background-color: transparent; border-color: transparent; margin-left: 200px; height: 40px;">
+                        <img src="~/images/en.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.English)">
+                    </button>
                 </form>
-            </div>
-        }
-        @{
-            var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-            var cultureSelectList = new SelectList(new List<SelectListItem>
-            {
-                new("Укр", Culture.Ukrainian),
-                new("Eng", Culture.English),
-            }, "Value", "Text");
-        }
-        <div>
-            <form asp-controller="Culture"
-                  asp-action="SetCulture"
-                  method="post">
-                <select name="culture"
-                        onchange="this.form.submit();"
-                        for="culture"
-                        asp-for="@requestCulture.RequestCulture.UICulture.Name" 
-                        asp-items="cultureSelectList">
-                </select>
-            </form>
-        </div>
-    </nav>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="@Culture.Ukrainian" />
+                    <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent;">
+                        <img src="~/images/ukr.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Ukrainian)">
+                    </button>
+                </form>
+                <form asp-controller="Configuration" asp-action="SetCulture" method="post">
+                    <input hidden name="culture" value="@Culture.Russian" />
+                    <button type="submit" style="height: 40px; background-color: transparent; border-color: transparent">
+                        <img src="~/images/rus.png" width="25px" height="17px" alt="1" style="@Html.IsCultureSelected(requestCulture, Culture.Russian)">
+                    </button>
+                </form>
+                <div style="width: 40px"></div>
+                <div style="text-align: right; margin-right: -300px">
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="~/images/instagram_logo.png" width="20px" height="20px" alt="1" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="~/images/facebook_logo.png" width="20px" height="20px" alt="2" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="~/images/messenger_logo.png" width="20px" height="20px" alt="3" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
+                    <button style="background-color: transparent; border-color: transparent">
+                        <img src="~/images/app_logo.png"
+                             width="20px" height="20px"
+                             alt="4" style="margin-left: -6px; margin-right: -6px;">
+                    </button>
 
-@RenderBody()
+                    <p class="date-Montserrat" style="font-size: xx-small; margin-right: 1px">@localizer["14, prospect Nauki, Kharkiv"]</p>
+                    <p class="date-Montserrat" style="font-size: xx-small; margin-top: -20px;margin-right: 1px ">rbukraine@gmail.com</p>
+                    <p class="black-text-Montserrat" style="font-size: xx-small; margin-top: -20px; margin-right: 1px ">
+                        +380666666666
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
+        <div class="row">
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/", "/animals/admin")"
+               style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                @localizer["Animals"]
+            </a>
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                @localizer["Charity"]
+            </a>
+            <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                @localizer["Events"]
+            </a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
+
+            <div style="margin-left: 10px">
+                <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
+                <div style="margin-top: -15px">
+                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
+                    <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    @RenderBody()
+
+<footer style="background: #454F48; ">
+    <div class="row" style="width: 80%; margin-left: auto; margin-right: auto;">
+        <div style="margin-top: 20px; width:20%; margin-bottom: 60px">
+
+            <a href="charitable_foundations.html" class="text-Montserrat-light" style="color: white;font-size: 15px">
+                @localizer["Charitable foundations"]
+            </a>
+            <a href="#" class="text-Montserrat-light" style="font-size: 10px">
+                <br>@localizer["Charitable Foundation “Protection of Animals of the Red Book of Ukraine”"]
+            </a>
+        </div>
+        <div style="margin-top: 40px; width:20%; margin-bottom: 60px; margin-left: 50px">
+
+            <p href="charitable_foundations.html" class="center_content" class="text-Montserrat-light" style="color: white;font-size: 16px">
+                1234
+            </p>
+            <p href="#" class="center_content" style="font-size: 12px; color: white">
+                @localizer["Number of charitable contributions"] <br>@localizer["by the web-application “RBUkraine”"]
+            </p>
+        </div>
+        <div style="margin-top: 20px; width:20%; margin-bottom: 60px; margin-left: 150px">
+
+            <a href="#" class="text-Montserrat-light" style="color: white;font-size: 15px">
+                @localizer["Pages"]
+            </a>
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="text-Montserrat-light" style="font-size: 10px; margin-top: 10px">
+                <br>@localizer["Home"]
+            </a>
+            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="text-Montserrat-light" style="font-size: 10px">
+                <br>"@localizer["Charity"]
+            </a>
+            <a href="#" class="text-Montserrat-light" style="font-size: 10px">
+                <br>@localizer["Store"]
+            </a>
+            <a href="#" class="text-Montserrat-light" style="font-size: 10px">
+                <br>@localizer["News"]
+            </a>
+            <a href="#" class="text-Montserrat-light" style="font-size: 10px">
+                <br>@localizer["Personal office"]
+            </a>
+        </div>
+
+        <div style="margin-top: 25px; width:20%; margin-bottom: 60px; color: white">
+
+            <div style=" text-align: center;">
+                <p class="text-Montserrat-light" style="color: white;font-size: 15px; ">
+                    @localizer["Contacts"]
+                </p>
+                <p class="text-Montserrat-light" style="font-size: 12px; font-family: Montserrat-SemiBold;  color: white">
+                    @localizer["14, prospect Nauki, Kharkiv"]<br>
+                    rbukraine@gmail.com
+                </p>
+                <p class="text-Montserrat-light" style="font-size: 12px; font-weight: bold; color: white">
+                    +380 (93)-184-81-70
+                </p>
+            </div>
+        </div>
+    </div>
+
 
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 @await RenderSectionAsync("Scripts", required: false)

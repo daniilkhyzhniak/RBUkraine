@@ -1,40 +1,166 @@
-﻿@model RBUkraine.PL.ViewModels.Animals.AnimalDetailsViewModel
+﻿@model RBUkraine.PL.ViewModels.Animals.AnimalViewModel
 
 @{
-    ViewData["Title"] = "GetById";
+    ViewData["Title"] = Model.Species;
 }
 
-<h1>GetById</h1>
+<div class="row" style="margin-top: 60px; margin-bottom: 60px;">
 
-<div>
-    <h4>AnimalDetailsViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-    @foreach (var image in Model.Images)
+    @if (User.IsInRole(Roles.User))
     {
-        <img src="@image.Url" alt="@image.Title" width="500" />
+        <div>
+            <button class="left-button" >
+                <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+            </button>
+        </div>
     }
+
+<div style="margin-top: 20px; margin-left:7%; width: 1100px; margin-right: auto; ">
+    <div class="row" style="font-size: small">
+        <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
+        <a asp-controller="CharitableOrganizations" asp-action="GetById" asp-route-id="@Model.CharitableOrganization.Id" class="black-text-Montserrat" style=" text-decoration: underline; ">@Model.CharitableOrganization.Name</a>
+        <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Species</p>
+    </div>
+
+    <div class="animal-block">
+        <div class="row">
+            <div style="width: 750px; margin-left: 35px; margin-top: 25px; margin-bottom: 5px">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Latin Species"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.LatinSpecies
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Species"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Species
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Population"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Population
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Conservation Status"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.ConservationStatus
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Kingdom"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Kingdom
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="height: 40px; margin-left: -2px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Phylum"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Phylum
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="height: 40px; margin-left: -2px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Class"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Class
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Family"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Family
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="height: 40px; margin-left: -2px; margin-top: -10px">
+                    <input class="input_style2" value="@localizer["Genus"]:" readonly>
+                    <div style="width: 550px;">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Genus
+                        </p>
+                    </div>
+                </div>
+                <hr class="hr_style">
+                <div class="row" style="margin-left: -2px; margin-top: -10px">
+                    <input class="input_style2" style="margin-top: -10px" value="@localizer["Description"]:" readonly>
+                    <div style="width: 750px; margin-right: -200px">
+                        <p class="black-text-Montserrat" style="margin-top: 9px;">
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <p style="margin-top: 40px">
+                    <img class="rect_cf" src=@Model.Image.Url width="270px" height="270px" alt="1">
+                </p>
+                <p><img src="~/images/6.png" width="250px" style="margin-left: 20px" alt="1"></p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row"
+         style="margin-top: 20px;  margin-right: auto; margin-left: -40px; font-family: 'Times New Roman';">
+        <button type="submit"
+                class="button" style="width: 55%">
+            @localizer["Donate for the maintenance of this species"]
+        </button>
+        <button type="submit"
+                class="button" style="width: 35%">
+            @localizer["Donate to the BF"]
+        </button>
+    </div>
+    <div class="news-block">
+        <p class="bold-text-Literata" style=" margin-left: 30px;">@localizer["News"]</p>
+        <div class="new-block">
+
+            <div style="margin-left: 10px">
+                <p class="title2">
+                    Заголовок
+                </p>
+                <div style="float: right; margin-top: -45px">
+                    <p style=" margin-right: 20px; font-size: small; color: dimgrey">01.01.21</p>
+                </div>
+                <p class="text-Montserrat-light" style="margin-top: -20px">
+                    sssssssssssss s sss ss sss ssss ssss s sssssss s s s ss sss sssssssssssss s ss.
+                </p>
+            </div>
+        </div>
+
+
+        <button style="margin-left: 48%; height: 50px; width: 30px; border-color: transparent; background-color: transparent; font-size: xx-large; font-weight: bold">
+            &#8595;
+        </button>
+
+
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Update", new { id = Model.Id }) |
-    <a asp-action="GetAll">Back to List</a>
 </div>

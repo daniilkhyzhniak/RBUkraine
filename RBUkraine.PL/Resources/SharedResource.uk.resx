@@ -117,8 +117,134 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="14, prospect Nauki, Kharkiv" xml:space="preserve">
+    <value>м. Харків, проспект Науки, 14</value>
+  </data>
+  <data name="A-Z" xml:space="preserve">
+    <value>А-Я</value>
+  </data>
+  <data name="An animal of this species already exists" xml:space="preserve">
+    <value>Тварина цього виду вже існує</value>
+  </data>
+  <data name="Animals" xml:space="preserve">
+    <value>Тварини</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Застосувати</value>
+  </data>
+  <data name="Are you sure you want to delete this record?" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити цей запис?</value>
+  </data>
+  <data name="Buy a ticket" xml:space="preserve">
+    <value>Придбати квиток</value>
+  </data>
+  <data name="By Charitable Organization" xml:space="preserve">
+    <value>За БФ</value>
+  </data>
+  <data name="By Latin Specious" xml:space="preserve">
+    <value>За латинською назвою</value>
+  </data>
+  <data name="By Specious" xml:space="preserve">
+    <value>За назвою виду</value>
+  </data>
+  <data name="By the BF" xml:space="preserve">
+    <value>За БФ</value>
+  </data>
+  <data name="By the Latin name of the species" xml:space="preserve">
+    <value>За латинською назвою виду</value>
+  </data>
+  <data name="By the name of the species" xml:space="preserve">
+    <value>За назвою виду</value>
+  </data>
+  <data name="by the web-application “RBUkraine”" xml:space="preserve">
+    <value>через web-застосунок “RBUkraine”</value>
+  </data>
+  <data name="Cancel everything" xml:space="preserve">
+    <value>Скасувати все</value>
+  </data>
+  <data name="Charitable Foundation “Protection of Animals of the Red Book of Ukraine”" xml:space="preserve">
+    <value>БФ “Захист тварин червоної книги України”</value>
+  </data>
+  <data name="Charitable foundations" xml:space="preserve">
+    <value>Благодійні фонди</value>
+  </data>
+  <data name="Charitable Organization" xml:space="preserve">
+    <value>Благодійний фонд</value>
+  </data>
+  <data name="Charity" xml:space="preserve">
+    <value>Благодійність</value>
+  </data>
+  <data name="Choose file" xml:space="preserve">
+    <value>Виберіть файл</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Клас</value>
+  </data>
+  <data name="Conservation Status" xml:space="preserve">
+    <value>Статус вимирання</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="contribution" xml:space="preserve">
+    <value>внесок</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="Detachment" xml:space="preserve">
+    <value>Загін</value>
+  </data>
+  <data name="Donate for the maintenance of this species" xml:space="preserve">
+    <value>Пожертвувати на утримання даного виду</value>
+  </data>
+  <data name="Donate to a charity" xml:space="preserve">
+    <value>Пожертвувати благодійному фонду</value>
+  </data>
+  <data name="Donate to the BF" xml:space="preserve">
+    <value>Пожертвувати у БФ</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Редагування</value>
+  </data>
+  <data name="Evants of this fund" xml:space="preserve">
+    <value>Заходи даного фонду</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Заходи</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>Сім'я</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фільтрувати</value>
+  </data>
+  <data name="Foundation date" xml:space="preserve">
+    <value>Дата заснування</value>
+  </data>
+  <data name="Founders" xml:space="preserve">
+    <value>Учредители</value>
+  </data>
+  <data name="Genus" xml:space="preserve">
+    <value>Рід</value>
+  </data>
+  <data name="Go to the news of the charity fund" xml:space="preserve">
+    <value>Перейти до новин благодійного фонду</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Головна</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>Фото</value>
+  </data>
+  <data name="Image format" xml:space="preserve">
+    <value>Зображення формату</value>
+  </data>
+  <data name="Kingdom" xml:space="preserve">
+    <value>Царство</value>
+  </data>
+  <data name="Latin Species" xml:space="preserve">
+    <value>Вид лат.</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Увійти</value>
@@ -126,7 +252,61 @@
   <data name="Logout" xml:space="preserve">
     <value>Вийти</value>
   </data>
+  <data name="Make a charitable" xml:space="preserve">
+    <value>Зробити благодійний</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>
+  </data>
+  <data name="Name of the charity fund" xml:space="preserve">
+    <value>Назва благодійного фонду</value>
+  </data>
+  <data name="Network of charitable foundations of Ukraine" xml:space="preserve">
+    <value>Мережа благодійних фондів України</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Новини</value>
+  </data>
+  <data name="Number of charitable contributions" xml:space="preserve">
+    <value>Кількість благодійних внесків </value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Порядок</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Сторінки</value>
+  </data>
+  <data name="Personal office" xml:space="preserve">
+    <value>Мій кабінет</value>
+  </data>
+  <data name="Phone number" xml:space="preserve">
+    <value> Номер тф.</value>
+  </data>
+  <data name="Phylum" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Population" xml:space="preserve">
+    <value>Чисельність</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Ціна</value>
+  </data>
+  <data name="Search for" xml:space="preserve">
+    <value>Шукати за</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Сортувати</value>
+  </data>
+  <data name="Species" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="Species assisted by this foundation" xml:space="preserve">
+    <value>Види, яким надається допомога цим фондом</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>Магазин</value>
+  </data>
+  <data name="Z-A" xml:space="preserve">
+    <value>Я-А</value>
   </data>
 </root>

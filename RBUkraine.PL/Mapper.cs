@@ -9,7 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RBUkraine.BLL.Models.CharitableOrganization;
+using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.PL.ViewModels.CharitableOrganizations;
+using RBUkraine.PL.ViewModels.CharityEvents;
 
 namespace RBUkraine.PL
 {
@@ -24,13 +28,19 @@ namespace RBUkraine.PL
 
             CreateMap<AnimalEditorViewModel, AnimalEditorModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => MapFilesToImages(x.Files)));
-            CreateMap<AnimalDetailsModel, AnimalEditorViewModel>();
+            CreateMap<AnimalModel, AnimalEditorViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalModel, AnimalViewModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<AnimalDetailsModel, AnimalDetailsViewModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => x.Images.Select(MapImage)));
-            CreateMap<AnimalDetailsModel, AnimalTranslateEditorViewModel>();
+            CreateMap<AnimalModel, AnimalTranslateEditorViewModel>();
             CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
+
+            CreateMap<CharityEventModel, CharityEventViewModel>();
+
+            CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)
@@ -60,13 +70,10 @@ namespace RBUkraine.PL
 
             return images;
         }
-
-        
-
         private static ImageViewModel MapImage(Image image)
         {
-            string imageBase64Data = Convert.ToBase64String(image.Data);
-            string imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
+            var imageBase64Data = Convert.ToBase64String(image.Data);
+            var imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
 
             return new ImageViewModel
             {

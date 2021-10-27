@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using RBUkraine.DAL.Entities;
 using RBUkraine.DAL.Extensions;
 
@@ -9,10 +10,20 @@ namespace RBUkraine.DAL.Contexts
         public AppDbContext(DbContextOptions options)
             : base(options)
         { }
-        
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
             modelBuilder.Entity<User>()
                 .HasIndex(g => g.Email)
@@ -23,6 +34,7 @@ namespace RBUkraine.DAL.Contexts
                 .IsUnique();
 
             modelBuilder.AddSeedData();
+            modelBuilder.AddSoftDeletedFilter();
         }
 
         public DbSet<User> Users { get; set; }
@@ -36,9 +48,15 @@ namespace RBUkraine.DAL.Contexts
         public DbSet<AnimalImage> AnimalImages { get; set; }
 
         public DbSet<AnimalTranslate> AnimalTranslates { get; set; }
-
-        public DbSet<CharitableOrganization> CharitableOrganizations { get; set; }
         
+        public DbSet<CharitableOrganization> CharitableOrganizations { get; set; }
+
+        public DbSet<CharitableOrganizationImage> CharitableOrganizationImages { get; set; }
+
+        public DbSet<CharitableOrganizationTranslate> CharitableOrganizationTranslates { get; set; }
+
         public DbSet<CharityEvent> CharityEvents { get; set; }
+
+        public DbSet<CharityEventTranslate> CharityEventTranslates { get; set; }
     }
 }
