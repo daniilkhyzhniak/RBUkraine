@@ -18,5 +18,7 @@ namespace RBUkraine.BLL.Contracts
         Task<int> CreateAsync(CharityEventEditorModel model);
 
         Task UpdateAsync(int id, CharityEventEditorModel model);
+
+        Task AddPurchase(int eventId, int userId);
     }
 }

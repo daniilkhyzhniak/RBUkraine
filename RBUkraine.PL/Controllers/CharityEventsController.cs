@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -88,7 +89,7 @@ namespace RBUkraine.PL.Controllers
             return RedirectToAction("GetAllAdmin");
         }
 
-        [HttpPost("{id:int}/delete")]
+        [HttpPost("{id:int}/delete"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Delete(
             [FromRoute] int id)
         {
@@ -139,8 +140,16 @@ namespace RBUkraine.PL.Controllers
             [FromQuery] string sessionId)
         {
             var session = await _sessionService.GetAsync(sessionId);
+            
+            if (session.PaymentStatus != PaymentStatus.Paid)
+            {
+                return BadRequest();
+            }
 
-            return Ok(sessionId);
+            await _charityEventService.AddPurchase(
+                id, Convert.ToInt32(User.Claims.First(x => x.Type == "Id").Value));
+
+            return RedirectToAction("GetAll");
         }
     }
 }

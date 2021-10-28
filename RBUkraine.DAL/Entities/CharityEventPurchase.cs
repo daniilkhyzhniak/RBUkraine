@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using RBUkraine.DAL.Entities.Base;
 
 namespace RBUkraine.DAL.Entities
@@ -11,6 +12,8 @@ namespace RBUkraine.DAL.Entities
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
+
+        public DateTimeOffset PurchaseDate { get; set; }
         
         public User User { get; set; }
 

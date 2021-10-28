@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -140,6 +141,20 @@ namespace RBUkraine.BLL.Services
             charityEvent.Price = model.Price;
 
             _context.CharityEvents.Update(charityEvent);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddPurchase(int eventId, int userId)
+        {
+            var charityEvent = await _context.CharityEvents.FirstOrDefaultAsync(x => x.Id == eventId);
+
+            _context.CharityEventPurchases.Add(new CharityEventPurchase
+            {
+                CharityEventId = eventId,
+                UserId = userId,
+                Price = charityEvent.Price,
+                PurchaseDate = DateTimeOffset.Now
+            });
             await _context.SaveChangesAsync();
         }
     }
