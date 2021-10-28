@@ -8,6 +8,8 @@ using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.MapperExtensions;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.DAL.Contexts;
+using RBUkraine.DAL.Entities;
+using RBUkraine.DAL.Extensions;
 
 namespace RBUkraine.BLL.Services
 {
@@ -80,6 +82,57 @@ namespace RBUkraine.BLL.Services
             }
 
             return _mapper.MapToCharitableOrganizationModel(charitableOrganization, culture);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var charitableOrganization = await _context.CharitableOrganizations.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (charitableOrganization is null)
+            {
+                return;
+            }
+
+            _context.CharitableOrganizations.SoftDelete(charitableOrganization);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> CreateAsync(CharitableOrganizationEditorModel model)
+        {
+            var charitableOrganization = _mapper.Map<CharitableOrganization>(model);
+
+            _context.CharitableOrganizations.Add(charitableOrganization);
+            await _context.SaveChangesAsync();
+
+            return charitableOrganization.Id;
+        }
+
+        public async Task UpdateAsync(int id, CharitableOrganizationEditorModel model)
+        {
+            var charitableOrganization = await _context.CharitableOrganizations.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (charitableOrganization is null)
+            {
+                return;
+            }
+
+            charitableOrganization.Name = model.Name;
+            charitableOrganization.Description = model.Description;
+            charitableOrganization.Email = model.Email;
+            charitableOrganization.FoundationDate = model.FoundationDate;
+            charitableOrganization.PhoneNumber = model.PhoneNumber;
+            charitableOrganization.Stockholders = model.Stockholders;
+
+            if (model.Image is not null)
+            {
+                _context.CharitableOrganizationImages.Remove(charitableOrganization.Image);
+                _context.CharitableOrganizationImages.Add(new CharitableOrganizationImage
+                {
+                    CharitableOrganizationId = id,
+                    Data = model.Image.Data,
+                    Title = model.Image.Title
+                });
+            }
         }
     }
 }
