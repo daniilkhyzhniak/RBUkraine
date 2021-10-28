@@ -14,9 +14,9 @@ namespace RBUkraine.DAL.Entities
         
         public DateTimeOffset PublishDate { get; set; }
 
-        public int CharitableOrganizationId { get; set; }
+        public int? CharitableOrganizationId { get; set; }
 
-        public int AnimalId { get; set; }
+        public int? AnimalId { get; set; }
 
         public CharitableOrganization CharitableOrganization { get; set; }
 

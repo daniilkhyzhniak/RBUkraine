@@ -108,7 +108,17 @@ namespace RBUkraine.BLL.Services
 
             await _context.SaveChangesAsync();
         }
-        
+
+        public async Task<IEnumerable<AnimalModel>> GetAllAsync(string culture = Culture.Ukrainian)
+        {
+            var animals = await _context.Animals
+                .Include(animal => animal.AnimalTranslates)
+                .Where(animal => !animal.IsDeleted)
+                .ToListAsync();
+
+            return _mapper.MapToAnimalModel(animals, culture);
+        }
+
         public async Task<IEnumerable<AnimalModel>> GetAllAsync(AnimalFilterModel filter, string culture = Culture.Ukrainian)
         {
             var query = _context.Animals

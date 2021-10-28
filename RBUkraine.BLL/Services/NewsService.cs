@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
+using RBUkraine.BLL.MapperExtensions;
 using RBUkraine.BLL.Models.News;
 using RBUkraine.DAL.Contexts;
+using RBUkraine.DAL.Entities;
+using RBUkraine.DAL.Extensions;
 
 namespace RBUkraine.BLL.Services
 {
@@ -22,29 +25,80 @@ namespace RBUkraine.BLL.Services
             _mapper = mapper;
         }
 
-        public Task<IEnumerable<NewsModel>> GetAllAsync(string culture = Culture.Ukrainian)
+        public async Task<IEnumerable<NewsModel>> GetAllAsync(string culture = Culture.Ukrainian)
         {
-            throw new NotImplementedException();
+            var news = await _context.News
+                .Include(x => x.NewsTranslates)
+                .Include(x => x.Animal)
+                .Include(x => x.CharitableOrganization)
+                .ToListAsync();
+
+            return _mapper.MapToNewsModel(news, culture);
         }
 
-        public Task<NewsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
+        public async Task<IEnumerable<NewsModel>> GetAllAsync(NewsFilterModel filter, string culture = Culture.Ukrainian)
         {
-            throw new NotImplementedException();
+            var news = await _context.News
+                .Include(x => x.NewsTranslates)
+                .Include(x => x.Animal)
+                .Include(x => x.CharitableOrganization)
+                .ToListAsync();
+
+            return _mapper.MapToNewsModel(news, culture);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<NewsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
         {
-            throw new NotImplementedException();
+            var news = await _context.News
+                .Include(x => x.NewsTranslates)
+                .Include(x => x.Animal)
+                .Include(x => x.CharitableOrganization)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return _mapper.MapToNewsModel(news, culture);
         }
 
-        public Task<int> CreateAsync(NewsEditorModel model)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var news = await _context.News.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (news is null)
+            {
+                return;
+            }
+
+            _context.News.SoftDelete(news);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(int id, NewsEditorModel model)
+        public async Task<int> CreateAsync(NewsEditorModel model)
         {
-            throw new NotImplementedException();
+            var news = _mapper.Map<News>(model);
+
+            _context.News.Add(news);
+            await _context.SaveChangesAsync();
+
+            return news.Id;
+        }
+
+        public async Task UpdateAsync(int id, NewsEditorModel model)
+        {
+            var news = await _context.News.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (news is null)
+            {
+                return;
+            }
+
+            news.Title = model.Title;
+            news.ShortDescription = model.ShortDescription;
+            news.FullDescription = model.FullDescription;
+            news.AnimalId = model.AnimalId;
+            news.CharitableOrganizationId = model.CharitableOrganizationId;
+            news.PublishDate = model.PublishDate;
+
+            _context.News.Update(news);
+            await _context.SaveChangesAsync();
         }
     }
 }

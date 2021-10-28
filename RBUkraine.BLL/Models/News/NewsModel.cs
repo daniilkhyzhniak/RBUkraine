@@ -14,9 +14,9 @@ namespace RBUkraine.BLL.Models.News
 
         public DateTimeOffset PublishDate { get; set; }
 
-        public int CharitableOrganizationId { get; set; }
+        public int? CharitableOrganizationId { get; set; }
 
-        public int AnimalId { get; set; }
+        public int? AnimalId { get; set; }
 
         public CharitableOrganizationModel CharitableOrganization { get; set; }
 

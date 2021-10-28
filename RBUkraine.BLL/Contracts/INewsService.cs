@@ -9,6 +9,8 @@ namespace RBUkraine.BLL.Contracts
     {
         Task<IEnumerable<NewsModel>> GetAllAsync(string culture = Culture.Ukrainian);
 
+        Task<IEnumerable<NewsModel>> GetAllAsync(NewsFilterModel filter, string culture = Culture.Ukrainian);
+
         Task<NewsModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);
 
         Task DeleteAsync(int id);

@@ -7,6 +7,8 @@ namespace RBUkraine.BLL.Contracts
 {
     public interface IAnimalService
     {
+        Task<IEnumerable<AnimalModel>> GetAllAsync(string culture = Culture.Ukrainian);
+
         Task<IEnumerable<AnimalModel>> GetAllAsync(AnimalFilterModel filter, string culture = Culture.Ukrainian);
 
         Task<AnimalModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);

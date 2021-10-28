@@ -8,7 +8,7 @@ namespace RBUkraine.BLL.Models.CharityEvent
 
         public string Search { get; set; }
 
-        public CharityEventSortOptions SortOptions { get; set; } = CharityEventSortOptions.ByDate;
+        public CharityEventSortOptions SortOptions { get; set; } = CharityEventSortOptions.ByTitle;
 
         public SortDirection SortDirection { get; set; } = SortDirection.Asc;
     }

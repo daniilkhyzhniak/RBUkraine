@@ -1,8 +1,10 @@
 ﻿using System;
+using RBUkraine.PL.ViewModels.Animals;
+using RBUkraine.PL.ViewModels.CharitableOrganizations;
 
-namespace RBUkraine.BLL.Models.News
+namespace RBUkraine.PL.ViewModels.News
 {
-    public class NewsEditorModel
+    public class NewsViewModel
     {
         public string Title { get; set; }
 
@@ -15,5 +17,9 @@ namespace RBUkraine.BLL.Models.News
         public int? CharitableOrganizationId { get; set; }
 
         public int? AnimalId { get; set; }
+
+        public CharitableOrganizationViewModel CharitableOrganization { get; set; }
+
+        public AnimalViewModel Animal { get; set; }
     }
 }
