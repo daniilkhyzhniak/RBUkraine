@@ -94,5 +94,16 @@ namespace RBUkraine.BLL.Services
             
             return claims;
         }
+        
+        public async Task SetNewPasswordAsync(string email, string newPassword)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(user => user.Email == email);
+
+            user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

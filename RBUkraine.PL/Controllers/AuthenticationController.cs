@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.PL.PasswordGenerators;
 using RBUkraine.PL.ViewModels.Authentication;
 
 namespace RBUkraine.PL.Controllers
@@ -84,7 +85,15 @@ namespace RBUkraine.PL.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("GetAll", "Animals");
         }
-        
+
+        [HttpPost("/remind-password")]
+        public async Task<IActionResult> RemindPassword(RemindPasswordViewModel model)
+        {
+            var password = RandomPasswordGenerator.RandomPassword();
+            await _userService.SetNewPasswordAsync(model.Email, password);
+            return Ok();
+        }
+
         private async Task SignInAsync(IEnumerable<Claim> claims)
         {
             var identity = new ClaimsIdentity(
