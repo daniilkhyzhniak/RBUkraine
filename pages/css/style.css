@@ -93,8 +93,8 @@
 
 .menu_active{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
-    width: 230px;
-    height: 40px;
+    width: 180px;
+    height: 60px;
     color: #333;
     text-align: center;
     justify-content: center;
@@ -338,9 +338,6 @@
     margin-left: 5px;
 }
 
-.main{
-    
-}
 .protect{
     padding-top: 10px;
     padding-left: 30px;
@@ -608,22 +605,19 @@ position: absolute;
     text-decoration: none;
 }
     
-.main_page{
 
-}
-/*.main_table{
-    display: flex;
-    justify-content: space-between;
-    
-}*/
 .section{
-    width: 800px;
-    height: 400px;
+    width: 443px;
+    height: 538px;
     background: white;
     border-radius: 15px;
     position: absolute;
-    left: 400px;
+    left: 550px;
     top: 268px;
+}
+
+.main_table{
+    margin-top: 40px;
 }
 .log_in-user{
 margin-left: 130px;
@@ -643,26 +637,25 @@ font-weight: normal;
 font-size: 24px;
 line-height: 36px;
 color: #000000;
-margin-left: 25px;
+margin-left: 60px;
 margin-top: 10px;
 }
 
 .hr{
     height: 0px;
-width: 750px;
-left: 585px;
-top: 336px;
+width: 443,01px;
+left: 738px;
+top: 197px;
 border: 0.5px solid rgba(0, 0, 0, 0.2);
 
 }
 
 .hr1{
-width: 280px;
-margin-top: 150px;
-margin-right: 350px;
-margin-left: 0px;
+width: 443,01px;
+margin-top: 30px;
+
 border: 0.5px solid rgba(0, 0, 0, 0.2);
-transform: rotate(90deg);
+
 
 }
 
@@ -672,21 +665,20 @@ transform: rotate(90deg);
 
 .email-text{
     margin-left: 26px;
-    left: 585px;
-    top: 356px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
     line-height: 18px;
-
+    margin-left: 47px;
+    margin-top: 17px;
     color: rgba(0, 0, 0, 0.6);
 }
 
 .email{
     height: 40px;
 width: 350px;
-margin-left: 25px;
+margin-left: 47px;
 position: absolute;
 background: #FFFFFF;
 border: 0.5px solid rgba(0, 0, 0, 0.2);
@@ -695,7 +687,7 @@ border-radius: 5px;
 }
 
 .password-text{
-margin-left: 26px;
+margin-left: 47px;
 margin-top: 60px;
     position: absolute;
 font-family: Montserrat;
@@ -711,8 +703,8 @@ color: rgba(0, 0, 0, 0.6);
 .password{
     margin-top: 90px;
     height: 40px;
-    width: 300px;
-    margin-left: 25px;
+    width: 350px;
+    margin-left: 47px;
     position: absolute;
     background: #FFFFFF;
     border: 0.5px solid rgba(0, 0, 0, 0.2);
@@ -727,8 +719,20 @@ color: rgba(0, 0, 0, 0.6);
     position: absolute;
     background: #7C0A02;
     border-radius: 5px;
-    margin-left: 25px;
+    margin-left: 47px;
 }
+
+.button_google{
+    height: 50px;
+    width: 250px;
+    background: rgba(247, 247, 247, 0.5);
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: 96px;
+    margin-top: 0px;
+}
+
 .remember-text{
     margin-top: 145px;
     margin-left: 50px;
@@ -742,8 +746,8 @@ color: rgba(0, 0, 0, 0.6);
 }
 
 .remember-password{
-    margin-top: 145px;
-    margin-left: 250px; 
+    margin-top: 158px;
+    margin-left: 150px; 
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -754,8 +758,8 @@ color: rgba(0, 0, 0, 0.6);
 }
 
 .log_in-text{
-    margin-top: 50px;
-    margin-left: 125px;
+    margin-top: 80px;
+    margin-left: 150px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -764,6 +768,43 @@ color: rgba(0, 0, 0, 0.6);
     text-decoration-line: underline;
     color: #7C0A02;
 }
+
+.log_in-text1{
+    margin-top: 230px;
+    margin-left: 190px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #7C0A02;
+}
+
+.user-text{
+
+    margin-left: 138px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.6);
+
+}
+
+.user-text1{
+
+    margin-left: 98px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.6);
+
+}
+
 
 
 @font-face {
