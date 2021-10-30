@@ -13,7 +13,6 @@ using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
 using RBUkraine.BLL.Enums;
 using RBUkraine.PL.Filters;
-using RBUkraine.PL.Middleware;
 using Stripe;
 
 namespace RBUkraine.PL
@@ -42,8 +41,8 @@ namespace RBUkraine.PL
                 .AddGoogle(options =>
                 {
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.ClientId = "588895468457-5b61qljbf8cuk6jungdbs4hc4bc52tuu.apps.googleusercontent.com";
-                    options.ClientSecret = "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";
+                    options.ClientId = _configuration["GoogleAuth:ClientId"];
+                    options.ClientSecret = _configuration["GoogleAuth:ClientSecret"];
                 });
             services.AddAuthorization();
             

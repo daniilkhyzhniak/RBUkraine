@@ -28,7 +28,7 @@ namespace RBUkraine.BLL.Services
         {
             _context = context;
             _mapper = mapper;
-            _googleClientId = string.Join("", configuration["GoogleAuth:ClientId"].Split("///"));
+            _googleClientId = configuration["GoogleAuth:ClientId"];
         }
 
         public async Task CreateUserAsync(UserCreationModel model)
