@@ -14,5 +14,7 @@ namespace RBUkraine.BLL.Contracts
         Task<ICollection<Claim>> AuthenticateAsync(AuthModel authModel);
 
         Task SetNewPasswordAsync(string email, string newPassword);
+
+        Task<ICollection<Claim>> LoginWithGoogle(string token);
     }
 }

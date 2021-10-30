@@ -38,6 +38,12 @@ namespace RBUkraine.PL
                     options.LoginPath = new PathString("/login");
                     options.AccessDeniedPath = new PathString("/access-denied");
                     options.ReturnUrlParameter = "returnUrl";
+                })
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.ClientId = "588895468457-5b61qljbf8cuk6jungdbs4hc4bc52tuu.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
                 });
             services.AddAuthorization();
             

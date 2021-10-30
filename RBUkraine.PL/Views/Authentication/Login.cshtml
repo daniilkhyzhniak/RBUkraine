@@ -25,6 +25,12 @@
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
 </div>
 
+@section Scripts
+{
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="~/scripts/google-login.js"></script>
+}

@@ -48,7 +48,7 @@ namespace RBUkraine.PL.Controllers
 
             await SignInAsync(claims);
             
-            return RedirectToAction("GetAll", "Animals");
+            return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
         
         [HttpGet("~/login")]
@@ -75,15 +75,24 @@ namespace RBUkraine.PL.Controllers
             await SignInAsync(claims);
 
             return string.IsNullOrWhiteSpace(returnUrl)
-                ? RedirectToAction("GetAll", "Animals")
+                ? RedirectToAction("GetAnimals", "CharitableOrganizations")
                 : Redirect(returnUrl);
         }
-        
+
+        [HttpPost("login/google")]
+        public async Task<IActionResult> LoginGoogle(
+            [FromQuery] string token)
+        {
+            var claims = await _userService.LoginWithGoogle(token);
+            await SignInAsync(claims);
+            return RedirectToAction("GetAnimals", "CharitableOrganizations");
+        }
+
         [HttpPost("~/logout"), Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("GetAll", "Animals");
+            return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
 
         [HttpPost("/remind-password")]
