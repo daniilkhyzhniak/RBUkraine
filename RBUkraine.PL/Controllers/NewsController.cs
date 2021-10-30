@@ -53,6 +53,13 @@ namespace RBUkraine.PL.Controllers
             return View(model);
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var news = await _newsService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
+            return View(_mapper.Map<NewsViewModel>(news));
+        }
+
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Create()
         {
