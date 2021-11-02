@@ -1,4 +1,5 @@
-﻿using RBUkraine.BLL.Enums;
+﻿using System.Collections.Generic;
+using RBUkraine.BLL.Enums;
 
 namespace RBUkraine.BLL.Models.News
 {
@@ -8,8 +9,10 @@ namespace RBUkraine.BLL.Models.News
 
         public string Search { get; set; }
 
-        public CharityEventSortOptions SortOptions { get; set; } = CharityEventSortOptions.ByDate;
+        public NewsSortOptions SortOptions { get; set; } = NewsSortOptions.ByDate;
 
         public SortDirection SortDirection { get; set; } = SortDirection.Asc;
+
+        public IList<int> Founds { get; set; } = new List<int>();
     }
 }

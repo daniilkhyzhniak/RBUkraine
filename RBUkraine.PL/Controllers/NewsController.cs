@@ -34,9 +34,9 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(NewsFilterModel filter)
         {
-            var news = await _newsService.GetAllAsync(CultureInfo.CurrentCulture.Name);
+            var news = await _newsService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
             return View(_mapper.Map<List<NewsViewModel>>(news));
         }
 
@@ -44,10 +44,15 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> GetAllAdmin(NewsFilterModel filter)
         {
             var news = await _newsService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
+            var charitableOrganizations = await _charitableOrganizationService
+                .GetAllWithoutAnimalsAsync(CultureInfo.CurrentCulture.Name);
 
             var model = new NewsListViewModel
             {
-                News = _mapper.Map<List<NewsViewModel>>(news)
+                News = _mapper.Map<List<NewsViewModel>>(news),
+                Filter = filter,
+                FoundSelectList = charitableOrganizations.Select(
+                    c => new SelectListItem(c.Name, c.Id.ToString(), filter.Founds.Contains(c.Id)))
             };
 
             return View(model);
