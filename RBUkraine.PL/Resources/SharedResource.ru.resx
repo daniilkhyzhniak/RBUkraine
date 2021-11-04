@@ -204,6 +204,9 @@
   <data name="Donate to the BF" xml:space="preserve">
     <value>Пожертвовать в БФ</value>
   </data>
+  <data name="e-mail" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
   <data name="Editing" xml:space="preserve">
     <value>Редактирование</value>
   </data>
@@ -246,6 +249,9 @@
   <data name="Latin Species" xml:space="preserve">
     <value>Вид лат.</value>
   </data>
+  <data name="Log in as a user" xml:space="preserve">
+    <value>Войти как пользователь</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
   </data>
@@ -276,6 +282,9 @@
   <data name="Pages" xml:space="preserve">
     <value>Cтраницы</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
   <data name="Personal office" xml:space="preserve">
     <value>Личный кабинет</value>
   </data>
@@ -290,6 +299,12 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="Remind password" xml:space="preserve">
+    <value>Напомнить пароль</value>
   </data>
   <data name="Search for" xml:space="preserve">
     <value>Искать по</value>
