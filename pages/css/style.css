@@ -237,6 +237,18 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
+.input_style3{
+    margin-top: -7px;
+    width: 170px;
+    border-color: transparent;
+    background-color: transparent;
+    font-family: Literata;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 27px;
+    color: black;
+}
 .rect_cf{
     width: 290px;
     height: 290px;
