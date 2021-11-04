@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Login";
 }
-<!--<div style="position: relative; left: 400px; ">
+@*<div style="position: relative; left: 400px; ">
     <div class="col-md-4">
         <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,43 +23,43 @@
         </form>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
-</div>-->
-<div style="height: 800px; background-image: url(~/images/pexels-pixabay-357140.jpg) ; background-size: cover; ">
-    <div style=" margin-left:15%;">
+</div>*@
+ <div style="height: 800px; background-image: url(~/images/pexels-pixabay-357140.jpg) ; background-size: cover; ">
+     <div style=" margin-left:15%;">
 
-        <div class="row" style="font-size: small;">
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
-            <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
-            <p class="black-text-Montserrat " style=" margin-top: 60px; ">&ensp;&#10095;&ensp;@localizer["Logout"]</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <p class="in">
-            @localizer["Logout"]
-        </p>
-        <hr class="hr">
-        <p class="email-text">
-            @localizer["e-mail"]
-        </p>
-        <input type="email" name="email" class="email" required>
-        <p class="password-text">
-            @localizer["Password"]
-        </p>
-        <input type="password" name="password" class="password" required>
-        <a href="#"><p class="remember-password">@localizer["Remind password"]</p></a>
-        <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 10px; margin-bottom: 20px; font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Login"]</button>
-        <a href="#"><p class="log_in-text">@localizer["Register"]</p></a>
-        <hr class="hr1">
-        <p class="user-text">
-            @localizer["Log in as a user"]
-        </p>
-        <button type="submit" class="button_google" style="color:#000000;  font-size: 20px; line-height: 24px; font-family: Montserrat; ">
-            <img src="~/images/google.png" width="25px" height="25px" style="margin-right: 10px;" alt="1">Google
-        </button>
-    </div>
-</div>
+         <div class="row" style="font-size: small;">
+             <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
+             <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
+             <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
+             <p class="black-text-Montserrat " style=" margin-top: 60px; ">&ensp;&#10095;&ensp;@localizer["Sign-in"]</p>
+         </div>
+     </div>
+     <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="section">
+             <p class="in">
+                 @localizer["Sign-in"]
+             </p>
+             <hr class="hr">
+             <p class="email-text">
+                 @localizer["e-mail"]
+             </p>
+             <input asp-for="Email" type="email" name="email" class="email" required>
+             <p class="password-text">
+                 @localizer["Password"]
+             </p>
+             <input asp-for="Password" type="password" name="password" class="password" required>
+             <a href="#"><p class="remember-password">@localizer["Remind password"]</p></a>
+             <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 10px; margin-bottom: 20px; font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Login"]</button>
+             <a href="#"><p class="log_in-text">@localizer["Register"]</p></a>
+             <hr class="hr1">
+             <p class="user-text">
+                 @localizer["Log in as a user"]
+             </p>
+             <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         </div>
+     </form>
+ </div>
 
 @section Scripts
 {

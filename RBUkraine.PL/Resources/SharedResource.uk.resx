@@ -309,6 +309,9 @@
   <data name="Search for" xml:space="preserve">
     <value>Шукати за</value>
   </data>
+  <data name="Sign-in" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
   <data name="Sort" xml:space="preserve">
     <value>Сортувати</value>
   </data>
