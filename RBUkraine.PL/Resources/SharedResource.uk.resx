@@ -141,8 +141,17 @@
   <data name="By Charitable Organization" xml:space="preserve">
     <value>За БФ</value>
   </data>
+  <data name="By date" xml:space="preserve">
+    <value>За датою</value>
+  </data>
   <data name="By Latin Specious" xml:space="preserve">
     <value>За латинською назвою</value>
+  </data>
+  <data name="By organizer" xml:space="preserve">
+    <value>За організатором</value>
+  </data>
+  <data name="By price" xml:space="preserve">
+    <value>За ціною</value>
   </data>
   <data name="By Specious" xml:space="preserve">
     <value>За назвою виду</value>
@@ -159,6 +168,9 @@
   <data name="by the web-application “RBUkraine”" xml:space="preserve">
     <value>через web-застосунок “RBUkraine”</value>
   </data>
+  <data name="By title" xml:space="preserve">
+    <value>За заголовком</value>
+  </data>
   <data name="Cancel everything" xml:space="preserve">
     <value>Скасувати все</value>
   </data>
@@ -174,6 +186,12 @@
   <data name="Charity" xml:space="preserve">
     <value>Благодійність</value>
   </data>
+  <data name="Charity event" xml:space="preserve">
+    <value>Благодійний захід</value>
+  </data>
+  <data name="Charity events" xml:space="preserve">
+    <value>Благодійні заходи</value>
+  </data>
   <data name="Choose file" xml:space="preserve">
     <value>Виберіть файл</value>
   </data>
@@ -188,6 +206,9 @@
   </data>
   <data name="contribution" xml:space="preserve">
     <value>внесок</value>
+  </data>
+  <data name="Date and time" xml:space="preserve">
+    <value>Дата й час</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Опис</value>
@@ -209,6 +230,12 @@
   </data>
   <data name="Editing" xml:space="preserve">
     <value>Редагування</value>
+  </data>
+  <data name="Enter the password" xml:space="preserve">
+    <value>Введіть пароль</value>
+  </data>
+  <data name="Enter your email" xml:space="preserve">
+    <value>Введіть вашу ел. пошту</value>
   </data>
   <data name="Evants of this fund" xml:space="preserve">
     <value>Заходи даного фонду</value>
@@ -279,6 +306,9 @@
   <data name="Order" xml:space="preserve">
     <value>Порядок</value>
   </data>
+  <data name="Organizer" xml:space="preserve">
+    <value>Організатор</value>
+  </data>
   <data name="Pages" xml:space="preserve">
     <value>Сторінки</value>
   </data>
@@ -303,10 +333,16 @@
   <data name="Register" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="Register as a user" xml:space="preserve">
+    <value>Зареєструватись як користувач</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
   <data name="Remind password" xml:space="preserve">
     <value>Нагадати пароль</value>
   </data>
-  <data name="Search for" xml:space="preserve">
+  <data name="Search by" xml:space="preserve">
     <value>Шукати за</value>
   </data>
   <data name="Sign-in" xml:space="preserve">
@@ -323,6 +359,9 @@
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>

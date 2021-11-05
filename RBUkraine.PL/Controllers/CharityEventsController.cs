@@ -40,7 +40,15 @@ namespace RBUkraine.PL.Controllers
         [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> GetAllAdmin(CharityEventFilterModel filter)
         {
+            
             var charityEvents = await _charityEventService.GetAllAsync(filter, CultureInfo.CurrentCulture.Name);
+            var model = new CharityEventListViewModel
+            {
+                CharityEvents = _mapper.Map<IList<CharityEventViewModel>>(charityEvents),
+                Filter = filter,
+                
+            };
+            return View("GetAllAdmin", model);
             return View(_mapper.Map<IEnumerable<CharityEventViewModel>>(charityEvents));
         }
 
