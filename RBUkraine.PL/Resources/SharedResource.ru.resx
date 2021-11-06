@@ -309,6 +309,9 @@
   <data name="Network of charitable foundations of Ukraine" xml:space="preserve">
     <value>Сеть благотворительных фондов Украины</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>Новость</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Тематика</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Заголовок</value>
