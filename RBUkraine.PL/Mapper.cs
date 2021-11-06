@@ -40,12 +40,14 @@ namespace RBUkraine.PL
             CreateMap<AnimalTranslateEditorViewModel, AnimalTranslateEditorModel>();
 
             CreateMap<CharityEventModel, CharityEventViewModel>();
+            CreateMap<CharityEventModel, CharityEventEditorViewModel>();
             CreateMap<CharityEventEditorViewModel, CharityEventEditorModel>();
 
             CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
 
             CreateMap<NewsModel, NewsViewModel>();
+            CreateMap<NewsModel, NewsEditorModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
         }
 

@@ -49,7 +49,6 @@ namespace RBUkraine.PL.Controllers
                 
             };
             return View("GetAllAdmin", model);
-            return View(_mapper.Map<IEnumerable<CharityEventViewModel>>(charityEvents));
         }
 
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]
