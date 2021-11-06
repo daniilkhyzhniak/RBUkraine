@@ -135,6 +135,9 @@
   <data name="Are you sure you want to delete this record?" xml:space="preserve">
     <value>Ви впевнені, що хочете видалити цей запис?</value>
   </data>
+  <data name="Brief description" xml:space="preserve">
+    <value>Короткий опис</value>
+  </data>
   <data name="Buy a ticket" xml:space="preserve">
     <value>Придбати квиток</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="By price" xml:space="preserve">
     <value>За ціною</value>
+  </data>
+  <data name="By species" xml:space="preserve">
+    <value>За видом</value>
   </data>
   <data name="By Specious" xml:space="preserve">
     <value>За назвою виду</value>
@@ -207,6 +213,9 @@
   <data name="contribution" xml:space="preserve">
     <value>внесок</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
   <data name="Date and time" xml:space="preserve">
     <value>Дата й час</value>
   </data>
@@ -255,6 +264,9 @@
   <data name="Founders" xml:space="preserve">
     <value>Учредители</value>
   </data>
+  <data name="Full description" xml:space="preserve">
+    <value>Повний опис</value>
+  </data>
   <data name="Genus" xml:space="preserve">
     <value>Рід</value>
   </data>
@@ -296,6 +308,9 @@
   </data>
   <data name="Network of charitable foundations of Ukraine" xml:space="preserve">
     <value>Мережа благодійних фондів України</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Новина</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Новини</value>
@@ -359,6 +374,9 @@
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Тематика</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Заголовок</value>
