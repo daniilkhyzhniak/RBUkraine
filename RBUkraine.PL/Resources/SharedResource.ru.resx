@@ -135,6 +135,9 @@
   <data name="Are you sure you want to delete this record?" xml:space="preserve">
     <value>Вы уверены, что хотите удалить запись?</value>
   </data>
+  <data name="Brief description" xml:space="preserve">
+    <value>Краткое описание</value>
+  </data>
   <data name="Buy a ticket" xml:space="preserve">
     <value>Купить билет</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="By price" xml:space="preserve">
     <value>По цене</value>
+  </data>
+  <data name="By species" xml:space="preserve">
+    <value>По виду</value>
   </data>
   <data name="By Specious" xml:space="preserve">
     <value>По виду</value>
@@ -207,6 +213,9 @@
   <data name="contribution" xml:space="preserve">
     <value>вклад</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
   <data name="Date and time" xml:space="preserve">
     <value>Дата и время</value>
   </data>
@@ -254,6 +263,9 @@
   </data>
   <data name="Founders" xml:space="preserve">
     <value>Оснаватели</value>
+  </data>
+  <data name="Full description" xml:space="preserve">
+    <value>Полное описание</value>
   </data>
   <data name="Genus" xml:space="preserve">
     <value>Род</value>
