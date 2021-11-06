@@ -27,6 +27,7 @@ namespace RBUkraine.PL
             CreateMap<RegisterViewModel, AuthModel>();
             CreateMap<RegisterViewModel, UserCreationModel>();
             CreateMap<UserModel, UserViewModel>();
+            CreateMap<UserViewModel, UserEditorModel>();
 
             CreateMap<AnimalEditorViewModel, AnimalEditorModel>()
                 .ForMember(x => x.Images, opt => opt.MapFrom(x => MapFilesToImages(x.Files)));

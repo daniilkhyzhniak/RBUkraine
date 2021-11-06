@@ -141,6 +141,22 @@ namespace RBUkraine.BLL.Services
             return claims;
         }
 
+        public async Task Update(int id, UserEditorModel model)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (user is null)
+            {
+                return;
+            }
+
+            user.Nickname = model.Nickname;
+            user.IncludeInRating = model.IncludeInRating;
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
         private async Task<User> CreateUserFromGoogle(string email, string nickname)
         {
             var userRole = _context.Roles.FirstOrDefault(role => role.Name == Roles.User);

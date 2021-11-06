@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -101,6 +102,28 @@ namespace RBUkraine.PL.Controllers
             var password = RandomPasswordGenerator.RandomPassword();
             await _userService.SetNewPasswordAsync(model.Email, password);
             return Ok();
+        }
+
+        [HttpGet("~/profile"), Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            var email = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Email).Value;
+            var user = await _userService.GetUserByEmailAsync(email);
+            return View(_mapper.Map<UserViewModel>(user));
+        }
+
+        [HttpPost("~/profile"), Authorize]
+        public IActionResult Profile(UserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == "Id").Value);
+            _userService.Update(userId, _mapper.Map<UserEditorModel>(model));
+
+            return RedirectToAction("Profile");
         }
 
         private async Task SignInAsync(IEnumerable<Claim> claims)
