@@ -1,5 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model RBUkraine.PL.ViewModels.News.NewsViewModel
+
 @{
+    ViewData["Title"] = "GetById";
 }
+
+
+<div class="row">
+    <div>
+        <button class="left-button">
+            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+        </button>
+    </div>
+    <div>
+        <div style="margin-left: 5%">
+            <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
+                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
+                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
+                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Title</p>
+            </div>
+            <div class="cf_block">
+                <div style="width: 1170px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
+                    <p class="red_Literata" style="color: black">@Model.Title</p>
+                    <hr class="hr_style_title1" style="width: 1170px">
+                    <p class="text-Montserrat" style="margin-top: 30px; margin-left: 1px; font-size: 15px">
+                        @Model.Animal@Model.CharitableOrganization
+                    </p>
+                    <hr class="hr_style1" style="width: 1170px">
+                    <div class="row" style=" margin-left: -2px; margin-top: -10px">
+                        <input class="input_style3" value="@localizer["Brief description"]:" readonly>
+                        <div style="width: 900px;">
+                            <p class="text-Montserrat" style="margin-top: 9px;">
+                                @Model.ShortDescription
+                            </p>
+                        </div>
+                    </div>
+                    <hr class="hr_style1" style="width: 1170px">
+                    <div class="row" style="margin-left: -2px; margin-top: -10px">
+                        <input class="input_style3" style=" margin-top: -10px" value="@localizer["Full description"]:" readonly>
+                        <div style="width: 900px;">
+                            <p class="text-Montserrat" style="margin-top: 9px;">
+                                @Model.FullDescription
+                            </p>
+                        </div>
+                    </div>
+                    <div style="height:40px; text-align: right">
+                        <p class="text-Montserrat" style="font-size: 15px;">
+                            @Model.PublishDate
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
