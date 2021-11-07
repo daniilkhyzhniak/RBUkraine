@@ -4,7 +4,7 @@
     ViewData["Title"] = "Profile";
 }
 
-<h1>Profile</h1>
+@*<h1>Profile</h1>
 
 <div>
     <h4>UserViewModel</h4>
@@ -33,4 +33,67 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
+</div>*@
+
+<div style="height: 800px; background-image: url(images/pexels-pixabay-357140.jpg) ; background-size: cover; ">
+    <div style=" margin-left:15%;">
+
+        <div class="row" style="font-size: small;">
+            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
+            <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
+            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
+        </div>
+    </div>
+
+    <div class="section" style="width: 1000px; height:592px; left: 330px;">
+        <div class="row">
+            <p class="my">
+                @localizer["Personal office"]
+            </p>
+            <a href="#"><img src="~/icons/account_door.ico" alt="1" style="width: 28px; height: 33px; position:absolute; top:10px; right:10px;"></a>
+        </div>
+        <hr class="hr2">
+        <div>
+            <p class="user-text_">
+               @localizer["User"]
+            </p>
+            <div class="row">
+                <p class="login-text">
+                    @localizer["Login:"]
+                </p>
+                <p class="email-text_">
+                    @Model.Email
+                </p>
+
+            </div>
+            <div class="row">
+                <p class="name-text">
+                    @localizer["Name"]:
+                </p>
+                <input type="name" name="name" class="name-text_" required>
+                <div style="margin-top: 95px; margin-left: 815px;">
+                    <button type="submit" style="border-color: transparent; background-color: transparent; padding: 0px; "><img src="~/icons/save.png" style="width: 50px; height: 50px;" alt="1"></button>
+                </div>
+
+
+            </div>
+            <input type="checkbox" id="text_in" name="text_in" value="@Model.IncludeInRating">
+            <label for="text_in" class="text_in"> @localizer["Allow the name to be added to the list of benefactors"]</label>
+            <div class="row">
+                <p class="sum-text">
+                    @localizer["The amount of charitable contributions"]:
+                </p>
+                <div class="section_">
+                    <p class="sum">
+                        @Model.TotalDonationAmount
+                    </p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 225px;">
+                <button type="submit" class="button1" style="width: 40%">@localizer["Basket"]</button>
+                <button type="submit" class="button1" style="width: 45%">@localizer["Purchase history"]</button>
+            </div>
+        </div>
+
+    </div>
 </div>
