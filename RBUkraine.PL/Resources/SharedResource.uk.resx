@@ -324,6 +324,9 @@
   <data name="Organizer" xml:space="preserve">
     <value>Організатор</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Інше</value>
+  </data>
   <data name="Pages" xml:space="preserve">
     <value>Сторінки</value>
   </data>
@@ -362,6 +365,9 @@
   </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вхід</value>
+  </data>
+  <data name="Site news" xml:space="preserve">
+    <value>Новини сайту</value>
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Сортувати</value>

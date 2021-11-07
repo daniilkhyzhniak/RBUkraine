@@ -1,5 +1,88 @@
-﻿
+﻿@model IEnumerable<RBUkraine.PL.ViewModels.News.NewsViewModel>
+
 @{
     ViewData["Title"] = "GetAll";
 }
 
+<div class="row">
+    <div>
+        <button class="left-button">
+            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+        </button>
+    </div>
+    <div>
+        <div style="margin-left: 5%">
+            <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
+                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
+                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
+            </div>
+            <p style="font-family: Literata; font-style: normal; font-weight: 500; font-size: 25px; line-height: 28px; text-align: left; margin-left: 47px; color: #000000;">
+                @localizer["Site news"]
+            </p>
+            <div class="row">
+                <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-left: 63px; margin-top: 12px;">
+                    @localizer["Search by"]:
+                </p>
+                <p>
+                    <select class="select_option" style="width: 185px; margin-left: 10px">
+                        <option disabled>@localizer["Search by"]</option>
+                        <option selected value="name">@localizer["By Charitable Organization"]</option>
+                        <option value="lat">@localizer["By species"]</option>
+                        <option value="cf">@localizer["Other"]</option>
+                    </select>
+                </p>
+
+                <p>
+                    <select class="select_option" style="width: 320px; margin-left: 10px">
+                        <option disabled>@localizer["Search by"]</option>
+                        <option selected value="name">Ведмідь бурий</option>
+
+                    </select>
+                </p>
+                <button style=" background-color: transparent; border-color: transparent; color: black; margin-bottom: 15px; "><img src="~/images/search.png" width="35px" height="35px" alt="1"></button>
+
+                <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-top: 12px;">
+                    @localizer["Sort"]:
+                </p>
+                <p>
+                    <select class="select_option" style="width: 196px; margin-left: 10px">
+                        <option disabled>@localizer["Sort"]:</option>
+                        <option selected value="name">@localizer["By species"]</option>
+
+                    </select>
+                </p>
+
+                <p>
+                    <select class="select_option" style="width: 76px; margin-left: 10px ">
+                        <option disabled>@localizer["Sort"]:</option>
+                        <option selected value="name">@localizer["Z-A"]</option>
+
+                    </select>
+                </p>
+            </div>
+            <div class="section_animal">
+                @foreach (var one_new in Model)
+                {
+                    <button class="button_1" style="background-color: transparent; border-color: transparent;">
+                        <div class="section_1">
+                            <div class="center_content1">
+                                <p class="t1">
+                                    @one_new.Title
+                                </p>
+
+                                <p class="t2">
+                                    @one_new.PublishDate
+                                </p>
+
+                            </div>
+                            <p class="t3">
+                                @one_new.ShortDescription
+                            </p>
+                        </div>
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
