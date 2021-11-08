@@ -1025,6 +1025,22 @@
     align-items: center
 }
 
+.editor-block {
+    height: 800px;
+    background-image: url("../images/3.jpg");
+}
+
+.charity-event-editor-block {
+    height: 700px;
+    background-image: url("../images/3.jpg");
+}
+
+.login-block {
+    height: 800px;
+    background-image: url(../images/pexels-pixabay-357140.jpg);
+    background-size: cover;
+}
+
 @font-face {
     font-family: "Literata";
     src: url("../fonts/literata/Literatamedium.ttf") format("truetype");
