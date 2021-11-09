@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
+    <form asp-action="Registration">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="section">
             <div class="main_table">
@@ -62,7 +62,7 @@
                 <input asp-for="Password" type="password" name="password" class="password" required>
                 <p class="remember-password"></p>
                 <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 20px;  font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Register"]</button>
-                <a href="#"><p class="log_in-text1">@localizer["Login"]</p></a>
+                <a asp-controller="Authentication" asp-action="Login"><p class="log_in-text1">@localizer["Login"]</p></a>
                 <hr class="hr1">
                 <p class="user-text1">
                     @localizer["Register as a user"]

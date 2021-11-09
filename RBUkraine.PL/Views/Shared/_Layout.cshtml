@@ -80,13 +80,13 @@
                 @localizer["Events"]
             </a>
             <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            <a asp-controller="News" asp-action="GetAll" class="@Html.IsNavTabActive("/news")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
             <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
 
             <div style="margin-left: 10px">
                 <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
                 <div style="margin-top: -15px">
-                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Authentication" asp-action="Profile"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
                     <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>

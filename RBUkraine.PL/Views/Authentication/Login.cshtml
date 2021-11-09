@@ -51,7 +51,7 @@
              <input asp-for="Password" type="password" name="password" class="password" required>
              <a href="#"><p class="remember-password">@localizer["Remind password"]</p></a>
              <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 10px; margin-bottom: 20px; font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Login"]</button>
-             <a href="#"><p class="log_in-text">@localizer["Register"]</p></a>
+             <a asp-controller="Authentication" asp-action="Registration"><p class="log_in-text">@localizer["Register"]</p></a>
              <hr class="hr1">
              <p class="user-text">
                  @localizer["Log in as a user"]

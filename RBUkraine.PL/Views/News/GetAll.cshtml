@@ -13,7 +13,7 @@
     <div>
         <div style="margin-left: 5%">
             <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
-                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
+                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
                 <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
                 <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
             </div>
@@ -56,6 +56,7 @@
                 <p>
                     <select class="select_option" style="width: 76px; margin-left: 10px ">
                         <option disabled>@localizer["Sort"]:</option>
+                        <option selected value="name">@localizer["A-Z"]</option>
                         <option selected value="name">@localizer["Z-A"]</option>
 
                     </select>
