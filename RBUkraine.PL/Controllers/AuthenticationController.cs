@@ -140,7 +140,7 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpPost("~/profile"), Authorize]
-        public IActionResult Profile(UserViewModel model)
+        public async Task<IActionResult> Profile(UserViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -148,7 +148,7 @@ namespace RBUkraine.PL.Controllers
             }
 
             var userId = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == "Id").Value);
-            _userService.Update(userId, _mapper.Map<UserEditorModel>(model));
+            await _userService.Update(userId, _mapper.Map<UserEditorModel>(model));
 
             return RedirectToAction("Profile");
         }

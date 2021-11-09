@@ -50,7 +50,7 @@
             <p class="my">
                 @localizer["Personal office"]
             </p>
-            <a asp-controller="Authentication" asp-action="Logout"><img src="~/icons/account_door.ico" alt="1" style="width: 28px; height: 33px; position:absolute; top:10px; right:10px;"></a>
+            <a asp-controller="Authentication" asp-action="Logout"><img src="~/icons/logount-icon.ico" alt="1" style="width: 28px; height: 33px; position:absolute; top:10px; right:10px;"></a>
         </div>
         <hr class="hr2">
         <div>
@@ -72,7 +72,7 @@
                     <p class="name-text">
                         @localizer["Name"]:
                     </p>
-                    <input asp-for="Nickname" type="name" name="name" class="name-text_" required value="@Model.Nickname">
+                    <input asp-for="Nickname" type="name" name="Nickname" class="name-text_" required>
                     <div style="margin-top: 95px; margin-left: 815px;">
                         <button>
                             <img src="~/icons/save.png" style="width: 33.33px; height: 33.33px;" />
@@ -82,7 +82,7 @@
 
                 </div>
 
-                <input asp-for="IncludeInRating" type="checkbox" id="text_in" name="text_in" value="@Model.IncludeInRating">
+                <input asp-for="IncludeInRating" type="checkbox" id="text_in" name="IncludeInRating">
                 <label for="text_in" class="text_in"> @localizer["Allow the name to be added to the list of benefactors"]</label>
             </form>
             <div class="row">
