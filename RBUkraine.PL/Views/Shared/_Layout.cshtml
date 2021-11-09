@@ -69,18 +69,36 @@
     </div>
     <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
         <div class="row">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/", "/animals/admin")"
-               style="width: 180px; margin-left: 18%; height: 60px; color: white">
-                @localizer["Animals"]
-            </a>
-            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
-                @localizer["Charity"]
-            </a>
-            <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
-                @localizer["Events"]
-            </a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
-            <a asp-controller="News" asp-action="GetAll" class="@Html.IsNavTabActive("/news")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Animals" asp-action="GetAll" class="@Html.IsNavTabActive("/animals/admin")"
+                    style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                    @localizer["Animals"]
+                </a>
+                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Charity"]
+                </a>
+                <a asp-controller="CharityEvents" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/events/admin")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Events"]
+                </a>
+                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="News" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/news/admin")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            }
+            else
+            {
+                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/")"
+                    style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                    @localizer["Animals"]
+                </a>
+                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Charity"]
+                </a>
+                <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Events"]
+                </a>
+                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="News" asp-action="GetAll" class="@Html.IsNavTabActive("/news")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            }
             <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
 
             <div style="margin-left: 10px">

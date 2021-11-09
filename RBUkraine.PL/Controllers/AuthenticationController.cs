@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
+using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.User;
 using RBUkraine.PL.EmailSender;
 using RBUkraine.PL.EmailSender.Models;
@@ -80,9 +81,12 @@ namespace RBUkraine.PL.Controllers
 
             await SignInAsync(claims);
 
-            return string.IsNullOrWhiteSpace(returnUrl)
-                ? RedirectToAction("GetAnimals", "CharitableOrganizations")
-                : Redirect(returnUrl);
+            if (User.IsInRole(Roles.Admin))
+            {
+                return RedirectToAction("GetAll", "Animals");
+            }
+
+            return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
 
         [HttpPost("login/google")]
@@ -109,8 +113,8 @@ namespace RBUkraine.PL.Controllers
             await _emailSender.SendEmailAsync(new EmailModel
             {
                 Email = model.Email,
-                Message = $"Your new password - {password}",
-                Subject = "Reset password"
+                Message = $"Ваш новий пароль - {password}",
+                Subject = "RBUkraine. Новий пароль"
             });
 
             await _userService.SetNewPasswordAsync(model.Email, password);

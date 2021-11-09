@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.CharityEvent;
+using RBUkraine.PL.EmailSender;
+using RBUkraine.PL.EmailSender.Models;
 using RBUkraine.PL.ViewModels.CharityEvents;
 using Stripe.Checkout;
 
@@ -19,14 +22,20 @@ namespace RBUkraine.PL.Controllers
     {
         private readonly ICharityEventService _charityEventService;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
+        private readonly IUserService _userService;
         private readonly SessionService _sessionService;
         
         public CharityEventsController(
             ICharityEventService charityEventService,
-            IMapper mapper)
+            IMapper mapper,
+            IEmailSender emailSender,
+            IUserService userService)
         {
             _charityEventService = charityEventService;
             _mapper = mapper;
+            _emailSender = emailSender;
+            _userService = userService;
             _sessionService = new SessionService();
         }
 
@@ -130,7 +139,7 @@ namespace RBUkraine.PL.Controllers
                         Quantity = 1
                     }
                 },
-                CustomerEmail = User.Identity.Name,
+                CustomerEmail = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value,
                 Locale = CultureInfo.CurrentCulture.Name == Culture.Ukrainian 
                     ? Culture.English
                     : CultureInfo.CurrentCulture.Name
@@ -153,8 +162,19 @@ namespace RBUkraine.PL.Controllers
                 return BadRequest();
             }
 
-            await _charityEventService.AddPurchase(
-                id, Convert.ToInt32(User.Claims.First(x => x.Type == "Id").Value));
+            var user = await _userService.GetUserByEmailAsync(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value);
+            var charityEvent = await _charityEventService.GetByIdAsync(id);
+            await _charityEventService.AddPurchase(id, user.Id);
+            
+            await _emailSender.SendEmailAsync(new EmailModel
+            {
+                Email = user.Email,
+                Subject = "RBUkraine. Покупка билета",
+                Message = $@"<p>Вы купили билет на мероприятие {charityEvent.Name}.</p>
+                            <p>Имя пользователя: {(string.IsNullOrWhiteSpace(user.Nickname) ? user.Email : user.Nickname)}</p>
+                            <p>Email пользователя: {user.Email}</p>
+                            <p>Предъявите это письмо на мероприятии.</p>"
+            });
 
             return RedirectToAction("GetAll");
         }
