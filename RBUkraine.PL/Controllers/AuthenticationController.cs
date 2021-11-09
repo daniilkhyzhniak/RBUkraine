@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.PL.EmailSender;
+using RBUkraine.PL.EmailSender.Models;
 using RBUkraine.PL.PasswordGenerators;
 using RBUkraine.PL.ViewModels.Authentication;
 
@@ -19,13 +21,16 @@ namespace RBUkraine.PL.Controllers
     {
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
 
         public AuthenticationController(
             IUserService userService,
-            IMapper mapper)
+            IMapper mapper,
+            IEmailSender emailSender)
         {
             _userService = userService;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
         
         [HttpGet("~/registration")]
@@ -100,6 +105,14 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> RemindPassword(RemindPasswordViewModel model)
         {
             var password = RandomPasswordGenerator.RandomPassword();
+
+            await _emailSender.SendEmailAsync(new EmailModel
+            {
+                Email = model.Email,
+                Message = $"Your new password - {password}",
+                Subject = "Reset password"
+            });
+
             await _userService.SetNewPasswordAsync(model.Email, password);
             return Ok();
         }

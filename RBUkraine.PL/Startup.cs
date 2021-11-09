@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
 using RBUkraine.BLL.Enums;
+using RBUkraine.PL.EmailSender;
 using RBUkraine.PL.Filters;
 using Stripe;
 
@@ -30,6 +31,7 @@ namespace RBUkraine.PL
         {
             services.AddBusinessLogicLayer(_configuration.GetConnectionString("RBUkraineDb"));
             services.AddAutoMapper(typeof(Mapper));
+            services.AddTransient<IEmailSender, EmailSender.EmailSender>();
             
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
