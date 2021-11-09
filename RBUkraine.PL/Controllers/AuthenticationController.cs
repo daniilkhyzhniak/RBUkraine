@@ -44,6 +44,11 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> Registration(
             [FromForm] RegisterViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync();
+            }
+
             await _userService.CreateUserAsync(_mapper.Map<UserCreationModel>(model));
             var claims = await _userService.AuthenticateAsync(_mapper.Map<AuthModel>(model));
             
@@ -71,6 +76,11 @@ namespace RBUkraine.PL.Controllers
             [FromForm] LoginViewModel model,
             [FromQuery] string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync();
+            }
+
             var claims = await _userService.AuthenticateAsync(_mapper.Map<AuthModel>(model));
 
             if (!claims.Any())
@@ -98,7 +108,7 @@ namespace RBUkraine.PL.Controllers
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
 
-        [HttpPost("~/logout"), Authorize]
+        [HttpGet("~/logout"), Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

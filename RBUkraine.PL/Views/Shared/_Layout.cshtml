@@ -107,7 +107,14 @@
                     <a asp-controller="Authentication" asp-action="Profile"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Authentication" asp-action="Logout" style="margin-left: 10px"><img src="~/icons/logout-icon.ico" width="15px" height="15px" alt="1"></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    }
                 </div>
             </div>
 
