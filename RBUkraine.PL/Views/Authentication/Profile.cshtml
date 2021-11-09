@@ -54,31 +54,37 @@
         </div>
         <hr class="hr2">
         <div>
-            <p class="user-text_">
-               @localizer["User"]
-            </p>
-            <div class="row">
-                <p class="login-text">
-                    @localizer["Login:"]
+            <form asp-action="Profile">
+                <p class="user-text_">
+                    @localizer["User"]
                 </p>
-                <p class="email-text_">
-                    @Model.Email
-                </p>
+                <div class="row">
+                    <p class="login-text">
+                        @localizer["Login:"]
+                    </p>
+                    <p class="email-text_">
+                        <input asp-for="Email" value="@Model.Email" readonly>
+                    </p>
 
-            </div>
-            <div class="row">
-                <p class="name-text">
-                    @localizer["Name"]:
-                </p>
-                <input type="name" name="name" class="name-text_" required>
-                <div style="margin-top: 95px; margin-left: 815px;">
-                    <button type="submit" style="border-color: transparent; background-color: transparent; padding: 0px; "><img src="~/icons/save.png" style="width: 50px; height: 50px;" alt="1"></button>
                 </div>
 
+                <div class="row">
+                    <p class="name-text">
+                        @localizer["Name"]:
+                    </p>
+                    <input asp-for="Nickname" type="name" name="name" class="name-text_" required value="@Model.Nickname">
+                    <div style="margin-top: 95px; margin-left: 815px;">
+                        <button>
+                            <img src="~/icons/save.png" style="width: 33.33px; height: 33.33px;" />
+                        </button>
+                    </div>
 
-            </div>
-            <input type="checkbox" id="text_in" name="text_in" value="@Model.IncludeInRating">
-            <label for="text_in" class="text_in"> @localizer["Allow the name to be added to the list of benefactors"]</label>
+
+                </div>
+
+                <input asp-for="IncludeInRating" type="checkbox" id="text_in" name="text_in" value="@Model.IncludeInRating">
+                <label for="text_in" class="text_in"> @localizer["Allow the name to be added to the list of benefactors"]</label>
+            </form>
             <div class="row">
                 <p class="sum-text">
                     @localizer["The amount of charitable contributions"]:
