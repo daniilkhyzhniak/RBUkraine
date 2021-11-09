@@ -13,7 +13,7 @@ namespace RBUkraine.PL.EmailSender
         public EmailSender(
             IConfiguration configuration)
         {
-            _sendGridApiKey = string.Join("", configuration["SendGrid:ApiKey"].Split("///"));
+            _sendGridApiKey = string.Join("", configuration["EmailSender:ApiKey"].Split("///"));
         }
 
         public Task SendEmailAsync(EmailModel emailModel)
@@ -21,7 +21,7 @@ namespace RBUkraine.PL.EmailSender
             var client = new SendGridClient(_sendGridApiKey);
             var msg = new SendGridMessage
             {
-                From = new EmailAddress("rbukraine@gmail.com", "RBUkraine"),
+                From = new EmailAddress("rbukraine2021@gmail.com", "RBUkraine"),
                 Subject = emailModel.Subject,
                 PlainTextContent = emailModel.Message,
                 HtmlContent = emailModel.Message
