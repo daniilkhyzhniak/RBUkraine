@@ -12,5 +12,11 @@ namespace RBUkraine.BLL.Contracts
         Task<IEnumerable<CharitableOrganizationModel>> GetAllAsync(string culture = Culture.Ukrainian);
 
         Task<CharitableOrganizationModel> GetByIdAsync(int id, string culture = Culture.Ukrainian);
+
+        Task DeleteAsync(int id);
+
+        Task<int> CreateAsync(CharitableOrganizationEditorModel model);
+
+        Task UpdateAsync(int id, CharitableOrganizationEditorModel model);
     }
 }

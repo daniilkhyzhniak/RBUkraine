@@ -34,5 +34,7 @@ namespace RBUkraine.DAL.Entities
         public ICollection<AnimalImage> AnimalImages { get; set; }
 
         public ICollection<AnimalTranslate> AnimalTranslates { get; set; }
+
+        public ICollection<News> News { get; set; }
     }
 }

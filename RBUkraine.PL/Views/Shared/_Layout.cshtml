@@ -1,9 +1,13 @@
-﻿@using RBUkraine.PL.Extensions
+﻿@{
+    var googleClientId = string.Join("", Configuration["GoogleAuth:ClientId"].Split("///"));
+}
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="@googleClientId">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="~/styles/style.css" type="text/css">
@@ -65,27 +69,52 @@
     </div>
     <div class="text-Literata" style="background-color: #939F97; color: white; margin-top: 20px; height: 60px">
         <div class="row">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/", "/animals/admin")"
-               style="width: 180px; margin-left: 18%; height: 60px; color: white">
-                @localizer["Animals"]
-            </a>
-            <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
-                @localizer["Charity"]
-            </a>
-            <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
-                @localizer["Events"]
-            </a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
-            <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Animals" asp-action="GetAll" class="@Html.IsNavTabActive("/animals/admin")"
+                    style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                    @localizer["Animals"]
+                </a>
+                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Charity"]
+                </a>
+                <a asp-controller="CharityEvents" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/events/admin")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Events"]
+                </a>
+                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="News" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/news/admin")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            }
+            else
+            {
+                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="@Html.IsNavTabActive("/animals", "/")"
+                    style="width: 180px; margin-left: 18%; height: 60px; color: white">
+                    @localizer["Animals"]
+                </a>
+                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Charity"]
+                </a>
+                <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Events"]
+                </a>
+                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="News" asp-action="GetAll" class="@Html.IsNavTabActive("/news")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
+            }
             <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
 
             <div style="margin-left: 10px">
                 <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
                 <div style="margin-top: -15px">
-                    <a href="#"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Authentication" asp-action="Profile"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
-                    <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Authentication" asp-action="Logout" style="margin-left: 10px"><img src="~/icons/logout-icon.ico" width="15px" height="15px" alt="1"></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Authentication" asp-action="Login" style="margin-left: 10px"><img src="~/icons/67346.png" width="15px" height="15px" alt="1"></a>
+                    }
                 </div>
             </div>
 
@@ -156,6 +185,7 @@
 
 
 </footer>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

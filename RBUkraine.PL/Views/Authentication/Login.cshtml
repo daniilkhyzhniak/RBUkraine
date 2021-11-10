@@ -3,11 +3,7 @@
 @{
     ViewData["Title"] = "Login";
 }
-
-<h1 style="position: relative; left: 400px;">Login</h1>
-
-<hr />
-<div style="position: relative; left: 400px; ">
+@*<div style="position: relative; left: 400px; ">
     <div class="col-md-4">
         <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -25,6 +21,50 @@
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
-</div>
+</div>*@
+ <div class="login-block">
+     <div style=" margin-left:15%;">
 
+         <div class="row" style="font-size: small;">
+             <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
+             <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
+             <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
+             <p class="black-text-Montserrat " style=" margin-top: 60px; ">&ensp;&#10095;&ensp;@localizer["Sign-in"]</p>
+         </div>
+     </div>
+     <form asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="section">
+             <p class="in">
+                 @localizer["Sign-in"]
+             </p>
+             <hr class="hr">
+             <p class="email-text">
+                 @localizer["e-mail"]
+             </p>
+             <input asp-for="Email" type="email" name="email" class="email" required>
+             <p class="password-text">
+                 @localizer["Password"]
+             </p>
+             <input asp-for="Password" type="password" name="password" class="password" required>
+             <a href="#"><p class="remember-password">@localizer["Remind password"]</p></a>
+             <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 10px; margin-bottom: 20px; font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Login"]</button>
+             <a asp-controller="Authentication" asp-action="Registration"><p class="log_in-text">@localizer["Register"]</p></a>
+             <hr class="hr1">
+             <p class="user-text">
+                 @localizer["Log in as a user"]
+             </p>
+             <div style="width: 443px; height: 98px; ">
+                    <div class="g-signin2" style="margin-left: 36%;" data-onsuccess="onSignIn"></div>
+             </div>
+         </div>
+     </form>
+ </div>
+
+@section Scripts
+{
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="~/scripts/google-login.js"></script>
+}

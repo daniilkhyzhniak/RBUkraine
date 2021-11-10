@@ -5,6 +5,7 @@ using RBUkraine.DAL.Entities;
 using System.Linq;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
+using RBUkraine.BLL.Models.News;
 using RBUkraine.BLL.Models.User;
 
 namespace RBUkraine.BLL
@@ -35,6 +36,9 @@ namespace RBUkraine.BLL
                 .ReverseMap();
             CreateMap<CharitableOrganization, CharitableOrganizationModel>()
                 .ForMember(x => x.Animals, opt => opt.Ignore());
+
+            CreateMap<News, NewsModel>();
+            CreateMap<NewsEditorModel, News>();
         }
     }
 }

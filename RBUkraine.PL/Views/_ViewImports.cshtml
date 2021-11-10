@@ -1,9 +1,11 @@
-﻿@using Microsoft.AspNetCore.Builder
-@using Microsoft.AspNetCore.Localization
-@using Microsoft.AspNetCore.Mvc.Localization
-@using Microsoft.Extensions.Options
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Configuration
 @using RBUkraine.BLL.Enums
 @using RBUkraine.PL
+@using RBUkraine.PL.Extensions
+@using Microsoft.AspNetCore.Localization
+
+@inject IConfiguration Configuration
 
 @inject IHtmlLocalizer<SharedResource> localizer
 

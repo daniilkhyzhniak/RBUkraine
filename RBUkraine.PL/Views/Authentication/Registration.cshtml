@@ -4,31 +4,80 @@
     ViewData["Title"] = "Registration";
 }
 
-<h1 style="position: relative; left: 400px; ">Registration</h1>
+@*<h1 style="position: relative; left: 400px; ">Registration</h1>
 
-<hr />
-<div style="position: relative; left: 400px; ">
-    <div class="col-md-4">
-        <form asp-action="Registration">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" style="width: 540px;" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" style="width: 540px;" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" style="width: 540px;" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
-            </div>
-        </form>
+    <hr />
+    <div style="position: relative; left: 400px; ">
+        <div class="col-md-4">
+            <form asp-action="Registration">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" style="width: 540px;" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" style="width: 540px;" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" style="width: 540px;" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
+*@
+<div class="login-block">
+    <div style=" margin-left:15%;">
+
+        <div class="row" style="font-size: small;">
+            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
+            <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
+            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
+            <p class="black-text-Montserrat " style=" margin-top: 60px; ">&ensp;&#10095;&ensp;@localizer["Sign-in"]</p>
+        </div>
+    </div>
+
+    <form asp-action="Registration">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="section">
+            <div class="main_table">
+                <p class="in">
+                    @localizer["Registration"]
+                </p>
+                <hr class="hr">
+                <p class="email-text">
+                    @localizer["Enter your email"]
+                </p>
+                <input asp-for="Email" type="email" name="email" class="email" required>
+                <p class="password-text">
+                    @localizer["Enter the password"]
+                </p>
+                <input asp-for="Password" type="password" name="password" class="password" required>
+                <p class="remember-password"></p>
+                <button type="submit" class="button_log_in" style="color:#FFFFFF; margin-top: 20px;  font-size: 20px; line-height: 30px; font-family: Literata; ">@localizer["Register"]</button>
+                <a asp-controller="Authentication" asp-action="Login"><p class="log_in-text1">@localizer["Login"]</p></a>
+                <hr class="hr1">
+                <p class="user-text1">
+                    @localizer["Register as a user"]
+                </p>
+                <div style="width: 443px; height: 98px; ">
+                    <div class="g-signin2" style="margin-left: 36%;" data-onsuccess="onSignIn"></div>
+                </div>
+            </div>
+
+        </div>
+    </form>
 </div>
+
+@section Scripts
+{
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="~/scripts/google-login.js"></script>
+}

@@ -123,6 +123,9 @@
   <data name="A-Z" xml:space="preserve">
     <value>А-Я</value>
   </data>
+  <data name="Allow the name to be added to the list of benefactors" xml:space="preserve">
+    <value>Разрешить внесение имени в список благотворителей</value>
+  </data>
   <data name="An animal of this species already exists" xml:space="preserve">
     <value>Животное этого вида уже существует</value>
   </data>
@@ -135,14 +138,32 @@
   <data name="Are you sure you want to delete this record?" xml:space="preserve">
     <value>Вы уверены, что хотите удалить запись?</value>
   </data>
+  <data name="Basket" xml:space="preserve">
+    <value>Корзина</value>
+  </data>
+  <data name="Brief description" xml:space="preserve">
+    <value>Краткое описание</value>
+  </data>
   <data name="Buy a ticket" xml:space="preserve">
     <value>Купить билет</value>
   </data>
   <data name="By Charitable Organization" xml:space="preserve">
     <value>По БФ</value>
   </data>
+  <data name="By date" xml:space="preserve">
+    <value>По дате</value>
+  </data>
   <data name="By Latin Specious" xml:space="preserve">
     <value>По латинскому названию</value>
+  </data>
+  <data name="By organizer" xml:space="preserve">
+    <value>По организатору</value>
+  </data>
+  <data name="By price" xml:space="preserve">
+    <value>По цене</value>
+  </data>
+  <data name="By species" xml:space="preserve">
+    <value>По виду</value>
   </data>
   <data name="By Specious" xml:space="preserve">
     <value>По виду</value>
@@ -159,6 +180,9 @@
   <data name="by the web-application “RBUkraine”" xml:space="preserve">
     <value>через web-приложение "RBUkraine"</value>
   </data>
+  <data name="By title" xml:space="preserve">
+    <value>По заголовку</value>
+  </data>
   <data name="Cancel everything" xml:space="preserve">
     <value>Отменить все</value>
   </data>
@@ -173,6 +197,12 @@
   </data>
   <data name="Charity" xml:space="preserve">
     <value>Благотворительность</value>
+  </data>
+  <data name="Charity event" xml:space="preserve">
+    <value>Благотворительное мероприятие</value>
+  </data>
+  <data name="Charity events" xml:space="preserve">
+    <value>Благотворительные мероприятия</value>
   </data>
   <data name="Choose file" xml:space="preserve">
     <value>Выберите файл</value>
@@ -189,6 +219,12 @@
   <data name="contribution" xml:space="preserve">
     <value>вклад</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Date and time" xml:space="preserve">
+    <value>Дата и время</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
   </data>
@@ -204,8 +240,17 @@
   <data name="Donate to the BF" xml:space="preserve">
     <value>Пожертвовать в БФ</value>
   </data>
+  <data name="e-mail" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
   <data name="Editing" xml:space="preserve">
     <value>Редактирование</value>
+  </data>
+  <data name="Enter the password" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="Enter your email" xml:space="preserve">
+    <value>Введите вашу эл. почту</value>
   </data>
   <data name="Evants of this fund" xml:space="preserve">
     <value>Мероприятия данного фонда</value>
@@ -224,6 +269,9 @@
   </data>
   <data name="Founders" xml:space="preserve">
     <value>Оснаватели</value>
+  </data>
+  <data name="Full description" xml:space="preserve">
+    <value>Полное описание</value>
   </data>
   <data name="Genus" xml:space="preserve">
     <value>Род</value>
@@ -246,8 +294,14 @@
   <data name="Latin Species" xml:space="preserve">
     <value>Вид лат.</value>
   </data>
+  <data name="Log in as a user" xml:space="preserve">
+    <value>Войти как пользователь</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Войти</value>
+  </data>
+  <data name="Login:" xml:space="preserve">
+    <value>Логин:</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Выйти</value>
@@ -264,6 +318,9 @@
   <data name="Network of charitable foundations of Ukraine" xml:space="preserve">
     <value>Сеть благотворительных фондов Украины</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>Новость</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
   </data>
@@ -273,8 +330,17 @@
   <data name="Order" xml:space="preserve">
     <value>Порядок</value>
   </data>
+  <data name="Organizer" xml:space="preserve">
+    <value>Организатор</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Другое</value>
+  </data>
   <data name="Pages" xml:space="preserve">
     <value>Cтраницы</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
   </data>
   <data name="Personal office" xml:space="preserve">
     <value>Личный кабинет</value>
@@ -291,8 +357,29 @@
   <data name="Price" xml:space="preserve">
     <value>Цена</value>
   </data>
-  <data name="Search for" xml:space="preserve">
+  <data name="Purchase history" xml:space="preserve">
+    <value>История покупок</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="Register as a user" xml:space="preserve">
+    <value>Регистрация как пользователь</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Remind password" xml:space="preserve">
+    <value>Напомнить пароль</value>
+  </data>
+  <data name="Search by" xml:space="preserve">
     <value>Искать по</value>
+  </data>
+  <data name="Sign-in" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Site news" xml:space="preserve">
+    <value>Новости сайта</value>
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Сортировать</value>
@@ -305,6 +392,18 @@
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Тематика</value>
+  </data>
+  <data name="The amount of charitable contributions" xml:space="preserve">
+    <value>Сумма благотворительных взносов</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>

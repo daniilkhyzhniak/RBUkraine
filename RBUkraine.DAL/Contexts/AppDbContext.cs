@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using RBUkraine.DAL.Entities;
 using RBUkraine.DAL.Extensions;
 
@@ -18,6 +19,11 @@ namespace RBUkraine.DAL.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
             modelBuilder.Entity<User>()
                 .HasIndex(g => g.Email)
@@ -52,5 +58,11 @@ namespace RBUkraine.DAL.Contexts
         public DbSet<CharityEvent> CharityEvents { get; set; }
 
         public DbSet<CharityEventTranslate> CharityEventTranslates { get; set; }
+
+        public DbSet<News> News { get; set; }
+
+        public DbSet<NewsTranslate> NewsTranslates { get; set; }
+
+        public DbSet<CharityEventPurchase> CharityEventPurchases { get; set; }
     }
 }

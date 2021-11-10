@@ -12,8 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using RBUkraine.BLL;
 using RBUkraine.BLL.Enums;
+using RBUkraine.PL.EmailSender;
 using RBUkraine.PL.Filters;
-using RBUkraine.PL.Middleware;
+using Stripe;
 
 namespace RBUkraine.PL
 {
@@ -30,6 +31,7 @@ namespace RBUkraine.PL
         {
             services.AddBusinessLogicLayer(_configuration.GetConnectionString("RBUkraineDb"));
             services.AddAutoMapper(typeof(Mapper));
+            services.AddTransient<IEmailSender, EmailSender.EmailSender>();
             
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -37,6 +39,12 @@ namespace RBUkraine.PL
                     options.LoginPath = new PathString("/login");
                     options.AccessDeniedPath = new PathString("/access-denied");
                     options.ReturnUrlParameter = "returnUrl";
+                })
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.ClientId = _configuration["GoogleAuth:ClientId"];
+                    options.ClientSecret = _configuration["GoogleAuth:ClientSecret"];
                 });
             services.AddAuthorization();
             
@@ -86,6 +94,9 @@ namespace RBUkraine.PL
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            var apiKey = string.Join("", _configuration["Stripe:ApiKey"].Split("///"));
+            StripeConfiguration.ApiKey = apiKey;
 
             app.UseEndpoints(endpoints =>
             {

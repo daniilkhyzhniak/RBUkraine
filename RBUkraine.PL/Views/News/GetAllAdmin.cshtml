@@ -1,0 +1,156 @@
+﻿@model RBUkraine.PL.ViewModels.News.NewsListViewModel
+
+@{
+    ViewData["Title"] = "GetAllAdmin";
+}
+
+<div style="background-image: url(../images/3.jpg);">
+    <br><br>
+    <div class="admin_ce_block">
+        <div class="row">
+            <div style="width: 300px; margin-left: 15px">
+                <div style="height: 70px">
+                    <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>@localizer["News"]</p>
+                </div>
+                <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px;border-bottom-right-radius: 10px">
+
+                    <form>
+                        <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <p class="text-Montserrat-light"
+                               style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
+                            <p>
+                                <select class="select_option">
+                                    <option disabled>@localizer["Sort"]</option>
+                                    <option selected value="name">@localizer["By title"]</option>
+                                    <option value="date">@localizer["By date"]</option>
+                                    <option value="">@localizer["By species"]</option>
+                                    <option value="cf">@localizer["By Charitable Organization"]</option>
+                                </select>
+                            </p>
+                            <p>
+                                <select class="select_option">
+                                    <option selected value="az">@localizer["A-Z"]</option>
+                                    <option value="za">@localizer["Z-A"]</option>
+                                </select>
+                            </p>
+                            <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
+                            <p class="text-Montserrat-light"
+                               style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;">
+                                <br>@localizer["Filter"]
+                            </p>
+                            <hr>
+                            <p>@localizer["Charitable foundations"]:</p>
+                            @foreach (var found in Model.FoundSelectList)
+                            {
+                                <div class="label_checkbox">
+                                    <div style="margin: 5px">
+
+                                        <label class="text-Montserrat" style="font-size: 15px;">
+                                            <input name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">&nbsp;@found.Text
+                                        </label>
+
+                                    </div>
+                                </div>
+                            }
+                            <hr>
+                        </div>
+
+                        <div style="text-align: center">
+                            <button style="color: #944747; background-color: transparent; border-color: transparent">
+                                @localizer["Cancel everything"] X
+                            </button>
+                            <button type="submit" class="button_table"
+                                    style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">
+                                @localizer["Apply"]
+                            </button>
+                        </div>
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+            <div style=" margin-top: 60px">
+                <div class="row">
+                    <form method="get">
+                        <input hidden name="SortDirection" value="@((int) Model.Filter.SortDirection)" />
+                        <input hidden name="SortOptions" value="@((int) Model.Filter.SortOptions)" />
+                        @foreach (var found in Model.FoundSelectList)
+                        {
+                            <input hidden name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">
+                        }
+                        <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search for"]:</span>
+                        <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
+                            <option selected="@(Model.Filter.SearchOptions == NewsSearchOptions.ByTitle)"
+                                    value="@((int) NewsSearchOptions.ByTitle)">
+                                @localizer["By title"]
+                            </option>
+                            <option selected="@(Model.Filter.SearchOptions == NewsSearchOptions.ByDate)"
+                                    value="@((int) NewsSearchOptions.ByDate)">
+                                @localizer["By date"]
+                            </option>
+                            <option selected="@(Model.Filter.SearchOptions == NewsSearchOptions.BySpecies)"
+                                    value="@((int) NewsSearchOptions.BySpecies)">
+                                @localizer["By Specious"]
+                            </option>
+                            <option selected="@(Model.Filter.SearchOptions == NewsSearchOptions.ByCharitableOrganization)"
+                                    value="@((int) NewsSearchOptions.ByCharitableOrganization)">
+                                @localizer["By the BF"]
+                            </option>
+                        </select>
+                        <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 600px; margin-left: 20px" />
+                        <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
+                            <img src="~/images/search.png" width="35px" height="35px" alt="1">
+                        </button>
+                    </form>
+                </div>
+                <div style="height: 490px">
+                    <table class="ce_table" style="margin-left: 15px;background-color: #F8FCF2">
+                        <thead style="font-weight: bold">
+                            <tr>
+                                <td style="width: 120px;">@localizer["Title"]</td>
+                                <td style="width: 90px;">@localizer["Date"]</td>
+                                <td style="width: 150px;">@localizer["Brief description"]</td>
+                                <td style="width: 350px;">@localizer["Full description"]</td>
+                                <td style="width: 150px;">@localizer["Species"]</td>
+                                <td style="width: 150px;">@localizer["Charitable Organization"]</td>
+                                <td style="width: 100px;">@localizer["Editing"]</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var news in Model.News)
+                            {
+                                <tr>
+                                    <td>@news.Title</td>
+                                    <td>@news.PublishDate.ToString("g")</td>
+                                    <td>@news.ShortDescription</td>
+                                    <td>@news.FullDescription</td>
+                                    <td>@news.Animal</td>
+                                    <td>@news.CharitableOrganization</td>
+                                    <td>
+                                        <a asp-action="Update" asp-route-id="@news.Id" style="border-color: transparent; background-color: transparent">
+                                            <img src="~/images/edit.png" width="27px" height="25px" alt="1">
+                                        </a>
+                                        <a onclick="confirmDeletionNew(@news.Id, '@localizer["Are you sure you want to delete this record?"]', () => location.reload())"
+                                           style="border-color: transparent; background-color: transparent">
+                                            <img src="~/images/delete.png" width="27px" height="25px" alt="1">
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <a asp-action="Create">
+                    <button type="submit" style="border-color: transparent; background-color: transparent"><img src="~/images/plus.png" width="100px" height="50px" alt="1"></button>
+                </a>
+                </div>
+            </div>
+    </div>
+    <br><br>
+</div>
+
+@section Scripts
+{
+    <script src="~/scripts/delete-news.js"></script>
+}

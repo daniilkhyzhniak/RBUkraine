@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+}
+
+@section Scripts {
+    <script src="~/scripts/checkout.js"></script>
+    <script>
+        redirectToCheckout("@ViewBag.SessionId");
+    </script>
+}

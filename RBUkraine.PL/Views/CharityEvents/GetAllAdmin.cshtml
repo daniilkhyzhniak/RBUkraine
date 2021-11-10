@@ -1,0 +1,106 @@
+﻿@model RBUkraine.PL.ViewModels.CharityEvents.CharityEventListViewModel
+
+@{
+    ViewData["Title"] = "GetAllAdmin";
+}
+
+<div style=" background-image: url(../images/3.jpg);">
+    <br><br>
+    <div class="admin_ce_block">
+        <div class="row">
+            <div style="width: 300px; margin-left: 15px">
+                <div style="height: 70px">
+                    <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>@localizer["Charity events"]</p>
+                </div>
+                <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
+                    <form>
+                        <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
+                            <p>
+                                <select class="select_option">
+                                    <option disabled>@localizer["Sort"]</option>
+                                    <option selected value="name">@localizer["By title"]</option>
+                                    <option value="date">@localizer["By date"]</option>
+                                    <option value="price">@localizer["By price"]</option>
+                                </select>
+                            </p>
+                            <p>
+                                <select class="select_option">
+                                    <option selected value="az">@localizer["A-Z"]</option>
+                                    <option value="za">@localizer["Z-A"]</option>
+                                </select>
+                            </p>
+                            <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
+                        </div>
+                        <div style="text-align: center">
+                            <button style="color: #944747; background-color: transparent; border-color: transparent">@localizer["Cancel everything"] X </button>
+                            <button type="submit" class="button_table" style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">@localizer["Apply"]</button>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+            <div style=" margin-top: 60px">
+                <div class="row">
+                    <p style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: 30px;font-size: 20px ; margin-top: 15px">@localizer["Search by"]:</p>
+                    <p>
+                        <select class="select_option" style="width: 300px; margin-left: 20px">
+                            <option disabled>@localizer["Search by"]</option>
+                            <option selected value="name">@localizer["By title"]</option>
+                            <option value="org">@localizer["By organizer"]</option>
+                            <option value="date">@localizer["By date"]</option>
+                            <option value="price">@localizer["By price"]</option>
+                        </select>
+                    </p>
+
+                    <p><input class="select_option" style="width: 600px; margin-left: 20px"></p>
+                    <button style="margin-top:-20px; background-color: transparent; border-color: transparent; color: black"><img src="~/images/search.png" width="35px" height="35px" alt="1"></button>
+                </div>
+                <div>
+                    <table class="ce_table" style="margin-left: 15px;background-color: #F8FCF2">
+                        <thead style="font-weight: bold">
+                        <td style="width: 150px;">@localizer["Title"]</td>
+                        <td style="width: 150px;">@localizer["Date and time"]</td>
+                        <td style="width: 200px;">@localizer["Organizer"]</td>
+                        <td style="width: 400px;">@localizer["Description"]</td>
+                        <td style="width: 100px;">@localizer["Price"]</td>
+                        <td style="width: 100px;">@localizer["Editing"]</td>
+                        </thead>
+                        <tbody>
+                            @foreach (var ch_event in Model.CharityEvents)
+                            {
+                                <tr>
+                                    <td>@ch_event.Name</td>
+                                    <td>@ch_event.DateTime.ToString("g")</td>
+                                    <td>@ch_event.Organizer</td>
+                                    <td>@ch_event.Description</td>
+                                    <td>@ch_event.Price</td>
+                                    <td>
+                                        <a asp-action="Update" asp-route-id="@ch_event.Id" style="border-color: transparent; background-color: transparent">
+                                            <img src="~/images/edit.png" width="27px" height="25px" alt="1">
+                                        </a>
+                                        <a onclick="confirmDeletionEvent(@ch_event.Id, '@localizer["Are you sure you want to delete this record?"]', () => location.reload())"
+                                           style="border-color: transparent; background-color: transparent">
+                                            <img src="~/images/delete.png" width="27px" height="25px" alt="1">
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <a asp-action="Create">
+                    <button type="submit" style="border-color: transparent; background-color: transparent"><img src="~/images/plus.png" width="100px" height="50px" alt="1"></button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/scripts/delete-evant.js"></script>
+}
