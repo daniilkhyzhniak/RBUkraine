@@ -93,10 +93,10 @@ namespace RBUkraine.PL.Controllers
 
             if (User.IsInRole(Roles.Admin))
             {
-                return RedirectToAction("GetAll", "Animals");
+                return RedirectToAction("GetAllAdmin", "Animals");
             }
 
-            return RedirectToAction("GetAnimals", "CharitableOrganizations");
+            return RedirectToAction("Profile", "Authentication");
         }
 
         [HttpPost("login/google")]
