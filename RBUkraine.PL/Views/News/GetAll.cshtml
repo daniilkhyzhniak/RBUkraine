@@ -65,23 +65,25 @@
             <div class="section_animal">
                 @foreach (var one_new in Model)
                 {
-                    <button class="button_1" style="background-color: transparent; border-color: transparent;">
-                        <div class="section_1">
-                            <div class="center_content1">
-                                <p class="t1">
-                                    @one_new.Title
-                                </p>
+                    <a asp-controller="News" asp-action="GetById" asp-route-id="@one_new.Id">
+                        <button class="button_1" style="background-color: transparent; border-color: transparent;">
+                            <div class="section_1">
+                                <div class="center_content1">
+                                    <p class="t1">
+                                        @one_new.Title
+                                    </p>
 
-                                <p class="t2">
-                                    @one_new.PublishDate
-                                </p>
+                                    <p class="t2">
+                                        @one_new.PublishDate.ToString("g")
+                                    </p>
 
+                                </div>
+                                <p class="t3">
+                                    @one_new.ShortDescription
+                                </p>
                             </div>
-                            <p class="t3">
-                                @one_new.ShortDescription
-                            </p>
-                        </div>
-                    </button>
+                        </button>
+                    </a>
                 }
             </div>
         </div>
