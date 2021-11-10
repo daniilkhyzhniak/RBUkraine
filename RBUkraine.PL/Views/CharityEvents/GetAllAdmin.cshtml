@@ -15,19 +15,36 @@
                 <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
                     <form method="get">
                         <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+                            <input hidden name="Search" value="@Model.Filter.Search" />
                             <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
                             <p>
-                                <select class="select_option">
+                                <select name="SortOptions" class="select_option">
                                     <option disabled>@localizer["Sort"]</option>
-                                    <option selected value="name">@localizer["By title"]</option>
-                                    <option value="date">@localizer["By date"]</option>
-                                    <option value="price">@localizer["By price"]</option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByTitle)" 
+                                            value="@((int) CharityEventSortOptions.ByTitle)">
+                                        @localizer["By title"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByDate)"
+                                            value="@((int) CharityEventSortOptions.ByDate)">
+                                        @localizer["By date"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByPrice)"
+                                            value="@((int) CharityEventSortOptions.ByPrice)">
+                                        @localizer["By price"]
+                                    </option>
                                 </select>
                             </p>
                             <p>
-                                <select class="select_option">
-                                    <option selected value="az">@localizer["A-Z"]</option>
-                                    <option value="za">@localizer["Z-A"]</option>
+                                <select name="SortDirection" class="select_option">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        @localizer["A-Z"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        @localizer["Z-A"]
+                                    </option>
                                 </select>
                             </p>
                             <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
