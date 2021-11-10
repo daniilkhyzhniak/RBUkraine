@@ -13,7 +13,7 @@
                     <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>@localizer["Charity events"]</p>
                 </div>
                 <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
-                    <form>
+                    <form method="get">
                         <div style="width: 270px; margin-left: auto; margin-right: auto">
                             <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
                             <p>
@@ -74,7 +74,7 @@
                                     <td>@ch_event.DateTime.ToString("g")</td>
                                     <td>@ch_event.Organizer</td>
                                     <td>@ch_event.Description</td>
-                                    <td>@ch_event.Price</td>
+                                    <td>@ch_event.Price.ToString("F0") &#8372;</td>
                                     <td>
                                         <a asp-action="Update" asp-route-id="@ch_event.Id" style="border-color: transparent; background-color: transparent">
                                             <img src="~/images/edit.png" width="27px" height="25px" alt="1">
