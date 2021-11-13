@@ -22,10 +22,12 @@ namespace RBUkraine.DAL.Entities
 
         public ICollection<CharitableOrganizationTranslate> CharitableOrganizationTranslates { get; set; }
 
-        public ICollection<Animal> Animals { get; set; }
+        public ICollection<Animal> Animals { get; set; } = new List<Animal>();
 
         public CharitableOrganizationImage Image { get; set; }
 
-        public ICollection<News> News { get; set; }
+        public ICollection<News> News { get; set; } = new List<News>();
+
+        public ICollection<СharitableСontribution> СharitableСontributions { get; set; } = new List<СharitableСontribution>();
     }
 }

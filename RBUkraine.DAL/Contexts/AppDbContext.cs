@@ -64,5 +64,15 @@ namespace RBUkraine.DAL.Contexts
         public DbSet<NewsTranslate> NewsTranslates { get; set; }
 
         public DbSet<CharityEventPurchase> CharityEventPurchases { get; set; }
+
+        public DbSet<СharitableСontribution> СharitableСontributions { get; set; }
+        
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }
