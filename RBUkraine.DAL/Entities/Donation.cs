@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RBUkraine.DAL.Entities
 {
-    public class СharitableСontribution : BaseEntity
+    public class Donation : BaseEntity
     {
         public int? AnimalId { get; set; }
 

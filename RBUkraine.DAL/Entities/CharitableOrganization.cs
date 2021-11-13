@@ -28,6 +28,6 @@ namespace RBUkraine.DAL.Entities
 
         public ICollection<News> News { get; set; } = new List<News>();
 
-        public ICollection<СharitableСontribution> СharitableСontributions { get; set; } = new List<СharitableСontribution>();
+        public ICollection<Donation> Donations { get; set; } = new List<Donation>();
     }
 }
