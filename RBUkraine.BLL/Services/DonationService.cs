@@ -47,6 +47,7 @@ namespace RBUkraine.BLL.Services
                 ) as d
                 inner join Users u
                 on u.Id = d.UserId
+                where u.IncludeInRating = 1
                 order by d.Amount desc");
 
             return _mapper.Map<IEnumerable<RatingItemModel>>(ratingItems);
