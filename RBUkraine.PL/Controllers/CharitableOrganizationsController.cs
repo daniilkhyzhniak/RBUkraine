@@ -55,9 +55,9 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
-        public async Task<IActionResult> GetAllAdmin()
+        public async Task<IActionResult> GetAllAdmin(CharitableOrganizationFilterModel filter)
         {
-            var charitableOrganizations = await _charitableOrganizationService.GetAllAdmin(CultureInfo.CurrentCulture.Name);
+            var charitableOrganizations = await _charitableOrganizationService.GetAllAdmin(filter, CultureInfo.CurrentCulture.Name);
             return View(_mapper.Map<IEnumerable<CharitableOrganizationViewModel>>(charitableOrganizations));
         }
 

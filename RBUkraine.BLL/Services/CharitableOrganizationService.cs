@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -60,15 +61,56 @@ namespace RBUkraine.BLL.Services
             return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
         }
 
-        public async Task<IEnumerable<CharitableOrganizationModel>> GetAllAdmin(string culture = Culture.Ukrainian)
+        public async Task<IEnumerable<CharitableOrganizationModel>> GetAllAdmin(CharitableOrganizationFilterModel filter, string culture = Culture.Ukrainian)
         {
-            var charitableOrganizations = await _context.CharitableOrganizations
+            var query = _context.CharitableOrganizations
                 .Include(c => c.CharitableOrganizationTranslates)
                 .Include(c => c.Image)
-                .AsSplitQuery()
-                .ToListAsync();
+                .Where(c => !c.IsDeleted);
 
-            return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
+            query = AddSearchFilter(query, filter);
+
+            var charitableOrganizations = await query.AsSplitQuery().ToListAsync();
+            var models = _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
+
+            return Sort(models, filter);
+        }
+
+        private static IQueryable<CharitableOrganization> AddSearchFilter(IQueryable<CharitableOrganization> query, CharitableOrganizationFilterModel filter)
+        {
+            if (string.IsNullOrWhiteSpace(filter.Search))
+            {
+                return query;
+            }
+
+            var search = filter.Search.Trim().ToUpper();
+
+            return filter.SearchOptions switch
+            {
+                CharitableOrganizationSearchOptions.ByName => query
+                    .Where(x => x.Name.Trim().ToUpper().Contains(search)
+                                || x.CharitableOrganizationTranslates.Any(a => a.Name.Trim().ToUpper().Contains(search))),
+                CharitableOrganizationSearchOptions.ByDate => query.Where(x => x.FoundationDate.ToString().Contains(search)),
+                _ => query
+            };
+        }
+
+        private static IEnumerable<CharitableOrganizationModel> Sort(
+            IEnumerable<CharitableOrganizationModel> models,
+            CharitableOrganizationFilterModel filter)
+        {
+            return filter.SortOptions switch
+            {
+                CharitableOrganizationSortOptions.ByName => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.Name)
+                    : models.OrderByDescending(x => x.Name),
+                CharitableOrganizationSortOptions.ByDate => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.FoundationDate)
+                    : models.OrderByDescending(x => x.FoundationDate),
+                _ => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.Name)
+                    : models.OrderByDescending(x => x.Name)
+            };
         }
 
         public async Task<CharitableOrganizationModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
