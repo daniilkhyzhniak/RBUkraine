@@ -300,6 +300,9 @@
   <data name="Latin Species" xml:space="preserve">
     <value>Вид лат.</value>
   </data>
+  <data name="List of philanthropists" xml:space="preserve">
+    <value>Список благодійників</value>
+  </data>
   <data name="Log in as a user" xml:space="preserve">
     <value>Увійти як користувач</value>
   </data>
