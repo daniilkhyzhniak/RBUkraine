@@ -13,10 +13,6 @@ namespace RBUkraine.DAL.Entities
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
-
-        public int AnimalId { get; set; }
-
-        public Animal Animal { get; set; }
         
         public ProductImage Image { get; set; }
     }

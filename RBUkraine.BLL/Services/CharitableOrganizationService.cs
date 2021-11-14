@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.MapperExtensions;
+using RBUkraine.BLL.Models;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.DAL.Contexts;
 using RBUkraine.DAL.Entities;
@@ -152,6 +153,12 @@ namespace RBUkraine.BLL.Services
 
         public async Task<int> CreateAsync(CharitableOrganizationEditorModel model)
         {
+            model.Image ??= new Image
+            {
+                Title = "Default",
+                Data = Convert.FromBase64String(Images.DefaultAnimal)
+            };
+
             var charitableOrganization = _mapper.Map<CharitableOrganization>(model);
 
             _context.CharitableOrganizations.Add(charitableOrganization);

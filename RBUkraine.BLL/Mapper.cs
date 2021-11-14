@@ -7,6 +7,7 @@ using RBUkraine.BLL.Models.CharitableContribution;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.News;
+using RBUkraine.BLL.Models.Product;
 using RBUkraine.BLL.Models.User;
 
 namespace RBUkraine.BLL
@@ -42,6 +43,9 @@ namespace RBUkraine.BLL
             CreateMap<NewsEditorModel, News>();
 
             CreateMap<RatingItem, RatingItemModel>();
+
+            CreateMap<Product, ProductModel>();
+            CreateMap<ProductEditorModel, Product>();
         }
     }
 }

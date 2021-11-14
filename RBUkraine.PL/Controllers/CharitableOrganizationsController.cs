@@ -55,10 +55,14 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
-        public async Task<IActionResult> GetAllAdmin(CharitableOrganizationFilterModel filter)
+        public async Task<IActionResult> GetAllAdmin([FromQuery] CharitableOrganizationFilterModel filter)
         {
             var charitableOrganizations = await _charitableOrganizationService.GetAllAdmin(filter, CultureInfo.CurrentCulture.Name);
-            return View(_mapper.Map<IEnumerable<CharitableOrganizationViewModel>>(charitableOrganizations));
+            return View(new CharitableOrganizationListViewModel
+            {
+                CharitableOrganizations = _mapper.Map<IList<CharitableOrganizationViewModel>>(charitableOrganizations),
+                Filter = filter
+            });
         }
 
         [HttpGet("create"), Authorize(Roles = Roles.Admin)]
@@ -76,7 +80,7 @@ namespace RBUkraine.PL.Controllers
             }
 
             await _charitableOrganizationService.CreateAsync(_mapper.Map<CharitableOrganizationEditorModel>(model));
-            return RedirectToAction();
+            return RedirectToAction("GetAllAdmin");
         }
 
         [HttpGet("{id:int}/edit"), Authorize(Roles = Roles.Admin)]
@@ -87,7 +91,7 @@ namespace RBUkraine.PL.Controllers
 
             if (charitableOrganization is null)
             {
-                return NotFound("GetAllAdmin");
+                return NotFound();
             }
 
             return View(_mapper.Map<CharitableOrganizationEditorViewModel>(charitableOrganization));

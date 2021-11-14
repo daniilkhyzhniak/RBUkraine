@@ -12,10 +12,12 @@ using System.Linq;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.News;
+using RBUkraine.BLL.Models.Product;
 using RBUkraine.BLL.Models.User;
 using RBUkraine.PL.ViewModels.CharitableOrganizations;
 using RBUkraine.PL.ViewModels.CharityEvents;
 using RBUkraine.PL.ViewModels.News;
+using RBUkraine.PL.ViewModels.Products;
 
 namespace RBUkraine.PL
 {
@@ -53,6 +55,11 @@ namespace RBUkraine.PL
             CreateMap<NewsModel, NewsViewModel>();
             CreateMap<NewsModel, NewsEditorModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
+
+            CreateMap<ProductModel, ProductViewModel>();
+            CreateMap<ProductModel, ProductEditorViewModel>();
+            CreateMap<ProductEditorViewModel, ProductEditorModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
         }
 
         private static Image MapFileToImage(IFormFile file)
