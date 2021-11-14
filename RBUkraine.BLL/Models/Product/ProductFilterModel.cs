@@ -5,6 +5,7 @@ namespace RBUkraine.BLL.Models.Product
 {
     public class ProductFilterModel
     {
+        public ProductSearchOptions SearchOptions { get; set; } = ProductSearchOptions.ByName;
         public string Search { get; set; }
         
         public ProductSortOptions SortOptions { get; set; }

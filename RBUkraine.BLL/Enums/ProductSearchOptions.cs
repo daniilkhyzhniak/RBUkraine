@@ -8,6 +8,8 @@ namespace RBUkraine.BLL.Enums
 {
     public enum ProductSearchOptions
     {
-        ByName
+        ByName,
+        ByCategory,
+        ByPrice
     }
 }

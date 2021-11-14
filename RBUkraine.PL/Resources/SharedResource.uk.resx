@@ -147,6 +147,9 @@
   <data name="Buy a ticket" xml:space="preserve">
     <value>Придбати квиток</value>
   </data>
+  <data name="By category" xml:space="preserve">
+    <value>За категорією</value>
+  </data>
   <data name="By Charitable Organization" xml:space="preserve">
     <value>За БФ</value>
   </data>
@@ -191,6 +194,12 @@
   </data>
   <data name="Cancel everything" xml:space="preserve">
     <value>Скасувати все</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категорії</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категорія</value>
   </data>
   <data name="Charitable Foundation “Protection of Animals of the Red Book of Ukraine”" xml:space="preserve">
     <value>БФ “Захист тварин червоної книги України”</value>
@@ -366,6 +375,9 @@
   <data name="Price" xml:space="preserve">
     <value>Ціна</value>
   </data>
+  <data name="Products" xml:space="preserve">
+    <value>Продукти</value>
+  </data>
   <data name="Purchase history" xml:space="preserve">
     <value>Історія покупок</value>
   </data>
@@ -383,6 +395,9 @@
   </data>
   <data name="Search by" xml:space="preserve">
     <value>Шукати за</value>
+  </data>
+  <data name="Search by name" xml:space="preserve">
+    <value>Шукати за ім'ям</value>
   </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вхід</value>
