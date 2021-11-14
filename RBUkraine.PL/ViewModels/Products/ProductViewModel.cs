@@ -1,6 +1,4 @@
-﻿using RBUkraine.BLL.Models;
-
-namespace RBUkraine.PL.ViewModels.Products
+﻿namespace RBUkraine.PL.ViewModels.Products
 {
     public class ProductViewModel
     {
@@ -14,6 +12,6 @@ namespace RBUkraine.PL.ViewModels.Products
 
         public decimal Price { get; set; }
 
-        public Image Image { get; set; }
+        public ImageViewModel Image { get; set; }
     }
 }

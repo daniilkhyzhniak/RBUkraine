@@ -17,6 +17,7 @@ namespace RBUkraine.BLL
             services.AddTransient<ICharitableOrganizationService, CharitableOrganizationService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IDonationService, DonationService>();
+            services.AddTransient<IProductService, ProductService>();
         }
     }
 }

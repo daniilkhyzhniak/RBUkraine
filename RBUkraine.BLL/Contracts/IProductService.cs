@@ -11,6 +11,8 @@ namespace RBUkraine.BLL.Contracts
 
         Task<IEnumerable<ProductModel>> GetAll(ProductFilterModel filter, string culture = Culture.Ukrainian);
 
+        Task<IEnumerable<ProductModel>> GetAll(IEnumerable<int> ids);
+
         Task<ProductModel> Get(int id, string culture = Culture.Ukrainian);
 
         Task Create(ProductEditorModel model);

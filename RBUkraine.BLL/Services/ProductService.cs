@@ -52,6 +52,16 @@ namespace RBUkraine.BLL.Services
             return Sort(models, filter);
         }
 
+        public async Task<IEnumerable<ProductModel>> GetAll(IEnumerable<int> ids)
+        {
+            var products = await _context.Products
+                .Include(x => x.Image)
+                .Where(x => ids.Contains(x.Id))
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<ProductModel>>(products);
+        }
+
         private static IQueryable<Product> AddSearchFilter(IQueryable<Product> query, ProductFilterModel filter)
         {
             if (string.IsNullOrWhiteSpace(filter.Search))
