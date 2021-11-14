@@ -312,6 +312,9 @@
   <data name="List of philanthropists" xml:space="preserve">
     <value>Список благотворителей</value>
   </data>
+  <data name="List of philanthropists who made donations through the RBUkraine portal" xml:space="preserve">
+    <value>Список благотворителей, внесших пожертвования через портал "RBUkraine"</value>
+  </data>
   <data name="Log in as a user" xml:space="preserve">
     <value>Войти как пользователь</value>
   </data>
@@ -422,6 +425,9 @@
   </data>
   <data name="The amount of charitable contributions" xml:space="preserve">
     <value>Сумма благотворительных взносов</value>
+  </data>
+  <data name="The name of the benefactor" xml:space="preserve">
+    <value>Имя благотворителя</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Заголовок</value>
