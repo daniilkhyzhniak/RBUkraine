@@ -46,10 +46,34 @@ namespace RBUkraine.PL
 
             CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
+            CreateMap<CharitableOrganizationModel, CharitableOrganizationEditorViewModel>();
+            CreateMap<CharitableOrganizationEditorViewModel, CharitableOrganizationEditorModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
 
             CreateMap<NewsModel, NewsViewModel>();
             CreateMap<NewsModel, NewsEditorModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
+        }
+
+        private static Image MapFileToImage(IFormFile file)
+        {
+            if (file is null)
+            {
+                return null;
+            }
+
+            using var memoryStream = new MemoryStream();
+
+            var img = new Image
+            {
+                Title = file.FileName
+            };
+
+            file.CopyTo(memoryStream);
+            img.Data = memoryStream.ToArray();
+            memoryStream.Close();
+
+            return img;
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)

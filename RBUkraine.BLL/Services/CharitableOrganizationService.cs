@@ -60,6 +60,17 @@ namespace RBUkraine.BLL.Services
             return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
         }
 
+        public async Task<IEnumerable<CharitableOrganizationModel>> GetAllAdmin(string culture = Culture.Ukrainian)
+        {
+            var charitableOrganizations = await _context.CharitableOrganizations
+                .Include(c => c.CharitableOrganizationTranslates)
+                .Include(c => c.Image)
+                .AsSplitQuery()
+                .ToListAsync();
+
+            return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
+        }
+
         public async Task<CharitableOrganizationModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
         {
             var charitableOrganization = await _context.CharitableOrganizations
@@ -122,6 +133,8 @@ namespace RBUkraine.BLL.Services
             charitableOrganization.FoundationDate = model.FoundationDate;
             charitableOrganization.PhoneNumber = model.PhoneNumber;
             charitableOrganization.Stockholders = model.Stockholders;
+            charitableOrganization.PhoneNumber = model.PhoneNumber;
+            charitableOrganization.Founders = model.Founders;
 
             if (model.Image is not null)
             {
