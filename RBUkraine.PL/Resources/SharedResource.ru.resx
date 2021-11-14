@@ -153,8 +153,14 @@
   <data name="By date" xml:space="preserve">
     <value>По дате</value>
   </data>
+  <data name="By foundation date" xml:space="preserve">
+    <value>По дате основания</value>
+  </data>
   <data name="By Latin Specious" xml:space="preserve">
     <value>По латинскому названию</value>
+  </data>
+  <data name="By name" xml:space="preserve">
+    <value>По названию</value>
   </data>
   <data name="By organizer" xml:space="preserve">
     <value>По организатору</value>
