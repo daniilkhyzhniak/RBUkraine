@@ -69,19 +69,19 @@
                         <input hidden name="SortDirection" value="@((int) Model.Filter.SortDirection)" />
                         <input hidden name="SortOptions" value="@((int) Model.Filter.SortOptions)" />
                         <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search for"]:</span>
-                        <p>
-                            <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 20px">
-                                <option disabled>@localizer["Search by"]</option>
-                                <option selected="@(Model.Filter.SortOptions == CharitableOrganizationSortOptions.ByName)"
-                                        value="@((int) CharitableOrganizationSortOptions.ByName)">
-                                    @localizer["By name"]
-                                </option>
-                                <option selected="@(Model.Filter.SortOptions == CharitableOrganizationSortOptions.ByDate)"
-                                        value="@((int) CharitableOrganizationSortOptions.ByDate)">
-                                    @localizer["By foundation date"]
-                                </option>
-                            </select>
-                        </p>
+                        
+                        <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 20px">
+                            <option disabled>@localizer["Search by"]</option>
+                            <option selected="@(Model.Filter.SortOptions == CharitableOrganizationSortOptions.ByName)"
+                                    value="@((int) CharitableOrganizationSortOptions.ByName)">
+                                @localizer["By name"]
+                            </option>
+                            <option selected="@(Model.Filter.SortOptions == CharitableOrganizationSortOptions.ByDate)"
+                                    value="@((int) CharitableOrganizationSortOptions.ByDate)">
+                                @localizer["By foundation date"]
+                            </option>
+                        </select>
+                        
 
                         <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 600px; margin-left: 20px" />
                         <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
