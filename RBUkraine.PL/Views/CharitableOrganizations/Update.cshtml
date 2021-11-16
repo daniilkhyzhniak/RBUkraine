@@ -4,55 +4,6 @@
     ViewData["Title"] = "Update";
 }
 
-@*<h1>Update</h1>
-
-    <h4>CharitableOrganizationEditorViewModel</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Update">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PhoneNumber" class="control-label"></label>
-                    <input asp-for="PhoneNumber" class="form-control" />
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Founders" class="control-label"></label>
-                    <input asp-for="Founders" class="form-control" />
-                    <span asp-validation-for="Founders" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Stockholders" class="control-label"></label>
-                    <input asp-for="Stockholders" class="form-control" />
-                    <span asp-validation-for="Stockholders" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FoundationDate" class="control-label"></label>
-                    <input asp-for="FoundationDate" class="form-control" />
-                    <span asp-validation-for="FoundationDate" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>*@
 
 <div style="height: 700px; background-image: url(../images/3.jpg);">
     <br>
@@ -84,7 +35,7 @@
                     <input asp-for="Name" type="text" style="width: 100%; height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px" value="@Model.Name">
                     <input asp-for="Email" type="email" style="margin-top: 5px; margin-bottom: 5px; width: 100%; height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px line-height: 22px;text-decoration-line: underline;" value="@Model.Email">
                     <input asp-for="PhoneNumber" type="text" style="width: 100%; height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px" value="@Model.PhoneNumber">
-                    <input asp-for="FoundationDate" type="text" style="width: 100%; margin-top: 5px;height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px" value="@Model.FoundationDate">
+                    <input asp-for="FoundationDate" type="datetime-local" style=" height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px">
                     <input asp-for="Founders" type="text" style="width: 100%; margin-top: 5px;height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px" value="@Model.Founders">
                     <div class="form-group row">
                         <div class="col-sm-12 custom-file" style="margin-top:1%;">
@@ -112,6 +63,6 @@
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/scripts/edit-animal.js"></script>
+    <script src="~/scripts/edit-charitableOrganizations.js"></script>
     <script src="~/scripts/delete-charitableOrganizations.js"></script>
 }
