@@ -372,6 +372,9 @@
   <data name="Phone number" xml:space="preserve">
     <value> Номер тф.</value>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
   <data name="Phylum" xml:space="preserve">
     <value>Тип</value>
   </data>
@@ -382,7 +385,7 @@
     <value>Ціна</value>
   </data>
   <data name="Products" xml:space="preserve">
-    <value>Продукти</value>
+    <value>Товари</value>
   </data>
   <data name="Purchase history" xml:space="preserve">
     <value>Історія покупок</value>

@@ -372,6 +372,9 @@
   <data name="Phone number" xml:space="preserve">
     <value>Номер тф.</value>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
   <data name="Phylum" xml:space="preserve">
     <value>Тип</value>
   </data>
