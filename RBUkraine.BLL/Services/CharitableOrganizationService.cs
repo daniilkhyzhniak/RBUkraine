@@ -195,6 +195,9 @@ namespace RBUkraine.BLL.Services
                     Title = model.Image.Title
                 });
             }
+
+            _context.Update(charitableOrganization);
+            await _context.SaveChangesAsync();
         }
     }
 }

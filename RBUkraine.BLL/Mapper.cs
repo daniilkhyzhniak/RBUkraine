@@ -38,6 +38,7 @@ namespace RBUkraine.BLL
                 .ReverseMap();
             CreateMap<CharitableOrganization, CharitableOrganizationModel>()
                 .ForMember(x => x.Animals, opt => opt.Ignore());
+            CreateMap<CharitableOrganizationEditorModel, CharitableOrganization>();
 
             CreateMap<News, NewsModel>();
             CreateMap<NewsEditorModel, News>();
