@@ -129,6 +129,9 @@
   <data name="An animal of this species already exists" xml:space="preserve">
     <value>Животное этого вида уже существует</value>
   </data>
+  <data name="Animal species" xml:space="preserve">
+    <value>Вид животных</value>
+  </data>
   <data name="Animals" xml:space="preserve">
     <value>Животные</value>
   </data>
@@ -201,13 +204,16 @@
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
   </data>
+  <data name="Charitable contribution" xml:space="preserve">
+    <value>Благотворительный взнос</value>
+  </data>
   <data name="Charitable Foundation “Protection of Animals of the Red Book of Ukraine”" xml:space="preserve">
     <value>БФ “Защита животных Красную книгу Украины”</value>
   </data>
   <data name="Charitable foundations" xml:space="preserve">
     <value>Благотворительные фонды</value>
   </data>
-  <data name="Charitable Organization" xml:space="preserve">
+  <data name="Charitable organization" xml:space="preserve">
     <value>Благотворительный фонд</value>
   </data>
   <data name="Charity" xml:space="preserve">
@@ -333,6 +339,12 @@
   <data name="Make a charitable" xml:space="preserve">
     <value>Сделать благотворительный</value>
   </data>
+  <data name="Make a charitable contribution to the fund" xml:space="preserve">
+    <value>Внести благотворительный взнос в фонд</value>
+  </data>
+  <data name="Make a charitable contribution to the species" xml:space="preserve">
+    <value>Внести благотворительный вклад в вид</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
@@ -428,6 +440,9 @@
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Тематика</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Сумма</value>
   </data>
   <data name="The amount of charitable contributions" xml:space="preserve">
     <value>Сумма благотворительных взносов</value>
