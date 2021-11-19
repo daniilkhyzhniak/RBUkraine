@@ -33,6 +33,9 @@ namespace RBUkraine.DAL.Contexts
                 .HasIndex(g => g.Name)
                 .IsUnique();
 
+            modelBuilder.Entity<RatingItem>()
+                .HasNoKey();
+
             modelBuilder.AddSeedData();
             modelBuilder.AddSoftDeletedFilter();
         }
@@ -64,5 +67,17 @@ namespace RBUkraine.DAL.Contexts
         public DbSet<NewsTranslate> NewsTranslates { get; set; }
 
         public DbSet<CharityEventPurchase> CharityEventPurchases { get; set; }
+
+        public DbSet<Donation> Donations { get; set; }
+        
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+        public DbSet<RatingItem> RatingItems { get; set; }
     }
 }

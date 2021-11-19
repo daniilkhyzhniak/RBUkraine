@@ -1053,6 +1053,19 @@ color: #FFFFFF;
     
     
 }
+
+.photo{
+    font-family: Montserrat;
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 39px;
+display: flex;
+align-items: center;
+font-feature-settings: 'tnum' on, 'lnum' on;
+
+color: #000000;
+}
 @font-face {
 
 font-family: "Literata";

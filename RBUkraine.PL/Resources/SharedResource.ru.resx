@@ -147,14 +147,23 @@
   <data name="Buy a ticket" xml:space="preserve">
     <value>Купить билет</value>
   </data>
+  <data name="By category" xml:space="preserve">
+    <value>По категории</value>
+  </data>
   <data name="By Charitable Organization" xml:space="preserve">
     <value>По БФ</value>
   </data>
   <data name="By date" xml:space="preserve">
     <value>По дате</value>
   </data>
+  <data name="By foundation date" xml:space="preserve">
+    <value>По дате основания</value>
+  </data>
   <data name="By Latin Specious" xml:space="preserve">
     <value>По латинскому названию</value>
+  </data>
+  <data name="By name" xml:space="preserve">
+    <value>По названию</value>
   </data>
   <data name="By organizer" xml:space="preserve">
     <value>По организатору</value>
@@ -185,6 +194,12 @@
   </data>
   <data name="Cancel everything" xml:space="preserve">
     <value>Отменить все</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категория</value>
   </data>
   <data name="Charitable Foundation “Protection of Animals of the Red Book of Ukraine”" xml:space="preserve">
     <value>БФ “Защита животных Красную книгу Украины”</value>
@@ -294,6 +309,12 @@
   <data name="Latin Species" xml:space="preserve">
     <value>Вид лат.</value>
   </data>
+  <data name="List of philanthropists" xml:space="preserve">
+    <value>Список благотворителей</value>
+  </data>
+  <data name="List of philanthropists who made donations through the RBUkraine portal" xml:space="preserve">
+    <value>Список благотворителей, внесших пожертвования через портал "RBUkraine"</value>
+  </data>
   <data name="Log in as a user" xml:space="preserve">
     <value>Войти как пользователь</value>
   </data>
@@ -302,6 +323,9 @@
   </data>
   <data name="Login:" xml:space="preserve">
     <value>Логин:</value>
+  </data>
+  <data name="Logotype" xml:space="preserve">
+    <value>Логотип</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Выйти</value>
@@ -348,6 +372,9 @@
   <data name="Phone number" xml:space="preserve">
     <value>Номер тф.</value>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
   <data name="Phylum" xml:space="preserve">
     <value>Тип</value>
   </data>
@@ -356,6 +383,9 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Продукты</value>
   </data>
   <data name="Purchase history" xml:space="preserve">
     <value>История покупок</value>
@@ -374,6 +404,9 @@
   </data>
   <data name="Search by" xml:space="preserve">
     <value>Искать по</value>
+  </data>
+  <data name="Search by name" xml:space="preserve">
+    <value>Искать по имени</value>
   </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вход</value>
@@ -398,6 +431,9 @@
   </data>
   <data name="The amount of charitable contributions" xml:space="preserve">
     <value>Сумма благотворительных взносов</value>
+  </data>
+  <data name="The name of the benefactor" xml:space="preserve">
+    <value>Имя благотворителя</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Заголовок</value>

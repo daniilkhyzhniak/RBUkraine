@@ -16,21 +16,41 @@
 
                     <form>
                         <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+                            <input hidden name="Search" value="@Model.Filter.Search" />
                             <p class="text-Montserrat-light"
                                style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
                             <p>
-                                <select class="select_option">
+                                <select name="SortOptions" class="select_option">
                                     <option disabled>@localizer["Sort"]</option>
-                                    <option selected value="name">@localizer["By title"]</option>
-                                    <option value="date">@localizer["By date"]</option>
-                                    <option value="">@localizer["By species"]</option>
-                                    <option value="cf">@localizer["By Charitable Organization"]</option>
+                                    <option selected="@(Model.Filter.SortOptions == NewsSortOptions.ByTitle)"
+                                            value="@((int) NewsSortOptions.ByTitle)">
+                                        @localizer["By title"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == NewsSortOptions.ByDate)"
+                                            value="@((int) NewsSortOptions.ByDate)">
+                                        @localizer["By date"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == NewsSortOptions.BySpecies)"
+                                            value="@((int) NewsSortOptions.BySpecies)">
+                                        @localizer["By species"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == NewsSortOptions.ByCharitableOrganization)"
+                                            value="@((int) NewsSortOptions.ByCharitableOrganization)">
+                                        @localizer["By Charitable Organization"]
+                                    </option>
                                 </select>
                             </p>
                             <p>
-                                <select class="select_option">
-                                    <option selected value="az">@localizer["A-Z"]</option>
-                                    <option value="za">@localizer["Z-A"]</option>
+                                <select name="SortDirection" class="select_option">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        @localizer["A-Z"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        @localizer["Z-A"]
+                                    </option>
                                 </select>
                             </p>
                             <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
@@ -78,7 +98,7 @@
                         {
                             <input hidden name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">
                         }
-                        <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search for"]:</span>
+                        <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search by"]:</span>
                         <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
                             <option selected="@(Model.Filter.SearchOptions == NewsSearchOptions.ByTitle)"
                                     value="@((int) NewsSearchOptions.ByTitle)">

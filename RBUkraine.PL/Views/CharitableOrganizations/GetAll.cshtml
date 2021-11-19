@@ -4,6 +4,14 @@
     ViewData["Title"] = "GetAll";
 }
 
+
+<div class="text-Literata" style="width: 99.99%;height: 40px;left: 0px; top: 0px; background: rgba(161, 158, 80, 0.6);">
+    <div class="row">
+        <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="button_menu_active" style="width: 480px; margin-left: 18%; font-size: small">@localizer["Charitable foundations"]</a>
+        <a asp-controller="Donation" asp-action="Rating" class="button_menu" style="width: 480px; font-size: small; color: #333 ">@localizer["List of philanthropists"]</a>
+    </div>
+</div>
+
 <div class="row">
     <div>
         <button class="left-button">

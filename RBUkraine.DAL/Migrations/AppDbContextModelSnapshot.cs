@@ -501,6 +501,39 @@ namespace RBUkraine.DAL.Migrations
                     b.ToTable("CharityEventTranslates");
                 });
 
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Donation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
+
+                    b.Property<int?>("AnimalId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CharitableOrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
+
+                    b.HasIndex("CharitableOrganizationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Donations");
+                });
+
             modelBuilder.Entity("RBUkraine.DAL.Entities.News", b =>
                 {
                     b.Property<int>("Id")
@@ -568,6 +601,122 @@ namespace RBUkraine.DAL.Migrations
                     b.HasIndex("NewsId");
 
                     b.ToTable("NewsTranslates");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTimeOffset>("Date")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.OrderDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.RatingItem", b =>
+                {
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("RatingItems");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.Role", b =>
@@ -643,7 +792,7 @@ namespace RBUkraine.DAL.Migrations
                             Email = "admin1@email.com",
                             IncludeInRating = false,
                             IsDeleted = false,
-                            Password = "$2a$11$4nxos/Ucl5eIu8xARFRggeKCkDIU3QOcenQGNv5b2DXhNw6XrmzAi"
+                            Password = "$2a$11$MnM01PV/dtR4LoNuKyBVWu/PRzbX38pmCuYo/L8KTAucXc/.aooJi"
                         },
                         new
                         {
@@ -651,7 +800,7 @@ namespace RBUkraine.DAL.Migrations
                             Email = "user1@email.com",
                             IncludeInRating = false,
                             IsDeleted = false,
-                            Password = "$2a$11$BaTiY0R2XhfAVr4LpHOa7.a2fvFeypwkuQTwGooNQXXwKj36IlDqO"
+                            Password = "$2a$11$8dCNQQyhY49TC/U1KiB6GuMWLWU.paMduF0atv6QRLqdiQjsKOyLK"
                         });
                 });
 
@@ -784,6 +933,31 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("CharityEvent");
                 });
 
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Donation", b =>
+                {
+                    b.HasOne("RBUkraine.DAL.Entities.Animal", "Animal")
+                        .WithMany("Donations")
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("RBUkraine.DAL.Entities.CharitableOrganization", "CharitableOrganization")
+                        .WithMany("Donations")
+                        .HasForeignKey("CharitableOrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("RBUkraine.DAL.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
+
+                    b.Navigation("CharitableOrganization");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RBUkraine.DAL.Entities.News", b =>
                 {
                     b.HasOne("RBUkraine.DAL.Entities.Animal", "Animal")
@@ -812,6 +986,45 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("News");
                 });
 
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Order", b =>
+                {
+                    b.HasOne("RBUkraine.DAL.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("RBUkraine.DAL.Entities.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RBUkraine.DAL.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.ProductImage", b =>
+                {
+                    b.HasOne("RBUkraine.DAL.Entities.Product", null)
+                        .WithOne("Image")
+                        .HasForeignKey("RBUkraine.DAL.Entities.ProductImage", "ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("RBUkraine.DAL.Entities.UserRole", b =>
                 {
                     b.HasOne("RBUkraine.DAL.Entities.Role", "Role")
@@ -837,6 +1050,8 @@ namespace RBUkraine.DAL.Migrations
 
                     b.Navigation("AnimalTranslates");
 
+                    b.Navigation("Donations");
+
                     b.Navigation("News");
                 });
 
@@ -845,6 +1060,8 @@ namespace RBUkraine.DAL.Migrations
                     b.Navigation("Animals");
 
                     b.Navigation("CharitableOrganizationTranslates");
+
+                    b.Navigation("Donations");
 
                     b.Navigation("Image");
 
@@ -861,6 +1078,16 @@ namespace RBUkraine.DAL.Migrations
             modelBuilder.Entity("RBUkraine.DAL.Entities.News", b =>
                 {
                     b.Navigation("NewsTranslates");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("RBUkraine.DAL.Entities.Product", b =>
+                {
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("RBUkraine.DAL.Entities.User", b =>

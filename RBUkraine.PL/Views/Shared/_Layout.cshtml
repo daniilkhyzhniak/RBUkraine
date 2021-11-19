@@ -75,13 +75,15 @@
                     style="width: 180px; margin-left: 18%; height: 60px; color: white">
                     @localizer["Animals"]
                 </a>
-                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                <a asp-controller="CharitableOrganizations" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/organizations/admin")" style="width: 180px; height: 60px; color: white">
                     @localizer["Charity"]
                 </a>
                 <a asp-controller="CharityEvents" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/events/admin")" style="width: 180px; height: 60px; color: white">
                     @localizer["Events"]
                 </a>
-                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="Products" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/products/admin")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Store"]
+                </a>
                 <a asp-controller="News" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/news/admin")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
             }
             else

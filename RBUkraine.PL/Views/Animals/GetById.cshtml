@@ -129,10 +129,14 @@
     </div>
     <div class="row"
          style="margin-top: 20px;  margin-right: auto; margin-left: -40px; font-family: 'Times New Roman';">
-        <button type="submit"
-                class="button" style="width: 55%">
-            @localizer["Donate for the maintenance of this species"]
-        </button>
+        <form asp-controller="Donation" asp-action="Donate" method="post">
+            <input hidden name="AnimalId" value="@Model.Id" />
+            <input hidden name="Amount" value="300" />
+            <button type="submit"
+                    class="button" style="width: 55%">
+                @localizer["Donate for the maintenance of this species"]
+            </button>
+        </form>
         <button type="submit"
                 class="button" style="width: 35%">
             @localizer["Donate to the BF"]
