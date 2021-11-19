@@ -9,9 +9,11 @@
     @if (User.IsInRole(Roles.User))
     {
         <div>
-            <button class="left-button" >
-                <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
-            </button>
+            <a asp-controller="Donation" asp-action="Donate">
+                <button class="left-button">
+                    <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+                </button>
+            </a>
         </div>
     }
 
