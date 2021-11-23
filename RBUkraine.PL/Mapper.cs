@@ -56,7 +56,8 @@ namespace RBUkraine.PL
             CreateMap<NewsModel, NewsEditorModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
 
-            CreateMap<ProductModel, ProductViewModel>();
+            CreateMap<ProductModel, ProductViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<ProductModel, ProductEditorViewModel>();
             CreateMap<ProductEditorViewModel, ProductEditorModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));

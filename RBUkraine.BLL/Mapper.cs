@@ -47,6 +47,8 @@ namespace RBUkraine.BLL
 
             CreateMap<Product, ProductModel>();
             CreateMap<ProductEditorModel, Product>();
+            CreateMap<ProductImage, Image>()
+                .ReverseMap();
         }
     }
 }
