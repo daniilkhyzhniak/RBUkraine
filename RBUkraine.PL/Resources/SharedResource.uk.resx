@@ -123,6 +123,9 @@
   <data name="A-Z" xml:space="preserve">
     <value>А-Я</value>
   </data>
+  <data name="Add item to cart" xml:space="preserve">
+    <value>Додати товар до кошика</value>
+  </data>
   <data name="Allow the name to be added to the list of benefactors" xml:space="preserve">
     <value>Дозволити внесення імені до списку благодійників</value>
   </data>

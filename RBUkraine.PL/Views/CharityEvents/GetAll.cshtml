@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GetAll";
 }
-<div class="row">
+<div class="row" style="background-image: url(../images/4.jpg);">
     <div>
         <a asp-controller="Donation" asp-action="Donate">
             <button class="left-button">
@@ -12,7 +12,7 @@
         </a>
     </div>
 
-    <div style="margin-left: 5%">
+    <div style="margin-left: 3%">
         @foreach (var item in Model)
         {
 
