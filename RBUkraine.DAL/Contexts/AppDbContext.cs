@@ -78,6 +78,9 @@ namespace RBUkraine.DAL.Contexts
 
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<VolunteerApplication> VolunteerApplications { get; set; }
+
+        // not a table
         public DbSet<RatingItem> RatingItems { get; set; }
     }
 }

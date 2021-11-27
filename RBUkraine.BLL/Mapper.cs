@@ -9,6 +9,7 @@ using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.News;
 using RBUkraine.BLL.Models.Product;
 using RBUkraine.BLL.Models.User;
+using RBUkraine.BLL.Models.VolunteerApplication;
 
 namespace RBUkraine.BLL
 {
@@ -49,6 +50,9 @@ namespace RBUkraine.BLL
             CreateMap<ProductEditorModel, Product>();
             CreateMap<ProductImage, Image>()
                 .ReverseMap();
+
+            CreateMap<VolunteerApplication, VolunteerApplicationModel>();
+            CreateMap<VolunteerApplicationEditorModel, VolunteerApplication>();
         }
     }
 }
