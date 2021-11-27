@@ -4,45 +4,45 @@
     ViewData["Title"] = "GetById";
 }
 
-<div class="row" style="margin-top: 10px">
-    <div>
-        <button class="left-button">
-            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
-        </button>
-    </div>
-    <div style=" margin-left:1.5%; width: 1100px; margin-right: auto; ">
-
-        <div class="row" style="font-size: small">
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Charitable foundations"]</a>
-            <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@Model.Name</a>
-
+<div style="background-image: url(../images/4.jpg);">
+    <div class="row" style="margin-top: 10px;">
+        <div>
+            <a asp-controller="Donation" asp-action="Donate">
+                <button class="left-button">
+                    <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+                </button>
+            </a>
         </div>
-        <section class="h">
-            <div class="container5">
-                <p class="protect1">
-                    @Model.Name
-                </p>
-                <p class="kind">
-                    @localizer["Species assisted by this foundation"]
-                </p>
-                <ul class="menu3">
-                    @foreach (var item in Model.Animals)
-                    {
-                        <li>
-                            <a asp-controller="Animals" asp-action="GetById" asp-route-id="@item.Id">
-                                <img src= @item.Image.Url style="border-radius: 5px;" width="200px" height="200px" alt="1">
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </section>
-    </div>
-    <div class="row">
-        <button type="submit" style="margin-left: 230px; margin-top: 20px; margin-right: 25px; margin-bottom: 100px;" class="btn">@localizer["Donate to a charity"]</button>
-        <button type="submit" style="margin-top: 20px; width: 350px; margin-right: 25px; margin-bottom: 100px;" class="btn">@localizer["Go to the news of the charity fund"]</button>
-        <button type="submit" style="margin-top: 20px; width: 355px; margin-bottom: 100px;" class="btn">@localizer["Evants of this fund"]</button>
-    </div>
+        <div style=" margin-left:1.5%; width: 1100px; margin-right: auto; ">
 
+            <div class="row" style="font-size: small">
+                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Charitable foundations"]</a>
+                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
+                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@Model.Name</a>
+
+            </div>
+            <section class="h">
+                <div class="container5">
+                    <p class="protect1">
+                        @Model.Name
+                    </p>
+                    <p class="kind">
+                        @localizer["Species assisted by this foundation"]
+                    </p>
+                    <ul class="menu3">
+                        @foreach (var item in Model.Animals)
+                        {
+                            <li>
+                                <a asp-controller="Animals" asp-action="GetById" asp-route-id="@item.Id">
+                                    <img src=@item.Image.Url style="border-radius: 5px;" width="200px" height="200px" alt="1">
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+
+    </div>
 </div>
