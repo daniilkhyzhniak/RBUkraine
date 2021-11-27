@@ -27,6 +27,7 @@ namespace RBUkraine.PL.Controllers
             var cities = await _volunteerApplicationService.GetAllCities();
             return View(new VolunteerApplicationListViewModel
             {
+                Filter = filter,
                 VolunteerApplications = await _volunteerApplicationService.GetAll(filter),
                 CitiesSelectList = cities.Select(x => new SelectListItem(x, x, filter.Cities.Contains(x)))
             });

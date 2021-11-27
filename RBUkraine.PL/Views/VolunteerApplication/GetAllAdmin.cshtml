@@ -1,5 +1,112 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model RBUkraine.PL.ViewModels.VolunteerApplication.VolunteerApplicationListViewModel
+
 @{
+    ViewData["Title"] = "GetAllAdmin";
 }
+
+<div style=" background-image: url(../images/3.jpg);">
+    <br><br>
+    <div class="admin_animal_block">
+        <div class="row">
+            <div style="width: 300px; margin-left: 15px">
+                <div style="height: 70px">
+                    <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>@localizer["Volunteers"]</p>
+                </div>
+                <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px;border-bottom-right-radius: 10px">
+
+                    <form method="get">
+                        <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <input hidden name="Search" value="@Model.Filter.Search" />
+                            <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort by city"]</p>
+                            <p>
+                                <select name="SortDirection" class="select_option">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        @localizer["A-Z"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        @localizer["Z-A"]
+                                    </option>
+                                </select>
+                            </p>
+                            <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
+                            <p class="text-Montserrat-light" style="font-size: 20px; margin-top:-10px;font-weight: lighter; color: #484848;"><br>@localizer["Filter"]</p>
+                            <hr>
+                            <p>@localizer["City"]:</p>
+                            @foreach (var city in Model.CitiesSelectList)
+                            {
+                                <div class="label_checkbox">
+                                    <div style="margin: 5px">
+                                        <label class="text-Montserrat" style="font-size: 15px;">
+                                            <input name="Cities" type="checkbox" value="@city.Value" checked="@city.Selected"> @city.Text
+                                        </label>
+                                    </div>
+                                </div>
+                            }
+                            <hr>
+                        </div>
+
+                        <div style="text-align: center">
+                            <button style="color: #944747; background-color: transparent; border-color: transparent">@localizer["Cancel everything"] X </button>
+                            <button type="submit" class="button_table" style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">@localizer["Apply"]</button>
+                        </div>
+                        <br>
+                    </form>
+
+
+
+
+                </div>
+            </div>
+            <div style=" margin-top: 60px">
+                <div class="row">
+                    <form method="get">
+                        <p style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: 30px;font-size: 20px ; margin-top: 15px">
+                            @localizer["Search by name and surname"]
+                            <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 850px; margin-left: 20px">
+                            <button style="margin-top:-20px; background-color: transparent; border-color: transparent; color: black"><img src="~/images/search.png" width="35px" height="35px" alt="1"></button>
+                        </p>
+                    </form>
+                </div>
+
+                <table class="animal_table" style="margin-left: 15px;background-color: #F8FCF2; ">
+                    <thead style="font-weight: bold">
+                        <tr>
+                            <td style="width: 120px;">@localizer["Name and surname"]</td>
+                            <td style="width: 100px;">@localizer["Phone number"]</td>
+                            <td style="width: 115px;">@localizer["e-mail"]</td>
+                            <td style="width: 100px;">@localizer["City"]</td>
+                            <td style="width: 195px;">@localizer["About myself"]</td>
+                            <td style="width: 195px;">@localizer["Reasons to become a volunteer"]</td>
+                            <td style="width: 195px;">@localizer["Wishes about working conditions"]</td>
+                            <td style="width: 90px;">@localizer["Status"]</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var request in Model.VolunteerApplications)
+                        {
+                            <tr>
+                                <td>@request.FullName</td>
+                                <td>@request.PhoneNumber</td>
+                                <td>@request.Email</td>
+                                <td>@request.City</td>
+                                <td>@request.About</td>
+                                <td>@request.Reason</td>
+                                <td>@request.WorkingConditions</td>
+                                <td>
+                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-width: 1px; border-color: rgba(36,255,54,0.55); background-color: rgba(0,128,0,0.55); height: 35px; color: white;">@localizer["Accept"]</button>
+                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-color: firebrick; background-color: firebrick; height: 35px; color: white;">@localizer["Reject"]</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+    <br><br>
+</div>
+

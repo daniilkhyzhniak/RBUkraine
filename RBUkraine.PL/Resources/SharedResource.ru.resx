@@ -123,6 +123,12 @@
   <data name="A-Z" xml:space="preserve">
     <value>А-Я</value>
   </data>
+  <data name="About myself" xml:space="preserve">
+    <value>О себе</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Принять</value>
+  </data>
   <data name="Add item to cart" xml:space="preserve">
     <value>Добавить товар в корзину</value>
   </data>
@@ -230,6 +236,9 @@
   </data>
   <data name="Choose file" xml:space="preserve">
     <value>Выберите файл</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value />
   </data>
   <data name="Class" xml:space="preserve">
     <value>Класс</value>
@@ -351,6 +360,9 @@
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="Name and surname" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
   <data name="Name of the charity fund" xml:space="preserve">
     <value>Название благотворительного фонда</value>
   </data>
@@ -405,6 +417,9 @@
   <data name="Purchase history" xml:space="preserve">
     <value>История покупок</value>
   </data>
+  <data name="Reasons to become a volunteer" xml:space="preserve">
+    <value>Причины стать волонтером</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
@@ -413,6 +428,9 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Отклонить</value>
   </data>
   <data name="Remind password" xml:space="preserve">
     <value>Напомнить пароль</value>
@@ -423,6 +441,9 @@
   <data name="Search by name" xml:space="preserve">
     <value>Искать по имени</value>
   </data>
+  <data name="Search by name and surname" xml:space="preserve">
+    <value>Искать по ФИО</value>
+  </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вход</value>
   </data>
@@ -432,11 +453,17 @@
   <data name="Sort" xml:space="preserve">
     <value>Сортировать</value>
   </data>
+  <data name="Sort by city" xml:space="preserve">
+    <value>Сортировать по городу</value>
+  </data>
   <data name="Species" xml:space="preserve">
     <value>Вид</value>
   </data>
   <data name="Species assisted by this foundation" xml:space="preserve">
     <value>Виды, которым оказывается помощь этим фондом</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
@@ -458,6 +485,12 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>Пользователь</value>
+  </data>
+  <data name="Volunteers" xml:space="preserve">
+    <value>Волонтеры</value>
+  </data>
+  <data name="Wishes about working conditions" xml:space="preserve">
+    <value>Пожелания об условиях труда</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>

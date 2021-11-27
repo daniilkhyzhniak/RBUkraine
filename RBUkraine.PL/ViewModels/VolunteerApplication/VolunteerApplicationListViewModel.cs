@@ -8,5 +8,7 @@ namespace RBUkraine.PL.ViewModels.VolunteerApplication
     {
         public IEnumerable<VolunteerApplicationModel> VolunteerApplications { get; set; }
         public IEnumerable<SelectListItem> CitiesSelectList { get; set; }
+
+        public VolunteerApplicationFilterModel Filter { get; set; }
     }
 }
