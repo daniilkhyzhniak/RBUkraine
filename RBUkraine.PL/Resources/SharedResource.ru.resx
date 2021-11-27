@@ -486,6 +486,12 @@
   <data name="User" xml:space="preserve">
     <value>Пользователь</value>
   </data>
+  <data name="Volunteer applications" xml:space="preserve">
+    <value>Заявки на волонтерство</value>
+  </data>
+  <data name="Volunteering application" xml:space="preserve">
+    <value>Заявка на волонтерство</value>
+  </data>
   <data name="Volunteers" xml:space="preserve">
     <value>Волонтеры</value>
   </data>
