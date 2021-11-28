@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,7 +55,6 @@ namespace RBUkraine.PL.Controllers
                 FoundSelectList = charitableOrganizations.Select(
                     c => new SelectListItem(c.Name, c.Id.ToString(), filter.Founds.Contains(c.Id)))
             };
-
             return View(model);
         }
 
@@ -111,7 +111,7 @@ namespace RBUkraine.PL.Controllers
         {
             var news = await _newsService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
 
-            if (news is not null)
+            if (news is null)
             {
                 return NotFound();
             }
