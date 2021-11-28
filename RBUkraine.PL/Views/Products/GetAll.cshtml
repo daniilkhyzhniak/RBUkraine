@@ -41,6 +41,7 @@
                     </div>
                 </div>
                 <div style="margin-left: 20px; margin-top: 10px;">
+
                     <div class="row">
                         <p style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: 30px;font-size: 20px ; ">
                             @localizer["Sort"]:
@@ -58,116 +59,40 @@
                     </div>
 
                     <hr style="width: 920px; border: 1px solid #C9C9C9;">
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
+                    @{
+                        var items = Model.Products.ToList();
+                        int j = 0;
+                        while (j < items.Count)
+                        {
+                            int t = Math.Min(3, items.Count - j);
+                            <div class="row" style="margin-bottom: 10px;">
+                                @for (int i = 0; i < t; i++)
+                                {
+                                    <div class="goods">
+                                    <img src="@items[j].Image.Url" alt="2" width="200px" height="200px" class="center-img">
+                                    <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
+                                        <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
+                                            @items[j].Name
+                                        </p>
+                                        <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
+                                            @items[j].Category
+                                        </p>
+                                    </div>
+                                        <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
+                                            <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
+                                                @items[j].Price @j ₴ 
+                                            </p>
+                                        </div>
+                                    </div>
+                                    { 
+                                        j++;
+                                    }
+                                }
                             </div>
 
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-
-                            </div>
-
-                        </div>
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
-                            </div>
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
-                            </div>
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
-                            </div>
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
-                            </div>
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-                                <button style="background-color: transparent; border-color: transparent; color: black; height: 0px; margin-top: -15px;">
-                                    <img src="images/add-line.png" width="40px" height="40px" alt="1">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="goods">
-                            <img src="images/2.jpg" alt="2" width="200px" height="200px" class="center-img">
-                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                    Футболка з БФ “Маленькі серця”
-                                </p>
-                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                    Футболка
-                                </p>
-                            </div>
-                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                    250 ₴
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
+                    
                 </div>
 
 
