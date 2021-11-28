@@ -84,10 +84,10 @@
                     <form method="get">
                         <input hidden name="SortDirection" value="@((int) Model.Filter.SortDirection)" />
                         <input hidden name="SortOptions" value="@((int) Model.Filter.SortOptions)" />
-                        @foreach (var found in Model.FoundSelectList)
+                       @* @foreach (var found in Model.FoundSelectList)
                         {
                             <input hidden name="Founds" type="checkbox" value="@found.Value" checked="@found.Selected">
-                        }
+                        }*@
 
                         <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search by"]:</span>
                         <select class="select_option" name="SearchOptions" style="width: 300px; margin-left: 15px">
