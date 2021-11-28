@@ -926,6 +926,23 @@ color: rgba(0, 0, 0, 0.6);
     
 }
 
+#text_in1{
+    width: 15px;
+    height: 15px;
+    margin-left: 18px;
+}
+
+.text_in1{   
+    font-family: Literata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 22px;
+    align-items: center;
+    color: #6D6D6D;
+    margin-left: 5px;
+}
+
 .sum-text{
     position: absolute;
     width: 343px;
@@ -1065,6 +1082,27 @@ align-items: center;
 font-feature-settings: 'tnum' on, 'lnum' on;
 
 color: #000000;
+}
+
+.ftr{
+    width: 250px;
+    height: 509px;
+    background: #F0F0F0;
+    border-radius: 15px;
+}
+
+.goods{
+    width: 250px;
+    height: 350px;
+    background: #FAF6E2;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+.center-img{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 @font-face {
 
