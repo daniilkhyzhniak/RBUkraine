@@ -7,7 +7,7 @@ const confirmDeletionProduct = async (id, message, onDelete) => {
 };
 
 const deleteProduct = async (id, onDelete) => {
-    return fetch(`https://localhost:5001/products/${id}/delete`,
+    return fetch(`https://localhost:5001/shop/${id}/delete`,
         {
             method: "post"
         }).then(() => onDelete());
