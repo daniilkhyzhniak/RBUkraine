@@ -18,82 +18,107 @@
         <div class="admin_animal_block" style=" width: 1250px; border-radius: 0px;">
             <div style="height: 50px"></div>
             <div class="row">
-                <div class="ftr" style="margin-left: 35px;">
-                    <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 22px;line-height: 22px;display: flex;align-items: center;color: #484848; margin-top: 14px; margin-left: 25px;">
-                        @localizer["Filter"]:
-                    </p>
-                    <hr style="width: 248px; border: 1px solid #C9C9C9; margin-top: 46px;">
-                    <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 18px;line-height: 22px;display: flex; align-items: center; color: #484848; margin-left: 15px;">
-                        @localizer["Categories"]
-                    </p>
-                    <div style="display: table;">
-                        <input type="checkbox" id="text_in1" name="text_in1" value="Bike">
-                        <label for="text_in1" class="text_in1"> Чашка</label>
-                        <br>
-                        <input type="checkbox" id="text_in1" name="text_in1" value="Bike">
-                        <label for="text_in1" class="text_in1"> Футболка</label>
-                        <br>
-                        <input type="checkbox" id="text_in1" name="text_in1" value="Bike">
-                        <label for="text_in1" class="text_in1"> Головний убір</label>
-                        <br>
-                        <input type="checkbox" id="text_in1" name="text_in1" value="Bike">
-                        <label for="text_in1" class="text_in1"> Стікери</label>
-                    </div>
-                </div>
-                <div style="margin-left: 20px; margin-top: 10px;">
-
-                    <div class="row">
-                        <p style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: 30px;font-size: 20px ; ">
+                <form method="get">
+                    <div class="ftr" style="margin-left: 35px;  margin-right: auto">
+                        <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+                        <input hidden name="Search" value="@Model.Filter.Search" />
+                        <div style="height: 10px"></div>
+                        <p style="font-family: Montserrat; font-style: normal; margin-top: 10px; font-weight: 300; font-size: 18px; line-height: 22px; display: flex; align-items: center; color: #484848; margin-left: 15px;">
                             @localizer["Sort"]:
                         </p>
                         <p>
-                            <select class="select_option" style="margin-left: 10px; width: 160px; margin-top:-5px;">
-                                <option selected value="az">А-Я</option>
-                                <option value="za">Я-A</option>
+                            <select name="SortDirection" class="select_option" style="width: 200px; margin-left:25px">
+                                <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                        value="@((int) SortDirection.Asc)">
+                                    @localizer["A-Z"]
+                                </option>
+                                <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                        value="@((int) SortDirection.Desc)">
+                                    @localizer["Z-A"]
+                                </option>
                             </select>
                         </p>
-                        <p><input class="select_option" style="width: 400px; margin-left: 20px; margin-top:-5px;"></p>
-                        <button style="margin-top:-5px; background-color: transparent; border-color: transparent; color: black; height: 0px;">
-                            <img src="images/search.png" width="35px" height="35px" alt="1">
-                        </button>
+                        <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
+                        <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 18px;line-height: 22px;display: flex; align-items: center; color: #484848; margin-left: 15px;">
+                            @localizer["Filter"]:
+                        </p>
+                        <hr>
+                        <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 18px;line-height: 22px;display: flex; align-items: center; color: #484848; margin-left: 15px;">
+                            @localizer["Categories"]
+                        </p>
+                        <div style="height:220px">
+                            @foreach (var category in Model.CategoriesSelectList)
+                            {
+
+                                <div style="margin: 5px">
+
+                                    <label class="text-Montserrat" style="font-size: 15px;">
+                                        <input name="Categories" type="checkbox" value="@category.Value" checked="@category.Selected">&nbsp;@category.Text
+                                    </label>
+
+                                </div>
+
+                            }
+                        </div>
+                        <div style="text-align: center; ">
+
+                            <button type="submit" class="button_table" style="width: 210px; color: #424242; font-weight: 100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">
+                                @localizer["Apply"]
+                            </button>
+                        </div>
+
                     </div>
-
-                    <hr style="width: 920px; border: 1px solid #C9C9C9;">
-                    @{
-                        var items = Model.Products.ToList();
-                        int j = 0;
-                        while (j < items.Count)
-                        {
-                            int t = Math.Min(3, items.Count - j);
-                            <div class="row" style="margin-bottom: 10px;">
-                                @for (int i = 0; i < t; i++)
-                                {
-                                    <div class="goods">
-                                    <img src="@items[j].Image.Url" alt="2" width="200px" height="200px" class="center-img">
-                                    <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
-                                        <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
-                                            @items[j].Name
-                                        </p>
-                                        <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
-                                            @items[j].Category
-                                        </p>
-                                    </div>
-                                        <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
-                                            <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
-                                                @items[j].Price.ToString("F0") ₴ 
-                                            </p>
-                                        </div>
-                                    </div>
-                                    { 
-                                        j++;
-                                    }
-                                }
-                            </div>
-
-                        }
-                    }
                     
-                </div>
+                </form>
+                    <div style="margin-left: 20px; margin-top: 10px;">
+
+                        <div class="row">
+                            <form method="get">
+                                <input hidden name="SortDirection" value="@((int) Model.Filter.SortDirection)" />
+                                <input hidden name="SortOptions" value="@((int) Model.Filter.SortOptions)" />
+                                <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 810px; margin-left: 30px" />
+                                <button style="margin-top:-5px; background-color: transparent; border-color: transparent; color: black; height: 0px;">
+                                    <img src="images/search.png" width="35px" height="35px" alt="1">
+                                </button>
+                            </form>
+                        </div>
+
+                        <hr style="width: 920px; border: 1px solid #C9C9C9;">
+                        @{
+                            var items = Model.Products.ToList();
+                            int j = 0;
+                            while (j < items.Count)
+                            {
+                                int t = Math.Min(3, items.Count - j);
+                                <div class="row" style="margin-bottom: 10px;">
+                                    @for (int i = 0; i < t; i++)
+                                    {
+                                        <div class="goods">
+                                            <img src="@items[j].Image.Url" alt="2" width="200px" height="200px" class="center-img">
+                                            <div style=" margin-left: 25px; margin-top: 5px;" class="bggg">
+                                                <p style="font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 14px;line-height: 18px;color: #484848; margin-bottom: 3px;">
+                                                    @items[j].Name
+                                                </p>
+                                                <p style="font-family: Montserrat;font-style: normal;font-weight: 300;font-size: 12px;line-height: 18px;color: #484848;font-feature-settings: 'tnum' on, 'lnum' on;">
+                                                    @items[j].Category
+                                                </p>
+                                            </div>
+                                            <div class="row" style="margin-left: auto; margin-right: auto; margin-left: 60px; ">
+                                                <p style="font-family: Literata;font-style: normal;font-weight: 500;font-size: 32px;line-height: 18px;align-items: center;text-align: center;font-feature-settings: 'tnum' on, 'lnum' on;color: #6F0000;">
+                                                    @items[j].Price.ToString("F0") ₴
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {
+                                            j++;
+                                        }
+                                    }
+                                </div>
+
+                            }
+                        }
+
+                    </div>
 
 
             </div>
