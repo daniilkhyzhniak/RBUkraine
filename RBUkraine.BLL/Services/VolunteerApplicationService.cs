@@ -8,6 +8,7 @@ using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.VolunteerApplication;
 using RBUkraine.DAL.Contexts;
 using RBUkraine.DAL.Entities;
+using RBUkraine.DAL.Extensions;
 
 namespace RBUkraine.BLL.Services
 {
@@ -63,15 +64,19 @@ namespace RBUkraine.BLL.Services
                 return;
             }
 
-            volunteerApplication.Confirmed = confirmed;
-
-            _context.Update(volunteerApplication);
+            _context.VolunteerApplications.SoftDelete(volunteerApplication);
             await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<string>> GetAllCities()
         {
             return await _context.VolunteerApplications.Select(x => x.City).ToListAsync();
+        }
+
+        public async Task<VolunteerApplicationModel> Get(int id)
+        {
+            var application = await _context.VolunteerApplications.FirstOrDefaultAsync(x => x.Id == id);
+            return _mapper.Map<VolunteerApplicationModel>(application);
         }
     }
 }

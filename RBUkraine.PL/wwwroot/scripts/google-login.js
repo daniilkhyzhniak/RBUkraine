@@ -1,5 +1,5 @@
 ﻿async function onSignIn(googleUser) {
-    await fetch(`https://localhost:5001/login/google?token=${googleUser.Zb.id_token}`,
+    await fetch(`https://localhost:5001/login/google?token=${googleUser.wc.id_token}`,
             {
                 method: "post"
             })

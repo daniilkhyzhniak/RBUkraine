@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.VolunteerApplication;
+using RBUkraine.PL.EmailSender;
+using RBUkraine.PL.EmailSender.Models;
 using RBUkraine.PL.ViewModels.VolunteerApplication;
 
 namespace RBUkraine.PL.Controllers
@@ -14,11 +16,14 @@ namespace RBUkraine.PL.Controllers
     public class VolunteerApplicationController : Controller
     {
         private readonly IVolunteerApplicationService _volunteerApplicationService;
+        private readonly IEmailSender emailSender;
 
         public VolunteerApplicationController(
-            IVolunteerApplicationService volunteerApplicationService)
+            IVolunteerApplicationService volunteerApplicationService,
+            IEmailSender emailSender)
         {
             _volunteerApplicationService = volunteerApplicationService;
+            this.emailSender = emailSender;
         }
 
         [HttpGet("admin"), Authorize(Roles = Roles.Admin)]
@@ -51,17 +56,47 @@ namespace RBUkraine.PL.Controllers
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
 
-        [HttpPost("confirm"), Authorize(Roles = Roles.Admin)]
+        [HttpPost("{id}/confirm"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Confirm([FromRoute] int id)
         {
-            await _volunteerApplicationService.ChangeStatus(id, true);
+            var application = await _volunteerApplicationService.Get(id);
+
+            if (application is null)
+            {
+                return BadRequest();
+            }
+
+            await Task.WhenAll(
+                _volunteerApplicationService.ChangeStatus(id, true),
+                emailSender.SendEmailAsync(new EmailModel
+                {
+                    Email = application.Email,
+                    Subject = "Ваша заявка на волонтерство была принята, ждем вас в нашем офисе в течении 7 дней для введения в курс дела",
+                    Message = "Ваша заявка на волонтерство была принята, ждем вас в нашем офисе в течении 7 дней для введения в курс дела"
+                }));
+
             return Ok();
         }
 
-        [HttpPost("decline"), Authorize(Roles = Roles.Admin)]
+        [HttpPost("{id}/decline"), Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Decline([FromRoute] int id)
         {
-            await _volunteerApplicationService.ChangeStatus(id, false);
+            var application = await _volunteerApplicationService.Get(id);
+
+            if (application is null)
+            {
+                return BadRequest();
+            }
+
+            await Task.WhenAll(
+                _volunteerApplicationService.ChangeStatus(id, false),
+                emailSender.SendEmailAsync(new EmailModel
+                {
+                    Email = application.Email,
+                    Subject = "Ваша заявка на волонтерство была отклонена",
+                    Message = "Ваша заявка на волонтерство была отклонена"
+                }));
+
             return Ok();
         }
     }

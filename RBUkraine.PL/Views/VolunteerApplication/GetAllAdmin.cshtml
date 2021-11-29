@@ -102,8 +102,8 @@
                                 <td>@request.Reason</td>
                                 <td>@request.WorkingConditions</td>
                                 <td>
-                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-width: 1px; border-color: rgba(36,255,54,0.55); background-color: rgba(0,128,0,0.55); height: 35px; color: white;">@localizer["Accept"]</button>
-                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-color: firebrick; background-color: firebrick; height: 35px; color: white;">@localizer["Reject"]</button>
+                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-width: 1px; border-color: rgba(36,255,54,0.55); background-color: rgba(0,128,0,0.55); height: 35px; color: white;" onclick="confirmApplication('@request.Id')">@localizer["Accept"]</button>
+                                    <button type="submit" style="border-style: solid; border-radius: 20px; border-color: firebrick; background-color: firebrick; height: 35px; color: white;" onclick="declineApplication('@request.Id')">@localizer["Reject"]</button>
                                 </td>
                             </tr>
                         }
@@ -117,3 +117,7 @@
     <br><br>
 </div>
 
+@section Scripts
+{
+    <script src="~/scripts/volunteers-admin.js"></script>
+}
