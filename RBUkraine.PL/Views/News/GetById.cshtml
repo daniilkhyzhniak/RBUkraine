@@ -5,7 +5,7 @@
 }
 
 
-<div class="row">
+<div class="row" style="background-image: url(../images/4.jpg); ">
     <div>
         <a asp-controller="Donation" asp-action="Donate">
             <button class="left-button">
@@ -16,15 +16,13 @@
     <div>
         <div style="margin-left: 5%">
             <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
-                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
                 <a asp-controller="News" asp-action="GetAll" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
                 <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Title</p>
             </div>
             <div class="cf_block">
                 <div style="width: 1170px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
                     <p class="red_Literata" style="color: black">@Model.Title</p>
-                    <hr class="hr_style_title1" style="width: 1170px">
+                    
                     <p class="text-Montserrat" style="margin-top: 30px; margin-left: 1px; font-size: 15px">
                         @Model.Animal@Model.CharitableOrganization
                     </p>
@@ -48,7 +46,7 @@
                     </div>
                     <div style="height:40px; text-align: right">
                         <p class="text-Montserrat" style="font-size: 15px;">
-                            @Model.PublishDate
+                            @Model.PublishDate.ToString("g")
 
                         </p>
                     </div>
