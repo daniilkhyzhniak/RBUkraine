@@ -52,7 +52,7 @@
                         </div>
                         <div style="width: 300px;  text-align: center; margin-top: 40px">
                             <p style="font-family: 'Literata';">@localizer["Price"]:</p>
-                            <h1 style="font-family: 'Literata';">@item.Price.ToString("F2") &#8372;</h1>
+                            <h1 style="font-family: 'Literata';">@item.Price.ToString("F0") &#8372;</h1>
                             <br>
                             <form asp-action="Checkout" asp-route-id="@item.Id" method="post">
                                 <button type="submit"

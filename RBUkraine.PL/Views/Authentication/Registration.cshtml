@@ -34,15 +34,7 @@
     </div>
 *@
 <div class="login-block">
-    <div style=" margin-left:15%;">
-
-        <div class="row" style="font-size: small;">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
-            <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
-            <p class="black-text-Montserrat " style=" margin-top: 60px; ">&ensp;&#10095;&ensp;@localizer["Sign-in"]</p>
-        </div>
-    </div>
+    
 
     <form asp-action="Registration">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
