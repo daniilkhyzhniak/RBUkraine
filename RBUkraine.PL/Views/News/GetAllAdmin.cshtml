@@ -76,9 +76,9 @@
                         </div>
 
                         <div style="text-align: center">
-                            <button style="color: #944747; background-color: transparent; border-color: transparent">
+                            @*<button style="color: #944747; background-color: transparent; border-color: transparent">
                                 @localizer["Cancel everything"] X
-                            </button>
+                            </button>*@
                             <button type="submit" class="button_table"
                                     style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">
                                 @localizer["Apply"]
@@ -144,8 +144,8 @@
                                     <td>@news.PublishDate.ToString("g")</td>
                                     <td>@news.ShortDescription</td>
                                     <td>@news.FullDescription</td>
-                                    <td>@news.Animal</td>
-                                    <td>@news.CharitableOrganization</td>
+                                    <td>@news.Animal?.Species</td>
+                                    <td>@news.CharitableOrganization?.Name</td>
                                     <td>
                                         <a asp-action="Update" asp-route-id="@news.Id" style="border-color: transparent; background-color: transparent">
                                             <img src="~/images/edit.png" width="27px" height="25px" alt="1">

@@ -68,9 +68,9 @@
                         </div>
 
                         <div style="text-align: center">
-                            <button class="text-Montserrat-light" style="color: #944747; background-color: transparent; border-color: transparent">
+                            @*<button class="text-Montserrat-light" style="color: #944747; background-color: transparent; border-color: transparent">
                                 @localizer["Cancel everything"] X
-                            </button>
+                            </button>*@
                             <button type="submit" class="button_table" style="color: #424242; font-weight: 100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">
                                 @localizer["Apply"]
                             </button>
@@ -90,7 +90,7 @@
                         }
 
                     <span class="text-Montserrat" style="margin-left: 30px; font-size: 20px; margin-top: 15px">@localizer["Search by name"]:</span>
-                        <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 600px; margin-left: 20px" />
+                        <input class="select_option" type="text" name="search" value="@Model.Filter.Search" style="width: 850px; margin-left: 20px" />
                         <button style="margin-top: -20px; background-color: transparent; border-color: transparent; color: black">
                             <img src="~/images/search.png" width="35px" height="35px" alt="1">
                         </button>
@@ -113,7 +113,7 @@
                             <tr>
                                 <td>@product.Name</td>
                                 <td>@product.Category</td>
-                                <td>@product.Price</td>
+                                <td>@product.Price.ToString("F0")</td>
                                 <td>
                                     <a asp-action="Update" asp-route-id="@product.Id" style="border-color: transparent; background-color: transparent">
                                         <img src="~/images/edit.png" width="27px" height="25px" alt="1">

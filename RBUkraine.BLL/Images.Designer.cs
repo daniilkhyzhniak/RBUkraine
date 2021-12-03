@@ -22,7 +22,7 @@ namespace RBUkraine.BLL {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Images {
+    public class Images {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -95,11 +95,11 @@ namespace RBUkraine.BLL {
                 return ResourceManager.GetString("CharitableOrganization2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQEBAICAgECAgEEBQkHBQMEBgQDAxQUBgsJBhQUFAUIBRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAQQFBAECAgYIBxQUFAcEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/2wBDAgICAgEBARQEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCASdBJ0DABEAAREBAhEC/8QAGwABAAIDAQEAAAAAAAAAAAAAAAUGAQMEAgf/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQMCBP/aAAwDAAABEAIQAAAB+mevyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABKFgAAAAAAAAAAA [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DefaultAnimal {
+        public static string DefaultAnimal {
             get {
                 return ResourceManager.GetString("DefaultAnimal", resourceCulture);
             }

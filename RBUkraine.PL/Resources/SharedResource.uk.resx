@@ -123,6 +123,15 @@
   <data name="A-Z" xml:space="preserve">
     <value>А-Я</value>
   </data>
+  <data name="About myself" xml:space="preserve">
+    <value>Про себе</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Прийняти</value>
+  </data>
+  <data name="Add item to cart" xml:space="preserve">
+    <value>Додати товар до кошика</value>
+  </data>
   <data name="Allow the name to be added to the list of benefactors" xml:space="preserve">
     <value>Дозволити внесення імені до списку благодійників</value>
   </data>
@@ -228,6 +237,9 @@
   <data name="Choose file" xml:space="preserve">
     <value>Виберіть файл</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>Місто</value>
+  </data>
   <data name="Class" xml:space="preserve">
     <value>Клас</value>
   </data>
@@ -289,7 +301,7 @@
     <value>Дата заснування</value>
   </data>
   <data name="Founders" xml:space="preserve">
-    <value>Учредители</value>
+    <value>Засновники</value>
   </data>
   <data name="Full description" xml:space="preserve">
     <value>Повний опис</value>
@@ -348,6 +360,9 @@
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>
   </data>
+  <data name="Name and surname" xml:space="preserve">
+    <value>ПІБ</value>
+  </data>
   <data name="Name of the charity fund" xml:space="preserve">
     <value>Назва благодійного фонду</value>
   </data>
@@ -402,6 +417,9 @@
   <data name="Purchase history" xml:space="preserve">
     <value>Історія покупок</value>
   </data>
+  <data name="Reasons to become a volunteer" xml:space="preserve">
+    <value>Причини стати волонтером</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
@@ -410,6 +428,9 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Реєстрація</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Відхилити</value>
   </data>
   <data name="Remind password" xml:space="preserve">
     <value>Нагадати пароль</value>
@@ -420,6 +441,9 @@
   <data name="Search by name" xml:space="preserve">
     <value>Шукати за ім'ям</value>
   </data>
+  <data name="Search by name and surname" xml:space="preserve">
+    <value>Шукати за ПІБ</value>
+  </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вхід</value>
   </data>
@@ -429,11 +453,17 @@
   <data name="Sort" xml:space="preserve">
     <value>Сортувати</value>
   </data>
+  <data name="Sort by city" xml:space="preserve">
+    <value>Сортувати за містом</value>
+  </data>
   <data name="Species" xml:space="preserve">
     <value>Вид</value>
   </data>
   <data name="Species assisted by this foundation" xml:space="preserve">
     <value>Види, яким надається допомога цим фондом</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
   </data>
   <data name="Store" xml:space="preserve">
     <value>Магазин</value>
@@ -455,6 +485,18 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>Користувач</value>
+  </data>
+  <data name="Volunteer applications" xml:space="preserve">
+    <value>Заявки на волонтерство</value>
+  </data>
+  <data name="Volunteering application" xml:space="preserve">
+    <value>Заявка на волонтерство</value>
+  </data>
+  <data name="Volunteers" xml:space="preserve">
+    <value>Волонтери</value>
+  </data>
+  <data name="Wishes about working conditions" xml:space="preserve">
+    <value>Побажання щодо умов праці</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>

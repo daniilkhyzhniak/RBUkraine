@@ -2,6 +2,8 @@
 using System.Linq;
 using AutoMapper;
 using RBUkraine.BLL.Enums;
+using RBUkraine.BLL.Models.Animal;
+using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.News;
 using RBUkraine.DAL.Entities;
 
@@ -23,13 +25,12 @@ namespace RBUkraine.BLL.MapperExtensions
 
             if (news.Animal is not null)
             {
-                mapped.Animal = mapper.MapToAnimalModel(news.Animal, culture);
+                mapped.Animal = mapper.Map<AnimalModel>(news.Animal);
             }
 
             if (news.CharitableOrganization is not null)
             {
-                mapped.CharitableOrganization = mapper
-                    .MapToCharitableOrganizationModel(news.CharitableOrganization, culture);
+                mapped.CharitableOrganization = mapper.Map<CharitableOrganizationModel>(news.CharitableOrganization);
             }
 
             if (culture == Culture.Ukrainian)

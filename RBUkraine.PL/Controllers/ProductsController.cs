@@ -104,7 +104,7 @@ namespace RBUkraine.PL.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(model);
             }
 
             await _productService.Update(id, _mapper.Map<ProductEditorModel>(model));

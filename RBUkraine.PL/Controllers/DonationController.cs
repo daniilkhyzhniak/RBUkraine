@@ -6,10 +6,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
-using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.Donation;
 using RBUkraine.PL.ViewModels.Donation;
 using Stripe.Checkout;
@@ -42,17 +40,9 @@ namespace RBUkraine.PL.Controllers
         }
 
         [HttpGet, Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Donate()
+        public IActionResult Donate()
         {
-            var model = new DonationViewModel
-            {
-                Fonds = (await _charitableOrganizationService.GetAllAdmin(new CharitableOrganizationFilterModel(), CultureInfo.CurrentCulture.Name))
-                            .Select(x => new SelectListItem(x.Name, x.Id.ToString())),
-                Species = (await _animalService.GetAllAsync(CultureInfo.CurrentCulture.Name))
-                            .Select(x => new SelectListItem(x.Species, x.Id.ToString()))
-            };
-
-            return View(model);
+            return View();
         }
 
         [HttpPost, Authorize(Roles = Roles.User)]

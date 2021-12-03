@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RBUkraine.BLL;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.News;
@@ -53,10 +54,11 @@ namespace RBUkraine.PL
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
 
             CreateMap<NewsModel, NewsViewModel>();
-            CreateMap<NewsModel, NewsEditorModel>();
+            CreateMap<NewsModel, NewsEditorViewModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
 
-            CreateMap<ProductModel, ProductViewModel>();
+            CreateMap<ProductModel, ProductViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
             CreateMap<ProductModel, ProductEditorViewModel>();
             CreateMap<ProductEditorViewModel, ProductEditorModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
@@ -112,6 +114,15 @@ namespace RBUkraine.PL
         }
         private static ImageViewModel MapImage(Image image)
         {
+            if (image is null)
+            {
+                return new ImageViewModel
+                {
+                    Title = "Default",
+                    Url = $"data:image/jpg;base64,{Images.DefaultAnimal}"
+                };
+            }
+
             var imageBase64Data = Convert.ToBase64String(image.Data);
             var imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
 
