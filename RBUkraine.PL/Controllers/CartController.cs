@@ -42,8 +42,13 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> Cart()
         {
             var cart = GetCart();
-            var products = await _productService.GetAll(cart.Ids);
-            return View(_mapper.Map<IEnumerable<ProductViewModel>>(products));
+            var products = await _productService.GetAll(cart.Items.Select(x => x.Id));
+            var model = products.Select(product => new ProductCartViewModel
+            {
+                Product = _mapper.Map<ProductViewModel>(product),
+                Amount = cart.Items.First(x => x.Id == product.Id).Amount
+            });
+            return View(model);
         }
 
         [HttpPost("add"), Authorize(Roles = Roles.User)]
@@ -59,11 +64,32 @@ namespace RBUkraine.PL.Controllers
             AddToCookieCart(productId);
             return Ok();
         }
+        
+        [HttpPut("change-amount"), Authorize(Roles = Roles.User)]
+        public async Task<IActionResult> AddToCart([FromQuery] int productId, [FromQuery] int amount)
+        {
+            var product = await _productService.Get(productId);
 
-        [HttpPost("remove"), Authorize(Roles = Roles.User)]
+            if (product is null)
+            {
+                return NotFound();
+            }
+
+            ChangeAmountForCookieCartItem(productId, amount);
+            return Ok();
+        }
+
+        [HttpDelete("remove"), Authorize(Roles = Roles.User)]
         public IActionResult RemoveFromCart([FromQuery] int productId)
         {
             RemoveFromCookieCart(productId);
+            return Ok();
+        }
+
+        [HttpDelete("clear"), Authorize(Roles = Roles.User)]
+        public IActionResult ClearCart()
+        {
+            RemoveAllFromCookieCart();
             return Ok();
         }
 
@@ -71,11 +97,16 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> MakeOrder()
         {
             var cart = GetCart();
-            var products = await _productService.GetAll(cart.Ids);
+            var products = await _productService.GetAll(cart.Items.Select(x => x.Id));
             var model = new MakeOrderViewModel
             {
-                Products = _mapper.Map<IEnumerable<ProductViewModel>>(products)
-            };
+                Products = _mapper.Map<IEnumerable<ProductViewModel>>(products).Select(product => new ProductCartViewModel
+                {
+                    Product = product,
+                    Amount = cart.Items.First(x => x.Id == product.Id).Amount
+                }),
+                Sum = products.Sum(x => x.Price)
+        };
             return View(model);
         }
 
@@ -83,11 +114,16 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> MakeOrder(MakeOrderViewModel model)
         {
             var cart = GetCart();
-            var products = _mapper.Map<IEnumerable<ProductViewModel>>(await _productService.GetAll(cart.Ids));
+            var products = _mapper.Map<IEnumerable<ProductViewModel>>(await _productService.GetAll(cart.Items.Select(x => x.Id)));
 
             if (!ModelState.IsValid)
             {
-                model.Products = _mapper.Map<IEnumerable<ProductViewModel>>(products);
+                model.Products = _mapper.Map<IEnumerable<ProductViewModel>>(products).Select(product => new ProductCartViewModel
+                {
+                    Product = product,
+                    Amount = cart.Items.First(x => x.Id == product.Id).Amount
+                });
+                model.Sum = model.Products.Sum(x => x.Product.Price);
                 return View(model);
             }
 
@@ -133,7 +169,7 @@ namespace RBUkraine.PL.Controllers
             await _orderService.MakeOrder(new OrderCreationModel
             {
                 UserId = Convert.ToInt32(User.Claims.First(x => x.Type == "Id")),
-                ProductsIds = cart.Ids
+                ProductsIds = cart.Items.Select(x => x.Id)
             });
 
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
@@ -152,7 +188,43 @@ namespace RBUkraine.PL.Controllers
         private void AddToCookieCart(int id)
         {
             var cart = GetCart() ?? new CookieCartModel();
-            cart.Ids.Add(id);
+            var item = cart.Items.FirstOrDefault(x => x.Id == id);
+
+            if (item is not null)
+            {
+                item.Amount += 1;
+            }
+            else
+            {
+                cart.Items.Add(new CookieCartItemModel
+                {
+                    Id = id,
+                    Amount = 1
+                });
+            }
+
+            HttpContext.Response.Cookies.Append(CookieCartName, JsonConvert.SerializeObject(cart));
+        }
+
+        [NonAction]
+        private void ChangeAmountForCookieCartItem(int id, int amount)
+        {
+            var cart = GetCart() ?? new CookieCartModel();
+            var item = cart.Items.FirstOrDefault(x => x.Id == id);
+
+            if (item is not null)
+            {
+                item.Amount = amount;
+            }
+            else
+            {
+                cart.Items.Add(new CookieCartItemModel
+                {
+                    Id = id,
+                    Amount = amount
+                });
+            }
+
             HttpContext.Response.Cookies.Append(CookieCartName, JsonConvert.SerializeObject(cart));
         }
 
@@ -160,8 +232,15 @@ namespace RBUkraine.PL.Controllers
         private void RemoveFromCookieCart(int id)
         {
             var cart = GetCart() ?? new CookieCartModel();
-            cart.Ids.Remove(id);
+            var item = cart.Items.FirstOrDefault(x => x.Id == id);
+            cart.Items.Remove(item);
             HttpContext.Response.Cookies.Append(CookieCartName, JsonConvert.SerializeObject(cart));
+        }
+        
+        [NonAction]
+        private void RemoveAllFromCookieCart()
+        {
+            HttpContext.Response.Cookies.Delete(CookieCartName);
         }
     }
 }
