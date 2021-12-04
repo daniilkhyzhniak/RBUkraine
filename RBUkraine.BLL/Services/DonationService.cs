@@ -39,7 +39,9 @@ namespace RBUkraine.BLL.Services
         public IEnumerable<RatingItemModel> GetRating()
         {
             var ratingItems = _context.RatingItems.FromSqlRaw(
-                @"select isnull(u.Nickname, u.Email) as UserName, d.Amount
+                @"select 
+	                ISNULL(u.Nickname, u.Email) as UserName, 
+	                d.Amount
                 from (
 	                select UserId, SUM(Amount) as Amount
 	                from Donations
@@ -48,6 +50,23 @@ namespace RBUkraine.BLL.Services
                 inner join Users u
                 on u.Id = d.UserId
                 where u.IncludeInRating = 1
+
+                union
+
+                select 
+	                ISNULL(u.NickName, u.Email) as UserName, 
+	                (CAST(d.Amount as money) / CAST(2 as money)) as Amount
+                from (
+	                select o.UserId, SUM(od.Price) as Amount
+	                from Orders o
+	                inner join OrderDetails od
+	                on o.Id = od.OrderId
+	                group by o.UserId
+                ) as d
+                inner join Users u
+                on u.Id = d.UserId
+                where u.IncludeInRating = 1
+
                 order by d.Amount desc");
 
             return _mapper.Map<IEnumerable<RatingItemModel>>(ratingItems);

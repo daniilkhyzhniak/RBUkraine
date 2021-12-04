@@ -1,4 +1,5 @@
-﻿@model RBUkraine.PL.ViewModels.Animals.AnimalsListViewModel
+﻿@using RBUkraine.PL.ViewModels.Donation
+@model DonationViewModel
 
 @{
     ViewData["Title"] = "Donate";
@@ -16,17 +17,18 @@
         <div style="height: 10px"></div>
         <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&emsp;@localizer["Charitable contribution"]</a>
         <hr style="margin-top: 10px">
-        <div style="margin-top: 30px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
+        <form asp-action="Donate" method="post" style="margin-top: 30px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
             <div class="row">
                 <div style="width: 300px;">
                     <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-right: 20px; margin-left: 70px; margin-top: 60px;color:  black; font-size: 18px;">@localizer["Charitable organization"]:</p>
                 </div>
 
                 <p>
-                    <select class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
-                        <option selected>Благодійний фонд з бд 1</option>
-                        <option>Благодійний фонд з бд 2</option>
-                        <option>Благодійний фонд з бд 3</option>
+                    <select asp-for="CharitableOrganizationId" class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
+                        @foreach (var item in Model.Fonds)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
                     </select>
                 </p>
             </div>
@@ -34,7 +36,7 @@
             <div class="row">
                 <div class="row" style="width: 400px">
                     <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-left: 85px;  margin-top: 30px;color:  black; font-size: 18px;">@localizer["Sum"]:</p>
-                    <input type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
+                    <input asp-for="Amount" type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
 
                 </div>
                 <button type="submit"
@@ -43,20 +45,21 @@
                 </button>
             </div>
 
-        </div>
+        </form>
         <hr style="margin-top: 50px; width: 950px;  margin-left: auto; margin-right: auto;">
 
-        <div style="margin-top: 45px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
+        <form asp-action="Donate" method="post" style="margin-top: 45px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
             <div class="row">
                 <div style="width: 300px;">
                     <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-right: 20px; margin-left: 70px; margin-top: 60px;color:  black; font-size: 18px;">@localizer["Animal species"]:</p>
                 </div>
 
                 <p>
-                    <select class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
-                        <option selected>Вид тварин з бд 1</option>
-                        <option>Вид тварин з бд 2</option>
-                        <option>Вид тварин з бд 3</option>
+                    <select asp-for="AnimalId" class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
+                        @foreach (var item in Model.Species)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
                     </select>
                 </p>
             </div>
@@ -64,7 +67,7 @@
             <div class="row">
                 <div class="row" style="width: 400px">
                     <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-left: 85px;  margin-top: 30px;color:  black; font-size: 18px;">@localizer["Sum"]:</p>
-                    <input type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
+                    <input asp-for="Amount" type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
 
                 </div>
                 <button type="submit"
@@ -72,7 +75,7 @@
                     @localizer["Make a charitable contribution to the species"]
                 </button>
             </div>
-        </div>
+        </form>
     </div>
 
 
