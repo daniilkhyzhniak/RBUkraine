@@ -21,15 +21,18 @@ namespace RBUkraine.PL.Controllers
     public class AuthenticationController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IDonationService _donationService;
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
 
         public AuthenticationController(
             IUserService userService,
+            IDonationService donationService,
             IMapper mapper,
             IEmailSender emailSender)
         {
             _userService = userService;
+            _donationService = donationService;
             _mapper = mapper;
             _emailSender = emailSender;
         }
@@ -93,7 +96,7 @@ namespace RBUkraine.PL.Controllers
 
             if (User.IsInRole(Roles.Admin))
             {
-                return RedirectToAction("GetAllAdmin", "Animals");
+                return RedirectToAction("GetAll", "Animals");
             }
 
             return RedirectToAction("Profile", "Authentication");
@@ -136,6 +139,7 @@ namespace RBUkraine.PL.Controllers
         {
             var email = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Email).Value;
             var user = await _userService.GetUserByEmailAsync(email);
+            user.TotalDonationAmount = await _donationService.GetTotalAmount(user.Id);
             return View(_mapper.Map<UserViewModel>(user));
         }
 

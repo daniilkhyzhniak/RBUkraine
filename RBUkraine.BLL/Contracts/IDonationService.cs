@@ -10,5 +10,7 @@ namespace RBUkraine.BLL.Contracts
         Task Create(DonationModel model);
 
         IEnumerable<RatingItemModel> GetRating();
+
+        Task<decimal> GetTotalAmount(int userId);
     }
 }
