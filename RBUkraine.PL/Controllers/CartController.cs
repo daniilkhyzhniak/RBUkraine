@@ -42,7 +42,7 @@ namespace RBUkraine.PL.Controllers
         public async Task<IActionResult> Cart()
         {
             var cartItems = GetCart().Items;
-            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
+            var products = (await _productService.GetAll(cartItems.Select(x => x.Id))).ToList();
             var model = new CartViewModel
             {
                 Products = products.Select(product => new ProductCartViewModel
@@ -81,11 +81,7 @@ namespace RBUkraine.PL.Controllers
 
             ChangeAmountForCookieCartItem(id, 1);
 
-            var cartItems = GetCart().Items;
-            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
-            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
-
-            return Ok(sum);
+            return Ok();
         }
 
         [HttpPost("decrease-amount"), Authorize(Roles = Roles.User)]
@@ -100,23 +96,14 @@ namespace RBUkraine.PL.Controllers
 
             ChangeAmountForCookieCartItem(id, -1);
 
-            var cartItems = GetCart().Items;
-            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
-            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
-
-            return Ok(sum);
+            return Ok();
         }
 
         [HttpPost("remove"), Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> RemoveFromCart([FromQuery] int productId)
+        public async Task<IActionResult> RemoveFromCart([FromQuery] int id)
         {
-            RemoveFromCookieCart(productId);
-
-            var cartItems = GetCart().Items;
-            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
-            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
-
-            return Ok(sum);
+            RemoveFromCookieCart(id);
+            return Ok();
         }
 
         [HttpPost("clear"), Authorize(Roles = Roles.User)]
@@ -126,7 +113,7 @@ namespace RBUkraine.PL.Controllers
             return Ok();
         }
 
-        [HttpPost("~/order"), Authorize(Roles = Roles.User)]
+        [HttpGet("~/order"), Authorize(Roles = Roles.User)]
         public async Task<IActionResult> MakeOrder()
         {
             var cart = GetCart();
@@ -244,6 +231,12 @@ namespace RBUkraine.PL.Controllers
         {
             var cart = GetCart() ?? new CookieCartModel();
             var item = cart.Items.FirstOrDefault(x => x.Id == id);
+
+            if (item?.Amount == 1 && amountToAdd == -1)
+            {
+                RemoveFromCookieCart(id);
+                return;
+            }
 
             if (item is not null)
             {
