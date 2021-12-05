@@ -35,6 +35,9 @@
                 int i = 1;
                 foreach (var item in Model.Products)
                 {
+                    int price = Decimal.ToInt32(item.Product.Price);
+                    int amount = Decimal.ToInt32(item.Amount);
+                    int price2 = price * amount;
                     <div class="row">
                         <div class="center_content" style="width: 50px; margin-top: 10px; ">
                             <p class="text-Literata" style="font-size: 18px;">@i</p>
@@ -51,7 +54,7 @@
                                 <input type="number" min="1" class="text-Montserrat" style="font-size: 18px; width: 50px; margin-top: -10px; text-align: center;" value="@item.Amount" readonly>
                             </div>
                             <div class="center_content" style="width: 100px; margin-top: 10px;">
-                                <p class="text-Literata" style="font-size: 22px;">@item.Product.Price*@item.Amount ₴</p>
+                                <p class="text-Literata" style="font-size: 22px;">@price2 ₴</p>
                             </div>
 
                         </div>
@@ -62,13 +65,15 @@
                                     <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">+1</button>
                                 </a>
                             </div>
-                            <div class="center_content" style="width: 100px; margin-top: 0px;">
+                            <div class="center_content" style="width: 100px; margin-top: 0px; margin-left: 20px;">
                                 <a onclick="decreaseAmount(@item.Product.Id,() => location.reload())">
                                     <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">-1</button>
                                 </a>
                             </div>
                             <div class="center_content" style="width: 100px; margin-top: 10px;">
-                                <button style="background-color: transparent; border-color: transparent;"><img src="images/delete.png" width="40px" height="40px" style="margin-top: -20px;"></button>
+                                <a onclick="remove(@item.Product.Id,() => location.reload())">
+                                    <button style="background-color: transparent; border-color: transparent;"><img src="images/delete.png" width="40px" height="40px" style="margin-top: -20px;"></button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -82,11 +87,13 @@
 
             <div class="row" style="margin-left: 750px; ">
                 <p class="text-Literata" style="font-size: 24px; margin-top: 10px;">@localizer["Total"]: </p>
-                <p class="text-Literata" id="total" style="font-size: 30px; margin-left: 80px; margin-top: 10px;">@Model.Sum ₴</p>
+                <p class="text-Literata" id="total" style="font-size: 30px; margin-left: 80px; margin-top: 10px;">@Model.Sum.ToString("f0") ₴</p>
             </div>
             <div class="row" style="margin-top: 30px;">
-                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 20px;">Очистити корзину</button>
-                <button class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
+                <a onclick="clear(() => location.reload())">
+                    <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 20px;">Очистити корзину</button>
+                </a>
+                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
             </div>
 
         </div>
@@ -98,6 +105,11 @@
 
 @section Scripts
 {
+
     <script src="~/scripts/increase-amount.js"></script>
     <script src="~/scripts/decrease-amount.js"></script>
+    <script src="~/scripts/remove-from-cart.js"></script>
+    <script src="~/scripts/clear-cart.js"></script>
+
+    
 }
