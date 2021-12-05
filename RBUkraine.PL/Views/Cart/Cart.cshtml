@@ -1,6 +1,93 @@
-﻿@model IEnumerable<RBUkraine.PL.ViewModels.Cart.ProductCartViewModel>
+﻿@model RBUkraine.PL.ViewModels.Cart.CartViewModel
 
 @{
     ViewData["Title"] = "Cart";
 }
+
+<div style=" background-image: url(../images/4.jpg);">
+    <br><br> <br><br>
+    <div class="admin_animal_block" style=" width: 1200px">
+        <div style="height: 10px"></div>
+        <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&emsp;@localizer["Cart"]</a>
+        <hr style="margin-top: 10px">
+        <div style="width: 1130px; margin-left: auto; margin-right: auto; ">
+            <div class="row">
+                <div class="center_content" style="width: 50px; height: 50px; ">
+                    <p class="text-Montserrat" style="font-size: 18px;">№</p>
+                </div>
+                <div class="center_content" style="width: 360px; height: 50px;">
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Product name"]</p>
+                </div>
+                <div class="center_content" style="width: 150px; height: 50px;">
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Category"]</p>
+                </div>
+                <div class="center_content" style="width: 100px; height: 50px;">
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Quantity"]</p>
+                </div>
+                <div class="center_content" style="width: 100px; height: 50px;">
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Price"]</p>
+                </div>
+                <div class="center_content" style="width: 100px; height: 50px;">
+                </div>
+            </div>
+            <hr>
+            @{
+                int i = 1;
+                foreach (var item in Model.Products)
+                {
+                    <div class="row">
+                        <div class="center_content" style="width: 50px; margin-top: 10px; ">
+                            <p class="text-Literata" style="font-size: 18px;">@i</p>
+                        </div>
+                        <div style="width: 20px;"></div>
+                        <div class="row" style="background-color: #FAF6E2; border-radius: 10px;">
+                            <div style="width: 360px; margin-top: 10px; ">
+                                <p class="text-Literata" style="font-size: 18px; margin-left: 20px;">@item.Product.Name</p>
+                            </div>
+                            <div class="center_content" style="width: 150px; margin-top: 10px;">
+                                <p class="text-Montserrat" style="font-size: 18px;">@item.Product.Category</p>
+                            </div>
+                            <div class="center_content" style="width: 100px; margin-top: 10px;">
+                                <input type="number" min="1" class="text-Montserrat" style="font-size: 18px; width: 50px; margin-top: -10px; text-align: center;" value="@item.Amount" readonly>
+                            </div>
+                            <div class="center_content" style="width: 100px; margin-top: 10px;">
+                                <p class="text-Literata" style="font-size: 22px;">@item.Product.Price*@item.Amount ₴</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row" style="margin-left:70px">
+                            <div class="center_content" style="width: 100px; margin-top: 0px;">
+                                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">+1</button>
+                            </div>
+                            <div class="center_content" style="width: 100px; margin-top: 0px;">
+                                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">-1</button>
+                            </div>
+                            <div class="center_content" style="width: 100px; margin-top: 10px;">
+                                <button style="background-color: transparent; border-color: transparent;"><img src="images/delete.png" width="40px" height="40px" style="margin-top: -20px;"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    {
+                        i++;
+                    }
+                }
+            }
+
+
+            <div class="row" style="margin-left: 750px; ">
+                <p class="text-Literata" style="font-size: 24px; margin-top: 10px;">@localizer["Total"]: </p>
+                <p class="text-Literata" id="total" style="font-size: 30px; margin-left: 80px; margin-top: 10px;">@Model.Sum ₴</p>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 20px;">Очистити корзину</button>
+                <button class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
+            </div>
+
+        </div>
+        <br><br>
+    </div>
+    <br><br>  <br><br>
+</div>
 
