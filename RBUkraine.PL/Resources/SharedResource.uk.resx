@@ -246,6 +246,9 @@
   <data name="Class" xml:space="preserve">
     <value>Клас</value>
   </data>
+  <data name="Confirm that you are 16" xml:space="preserve">
+    <value>Підтвердьте, що вам 16</value>
+  </data>
   <data name="Conservation Status" xml:space="preserve">
     <value>Статус вимирання</value>
   </data>
@@ -400,7 +403,7 @@
     <value>Мій кабінет</value>
   </data>
   <data name="Phone number" xml:space="preserve">
-    <value>Номер тф.</value>
+    <value>Номер телефону</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Фото</value>
@@ -453,6 +456,9 @@
   <data name="Search by name and surname" xml:space="preserve">
     <value>Шукати за ПІБ</value>
   </data>
+  <data name="Send application" xml:space="preserve">
+    <value>Відправити заявку</value>
+  </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вхід</value>
   </data>
@@ -493,7 +499,7 @@
     <value>Заголовок</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Всього</value>
+    <value />
   </data>
   <data name="User" xml:space="preserve">
     <value>Користувач</value>
@@ -509,6 +515,9 @@
   </data>
   <data name="Wishes about working conditions" xml:space="preserve">
     <value>Побажання щодо умов праці</value>
+  </data>
+  <data name="Write why you want to become a volunteer" xml:space="preserve">
+    <value>Напишіть, чому ви хочете стати волонтером</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>

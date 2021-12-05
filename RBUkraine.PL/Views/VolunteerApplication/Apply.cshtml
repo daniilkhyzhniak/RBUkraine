@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<h1>Apply</h1>
+@*<h1>Apply</h1>
 
 <h4>VolunteerApplicationEditorModel</h4>
 <hr />
@@ -65,9 +65,50 @@
             </div>
         </form>
     </div>
-</div>
+</div>*@
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<div style=" background-image: url(../images/back.jpg);background-size: cover;">
+    <br><br>
+    <div class="admin_animal_block" style=" width: 1000px">
+        <div style="height: 10px"></div>
+        <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&#10094;&emsp;@localizer["Volunteering application"]</a>
+        <hr style="margin-top: 10px">
 
+        <div style="width: 910px; margin-left: auto; margin-right: auto; ">
+            <form asp-action="Apply">
+                <div class="row">
+                    <div style="width: 260px;">
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["Name and surname"] :</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["Phone number"]:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">E-mail:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["Confirm that you are 16"]:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["City"]:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["About myself"]:</p>
+                    </div>
+                    <div style="width: 660px">
+                        <input asp-for="FullName" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="PhoneNumber" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px;; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="Email" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="AppropriateAge" type="checkbox" style="margin-top:3px; height: 30px; width: 30px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="City" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="About" type="text" class="text-Literata" style="margin-top:3px; height: 130px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                    </div>
+                </div>
+                <div>
+                    <p class="text-Montserrat" style="font-size: 18px;">
+                        @localizer["Write why you want to become a volunteer"]:
+                    </p>
+                    <input asp-for="Reason" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" value="">
+                    <p class="text-Montserrat" style="font-size: 18px;">
+                        @localizer["Wishes about working conditions"]:
+                    </p>
+                    <input asp-for="WorkingConditions" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" value="">
+                </div>
+                <button type="submit" class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 180px; margin-top: 30px;">@localizer["Send application"]</button>
+                
+                <br><br>
+            </form>
+        </div>
+    </div>
+    <br><br>
+</div>

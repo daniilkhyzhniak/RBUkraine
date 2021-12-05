@@ -246,6 +246,9 @@
   <data name="Class" xml:space="preserve">
     <value>Класс</value>
   </data>
+  <data name="Confirm that you are 16" xml:space="preserve">
+    <value>Подтвердите, что вам 16</value>
+  </data>
   <data name="Conservation Status" xml:space="preserve">
     <value>Статус вымирания</value>
   </data>
@@ -400,7 +403,7 @@
     <value>Личный кабинет</value>
   </data>
   <data name="Phone number" xml:space="preserve">
-    <value>Номер тф.</value>
+    <value>Номер телефона</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Фото</value>
@@ -452,6 +455,9 @@
   </data>
   <data name="Search by name and surname" xml:space="preserve">
     <value>Искать по ФИО</value>
+  </data>
+  <data name="Send application" xml:space="preserve">
+    <value>Отправить заявку</value>
   </data>
   <data name="Sign-in" xml:space="preserve">
     <value>Вход</value>
@@ -509,6 +515,9 @@
   </data>
   <data name="Wishes about working conditions" xml:space="preserve">
     <value>Пожелания об условиях труда</value>
+  </data>
+  <data name="Write why you want to become a volunteer" xml:space="preserve">
+    <value>Напишите, почему вы хотите стать волонтером</value>
   </data>
   <data name="Z-A" xml:space="preserve">
     <value>Я-А</value>
