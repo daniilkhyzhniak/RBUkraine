@@ -111,7 +111,7 @@ namespace RBUkraine.BLL.Services
                 inner join Users u
                 on u.Id = z.UserId", parameters).FirstOrDefaultAsync();
 
-            return ratingItem.Amount;
+            return ratingItem?.Amount ?? 0;
         }
     }
 }
