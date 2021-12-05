@@ -41,52 +41,85 @@ namespace RBUkraine.PL.Controllers
         [HttpGet, Authorize(Roles = Roles.User)]
         public async Task<IActionResult> Cart()
         {
-            var cart = GetCart();
-            var products = await _productService.GetAll(cart.Items.Select(x => x.Id));
-            var model = products.Select(product => new ProductCartViewModel
+            var cartItems = GetCart().Items;
+            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
+            var model = new CartViewModel
             {
-                Product = _mapper.Map<ProductViewModel>(product),
-                Amount = cart.Items.First(x => x.Id == product.Id).Amount
-            });
+                Products = products.Select(product => new ProductCartViewModel
+                {
+                    Product = _mapper.Map<ProductViewModel>(product),
+                    Amount = cartItems.First(x => x.Id == product.Id).Amount
+                }),
+                Sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price)
+            };
             return View(model);
         }
 
         [HttpPost("add"), Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> AddToCart([FromQuery] int productId)
+        public async Task<IActionResult> AddToCart([FromQuery] int id)
         {
-            var product = await _productService.Get(productId);
+            var product = await _productService.Get(id);
 
             if (product is null)
             {
                 return NotFound();
             }
 
-            AddToCookieCart(productId);
+            AddToCookieCart(id);
             return Ok();
         }
         
-        [HttpPut("change-amount"), Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> AddToCart([FromQuery] int productId, [FromQuery] int amount)
+        [HttpPost("increase-amount"), Authorize(Roles = Roles.User)]
+        public async Task<IActionResult> IncreateProductAmount([FromQuery] int id)
         {
-            var product = await _productService.Get(productId);
+            var product = await _productService.Get(id);
 
             if (product is null)
             {
                 return NotFound();
             }
 
-            ChangeAmountForCookieCartItem(productId, amount);
-            return Ok();
+            ChangeAmountForCookieCartItem(id, 1);
+
+            var cartItems = GetCart().Items;
+            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
+            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
+
+            return Ok(sum);
         }
 
-        [HttpDelete("remove"), Authorize(Roles = Roles.User)]
-        public IActionResult RemoveFromCart([FromQuery] int productId)
+        [HttpPost("decrease-amount"), Authorize(Roles = Roles.User)]
+        public async Task<IActionResult> DecreaseProductAmount([FromQuery] int id)
+        {
+            var product = await _productService.Get(id);
+
+            if (product is null)
+            {
+                return NotFound();
+            }
+
+            ChangeAmountForCookieCartItem(id, -1);
+
+            var cartItems = GetCart().Items;
+            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
+            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
+
+            return Ok(sum);
+        }
+
+        [HttpPost("remove"), Authorize(Roles = Roles.User)]
+        public async Task<IActionResult> RemoveFromCart([FromQuery] int productId)
         {
             RemoveFromCookieCart(productId);
-            return Ok();
+
+            var cartItems = GetCart().Items;
+            var products = await _productService.GetAll(cartItems.Select(x => x.Id));
+            var sum = products.Select(product => new { Price = product.Price * cartItems.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
+
+            return Ok(sum);
         }
 
-        [HttpDelete("clear"), Authorize(Roles = Roles.User)]
+        [HttpPost("clear"), Authorize(Roles = Roles.User)]
         public IActionResult ClearCart()
         {
             RemoveAllFromCookieCart();
@@ -207,22 +240,14 @@ namespace RBUkraine.PL.Controllers
         }
 
         [NonAction]
-        private void ChangeAmountForCookieCartItem(int id, int amount)
+        private void ChangeAmountForCookieCartItem(int id, int amountToAdd)
         {
             var cart = GetCart() ?? new CookieCartModel();
             var item = cart.Items.FirstOrDefault(x => x.Id == id);
 
             if (item is not null)
             {
-                item.Amount = amount;
-            }
-            else
-            {
-                cart.Items.Add(new CookieCartItemModel
-                {
-                    Id = id,
-                    Amount = amount
-                });
+                item.Amount += amountToAdd;
             }
 
             HttpContext.Response.Cookies.Append(CookieCartName, JsonConvert.SerializeObject(cart));
