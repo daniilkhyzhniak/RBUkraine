@@ -89,8 +89,11 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 225px;">
-                <button type="submit" class="button1" style="width: 40%">@localizer["Basket"]</button>
-                <button type="submit" class="button1" style="width: 45%">@localizer["Purchase history"]</button>
+                <a asp-controller="Cart" asp-action="Cart" class="button1" style="width: 40%">
+                    <button type="submit" class="button1" style="width: 100%">@localizer["Basket"]</button>
+                </a>
+                
+                <button type="submit" class="button1" style="width: 40%">@localizer["Purchase history"]</button>
             </div>
         </div>
 
