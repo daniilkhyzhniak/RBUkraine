@@ -138,8 +138,8 @@ namespace RBUkraine.PL.Controllers
                     Product = product,
                     Amount = cart.Items.First(x => x.Id == product.Id).Amount
                 }),
-                Sum = products.Sum(x => x.Price)
-        };
+                Sum = products.Select(product => new { Price = product.Price * cart.Items.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price)
+            };
             return View(model);
         }
 
@@ -156,7 +156,7 @@ namespace RBUkraine.PL.Controllers
                     Product = product,
                     Amount = cart.Items.First(x => x.Id == product.Id).Amount
                 });
-                model.Sum = model.Products.Sum(x => x.Product.Price);
+                model.Sum = products.Select(product => new { Price = product.Price * cart.Items.First(item => item.Id == product.Id).Amount }).Sum(x => x.Price);
                 return View(model);
             }
 
