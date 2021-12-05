@@ -1,6 +1,6 @@
-const decreaseAmount = async (id) => {
-    return fetch(`https://localhost:5001/cart/${id}/decrease-amount`,
+const decreaseAmount = async (id, onDecrease) => {
+    return fetch(`https://localhost:5001/cart/decrease-amount?id=${id}`,
         {
             method: "post"
-        }).then(total => Document.getElementById(total));
+        }).then(() => onDecrease());
 };

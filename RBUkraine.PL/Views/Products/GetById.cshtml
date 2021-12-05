@@ -29,7 +29,7 @@
                         <p class="text-Montserrat" style="color: #484848; font-size: large;">@Model.Name</p>
                         <p class="text-Montserrat-light" style="color: #636363; font-size: large; margin-left: 7px;">@localizer["Category"]: &emsp;<span class="text-Literata">@Model.Category</span></p>
                     </div>
-                    <a onclick="addToCart(@Model.Id)">
+                    <a onclick="addToCart('@Model.Id')">
                         <button style="height: 40px; width: 430px; border-style: solid; border-color: #D2C29D; background: #D2C29D; border-radius: 5px; color: white; font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 18px; ">@localizer["Add item to cart"]</button>
                     </a>
                 </div>

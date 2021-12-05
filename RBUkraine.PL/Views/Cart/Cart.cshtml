@@ -58,12 +58,12 @@
 
                         <div class="row" style="margin-left:70px">
                             <div class="center_content" style="width: 100px; margin-top: 0px;">
-                                <a onclick="increaseAmount(@item.Product.Id)">
+                                <a onclick="increaseAmount(@item.Product.Id,() => location.reload())">
                                     <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">+1</button>
                                 </a>
                             </div>
                             <div class="center_content" style="width: 100px; margin-top: 0px;">
-                                <a onclick="decreaseAmount(@item.Product.Id)">
+                                <a onclick="decreaseAmount(@item.Product.Id,() => location.reload())">
                                     <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 100px; border-radius: 10px; font-size: 22px; margin-left: 20px;">-1</button>
                                 </a>
                             </div>
