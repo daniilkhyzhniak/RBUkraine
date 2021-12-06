@@ -192,6 +192,8 @@ namespace RBUkraine.PL.Controllers
                 ProductsIds = cart.Items.Select(x => x.Id)
             });
 
+            RemoveAllFromCookieCart();
+
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
 
