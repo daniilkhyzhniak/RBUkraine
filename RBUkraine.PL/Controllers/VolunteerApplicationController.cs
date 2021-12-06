@@ -47,7 +47,7 @@ namespace RBUkraine.PL.Controllers
         [HttpPost("apply")]
         public async Task<IActionResult> Apply(VolunteerApplicationEditorModel model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !model.AppropriateAge)
             {
                 return View(model);
             }
