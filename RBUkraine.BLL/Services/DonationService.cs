@@ -60,7 +60,7 @@ namespace RBUkraine.BLL.Services
 
 		                select 
 			                UserId, 
-			                SUM(od.Price) as Amount
+			                CAST(SUM(od.Price) / 2 as money) as Amount
 		                from Orders o
 		                inner join OrderDetails od
 		                on o.Id = od.OrderId
@@ -99,7 +99,7 @@ namespace RBUkraine.BLL.Services
 
 		                select 
 			                UserId, 
-			                SUM(od.Price) as Amount
+			                CAST(SUM(od.Price) / 2 as money) as Amount
 		                from Orders o
 		                inner join OrderDetails od
 		                on o.Id = od.OrderId
