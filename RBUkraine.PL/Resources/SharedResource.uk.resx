@@ -532,7 +532,7 @@
     <value>Заголовок</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value />
+    <value>Всього</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Користувач</value>

@@ -247,7 +247,7 @@
     <value>Выберите файл</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value />
+    <value>Город</value>
   </data>
   <data name="City/region" xml:space="preserve">
     <value>Город/регион</value>
