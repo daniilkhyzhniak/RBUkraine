@@ -149,7 +149,7 @@ namespace RBUkraine.PL.Controllers
 
             var session = await _sessionService.CreateAsync(new SessionCreateOptions
             {
-                SuccessUrl = "https://localhost:5001/order/success",
+                SuccessUrl = $"https://localhost:5001/order/success?sessionId={{CHECKOUT_SESSION_ID}}",
                 CancelUrl = "https://localhost:5001",
                 PaymentMethodTypes = new List<string> {
                     "card",
@@ -158,10 +158,8 @@ namespace RBUkraine.PL.Controllers
                 {
                     Name = product.Name,
                     Description = product.Description,
-                    Images = new List<string> { product.Image.Url },
-                    Price = $"{product.Price:CO}",
                     Currency = "UAH",
-                    Quantity = 1,
+                    Quantity = cart.Items.First(x => x.Id == product.Id).Amount,
                     Amount = Convert.ToInt64(product.Price) * 100
                 }).ToList(),
                 CustomerEmail = User.Claims.First(x => x.Type == ClaimTypes.Email).Value,
@@ -188,7 +186,7 @@ namespace RBUkraine.PL.Controllers
             var cart = GetCart();
             await _orderService.MakeOrder(new OrderCreationModel
             {
-                UserId = Convert.ToInt32(User.Claims.First(x => x.Type == "Id")),
+                UserId = Convert.ToInt32(User.Claims.First(x => x.Type == "Id").Value),
                 ProductsIds = cart.Items.Select(x => x.Id)
             });
 
