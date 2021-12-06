@@ -129,6 +129,9 @@
   <data name="Accept" xml:space="preserve">
     <value>Принять</value>
   </data>
+  <data name="Add a comment" xml:space="preserve">
+    <value>Добавить комментарий</value>
+  </data>
   <data name="Add item to cart" xml:space="preserve">
     <value>Добавить товар в корзину</value>
   </data>
@@ -207,6 +210,9 @@
   <data name="Cancel everything" xml:space="preserve">
     <value>Отменить все</value>
   </data>
+  <data name="Cancel order" xml:space="preserve">
+    <value>Отменить заказ</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Корзина</value>
   </data>
@@ -243,8 +249,14 @@
   <data name="City" xml:space="preserve">
     <value />
   </data>
+  <data name="City/region" xml:space="preserve">
+    <value>Город/регион</value>
+  </data>
   <data name="Class" xml:space="preserve">
     <value>Класс</value>
+  </data>
+  <data name="Confirm order" xml:space="preserve">
+    <value>Подтвердить заказ</value>
   </data>
   <data name="Confirm that you are 16" xml:space="preserve">
     <value>Подтвердите, что вам 16</value>
@@ -269,6 +281,9 @@
   </data>
   <data name="Detachment" xml:space="preserve">
     <value>Отряд</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>Район</value>
   </data>
   <data name="Donate for the maintenance of this species" xml:space="preserve">
     <value>Пожертвовать на содержание данного вида</value>
@@ -318,6 +333,9 @@
   <data name="Go to the news of the charity fund" xml:space="preserve">
     <value>Перейти к новостям благотворительного фонда</value>
   </data>
+  <data name="Goods" xml:space="preserve">
+    <value>Товары</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Главная</value>
   </data>
@@ -363,6 +381,9 @@
   <data name="Make a charitable contribution to the species" xml:space="preserve">
     <value>Внести благотворительный вклад в вид</value>
   </data>
+  <data name="Making an order" xml:space="preserve">
+    <value>Оформление заказа</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
@@ -380,6 +401,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
+  </data>
+  <data name="Nova Poshta office" xml:space="preserve">
+    <value>Отделение Новой Почты</value>
   </data>
   <data name="Number of charitable contributions" xml:space="preserve">
     <value>Количество благотворительных взносов </value>
@@ -431,6 +455,9 @@
   </data>
   <data name="Reasons to become a volunteer" xml:space="preserve">
     <value>Причины стать волонтером</value>
+  </data>
+  <data name="Recipient's name" xml:space="preserve">
+    <value>ФИО получателя</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
@@ -491,6 +518,12 @@
   </data>
   <data name="The amount of charitable contributions" xml:space="preserve">
     <value>Сумма благотворительных взносов</value>
+  </data>
+  <data name="The amount of delivery is not included in the total amount." xml:space="preserve">
+    <value>Сумма доставки не входит в общую сумму.</value>
+  </data>
+  <data name="The cost of delivery under the terms of the Nova Poshta." xml:space="preserve">
+    <value>Стоимость доставки по условиям Новой Почты.</value>
   </data>
   <data name="The name of the benefactor" xml:space="preserve">
     <value>Имя благотворителя</value>

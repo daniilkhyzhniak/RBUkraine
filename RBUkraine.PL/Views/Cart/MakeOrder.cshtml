@@ -7,17 +7,17 @@
     <br><br>
     <div class="admin_animal_block" style=" width: 1200px">
         <div style="height: 10px"></div>
-        <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&#10094;&emsp;Оформлення замовлення</a>
+        <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&#10094;&emsp;@localizer["Making an order"]</a>
         <hr style="margin-top: 10px">
 
         <div style="width: 1110px; margin-left: auto; margin-right: auto; ">
             <div class="row">
 
                 <div style="width: 230px;">
-                    <p class="text-Montserrat" style="font-size: 18px;">ПІБ отримувача:</p>
-                    <p class="text-Montserrat" style="font-size: 18px;">Номер телефону:</p>
-                    <p class="text-Montserrat" style="font-size: 18px;">Місто / область:</p>
-                    <p class="text-Montserrat" style="font-size: 18px;">Район:</p>
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Recipient's name"]:</p>
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["Phone number"]:</p>
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["City/region"]:</p>
+                    <p class="text-Montserrat" style="font-size: 18px;">@localizer["District"]:</p>
                     <p class="text-Montserrat" style="font-size: 18px;">E-mail:</p>
                 </div>
                 <div style="width: 540px">
@@ -30,11 +30,11 @@
                 </div>
                 <div style="width: 370px; ">
                     <div class="row">
-                        <p class="text-Montserrat" style="font-size: 18px;">Відділення нової пошти №:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["Nova Poshta office"] №:</p>
                         <input type="text" class="text-Literata" style="margin-left: 10px; height: 30px; width: 80px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="18">
                     </div>
                     <div style="margin-left: -15px; margin-top: -5px;">
-                        <p class="text-Montserrat" style="font-size: 18px;">Додати коментар:</p>
+                        <p class="text-Montserrat" style="font-size: 18px;">@localizer["Add a comment"]:</p>
                         <textarea style="height: 90px; width: 360px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 10px;"></textarea>
 
                     </div>
@@ -44,57 +44,48 @@
             <hr style="width: 1140px; margin-left: -15px;">
             <div class="row">
                 <div style="width: 810px;">
-                    <p class="text-Literata" style="font-size: 16px;">Товари:</p>
-                    <div class="row" style="margin-top: 5px;">
-                        <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
-                            <p class="text-Literata" style="font-size: 14px; color: #959595;">1</p>
-                        </div>
-                        <div style="width: 20px;"></div>
-                        <div class="row" style="background-color: #FAF6E2; border-radius: 10px;">
-                            <div style="width: 480px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Literata" style="font-size: 14px; margin-left: 20px;">Футболка з БФ “Маленькі серця</p>
+                    <p class="text-Literata" style="font-size: 16px;">@localizer["Goods"]:</p>
+                    @{
+                        int i = 1;
+                        foreach (var prouct in Model.Products)
+                        {
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
+                                    <p class="text-Literata" style="font-size: 14px; color: #959595;">@i</p>
+                                </div>
+                                <div style="width: 20px;"></div>
+                                <div class="row" style="background-color: #FAF6E2; border-radius: 10px;">
+                                    <div style="width: 480px; margin-top: 5px; margin-bottom: -7px;">
+                                        <p class="text-Literata" style="font-size: 14px; margin-left: 20px;">@prouct.Product.Name</p>
+                                    </div>
+                                    <div class="center_content" style="width: 200px; margin-top: 5px; margin-bottom: -7px;">
+                                        <p class="text-Montserrat" style="font-size: 14px;">@prouct.Product.Category</p>
+                                    </div>
+                                    <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
+                                        <p class="text-Montserrat" style="font-size: 14px;">@prouct.Amount</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="center_content" style="width: 200px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Montserrat" style="font-size: 14px;">Футболка</p>
-                            </div>
-                            <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Montserrat" style="font-size: 14px;">1</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 5px;">
-                        <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
-                            <p class="text-Literata" style="font-size: 14px; color: #959595;">2</p>
-                        </div>
-                        <div style="width: 20px;"></div>
-                        <div class="row" style="background-color: #FAF6E2; border-radius: 10px;">
-                            <div style="width: 480px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Literata" style="font-size: 14px; margin-left: 20px;">Футболка з БФ “Маленькі серця</p>
-                            </div>
-                            <div class="center_content" style="width: 200px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Montserrat" style="font-size: 14px;">Футболка</p>
-                            </div>
-                            <div class="center_content" style="width: 50px; margin-top: 5px; margin-bottom: -7px;">
-                                <p class="text-Montserrat" style="font-size: 14px;">1</p>
-                            </div>
-                        </div>
-                    </div>
-
+                            {
+                                i++;
+                            }
+                        }
+                     }
                 </div>
                 <div style="width: 300px; margin-top: 40px; text-align: right; justify-content: right; align-items: revert;">
                     <p style="font-family: Literata; font-size: 10px; color: #7C0A02;">
-                        Вартість доставки за умовами Нової пошти.
-                        Сума доставки не входить до загальної суми.
+                        @localizer["The cost of delivery under the terms of the Nova Poshta."]
+                        @localizer["The amount of delivery is not included in the total amount."]
                     </p>
                     <div class="row">
-                        <p class="text-Literata" style="font-size: 22px; margin-top: 10px; color: #656565;">Всього: </p>
-                        <p class="text-Literata" style="font-size: 30px; margin-left: 150px; margin-top: 10px;">195 ₴</p>
+                        <p class="text-Literata" style="font-size: 22px; margin-top: 10px; color: #656565;">@localizer["Total"]: </p>
+                        <p class="text-Literata" style="font-size: 30px; margin-left: 150px; margin-top: 10px;">@Model.Sum.ToString("f0") ₴</p>
                     </div>
                 </div>
             </div>
             <div class="row" style="margin-top: 30px;">
-                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 5px;">Скасувати замовлення</button>
-                <button class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Підтвердити замовлення</button>
+                <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 5px;">@localizer["Cancel order"]</button>
+                <button class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">@localizer["Confirm order"]</button>
             </div>
         </div>
         <br>
