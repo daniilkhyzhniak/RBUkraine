@@ -19,15 +19,18 @@ namespace RBUkraine.BLL.Services
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IDonationService _donationService;
         private readonly string _googleClientId;
         
         public UserService(
             AppDbContext context, 
             IMapper mapper,
+            IDonationService donationService,
             IConfiguration configuration)
         {
             _context = context;
             _mapper = mapper;
+            _donationService = donationService;
             _googleClientId = configuration["GoogleAuth:ClientId"];
         }
 
@@ -64,7 +67,10 @@ namespace RBUkraine.BLL.Services
                 .Include(user => user.UserRoles)
                 .ThenInclude(userRole => userRole.Role)
                 .FirstOrDefaultAsync(user => user.Email == email);
-            return _mapper.Map<UserModel>(user);
+
+            var model = _mapper.Map<UserModel>(user);
+            model.TotalDonationAmount = await _donationService.GetTotalAmount(user.Id);
+            return model;
         }
 
         public async Task<ICollection<Claim>> AuthenticateAsync(AuthModel authModel)

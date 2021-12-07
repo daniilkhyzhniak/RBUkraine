@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.Order;
+using RBUkraine.PL.Services;
 using RBUkraine.PL.ViewModels.Cart;
 using RBUkraine.PL.ViewModels.Products;
 using Stripe.Checkout;
@@ -24,16 +25,19 @@ namespace RBUkraine.PL.Controllers
 
         private readonly IProductService _productService;
         private readonly IOrderService _orderService;
+        private readonly IBonusService _bonusService;
         private readonly IMapper _mapper;
         private readonly SessionService _sessionService;
 
         public CartController(
             IProductService productService,
             IOrderService orderService,
+            IBonusService bonusService,
             IMapper mapper)
         {
             _productService = productService;
             _orderService = orderService;
+            _bonusService = bonusService;
             _mapper = mapper;
             _sessionService = new SessionService();
         }
@@ -191,6 +195,8 @@ namespace RBUkraine.PL.Controllers
             });
 
             RemoveAllFromCookieCart();
+
+            await _bonusService.SendBonus(User.Claims.First(x => x.Type == ClaimTypes.Email).Value);
 
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }

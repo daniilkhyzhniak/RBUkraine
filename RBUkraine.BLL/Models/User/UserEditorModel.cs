@@ -5,5 +5,7 @@
         public string Nickname { get; set; }
 
         public bool IncludeInRating { get; set; }
+
+        public bool IsBonusReceived { get; set; }
     }
 }

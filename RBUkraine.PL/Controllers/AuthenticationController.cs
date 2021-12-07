@@ -139,7 +139,6 @@ namespace RBUkraine.PL.Controllers
         {
             var email = HttpContext.User.Claims.First(x => x.Type == ClaimTypes.Email).Value;
             var user = await _userService.GetUserByEmailAsync(email);
-            user.TotalDonationAmount = await _donationService.GetTotalAmount(user.Id);
             return View(_mapper.Map<UserViewModel>(user));
         }
 

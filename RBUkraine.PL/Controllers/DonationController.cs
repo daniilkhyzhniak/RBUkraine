@@ -11,6 +11,7 @@ using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.Donation;
+using RBUkraine.PL.Services;
 using RBUkraine.PL.ViewModels.Donation;
 using Stripe.Checkout;
 
@@ -22,16 +23,19 @@ namespace RBUkraine.PL.Controllers
         private readonly IDonationService _donationService;
         private readonly IAnimalService _animalService;
         private readonly ICharitableOrganizationService _charitableOrganizationService;
+        private readonly IBonusService _bonusService;
         private readonly SessionService _sessionService;
 
         public DonationController(
             IDonationService donationService, 
             IAnimalService animalService, 
-            ICharitableOrganizationService charitableOrganizationService)
+            ICharitableOrganizationService charitableOrganizationService,
+            IBonusService bonusService)
         {
             _donationService = donationService;
             _animalService = animalService;
             _charitableOrganizationService = charitableOrganizationService;
+            _bonusService = bonusService;
             _sessionService = new SessionService();
         }
 
@@ -138,6 +142,9 @@ namespace RBUkraine.PL.Controllers
                 Amount = model.Amount,
                 UserId = Convert.ToInt32(User.Claims.First(x => x.Type == "Id").Value)
             });
+
+            await _bonusService.SendBonus(User.Claims.First(x => x.Type == ClaimTypes.Email).Value);
+
             return RedirectToAction("GetAnimals", "CharitableOrganizations");
         }
     }

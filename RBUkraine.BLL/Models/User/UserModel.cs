@@ -11,5 +11,7 @@
         public bool IncludeInRating { get; set; }
 
         public decimal TotalDonationAmount { get; set; }
+
+        public bool IsBonusReceived { get; set; }
     }
 }
