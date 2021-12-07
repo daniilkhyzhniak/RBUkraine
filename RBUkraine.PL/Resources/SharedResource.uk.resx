@@ -441,6 +441,9 @@
   <data name="Price" xml:space="preserve">
     <value>Ціна</value>
   </data>
+  <data name="Product added to cart" xml:space="preserve">
+    <value>Товар додано в кошик</value>
+  </data>
   <data name="Product name" xml:space="preserve">
     <value>Назва продукту</value>
   </data>
