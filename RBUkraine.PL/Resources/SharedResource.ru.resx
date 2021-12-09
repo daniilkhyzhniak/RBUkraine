@@ -141,6 +141,9 @@
   <data name="An animal of this species already exists" xml:space="preserve">
     <value>Животное этого вида уже существует</value>
   </data>
+  <data name="An application for volunteering has been sent" xml:space="preserve">
+    <value>Заявка на волонтерство отправлена</value>
+  </data>
   <data name="Animal species" xml:space="preserve">
     <value>Вид животных</value>
   </data>

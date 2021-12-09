@@ -14,58 +14,58 @@
 
 @*<h1>Apply</h1>
 
-<h4>VolunteerApplicationEditorModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Apply">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="About" class="control-label"></label>
-                <input asp-for="About" class="form-control" />
-                <span asp-validation-for="About" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Reason" class="control-label"></label>
-                <input asp-for="Reason" class="form-control" />
-                <span asp-validation-for="Reason" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WorkingConditions" class="control-label"></label>
-                <input asp-for="WorkingConditions" class="form-control" />
-                <span asp-validation-for="WorkingConditions" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="AppropriateAge" /> @Html.DisplayNameFor(model => model.AppropriateAge)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
+    <h4>VolunteerApplicationEditorModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Apply">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About" class="control-label"></label>
+                    <input asp-for="About" class="form-control" />
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reason" class="control-label"></label>
+                    <input asp-for="Reason" class="form-control" />
+                    <span asp-validation-for="Reason" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkingConditions" class="control-label"></label>
+                    <input asp-for="WorkingConditions" class="form-control" />
+                    <span asp-validation-for="WorkingConditions" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="AppropriateAge" /> @Html.DisplayNameFor(model => model.AppropriateAge)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
 
 <div style=" background-image: url(../images/back.jpg);background-size: cover;">
     <br><br>
@@ -87,27 +87,29 @@
                         <p class="text-Montserrat" style="font-size: 18px;">@localizer["About myself"]:</p>
                     </div>
                     <div style="width: 660px">
-                        <input asp-for="FullName" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
-                        <input asp-for="PhoneNumber" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px;; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
-                        <input asp-for="Email" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="FullName" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" >
+                        <input asp-for="PhoneNumber" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px;; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" >
+                        <input asp-for="Email" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" >
                         <input asp-for="AppropriateAge" type="checkbox" style="margin-top:3px; height: 30px; width: 30px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;">
-                        <input asp-for="City" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
-                        <input asp-for="About" type="text" class="text-Literata" style="margin-top:3px; height: 130px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" value="">
+                        <input asp-for="City" type="text" class="text-Literata" style="margin-top:3px; height: 30px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" >
+                        <input asp-for="About" type="text" class="text-Literata" style="margin-top:3px; height: 130px; width: 660px; background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;" >
                     </div>
                 </div>
                 <div>
                     <p class="text-Montserrat" style="font-size: 18px;">
                         @localizer["Write why you want to become a volunteer"]:
                     </p>
-                    <input asp-for="Reason" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" value="">
+                    <input asp-for="Reason" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" >
                     <p class="text-Montserrat" style="font-size: 18px;">
                         @localizer["Wishes about working conditions"]:
                     </p>
-                    <input asp-for="WorkingConditions" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" value="">
+                    <input asp-for="WorkingConditions" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" >
                 </div>
-                <button type="submit" class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 180px; margin-top: 30px;">
-                    @localizer["Send application"]
-                </button>
+                <a onclick="alertMessage('@localizer["An application for volunteering has been sent"]')">
+                    <button type="submit" class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 180px; margin-top: 30px;">
+                        @localizer["Send application"]
+                    </button>
+                </a>
 
                 <br><br>
             </form>
@@ -115,3 +117,9 @@
     </div>
     <br><br>
 </div>
+
+
+@section Scripts
+{
+    <script src="~/scripts/messege.js"></script>
+}
