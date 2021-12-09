@@ -93,9 +93,19 @@
                 <a onclick="clearCart(() => location.reload())">
                     <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 20px;">Очистити корзину</button>
                 </a>
-                <a asp-controller="Cart" asp-action="MakeOrder">
-                    <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
-                </a>
+                @if (i > 1)
+                {
+                    <a asp-controller="Cart" asp-action="MakeOrder">
+                        <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
+                    </a>
+                }
+                else
+                {
+                    <a onclick="alertMessage('@localizer["The cart is empty"]')">
+                        <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">Замовити</button>
+                    </a>
+                }
+
             </div>
 
         </div>
@@ -112,6 +122,6 @@
     <script src="~/scripts/decrease-amount.js"></script>
     <script src="~/scripts/remove-from-cart.js"></script>
     <script src="~/scripts/clear-cart.js"></script>
+    <script src="~/scripts/messege.js"></script>
 
-    
 }

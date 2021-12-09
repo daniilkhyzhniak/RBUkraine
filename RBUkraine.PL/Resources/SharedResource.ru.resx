@@ -528,6 +528,9 @@
   <data name="The amount of delivery is not included in the total amount." xml:space="preserve">
     <value>Сумма доставки не входит в общую сумму.</value>
   </data>
+  <data name="The cart is empty" xml:space="preserve">
+    <value>Корзина пуста</value>
+  </data>
   <data name="The cost of delivery under the terms of the Nova Poshta." xml:space="preserve">
     <value>Стоимость доставки по условиям Новой Почты.</value>
   </data>
