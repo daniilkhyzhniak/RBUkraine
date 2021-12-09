@@ -2,6 +2,8 @@ const alertMessage = async (message) => {
 	alert(message);
 };
 
-const errorMessae = (error) => {
-	alert(error);
+const errorMessae = (massage, error) => {
+	if (!error) {
+		alert(massage);
+	}
 }
