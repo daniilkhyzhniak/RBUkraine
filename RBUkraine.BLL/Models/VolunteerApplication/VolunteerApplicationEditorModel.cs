@@ -10,5 +10,7 @@
         public string Reason { get; set; }
         public string WorkingConditions { get; set; }
         public bool AppropriateAge { get; set; }
+
+        public string Error { get; set; }
     }
 }

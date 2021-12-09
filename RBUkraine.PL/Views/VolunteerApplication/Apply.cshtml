@@ -73,7 +73,12 @@
         <div style="height: 10px"></div>
         <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&#10094;&emsp;@localizer["Volunteering application"]</a>
         <hr style="margin-top: 10px">
-
+        @if (Model?.Error != null)
+        {
+            <div style="color: red; margin-left: 40px;">
+                @localizer["Invalid data"]
+            </div>
+        }
         <div style="width: 910px; margin-left: auto; margin-right: auto; ">
             <form asp-action="Apply">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

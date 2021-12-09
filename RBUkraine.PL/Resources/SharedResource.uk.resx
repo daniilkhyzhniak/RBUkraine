@@ -348,6 +348,9 @@
   <data name="Image format" xml:space="preserve">
     <value>Зображення формату</value>
   </data>
+  <data name="Invalid data" xml:space="preserve">
+    <value>Невірні дані</value>
+  </data>
   <data name="Kingdom" xml:space="preserve">
     <value>Царство</value>
   </data>
