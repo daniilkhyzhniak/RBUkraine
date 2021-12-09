@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 30px;">
-                    <button class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 5px;">@localizer["Cancel order"]</button>
+                    <button onclick="cancelOrder()" class="text-Literata" style="background-color: #DCD4C2; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 5px;">@localizer["Cancel order"]</button>
                     <button class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 50px;">@localizer["Confirm order"]</button>
                 </div>
             </form>
@@ -96,3 +96,8 @@
     </div>
     <br><br>
 </div>
+
+@section Scripts
+{
+    <script src="~/scripts/cancel-order.js"></script>
+}

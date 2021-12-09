@@ -49,6 +49,7 @@ namespace RBUkraine.PL.Controllers
         {
             if (!ModelState.IsValid || !model.AppropriateAge)
             {
+                model.Error = "Невірні дані";
                 return View(model);
             }
 
