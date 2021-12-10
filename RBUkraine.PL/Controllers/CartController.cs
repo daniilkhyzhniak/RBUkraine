@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.Models.Order;
+using RBUkraine.PL.EmailSender;
+using RBUkraine.PL.EmailSender.Models;
 using RBUkraine.PL.Services;
 using RBUkraine.PL.ViewModels.Cart;
 using RBUkraine.PL.ViewModels.Products;
@@ -27,18 +29,21 @@ namespace RBUkraine.PL.Controllers
         private readonly IOrderService _orderService;
         private readonly IBonusService _bonusService;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
         private readonly SessionService _sessionService;
 
         public CartController(
             IProductService productService,
             IOrderService orderService,
             IBonusService bonusService,
-            IMapper mapper)
+            IMapper mapper,
+            IEmailSender emailSender)
         {
             _productService = productService;
             _orderService = orderService;
             _bonusService = bonusService;
             _mapper = mapper;
+            _emailSender = emailSender;
             _sessionService = new SessionService();
         }
 
@@ -195,6 +200,13 @@ namespace RBUkraine.PL.Controllers
             });
 
             RemoveAllFromCookieCart();
+
+            await _emailSender.SendEmailAsync(new EmailModel
+            {
+                Email = User.Claims.First(x => x.Type == ClaimTypes.Email).Value,
+                Subject = "Заказ",
+                Message = "Ваш заказ сформирован, наш администратор с вами свяжется"
+            });
 
             await _bonusService.SendBonus(User.Claims.First(x => x.Type == ClaimTypes.Email).Value);
 
