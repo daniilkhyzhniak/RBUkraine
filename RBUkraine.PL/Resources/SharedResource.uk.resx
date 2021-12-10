@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="'RBUkraine' is an online system that helps people learn about the animals of the Red Book of Ukraine, provides financial support to charitable organizations involved in the protection of animals of the Red Book of Ukraine, as well as allows you to view and buy goods for yourself (profits from these sales will go to the same organizations)." xml:space="preserve">
+    <value>«RBUkraine» – це онлайн-система, яка допомагає людям дізнатися про тварин червоної книги України, забезпечує фінансову підтримку благодійних організацій, що займаються захистом тварин Червоної книги України, а також дозволяє переглядати та придбати товар для себе (прибуток з цих продажів буде спрямований на ті ж організації).</value>
+  </data>
   <data name="14, prospect Nauki, Kharkiv" xml:space="preserve">
     <value>м. Харків, проспект Науки, 14</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="About myself" xml:space="preserve">
     <value>Про себе</value>
+  </data>
+  <data name="About us" xml:space="preserve">
+    <value>Про нас</value>
   </data>
   <data name="Accept" xml:space="preserve">
     <value>Прийняти</value>
@@ -155,6 +161,9 @@
   </data>
   <data name="Are you sure you want to delete this record?" xml:space="preserve">
     <value>Ви впевнені, що хочете видалити цей запис?</value>
+  </data>
+  <data name="As a thank you for caring for the animals, users who have made a significant charitable contribution will be able to receive a small gift." xml:space="preserve">
+    <value>Як подяка за небайдужість до тварин, користувачі, які зробили значний благодійний внесок, зможуть отримати невеликий подарунок.</value>
   </data>
   <data name="Basket" xml:space="preserve">
     <value>Кошик</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="By price" xml:space="preserve">
     <value>За ціною</value>
+  </data>
+  <data name="By registering, users will be able to write comments on events, news about animals and products on the site, provide assistance to animal support organizations of the Red Book of Ukraine (in the form of charitable contributions or by purchasing goods), online payment, and purchase goods from the site. These users will be able to allow the system to add their name to the list of those who have made a charitable contribution through the RBUkraine site (this list will be displayed on a separate page of the site), as well as to receive or purchase invitations to charity events." xml:space="preserve">
+    <value>Зареєструвавшись, користувачі зможуть писати коментарі до заходів, новин про тварин та товари сайту, надавати допомогу організаціям підтримки тварин Червоної книги України (у вигляді благодійного внеску або засобом придбання товару) за допомогою онлайн оплати та придбати товар із сайту. Ці користувачі зможуть дозволити системі додати своє ім'я до списку тих, хто зробив благодійний внесок через сайт RBUkraine (цей список буде відображено на окремій сторінці сайту), а також отримати або придбати запрошення на благодійні заходи.</value>
   </data>
   <data name="By species" xml:space="preserve">
     <value>За видом</value>
@@ -548,6 +560,9 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>Користувач</value>
+  </data>
+  <data name="Visitors to the web-platform will be able to get a description of this system, detailed information about animals assisted by charitable organizations, provide anonymous assistance to these organizations through online payment, and will be able to view products on the site and receive information about charitable events." xml:space="preserve">
+    <value>Відвідувачі web-платформи зможуть отримати опис даної системи, детальну інформацію про тварин, яким здійснюється допомога благодійними організаціями, анонімну допомогу цим організаціям за допомогою онлайн оплати, а також матимуть можливість перегляду товару на сайті та отримати інформацію про благодійні заходи.</value>
   </data>
   <data name="Volunteer applications" xml:space="preserve">
     <value>Заявки на волонтерство</value>
