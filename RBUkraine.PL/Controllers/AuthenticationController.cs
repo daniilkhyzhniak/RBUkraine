@@ -36,7 +36,10 @@ namespace RBUkraine.PL.Controllers
             _mapper = mapper;
             _emailSender = emailSender;
         }
-        
+
+        [HttpGet("~/about")]
+        public IActionResult About() => View("About");
+
         [HttpGet("~/registration")]
         public IActionResult Registration()
         {

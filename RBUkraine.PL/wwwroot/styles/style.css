@@ -1095,6 +1095,11 @@
      background-image: url(../images/4.jpg);
 }
 
+.about-us-block {
+    background-image: url(../images/back.jpg);
+    background-size: cover;
+}
+
 @font-face {
     font-family: "Literata";
     src: url("../fonts/literata/Literatamedium.ttf") format("truetype");
