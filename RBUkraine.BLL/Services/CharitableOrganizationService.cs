@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using RBUkraine.BLL.Contracts;
 using RBUkraine.BLL.Enums;
 using RBUkraine.BLL.MapperExtensions;
+using RBUkraine.BLL.Models;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.DAL.Contexts;
 using RBUkraine.DAL.Entities;
@@ -60,6 +62,58 @@ namespace RBUkraine.BLL.Services
             return _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
         }
 
+        public async Task<IEnumerable<CharitableOrganizationModel>> GetAllAdmin(CharitableOrganizationFilterModel filter, string culture = Culture.Ukrainian)
+        {
+            var query = _context.CharitableOrganizations
+                .Include(c => c.CharitableOrganizationTranslates)
+                .Include(c => c.Image)
+                .Where(c => !c.IsDeleted);
+
+            query = AddSearchFilter(query, filter);
+
+            var charitableOrganizations = await query.AsSplitQuery().ToListAsync();
+            var models = _mapper.MapToCharitableOrganizationModel(charitableOrganizations, culture);
+
+            return Sort(models, filter);
+        }
+
+        private static IQueryable<CharitableOrganization> AddSearchFilter(IQueryable<CharitableOrganization> query, CharitableOrganizationFilterModel filter)
+        {
+            if (string.IsNullOrWhiteSpace(filter.Search))
+            {
+                return query;
+            }
+
+            var search = filter.Search.Trim().ToUpper();
+
+            return filter.SearchOptions switch
+            {
+                CharitableOrganizationSearchOptions.ByName => query
+                    .Where(x => x.Name.Trim().ToUpper().Contains(search)
+                                || x.CharitableOrganizationTranslates.Any(a => a.Name.Trim().ToUpper().Contains(search))),
+                CharitableOrganizationSearchOptions.ByDate => query.Where(x => x.FoundationDate.ToString().Contains(search)),
+                _ => query
+            };
+        }
+
+        private static IEnumerable<CharitableOrganizationModel> Sort(
+            IEnumerable<CharitableOrganizationModel> models,
+            CharitableOrganizationFilterModel filter)
+        {
+            return filter.SortOptions switch
+            {
+                CharitableOrganizationSortOptions.ByName => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.Name)
+                    : models.OrderByDescending(x => x.Name),
+                CharitableOrganizationSortOptions.ByDate => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.FoundationDate)
+                    : models.OrderByDescending(x => x.FoundationDate),
+                _ => filter.SortDirection == SortDirection.Asc
+                    ? models.OrderBy(x => x.Name)
+                    : models.OrderByDescending(x => x.Name)
+            };
+        }
+
         public async Task<CharitableOrganizationModel> GetByIdAsync(int id, string culture = Culture.Ukrainian)
         {
             var charitableOrganization = await _context.CharitableOrganizations
@@ -99,6 +153,12 @@ namespace RBUkraine.BLL.Services
 
         public async Task<int> CreateAsync(CharitableOrganizationEditorModel model)
         {
+            model.Image ??= new Image
+            {
+                Title = "Default",
+                Data = Convert.FromBase64String(Images.DefaultAnimal)
+            };
+
             var charitableOrganization = _mapper.Map<CharitableOrganization>(model);
 
             _context.CharitableOrganizations.Add(charitableOrganization);
@@ -122,6 +182,8 @@ namespace RBUkraine.BLL.Services
             charitableOrganization.FoundationDate = model.FoundationDate;
             charitableOrganization.PhoneNumber = model.PhoneNumber;
             charitableOrganization.Stockholders = model.Stockholders;
+            charitableOrganization.PhoneNumber = model.PhoneNumber;
+            charitableOrganization.Founders = model.Founders;
 
             if (model.Image is not null)
             {
@@ -133,6 +195,9 @@ namespace RBUkraine.BLL.Services
                     Title = model.Image.Title
                 });
             }
+
+            _context.Update(charitableOrganization);
+            await _context.SaveChangesAsync();
         }
     }
 }

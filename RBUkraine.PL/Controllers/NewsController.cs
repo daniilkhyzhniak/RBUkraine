@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,7 +55,6 @@ namespace RBUkraine.PL.Controllers
                 FoundSelectList = charitableOrganizations.Select(
                     c => new SelectListItem(c.Name, c.Id.ToString(), filter.Founds.Contains(c.Id)))
             };
-
             return View(model);
         }
 
@@ -111,7 +111,7 @@ namespace RBUkraine.PL.Controllers
         {
             var news = await _newsService.GetByIdAsync(id, CultureInfo.CurrentCulture.Name);
 
-            if (news is not null)
+            if (news is null)
             {
                 return NotFound();
             }
@@ -120,13 +120,9 @@ namespace RBUkraine.PL.Controllers
             var charitableOrganizations =
                 await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
 
-            var model = new NewsEditorViewModel
-            {
-                AnimalSelectList = animals
-                    .Select(x => new SelectListItem(x.Species, x.Id.ToString())).ToList(),
-                CharitableOrganizationSelectList = charitableOrganizations
-                    .Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList()
-            };
+            var model = _mapper.Map<NewsEditorViewModel>(news);
+            model.AnimalSelectList = animals.Select(x => new SelectListItem(x.Species, x.Id.ToString())).ToList();
+            model.CharitableOrganizationSelectList = charitableOrganizations.Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList();
 
             return View(model);
         }
@@ -139,12 +135,9 @@ namespace RBUkraine.PL.Controllers
             if (!ModelState.IsValid)
             {
                 var animals = await _animalService.GetAllAsync(CultureInfo.CurrentCulture.Name);
-                var charitableOrganizations =
-                    await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
-                model.AnimalSelectList = animals
-                    .Select(x => new SelectListItem(x.Species, x.Id.ToString())).ToList();
-                model.CharitableOrganizationSelectList = charitableOrganizations
-                    .Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList();
+                var charitableOrganizations = await _charitableOrganizationService.GetAllAsync(CultureInfo.CurrentCulture.Name);
+                model.AnimalSelectList = animals.Select(x => new SelectListItem(x.Species, x.Id.ToString())).ToList();
+                model.CharitableOrganizationSelectList = charitableOrganizations.Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList();
 
                 return View(model);
             }

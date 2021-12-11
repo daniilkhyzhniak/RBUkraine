@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RBUkraine.BLL.Models.CharitableContribution.RatingItemModel>
+
+@{
+    ViewData["Title"] = "Rating";
+}
+
+<div class="text-Literata" style="width: 99.99%;height: 40px;left: 0px; top: 0px; background: rgba(161, 158, 80, 0.6);">
+    <div class="row">
+        <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="button_menu" style="width: 320px; margin-left: 18%; font-size: small; color: #333">@localizer["Charitable foundations"]</a>
+        <a asp-controller="Donation" asp-action="Rating" class="button_menu_active" style="width: 320px; font-size: small; color: #333 ">@localizer["List of philanthropists"]</a>
+        <a asp-controller="VolunteerApplication" asp-action="Apply" class="button_menu" style="width: 320px; font-size: small; color: #333 ">@localizer["Volunteering application"]</a>
+    </div>
+</div>
+
+<div style="background-image: url(../images/4.jpg); ">
+    <div class="row">
+        <div>
+            <a asp-controller="Donation" asp-action="Donate">
+                <button class="left-button">
+                    <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+                </button>
+            </a>
+        </div>
+        <div style=" margin-left: 4%;">
+
+
+            <div class="cf_block">
+                <div class="row">
+                    <div style="width: 830px; margin-left: 185px; margin-top: 5px; margin-bottom: 5px; text-align: center">
+                        <p class="red_Literata">@localizer["List of philanthropists who made donations through the RBUkraine portal"]</p>
+                        <hr class="hr_style_title1">
+                        @foreach (var benefactor in Model)
+                        {
+                            <div class="row" style="margin-left: -2px; height: 40px; margin-top: -10px">
+                                <div style="width: 410px; text-align: right">
+                                    <p class="text-Literata" style="margin-top: 9px;">
+                                        @benefactor.UserName
+                                    </p>
+                                </div>
+                                <div style="width: 370px; margin-left: 50px">
+                                    <p class="text-Literata" style="margin-top: 9px; text-align: left">
+                                        @benefactor.Amount &#8372
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="hr_style1">
+                        }
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

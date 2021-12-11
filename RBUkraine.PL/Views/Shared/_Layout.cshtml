@@ -75,13 +75,15 @@
                     style="width: 180px; margin-left: 18%; height: 60px; color: white">
                     @localizer["Animals"]
                 </a>
-                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                <a asp-controller="CharitableOrganizations" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/organizations/admin", "/volunteers/admin")" style="width: 180px; height: 60px; color: white">
                     @localizer["Charity"]
                 </a>
                 <a asp-controller="CharityEvents" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/events/admin")" style="width: 180px; height: 60px; color: white">
                     @localizer["Events"]
                 </a>
-                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="Products" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/shop/admin")" style="width: 180px; height: 60px; color: white">
+                    @localizer["Store"]
+                </a>
                 <a asp-controller="News" asp-action="GetAllAdmin" class="@Html.IsNavTabActive("/news/admin")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
             }
             else
@@ -90,13 +92,13 @@
                     style="width: 180px; margin-left: 18%; height: 60px; color: white">
                     @localizer["Animals"]
                 </a>
-                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations")" style="width: 180px; height: 60px; color: white">
+                <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="@Html.IsNavTabActive("/organizations", "/donation/rating", "/donation", "/volunteers/apply")" style="width: 180px; height: 60px; color: white">
                     @localizer["Charity"]
                 </a>
                 <a asp-controller="CharityEvents" asp-action="GetAll" class="@Html.IsNavTabActive("/events")" style="width: 180px; height: 60px; color: white">
                     @localizer["Events"]
                 </a>
-                <a href="#" class="button_menu" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
+                <a asp-controller="Products" asp-action="GetAll" class="@Html.IsNavTabActive("/shop")" style="width: 180px; height: 60px; color: white">@localizer["Store"]</a>
                 <a asp-controller="News" asp-action="GetAll" class="@Html.IsNavTabActive("/news")" style="width: 180px; height: 60px; color: white">@localizer["News"]</a>
             }
             <div style="background-color: white; width: 1px; margin-top: 5px; height: 50px"></div>
@@ -105,7 +107,7 @@
                 <p class="text-Literata" style="color: white">@localizer["Personal office"]</p>
                 <div style="margin-top: -15px">
                     <a asp-controller="Authentication" asp-action="Profile"><img src="~/icons/account_friend.ico" width="15px" height="15px" alt="1"></a>
-                    <a href="#" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
+                    <a asp-controller="Cart" asp-action="Cart" style="margin-left: 10px"><img src="~/icons/bag_internet_shopping.ico" width="15px" height="15px" alt="1"></a>
                     <a href="#" style="margin-left: 10px"><img src="~/icons/settings.ico" width="15px" height="15px" alt="1"></a>
                     @if(User.Identity.IsAuthenticated)
                     {
@@ -153,7 +155,7 @@
                 <br>@localizer["Home"]
             </a>
             <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="text-Montserrat-light" style="font-size: 10px">
-                <br>"@localizer["Charity"]
+                <br>@localizer["Charity"]
             </a>
             <a href="#" class="text-Montserrat-light" style="font-size: 10px">
                 <br>@localizer["Store"]
@@ -175,6 +177,9 @@
                 <p class="text-Montserrat-light" style="font-size: 12px; font-family: Montserrat-SemiBold;  color: white">
                     @localizer["14, prospect Nauki, Kharkiv"]<br>
                     rbukraine@gmail.com
+                    <a href="/about" class="text-Montserrat-light" style="font-size: 10px">
+                        <br>@localizer["About us"]
+                    </a>
                 </p>
                 <p class="text-Montserrat-light" style="font-size: 12px; font-weight: bold; color: white">
                     +380 (93)-184-81-70

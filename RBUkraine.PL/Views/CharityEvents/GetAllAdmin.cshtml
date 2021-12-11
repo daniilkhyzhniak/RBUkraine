@@ -13,27 +13,44 @@
                     <p class="bold-text-Literata" style=" margin-left: 19px; font-size: 22px"><br>@localizer["Charity events"]</p>
                 </div>
                 <div style="background-color: #F0F0F0;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
-                    <form>
+                    <form method="get">
                         <div style="width: 270px; margin-left: auto; margin-right: auto">
+                            <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+                            <input hidden name="Search" value="@Model.Filter.Search" />
                             <p class="text-Montserrat-light" style="font-size: 20px; font-weight: lighter; color: #484848;"><br>@localizer["Sort"]</p>
                             <p>
-                                <select class="select_option">
+                                <select name="SortOptions" class="select_option">
                                     <option disabled>@localizer["Sort"]</option>
-                                    <option selected value="name">@localizer["By title"]</option>
-                                    <option value="date">@localizer["By date"]</option>
-                                    <option value="price">@localizer["By price"]</option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByTitle)" 
+                                            value="@((int) CharityEventSortOptions.ByTitle)">
+                                        @localizer["By title"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByDate)"
+                                            value="@((int) CharityEventSortOptions.ByDate)">
+                                        @localizer["By date"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortOptions == CharityEventSortOptions.ByPrice)"
+                                            value="@((int) CharityEventSortOptions.ByPrice)">
+                                        @localizer["By price"]
+                                    </option>
                                 </select>
                             </p>
                             <p>
-                                <select class="select_option">
-                                    <option selected value="az">@localizer["A-Z"]</option>
-                                    <option value="za">@localizer["Z-A"]</option>
+                                <select name="SortDirection" class="select_option">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        @localizer["A-Z"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        @localizer["Z-A"]
+                                    </option>
                                 </select>
                             </p>
                             <hr style="border: 0.5px solid rgba(0, 0, 0, 0.5);">
                         </div>
                         <div style="text-align: center">
-                            <button style="color: #944747; background-color: transparent; border-color: transparent">@localizer["Cancel everything"] X </button>
+                            @*<button style="color: #944747; background-color: transparent; border-color: transparent">@localizer["Cancel everything"] X </button>*@
                             <button type="submit" class="button_table" style="color:#424242; font-weight:100; font-family: Montserrat-Regular; margin-left: auto; margin-right: auto">@localizer["Apply"]</button>
                         </div>
                     </form>
@@ -74,7 +91,7 @@
                                     <td>@ch_event.DateTime.ToString("g")</td>
                                     <td>@ch_event.Organizer</td>
                                     <td>@ch_event.Description</td>
-                                    <td>@ch_event.Price</td>
+                                    <td>@ch_event.Price.ToString("F0") &#8372;</td>
                                     <td>
                                         <a asp-action="Update" asp-route-id="@ch_event.Id" style="border-color: transparent; background-color: transparent">
                                             <img src="~/images/edit.png" width="27px" height="25px" alt="1">

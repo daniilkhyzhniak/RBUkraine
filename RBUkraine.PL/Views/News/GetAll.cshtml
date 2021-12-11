@@ -4,22 +4,18 @@
     ViewData["Title"] = "GetAll";
 }
 
-<div class="row">
+<div class="row" style="background-image: url(../images/4.jpg);">
     <div>
-        <button class="left-button">
-            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
-        </button>
+        <a asp-controller="Donation" asp-action="Donate">
+            <button class="left-button">
+                <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+            </button>
+        </a>
     </div>
-    <div>
-        <div style="margin-left: 5%">
-            <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
-                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
-                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
-            </div>
-            <p style="font-family: Literata; font-style: normal; font-weight: 500; font-size: 25px; line-height: 28px; text-align: left; margin-left: 47px; color: #000000;">
-                @localizer["Site news"]
-            </p>
+    <div style="background-color: transparent; border-color: transparent;">
+        <div style="margin-left: 5%; background-color: transparent; border-color: transparent;">
+            
+            
             <div class="row">
                 <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-left: 63px; margin-top: 12px;">
                     @localizer["Search by"]:
@@ -65,23 +61,25 @@
             <div class="section_animal">
                 @foreach (var one_new in Model)
                 {
-                    <button class="button_1" style="background-color: transparent; border-color: transparent;">
-                        <div class="section_1">
-                            <div class="center_content1">
-                                <p class="t1">
-                                    @one_new.Title
-                                </p>
+                    <a asp-controller="News" asp-action="GetById" asp-route-id="@one_new.Id">
+                        <button class="button_1" style="background-color: transparent; border-color: transparent;">
+                            <div class="section_1">
+                                <div class="center_content1">
+                                    <p class="t1">
+                                        @one_new.Title
+                                    </p>
 
-                                <p class="t2">
-                                    @one_new.PublishDate
-                                </p>
+                                    <p class="t2">
+                                        @one_new.PublishDate.ToString("g")
+                                    </p>
 
+                                </div>
+                                <p class="t3">
+                                    @one_new.ShortDescription
+                                </p>
                             </div>
-                            <p class="t3">
-                                @one_new.ShortDescription
-                            </p>
-                        </div>
-                    </button>
+                        </button>
+                    </a>
                 }
             </div>
         </div>

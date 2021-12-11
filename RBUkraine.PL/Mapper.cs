@@ -9,13 +9,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RBUkraine.BLL;
 using RBUkraine.BLL.Models.CharitableOrganization;
 using RBUkraine.BLL.Models.CharityEvent;
 using RBUkraine.BLL.Models.News;
+using RBUkraine.BLL.Models.Product;
 using RBUkraine.BLL.Models.User;
 using RBUkraine.PL.ViewModels.CharitableOrganizations;
 using RBUkraine.PL.ViewModels.CharityEvents;
 using RBUkraine.PL.ViewModels.News;
+using RBUkraine.PL.ViewModels.Products;
 
 namespace RBUkraine.PL
 {
@@ -46,10 +49,40 @@ namespace RBUkraine.PL
 
             CreateMap<CharitableOrganizationModel, CharitableOrganizationViewModel>()
                 .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
+            CreateMap<CharitableOrganizationModel, CharitableOrganizationEditorViewModel>();
+            CreateMap<CharitableOrganizationEditorViewModel, CharitableOrganizationEditorModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
 
             CreateMap<NewsModel, NewsViewModel>();
-            CreateMap<NewsModel, NewsEditorModel>();
+            CreateMap<NewsModel, NewsEditorViewModel>();
             CreateMap<NewsEditorViewModel, NewsEditorModel>();
+
+            CreateMap<ProductModel, ProductViewModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapImage(x.Image)));
+            CreateMap<ProductModel, ProductEditorViewModel>();
+            CreateMap<ProductEditorViewModel, ProductEditorModel>()
+                .ForMember(x => x.Image, opt => opt.MapFrom(x => MapFileToImage(x.File)));
+        }
+
+        private static Image MapFileToImage(IFormFile file)
+        {
+            if (file is null)
+            {
+                return null;
+            }
+
+            using var memoryStream = new MemoryStream();
+
+            var img = new Image
+            {
+                Title = file.FileName
+            };
+
+            file.CopyTo(memoryStream);
+            img.Data = memoryStream.ToArray();
+            memoryStream.Close();
+
+            return img;
         }
 
         private static IEnumerable<Image> MapFilesToImages(IFormFileCollection files)
@@ -81,6 +114,15 @@ namespace RBUkraine.PL
         }
         private static ImageViewModel MapImage(Image image)
         {
+            if (image is null)
+            {
+                return new ImageViewModel
+                {
+                    Title = "Default",
+                    Url = $"data:image/jpg;base64,{Images.DefaultAnimal}"
+                };
+            }
+
             var imageBase64Data = Convert.ToBase64String(image.Data);
             var imageUrl = $"data:image/jpg;base64,{imageBase64Data}";
 

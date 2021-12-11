@@ -21,19 +21,25 @@ namespace RBUkraine.PL.Controllers
     public class AuthenticationController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IDonationService _donationService;
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
 
         public AuthenticationController(
             IUserService userService,
+            IDonationService donationService,
             IMapper mapper,
             IEmailSender emailSender)
         {
             _userService = userService;
+            _donationService = donationService;
             _mapper = mapper;
             _emailSender = emailSender;
         }
-        
+
+        [HttpGet("~/about")]
+        public IActionResult About() => View("About");
+
         [HttpGet("~/registration")]
         public IActionResult Registration()
         {
@@ -93,7 +99,7 @@ namespace RBUkraine.PL.Controllers
 
             if (User.IsInRole(Roles.Admin))
             {
-                return RedirectToAction("GetAllAdmin", "Animals");
+                return RedirectToAction("GetAll", "Animals");
             }
 
             return RedirectToAction("Profile", "Authentication");

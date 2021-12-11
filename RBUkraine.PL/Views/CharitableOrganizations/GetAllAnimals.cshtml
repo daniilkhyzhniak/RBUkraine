@@ -4,43 +4,47 @@
     ViewData["Title"] = "GetAll";
 }
 
-<div class="row" style="margin-top: 60px">
-    <div>
-        <button class="left-button">
-            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
-        </button>
-    </div>
-    <div style="margin-left: 4%;">
-        @foreach (var item in Model)
-        {
-            <div class="container4">
-                <div class="row">
-                    <div style="width: 1000px">
-                        <p class="protect">
-                            @item.Name
-                        </p>
-                        <ul class="menu_3">
+<div style="background-image: url(../images/4.jpg);">
+    <div class="row" style="margin-top: 0px;" >
+        <div>
+            <a asp-controller="Donation" asp-action="Donate">
+                <button class="left-button">
+                    <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+                </button>
+            </a>
+        </div>
+        <div style="margin-left: 0%;">
+            @foreach (var item in Model)
+            {
+                <div class="container4">
+                    <div class="row">
+                        <div style="width: 1000px">
+                            <p class="protect">
+                                @item.Name
+                            </p>
+                            <ul class="menu_3">
 
-                            @foreach (var animal in item.Animals)
-                            {
-                                <li>
-                                    <a asp-controller="Animals" asp-action="GetById" asp-route-id="@animal.Id">
-                                        <img src="@animal.Image.Url" width="200px" height="200px" alt="1" style="margin-left: 20px; margin-bottom: 20px; border-radius: 5px;">
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="center_content" style="width: 150px; color: #7C0A02; margin-left: 50px">
-                        <a asp-action="GetById" asp-route-id="@item.Id">
-                            <button class="gradient-text_button">
-                                &#10230;
-                            </button>
-                        </a>
+                                @foreach (var animal in item.Animals)
+                                {
+                                    <li>
+                                        <a asp-controller="Animals" asp-action="GetById" asp-route-id="@animal.Id">
+                                            <img src="@animal.Image.Url" width="200px" height="200px" alt="1" style="margin-left: 20px; margin-bottom: 20px; border-radius: 5px;">
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="center_content" style="width: 150px; color: #7C0A02; margin-left: 50px">
+                            <a asp-action="GetById" asp-route-id="@item.Id">
+                                <button class="gradient-text_button">
+                                    &#10230;
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
+    </div>
 </div>

@@ -36,21 +36,14 @@
 </div>*@
 
 <div style="height: 800px; background-image: url(../images/pexels-pixabay-357140.jpg) ; background-size: cover; ">
-    <div style=" margin-left:15%;">
-
-        <div class="row" style="font-size: small;">
-            <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Animals"]</a>
-            <p class="black-text-Montserrat" style=" margin-top:60px; ">&ensp;&#10095;&ensp;</p>
-            <a href="#" class="black-text-Montserrat" style=" text-decoration: underline;margin-top: 60px; ">@localizer["Personal office"]</a>
-        </div>
-    </div>
+    
 
     <div class="section" style="width: 1000px; height:592px; left: 330px;">
         <div class="row">
             <p class="my">
                 @localizer["Personal office"]
             </p>
-            <a asp-controller="Authentication" asp-action="Logout"><img src="~/icons/logount-icon.ico" alt="1" style="width: 28px; height: 33px; position:absolute; top:10px; right:10px;"></a>
+            <a asp-controller="Authentication" asp-action="Logout"><img src="~/icons/logout-icon.ico" alt="1" style="width: 28px; height: 33px; position:absolute; top:10px; right:10px;"></a>
         </div>
         <hr class="hr2">
         <div>
@@ -96,8 +89,11 @@
                 </div>
             </div>
             <div class="row" style="margin-top: 225px;">
-                <button type="submit" class="button1" style="width: 40%">@localizer["Basket"]</button>
-                <button type="submit" class="button1" style="width: 45%">@localizer["Purchase history"]</button>
+                <a asp-controller="Cart" asp-action="Cart" class="button1" style="width: 40%">
+                    <button type="submit" class="button1" style="width: 100%">@localizer["Basket"]</button>
+                </a>
+                
+                <button type="submit" class="button1" style="width: 40%">@localizer["Purchase history"]</button>
             </div>
         </div>
 

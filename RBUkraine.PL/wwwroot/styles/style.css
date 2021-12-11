@@ -902,6 +902,23 @@
     margin-left: 52px;
 }
 
+#text_in1 {
+    width: 15px;
+    height: 15px;
+    margin-left: 18px;
+}
+
+.text_in1 {
+    font-family: Literata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 22px;
+    align-items: center;
+    color: #6D6D6D;
+    margin-left: 5px;
+}
+
 .sum-text {
     position: absolute;
     width: 343px;
@@ -1025,6 +1042,39 @@
     align-items: center
 }
 
+.photo {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    color: #000000;
+}
+
+.ftr {
+    width: 250px;
+    height: 509px;
+    background: #F0F0F0;
+    border-radius: 15px;
+}
+
+.goods {
+    width: 250px;
+    height: 350px;
+    background: #FAF6E2;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+.center-img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
 .editor-block {
     height: 800px;
     background-image: url("../images/3.jpg");
@@ -1038,6 +1088,15 @@
 .login-block {
     height: 800px;
     background-image: url(../images/pexels-pixabay-357140.jpg);
+    background-size: cover;
+}
+
+.charitable-organization-block {
+     background-image: url(../images/4.jpg);
+}
+
+.about-us-block {
+    background-image: url(../images/back.jpg);
     background-size: cover;
 }
 

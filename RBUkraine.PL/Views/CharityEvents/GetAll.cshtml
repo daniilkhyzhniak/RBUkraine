@@ -3,14 +3,16 @@
 @{
     ViewData["Title"] = "GetAll";
 }
-<div class="row">
+<div class="row" style="background-image: url(../images/4.jpg);">
     <div>
-        <button class="left-button">
-            <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
-        </button>
+        <a asp-controller="Donation" asp-action="Donate">
+            <button class="left-button">
+                <br><br>@localizer["Make a charitable"]<br> @localizer["contribution"]
+            </button>
+        </a>
     </div>
 
-    <div style="margin-left: 5%">
+    <div style="margin-left: 3%">
         @foreach (var item in Model)
         {
 
@@ -50,7 +52,7 @@
                         </div>
                         <div style="width: 300px;  text-align: center; margin-top: 40px">
                             <p style="font-family: 'Literata';">@localizer["Price"]:</p>
-                            <h1 style="font-family: 'Literata';">@item.Price.ToString("F2") &#8372;</h1>
+                            <h1 style="font-family: 'Literata';">@item.Price.ToString("F0") &#8372;</h1>
                             <br>
                             <form asp-action="Checkout" asp-route-id="@item.Id" method="post">
                                 <button type="submit"

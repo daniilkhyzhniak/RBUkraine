@@ -1,0 +1,83 @@
+﻿@using RBUkraine.PL.ViewModels.Donation
+@model DonationViewModel
+
+@{
+    ViewData["Title"] = "Donate";
+}
+
+<div class="text-Literata" style="width: 99.99%;height: 40px;left: 0px; top: 0px; background: rgba(161, 158, 80, 0.6);">
+    <div class="row">
+        <a asp-controller="CharitableOrganizations" asp-action="GetOrganizations" class="button_menu" style="width: 480px; margin-left: 18%; font-size: small; color: #333">@localizer["Charitable foundations"]</a>
+        <a asp-controller="Donation" asp-action="Rating" class="button_menu" style="width: 480px; font-size: small; color: #333 ">@localizer["List of philanthropists"]</a>
+    </div>
+</div>
+<div style=" height: 800px; background-image: url(../images/4.jpg);">
+    <br><br>
+    <div class="admin_animal_block" style="height: 630px; width: 1200px">
+        <div style="height: 10px"></div>
+        <a href="#" class="text-Literata" style="margin-left: 20px; font-size: 20px">&emsp;@localizer["Charitable contribution"]</a>
+        <hr style="margin-top: 10px">
+        <form asp-action="Donate" method="post" style="margin-top: 30px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
+            <div class="row">
+                <div style="width: 300px;">
+                    <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-right: 20px; margin-left: 70px; margin-top: 60px;color:  black; font-size: 18px;">@localizer["Charitable organization"]:</p>
+                </div>
+
+                <p>
+                    <select asp-for="CharitableOrganizationId" class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
+                        @foreach (var item in Model.Fonds)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="row" style="width: 400px">
+                    <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-left: 85px;  margin-top: 30px;color:  black; font-size: 18px;">@localizer["Sum"]:</p>
+                    <input asp-for="Amount" type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
+
+                </div>
+                <button type="submit"
+                        class="button" style="height: 40px; width: 530px; margin-top: 18px;  font-family: Literata; font-weight: lighter; font-size: 20px">
+                    @localizer["Make a charitable contribution to the fund"]
+                </button>
+            </div>
+
+        </form>
+        <hr style="margin-top: 50px; width: 950px;  margin-left: auto; margin-right: auto;">
+
+        <form asp-action="Donate" method="post" style="margin-top: 45px; width: 1000px; height: 200px; text-align: center; margin-left: auto; margin-right: auto; border-radius: 15px; background-color: #ECF5E6">
+            <div class="row">
+                <div style="width: 300px;">
+                    <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-right: 20px; margin-left: 70px; margin-top: 60px;color:  black; font-size: 18px;">@localizer["Animal species"]:</p>
+                </div>
+
+                <p>
+                    <select asp-for="AnimalId" class="text-Montserrat" style="width: 660px; height: 40px;  margin-top: 50px; color:  black; border-color: #d0d0d0; font-size: 17px;">
+                        @foreach (var item in Model.Species)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="row" style="width: 400px">
+                    <p class="text-Montserrat" style="font-family: Montserrat-Regular; text-align: left; margin-left: 85px;  margin-top: 30px;color:  black; font-size: 18px;">@localizer["Sum"]:</p>
+                    <input asp-for="Amount" type="number" step="50" min="0" style="font-family: Montserrat; margin-left: 20px; width: 200px; height: 40px; border-color: #d0d0d0; border-radius: 5px; font-size: 26px; text-align: center; border-style: solid; border-width: 1px; margin-top: 18px" value="100"><span style="font-size:  39px; color: #757575; margin-top: 6px; margin-left: 5px;">&#8372;</span>
+
+                </div>
+                <button type="submit"
+                        class="button" style="height: 40px; width: 530px; margin-top: 18px;  font-family: Literata; font-weight: lighter; font-size: 20px">
+                    @localizer["Make a charitable contribution to the species"]
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+    <br><br>
+</div>
