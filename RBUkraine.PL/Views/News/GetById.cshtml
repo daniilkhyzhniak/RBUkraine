@@ -15,17 +15,14 @@
     </div>
     <div>
         <div style="margin-left: 5%">
-            <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
-                <a asp-controller="News" asp-action="GetAll" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["News"]</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Title</p>
-            </div>
             <div class="cf_block">
+                <div class="row" style="font-size: small; margin-top: 40px; margin-left: 5px">
+                    <a asp-controller="News" asp-action="GetAll" class="text-Literata" style="margin-left: 20px; font-size: 20px">&#10094;&emsp;@localizer["News"]</a>
+                </div>
                 <div style="width: 1170px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
                     <p class="red_Literata" style="color: black">@Model.Title</p>
+
                     
-                    <p class="text-Montserrat" style="margin-top: 30px; margin-left: 1px; font-size: 15px">
-                        @Model.Animal@Model.CharitableOrganization
-                    </p>
                     <hr class="hr_style1" style="width: 1170px">
                     <div class="row" style=" margin-left: -2px; margin-top: -10px">
                         <input class="input_style3" value="@localizer["Brief description"]:" readonly>

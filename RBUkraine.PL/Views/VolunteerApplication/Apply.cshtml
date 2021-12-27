@@ -110,7 +110,7 @@
                     </p>
                     <input asp-for="WorkingConditions" type="text" class="text-Literata" style="margin-top:3px; height: 100px;  background-color: #F7F7F7;border-radius: 5px; border-color: transparent; font-size: 18px;width: 910px;" >
                 </div>
-                <a onclick="errorMessae('@localizer["An application for volunteering has been sent"]', 'Model?.Error != null')">
+                <a onclick="errorMessae('@localizer["An application for volunteering has been sent"]', '@Model?.Error')">
                     <button type="submit" class="text-Literata" style="background-color: #D2C29D; border-width: 0px; height: 50px; width: 535px; border-radius: 10px; font-size: 22px; margin-left: 180px; margin-top: 30px;">
                         @localizer["Send application"]
                     </button>

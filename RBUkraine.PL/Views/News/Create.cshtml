@@ -34,7 +34,7 @@
                     <div class="row">
                         <p>
                             <select asp-for="CharitableOrganizationId" style="margin-bottom:-20px; margin-left: 15px; width: 400px; margin-top: 5px; height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px">
-                               
+                                <option value="">---</option>
                                 @foreach (var item in Model.CharitableOrganizationSelectList)
                                 {
                                     <option value="@item.Value">@item.Text</option>
@@ -46,6 +46,7 @@
                     <div class="row">
                         <p>
                             <select asp-for="AnimalId" style="margin-bottom:-20px; margin-left: 15px; width: 400px; margin-top: 5px; height: 35px; border-color: #d0d0d0; border-style: solid; border-width: 1px">
+                                <option value="">---</option>
                                 @foreach (var item in Model.AnimalSelectList)
                                 {
                                     <option value="@item.Value">@item.Text</option>

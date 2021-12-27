@@ -339,6 +339,12 @@
   <data name="Founders" xml:space="preserve">
     <value>Засновники</value>
   </data>
+  <data name="From new to old" xml:space="preserve">
+    <value>Від нового до старого</value>
+  </data>
+  <data name="From old to new" xml:space="preserve">
+    <value>Від старого до нового</value>
+  </data>
   <data name="Full description" xml:space="preserve">
     <value>Повний опис</value>
   </data>

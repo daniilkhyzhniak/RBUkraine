@@ -16,12 +16,7 @@
         </div>
 
         <div style="margin-top: 20px; margin-left:7%; width: 1100px; margin-right: auto; ">
-            <div class="row" style="font-size: small">
-                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Animals"]</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
-                <a asp-controller="CharitableOrganizations" asp-action="GetById" asp-route-id="@Model.CharitableOrganization.Id" class="black-text-Montserrat" style=" text-decoration: underline; ">@Model.CharitableOrganization.Name</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;@Model.Species</p>
-            </div>
+            
 
             <div class="animal-block">
                 <div class="row">

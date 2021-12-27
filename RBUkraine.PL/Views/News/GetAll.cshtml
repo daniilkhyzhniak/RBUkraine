@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RBUkraine.PL.ViewModels.News.NewsViewModel>
+﻿@model RBUkraine.PL.ViewModels.News.NewsListViewModel
 
 @{
     ViewData["Title"] = "GetAll";
@@ -14,52 +14,38 @@
     </div>
     <div style="background-color: transparent; border-color: transparent;">
         <div style="margin-left: 5%; background-color: transparent; border-color: transparent;">
-            
-            
-            <div class="row">
-                <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-left: 63px; margin-top: 12px;">
-                    @localizer["Search by"]:
-                </p>
-                <p>
-                    <select class="select_option" style="width: 185px; margin-left: 10px">
-                        <option disabled>@localizer["Search by"]</option>
-                        <option selected value="name">@localizer["By Charitable Organization"]</option>
-                        <option value="lat">@localizer["By species"]</option>
-                        <option value="cf">@localizer["Other"]</option>
-                    </select>
-                </p>
 
-                <p>
-                    <select class="select_option" style="width: 320px; margin-left: 10px">
-                        <option disabled>@localizer["Search by"]</option>
-                        <option selected value="name">Ведмідь бурий</option>
+            <input hidden name="SearchOptions" value="@((int)Model.Filter.SearchOptions)" />
+            <input hidden name="Search" value="@Model.Filter.Search" />
 
-                    </select>
-                </p>
-                <button style=" background-color: transparent; border-color: transparent; color: black; margin-bottom: 15px; "><img src="~/images/search.png" width="35px" height="35px" alt="1"></button>
-
-                <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-top: 12px;">
-                    @localizer["Sort"]:
-                </p>
-                <p>
-                    <select class="select_option" style="width: 196px; margin-left: 10px">
-                        <option disabled>@localizer["Sort"]:</option>
-                        <option selected value="name">@localizer["By species"]</option>
-
-                    </select>
-                </p>
-
-                <p>
-                    <select class="select_option" style="width: 76px; margin-left: 10px ">
-                        <option disabled>@localizer["Sort"]:</option>
-                        <option selected value="name">@localizer["A-Z"]</option>
-                        <option selected value="name">@localizer["Z-A"]</option>
-
-                    </select>
-                </p>
-            </div>
             <div class="section_animal">
-                @foreach (var one_new in Model)
+                <div class="row">
+                    <form method="get">
+                        <div class="row">
+                            <p style="font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 19px; line-height: 22px; color: #484848; margin-left: 63px; margin-top: 12px;">
+                                @localizer["Sort"]:
+                            </p>
+
+                            <p>
+                                <select name="SortDirection" class="select_option" style="width: 200px; margin-left:25px">
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Asc)"
+                                            value="@((int) SortDirection.Asc)">
+                                        @localizer["From old to new"]
+                                    </option>
+                                    <option selected="@(Model.Filter.SortDirection == SortDirection.Desc)"
+                                            value="@((int) SortDirection.Desc)">
+                                        @localizer["From new to old"]
+                                    </option>
+                                </select>
+                            </p>
+
+                            <button type="submit" class="button_table" style="background-color: #FFFFFF; width: 210px; color: #424242; font-weight: 100; font-family: Montserrat-Regular; margin-top: 6px; margin-left: 40px; margin-right: auto ">
+                                @localizer["Apply"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                @foreach (var one_new in Model.News)
                 {
                     <a asp-controller="News" asp-action="GetById" asp-route-id="@one_new.Id">
                         <button class="button_1" style="background-color: transparent; border-color: transparent;">
@@ -70,13 +56,10 @@
                                     </p>
 
                                     <p class="t2">
-                                        @one_new.PublishDate.ToString("g")
+                                        @one_new.PublishDate.ToString("d")
                                     </p>
 
                                 </div>
-                                <p class="t3">
-                                    @one_new.ShortDescription
-                                </p>
                             </div>
                         </button>
                     </a>

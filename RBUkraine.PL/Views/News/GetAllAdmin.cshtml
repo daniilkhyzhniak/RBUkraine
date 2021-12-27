@@ -123,7 +123,6 @@
                         </button>
                     </form>
                 </div>
-                <div style="height: 490px">
                     <table class="ce_table" style="margin-left: 15px;background-color: #F8FCF2">
                         <thead style="font-weight: bold">
                             <tr>
@@ -137,11 +136,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var news in Model.News)
+                            @foreach (var news in Model.News)
                             {
                                 <tr>
                                     <td>@news.Title</td>
-                                    <td>@news.PublishDate.ToString("g")</td>
+                                    <td>@news.PublishDate.ToString("d")</td>
                                     <td>@news.ShortDescription</td>
                                     <td>@news.FullDescription</td>
                                     <td>@news.Animal?.Species</td>
@@ -159,13 +158,13 @@
                             }
                         </tbody>
                     </table>
-                </div>
-
-                <a asp-action="Create">
-                    <button type="submit" style="border-color: transparent; background-color: transparent"><img src="~/images/plus.png" width="100px" height="50px" alt="1"></button>
-                </a>
+                <div class="row" style="margin-left: 40px;  width: 1000px">
+                    <a asp-action="Create">
+                        <button type="submit" style="border-color: transparent; background-color: transparent"><img src="~/images/plus.png" width="100px" height="50px" alt="1"></button>
+                    </a>
                 </div>
             </div>
+        </div>
     </div>
     <br><br>
 </div>

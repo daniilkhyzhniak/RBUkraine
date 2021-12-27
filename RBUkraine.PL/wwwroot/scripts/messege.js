@@ -3,7 +3,7 @@ const alertMessage = async (message) => {
 };
 
 const errorMessae = (massage, error) => {
-	if (!error) {
+	if (error != "Невірні дані") {
 		alert(massage);
 	}
 }

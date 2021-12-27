@@ -54,7 +54,7 @@ namespace RBUkraine.PL.Controllers
             }
 
             await _volunteerApplicationService.Create(model);
-            return RedirectToAction("GetAnimals", "CharitableOrganizations");
+            return RedirectToAction("Apply", "VolunteerApplication");
         }
 
         [HttpPost("{id}/confirm"), Authorize(Roles = Roles.Admin)]

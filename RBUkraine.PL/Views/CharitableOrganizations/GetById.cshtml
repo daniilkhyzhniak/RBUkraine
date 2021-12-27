@@ -15,12 +15,7 @@
         </div>
         <div style=" margin-left:1.5%; width: 1100px; margin-right: auto; ">
 
-            <div class="row" style="font-size: small">
-                <a asp-controller="CharitableOrganizations" asp-action="GetAnimals" class="black-text-Montserrat" style=" text-decoration: underline; ">@localizer["Charitable foundations"]</a>
-                <p class="black-text-Montserrat">&ensp;&#10095;&ensp;</p>
-                <a href="#" class="black-text-Montserrat" style=" text-decoration: underline; ">@Model.Name</a>
-
-            </div>
+            
             <section class="h">
                 <div class="container5">
                     <p class="protect1">
@@ -30,13 +25,26 @@
                         @localizer["Species assisted by this foundation"]
                     </p>
                     <ul class="menu3">
-                        @foreach (var item in Model.Animals)
-                        {
-                            <li>
-                                <a asp-controller="Animals" asp-action="GetById" asp-route-id="@item.Id">
-                                    <img src=@item.Image.Url style="border-radius: 5px;" width="200px" height="200px" alt="1">
-                                </a>
-                            </li>
+                        @{
+                            var items = Model.Animals.ToList();
+                            int j = 0;
+                            while (j < items.Count)
+                            {
+                                int t = Math.Min(5, items.Count - j);
+                                <div class="row" style="margin-bottom: 10px;">
+                                    @for (int i = 0; i < t; i++)
+                                     {
+                                        <li>
+                                            <a asp-controller="Animals" asp-action="GetById" asp-route-id="@items[j].Id">
+                                                <img src=@items[j].Image.Url style="border-radius: 5px;" width="200px" height="200px" alt="1">
+                                            </a>
+                                        </li>
+                                        {
+                                            j++;
+                                        }
+                                    }
+                                 </div>
+                            }
                         }
                     </ul>
                 </div>
